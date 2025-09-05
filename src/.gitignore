@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.env
+.env.*
+*.sqlite
+.ipynb_checkpoints/
+dist/
+build/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Project data
+data/raw/*
+data/private/*
+*.log

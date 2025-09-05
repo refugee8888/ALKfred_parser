@@ -1,0 +1,91 @@
+{
+    "iri" : "http://purl.obolibrary.org/obo/NCIT_C38184",
+    "lang" : "en",
+    "description" : [ "This gene is involved in brain development and neuronal specificity." ],
+    "synonyms" : [ "ALK", "ALK Gene", "ALK Receptor Tyrosine Kinase Gene" ],
+    "annotation" : {
+      "Contributing_Source" : [ "CCPS", "CTRP", "GDC" ],
+      "Display_Name" : [ "ALK Gene" ],
+      "HGNC_ID" : [ "HGNC:427" ],
+      "Is_Value_For_GDC_Property" : [ "http://purl.obolibrary.org/obo/NCIT_C171253", "http://purl.obolibrary.org/obo/NCIT_C173595" ],
+      "Legacy Concept Name" : [ "ALK_Gene" ],
+      "Maps_To" : [ "ALK" ],
+      "OMIM_Number" : [ "105590" ],
+      "Preferred_Name" : [ "ALK Gene" ],
+      "Semantic_Type" : [ "Gene or Genome" ],
+      "UMLS_CUI" : [ "C1332080" ],
+      "code" : [ "C38184" ]
+    },
+    "label" : "ALK Gene",
+    "ontology_name" : "ncit",
+    "ontology_prefix" : "NCIT",
+    "ontology_iri" : "http://purl.obolibrary.org/obo/ncit.owl",
+    "is_obsolete" : false,
+    "term_replaced_by" : null,
+    "is_defining_ontology" : true,
+    "has_children" : true,
+    "is_root" : false,
+    "short_form" : "NCIT_C38184",
+    "obo_id" : "NCIT:C38184",
+    "in_subset" : [ "NCIT_C116977", "NCIT_C142799", "NCIT_C142800", "NCIT_C142801", "NCIT_C157711", "NCIT_C177281", "NCIT_C177517", "NCIT_C177537", "NCIT_C213300" ],
+    "obo_definition_citation" : null,
+    "obo_xref" : null,
+    "obo_synonym" : [ {
+      "name" : "ALK",
+      "scope" : "hasExactSynonym",
+      "type" : null,
+      "xrefs" : [ ]
+    }, {
+      "name" : "ALK Gene",
+      "scope" : "hasExactSynonym",
+      "type" : null,
+      "xrefs" : [ ]
+    }, {
+      "name" : "ALK Receptor Tyrosine Kinase Gene",
+      "scope" : "hasExactSynonym",
+      "type" : null,
+      "xrefs" : [ ]
+    } ],
+    "is_preferred_root" : false,
+    "_links" : {
+      "self" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184?lang=en"
+      },
+      "parents" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/parents"
+      },
+      "ancestors" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/ancestors"
+      },
+      "hierarchicalParents" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/hierarchicalParents"
+      },
+      "hierarchicalAncestors" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/hierarchicalAncestors"
+      },
+      "jstree" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/jstree"
+      },
+      "children" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/children"
+      },
+      "descendants" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/descendants"
+      },
+      "hierarchicalChildren" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/hierarchicalChildren"
+      },
+      "hierarchicalDescendants" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/hierarchicalDescendants"
+      },
+      "graph" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/graph"
+      },
+      "Gene_Involved_In_Pathogenesis_Of_Disease" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_R175"
+      },
+      "Gene_Plays_Role_In_Process" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C38184/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_R37"
+      }
+    }
+  }

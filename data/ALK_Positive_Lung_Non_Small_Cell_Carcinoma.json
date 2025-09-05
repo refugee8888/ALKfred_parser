@@ -1,0 +1,68 @@
+{
+    "iri" : "http://purl.obolibrary.org/obo/NCIT_C215346",
+    "lang" : "en",
+    "description" : [ "A lung non-small cell carcinoma (NSCLC) characterized by the presence of rearrangements of the ALK gene that lead to activation of ALK kinase and ALK driven tumor formation. These rearrangements were initially identified as EML4-ALK fusions, but a variety of other ALK gene fusions were subsequently identified. Approximately 5% of patients with NSCLC carry ALK rearrangements and are highly sensitive to treatment with ALK inhibitors." ],
+    "synonyms" : [ "ALK+ NSCLC", "ALK-Positive Lung Non-Small Cell Carcinoma", "ALK-Positive NSCLC" ],
+    "annotation" : {
+      "Contributing_Source" : [ "CTRP" ],
+      "Display_Name" : [ "ALK-Positive Lung Non-Small Cell Carcinoma" ],
+      "Neoplastic_Status" : [ "Malignant" ],
+      "Preferred_Name" : [ "ALK-Positive Lung Non-Small Cell Carcinoma" ],
+      "Semantic_Type" : [ "Neoplastic Process" ],
+      "code" : [ "C215346" ]
+    },
+    "label" : "ALK-Positive Lung Non-Small Cell Carcinoma",
+    "ontology_name" : "ncit",
+    "ontology_prefix" : "NCIT",
+    "ontology_iri" : "http://purl.obolibrary.org/obo/ncit.owl",
+    "is_obsolete" : false,
+    "term_replaced_by" : null,
+    "is_defining_ontology" : true,
+    "has_children" : false,
+    "is_root" : false,
+    "short_form" : "NCIT_C215346",
+    "obo_id" : "NCIT:C215346",
+    "in_subset" : [ "NCIT_C116977", "NCIT_C118168" ],
+    "obo_definition_citation" : null,
+    "obo_xref" : null,
+    "obo_synonym" : [ {
+      "name" : "ALK+ NSCLC",
+      "scope" : "hasExactSynonym",
+      "type" : null,
+      "xrefs" : [ ]
+    }, {
+      "name" : "ALK-Positive Lung Non-Small Cell Carcinoma",
+      "scope" : "hasExactSynonym",
+      "type" : null,
+      "xrefs" : [ ]
+    }, {
+      "name" : "ALK-Positive NSCLC",
+      "scope" : "hasExactSynonym",
+      "type" : null,
+      "xrefs" : [ ]
+    } ],
+    "is_preferred_root" : false,
+    "_links" : {
+      "self" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C215346?lang=en"
+      },
+      "parents" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C215346/parents"
+      },
+      "ancestors" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C215346/ancestors"
+      },
+      "hierarchicalParents" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C215346/hierarchicalParents"
+      },
+      "hierarchicalAncestors" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C215346/hierarchicalAncestors"
+      },
+      "jstree" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C215346/jstree"
+      },
+      "graph" : {
+        "href" : "http://www.ebi.ac.uk/ols4/api/ontologies/ncit/terms/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FNCIT_C215346/graph"
+      }
+    }
+  }

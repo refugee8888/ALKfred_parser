@@ -1,0 +1,24 @@
+# Core runtime (Python 3.10+ recommended)
+python-dotenv>=1.0.0
+
+# Data structures and parsing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# JSON and API handling
+requests>=2.31.0
+
+# AI/LLM integration
+openai>=1.0.0
+
+# Standard library modules (no installation needed)
+# - json, os, sys, re, itertools, time, pathlib
+
+# Dev tools (optional but useful)
+black>=24.0.0
+pytest>=8.0.0
+mypy>=1.8.0
+
+# Jupyter support (for notebooks/testing logic)
+ipython>=8.10.0
+jupyterlab>=4.0.0
