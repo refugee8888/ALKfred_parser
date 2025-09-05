@@ -69,7 +69,7 @@ Data Sources: CIViC, BioPortal, MONDO, NCIt
 
 📜 License
 
-MIT License — open for anyone to use, modify, or contribute.
+GNU GENERAL PUBLIC LICENSE - The GNU General Public License is a free, copyleft license for software and other kinds of works.
 
 👋 Final Note
 
