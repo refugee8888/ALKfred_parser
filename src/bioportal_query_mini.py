@@ -5,7 +5,7 @@ import json
 from dotenv import load_dotenv
 
 # Load API key
-load_dotenv(Path("src/data_modules/.env"))
+load_dotenv(Path("src/.env"))
 bioportal_api_key = os.getenv("BIOPORTAL_API_KEY")
 
 HEADERS = {"Authorization": f"apikey token={bioportal_api_key}"}

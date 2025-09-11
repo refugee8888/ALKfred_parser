@@ -5,7 +5,7 @@
   "prevPage": null,
   "nextPage": 2,
   "links": {
-    "nextPage": "https://data.bioontology.org/search?q=ALK&page=2",
+    "nextPage": "https://data.bioontology.org/search?q=ALK&ontology=NCIT&root_only=true&subtree_ontology=NCIT&page=2",
     "prevPage": null
   },
   "collection": [

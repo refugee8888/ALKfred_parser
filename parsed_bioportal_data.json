@@ -1,0 +1,2414 @@
+[
+  {
+    "prefLabel": "auks",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://aims.fao.org/aos/agrovoc/c_6469",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469",
+      "ontology": "https://data.bioontology.org/ontologies/AGROVOC",
+      "children": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/children",
+      "parents": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/parents",
+      "descendants": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/instances",
+      "tree": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/tree",
+      "notes": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/notes",
+      "mappings": "https://data.bioontology.org/ontologies/AGROVOC/classes/http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/AGROVOC?p=classes&conceptid=http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_6469",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://www.semanticweb.org/admin/ontologies/OM#ALK",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK",
+      "ontology": "https://data.bioontology.org/ontologies/OMCO",
+      "children": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/children",
+      "parents": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMCO?p=classes&conceptid=http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://scai.fraunhofer.de/MSOntology#ALK",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK",
+      "ontology": "https://data.bioontology.org/ontologies/MSO",
+      "children": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/children",
+      "parents": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/parents",
+      "descendants": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/instances",
+      "tree": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/tree",
+      "notes": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/notes",
+      "mappings": "https://data.bioontology.org/ontologies/MSO/classes/http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/MSO?p=classes&conceptid=http%3A%2F%2Fscai.fraunhofer.de%2FMSOntology%23ALK",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "definition": [
+      "anaplastic lymphoma receptor tyrosine kinase"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/OMIT_0030199",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199",
+      "ontology": "https://data.bioontology.org/ontologies/OMIT",
+      "children": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/children",
+      "parents": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMIT/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMIT?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOMIT_0030199",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "CD246",
+      "NBLST3"
+    ],
+    "definition": [
+      "Other designations: ALK tyrosine kinase receptor|CD246 antigen|mutant anaplastic lymphoma kinase"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/OGG_3000000238",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238",
+      "ontology": "https://data.bioontology.org/ontologies/OGG",
+      "children": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/children",
+      "parents": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/instances",
+      "tree": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/tree",
+      "notes": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OGG/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OGG?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000000238",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:427",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427",
+      "ontology": "https://data.bioontology.org/ontologies/HGNC",
+      "children": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/children",
+      "parents": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/parents",
+      "descendants": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/instances",
+      "tree": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/tree",
+      "notes": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/notes",
+      "mappings": "https://data.bioontology.org/ontologies/HGNC/classes/https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/HGNC?p=classes&conceptid=https%3A%2F%2Fwww.genenames.org%2Fdata%2Fgene-symbol-report%2F%23%21%2Fhgnc_id%2FHGNC%3A427",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Alk",
+    "synonym": [
+      "CD246",
+      "Tcrz"
+    ],
+    "definition": [
+      "The protein-coding gene Alk (anaplastic lymphoma kinase) located on the chromosome 17 mapped at 17 E1.3|17 43.77 cM."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/ncbigene/11682",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682",
+      "ontology": "https://data.bioontology.org/ontologies/RETO",
+      "children": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/children",
+      "parents": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/parents",
+      "descendants": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/instances",
+      "tree": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/tree",
+      "notes": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/notes",
+      "mappings": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/RETO?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "CD246",
+      "NBLST3"
+    ],
+    "definition": [
+      "The protein-coding gene ALK (anaplastic lymphoma receptor tyrosine kinase) located on the chromosome 2 mapped at 2p23."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/ncbigene/238",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238",
+      "ontology": "https://data.bioontology.org/ontologies/RETO",
+      "children": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/children",
+      "parents": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/parents",
+      "descendants": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/instances",
+      "tree": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/tree",
+      "notes": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/notes",
+      "mappings": "https://data.bioontology.org/ontologies/RETO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/RETO?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "CD246",
+      "NBLST3"
+    ],
+    "definition": [
+      "The protein-coding gene ALK (anaplastic lymphoma receptor tyrosine kinase) located on the chromosome 2 mapped at 2p23."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/ncbigene/238",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238",
+      "ontology": "https://data.bioontology.org/ontologies/GEXO",
+      "children": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/children",
+      "parents": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/parents",
+      "descendants": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/instances",
+      "tree": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/tree",
+      "notes": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/notes",
+      "mappings": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/GEXO?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "anaplastic lymphoma kinase",
+      "ALK",
+      "ＡＬＫ",
+      "未分化リンパ腫キナーゼ"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.jp/bio/4/id/200906091534807769",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769",
+      "ontology": "https://data.bioontology.org/ontologies/IOBC",
+      "children": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/children",
+      "parents": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/parents",
+      "descendants": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/instances",
+      "tree": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/tree",
+      "notes": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/notes",
+      "mappings": "https://data.bioontology.org/ontologies/IOBC/classes/http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/IOBC?p=classes&conceptid=http%3A%2F%2Fpurl.jp%2Fbio%2F4%2Fid%2F200906091534807769",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "anaplastic lymphoma kinase"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/IMR_0000076",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076",
+      "ontology": "https://data.bioontology.org/ontologies/TXPO",
+      "children": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/children",
+      "parents": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/parents",
+      "descendants": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/instances",
+      "tree": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/tree",
+      "notes": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/notes",
+      "mappings": "https://data.bioontology.org/ontologies/TXPO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/TXPO?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Alk",
+    "synonym": [
+      "CD246",
+      "Tcrz"
+    ],
+    "definition": [
+      "The protein-coding gene Alk (anaplastic lymphoma kinase) located on the chromosome 17 mapped at 17 E1.3|17 43.77 cM."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/ncbigene/11682",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682",
+      "ontology": "https://data.bioontology.org/ontologies/GEXO",
+      "children": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/children",
+      "parents": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/parents",
+      "descendants": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/instances",
+      "tree": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/tree",
+      "notes": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/notes",
+      "mappings": "https://data.bioontology.org/ontologies/GEXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/GEXO?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "CD246",
+      "NBLST3"
+    ],
+    "definition": [
+      "The protein-coding gene ALK (anaplastic lymphoma receptor tyrosine kinase) located on the chromosome 2 mapped at 2p23."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/ncbigene/238",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238",
+      "ontology": "https://data.bioontology.org/ontologies/REXO",
+      "children": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/children",
+      "parents": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/parents",
+      "descendants": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/instances",
+      "tree": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/tree",
+      "notes": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/notes",
+      "mappings": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/REXO?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fncbigene%2F238",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Alk",
+    "synonym": [
+      "CD246",
+      "Tcrz"
+    ],
+    "definition": [
+      "The protein-coding gene Alk (anaplastic lymphoma kinase) located on the chromosome 17 mapped at 17 E1.3|17 43.77 cM."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/ncbigene/11682",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682",
+      "ontology": "https://data.bioontology.org/ontologies/REXO",
+      "children": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/children",
+      "parents": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/parents",
+      "descendants": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/instances",
+      "tree": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/tree",
+      "notes": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/notes",
+      "mappings": "https://data.bioontology.org/ontologies/REXO/classes/http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/REXO?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fncbigene%2F11682",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "CD246",
+      "NBLST3"
+    ],
+    "definition": [
+      "The protein-coding gene ALK (anaplastic lymphoma receptor tyrosine kinase) located on the chromosome 2 mapped at 2p23."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/NCBIGene_238",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238",
+      "ontology": "https://data.bioontology.org/ontologies/CCO",
+      "children": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/children",
+      "parents": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/parents",
+      "descendants": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/instances",
+      "tree": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/tree",
+      "notes": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/notes",
+      "mappings": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/CCO?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_238",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Alk",
+    "synonym": [
+      "CG8250",
+      "DAlk",
+      "DmelCG8250",
+      "DAlk53",
+      "ALK",
+      "mili",
+      "dALK"
+    ],
+    "definition": [
+      "The protein-coding gene Alk located on the chromosome 2R mapped at 53C12-53C13."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/NCBIGene_53425",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425",
+      "ontology": "https://data.bioontology.org/ontologies/CCO",
+      "children": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/children",
+      "parents": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/parents",
+      "descendants": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/instances",
+      "tree": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/tree",
+      "notes": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/notes",
+      "mappings": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/CCO?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_53425",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Alk",
+    "synonym": [
+      "CD246",
+      "Tcrz"
+    ],
+    "definition": [
+      "The protein-coding gene Alk (anaplastic lymphoma kinase) located on the chromosome 17 mapped at 17 E1.3|17 43.77 cM."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/NCBIGene_11682",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682",
+      "ontology": "https://data.bioontology.org/ontologies/CCO",
+      "children": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/children",
+      "parents": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/parents",
+      "descendants": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/instances",
+      "tree": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/tree",
+      "notes": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/notes",
+      "mappings": "https://data.bioontology.org/ontologies/CCO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/CCO?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FNCBIGene_11682",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "NBLST3",
+      "ALK1",
+      "CD246"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ontology.lst.tfo.upm.es/SPT/gene#ID_238",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238",
+      "ontology": "https://data.bioontology.org/ontologies/HENEGEO",
+      "children": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/children",
+      "parents": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/parents",
+      "descendants": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/instances",
+      "tree": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/tree",
+      "notes": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/notes",
+      "mappings": "https://data.bioontology.org/ontologies/HENEGEO/classes/http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/HENEGEO?p=classes&conceptid=http%3A%2F%2Fontology.lst.tfo.upm.es%2FSPT%2Fgene%23ID_238",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "ALK receptor tyrosine kinase",
+      "ALK1",
+      "CD246"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/hgnc/427",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427",
+      "ontology": "https://data.bioontology.org/ontologies/HGNC-NR",
+      "children": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/children",
+      "parents": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/parents",
+      "descendants": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/instances",
+      "tree": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/tree",
+      "notes": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/notes",
+      "mappings": "https://data.bioontology.org/ontologies/HGNC-NR/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/HGNC-NR?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Alk",
+    "synonym": [
+      "CD246",
+      "Tcrz"
+    ],
+    "definition": [
+      "Other designations: ALK tyrosine kinase receptor"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/OGG_3000011682",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682",
+      "ontology": "https://data.bioontology.org/ontologies/OGG-MM",
+      "children": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/children",
+      "parents": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/instances",
+      "tree": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/tree",
+      "notes": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OGG-MM/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OGG-MM?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOGG_3000011682",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "anaplastic lymphoma kinase"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/IMR_0000076",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076",
+      "ontology": "https://data.bioontology.org/ontologies/HOIP",
+      "children": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/children",
+      "parents": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/parents",
+      "descendants": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/instances",
+      "tree": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/tree",
+      "notes": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/notes",
+      "mappings": "https://data.bioontology.org/ontologies/HOIP/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/HOIP?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FIMR_0000076",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK",
+    "synonym": [
+      "ALK receptor tyrosine kinase",
+      "ALK1",
+      "CD246"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://identifiers.org/hgnc/427",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427",
+      "ontology": "https://data.bioontology.org/ontologies/HRA",
+      "children": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/children",
+      "parents": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/parents",
+      "descendants": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/instances",
+      "tree": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/tree",
+      "notes": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/notes",
+      "mappings": "https://data.bioontology.org/ontologies/HRA/classes/http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/HRA?p=classes&conceptid=http%3A%2F%2Fidentifiers.org%2Fhgnc%2F427",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK+",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://www.semanticweb.org/admin/ontologies/OM#ALK+",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B",
+      "ontology": "https://data.bioontology.org/ontologies/OMCO",
+      "children": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/children",
+      "parents": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMCO?p=classes&conceptid=http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23ALK%2B",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK gene",
+    "cui": [
+      "C1332080"
+    ],
+    "semanticType": [
+      "T028"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/LNC/LP265685-0",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0",
+      "ontology": "https://data.bioontology.org/ontologies/LOINC",
+      "children": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/children",
+      "parents": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/parents",
+      "descendants": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/instances",
+      "tree": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/tree",
+      "notes": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/notes",
+      "mappings": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/LOINC?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP265685-0",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Latex ALK",
+    "cui": [
+      "C1440868"
+    ],
+    "semanticType": [
+      "T129"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/LNC/LP17489-3",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3",
+      "ontology": "https://data.bioontology.org/ontologies/LOINC",
+      "children": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/children",
+      "parents": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/parents",
+      "descendants": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/instances",
+      "tree": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/tree",
+      "notes": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/notes",
+      "mappings": "https://data.bioontology.org/ontologies/LOINC/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/LOINC?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FLNC%2FLP17489-3",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK phosph",
+    "cui": [
+      "C0201850"
+    ],
+    "semanticType": [
+      "T059"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/MEDDRA/10001670",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670",
+      "ontology": "https://data.bioontology.org/ontologies/MEDDRA",
+      "children": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/children",
+      "parents": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/parents",
+      "descendants": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/instances",
+      "tree": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/tree",
+      "notes": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/notes",
+      "mappings": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/MEDDRA?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001670",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "Alk phos",
+    "cui": [
+      "C0201850"
+    ],
+    "semanticType": [
+      "T059"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/MEDDRA/10001668",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668",
+      "ontology": "https://data.bioontology.org/ontologies/MEDDRA",
+      "children": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/children",
+      "parents": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/parents",
+      "descendants": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/instances",
+      "tree": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/tree",
+      "notes": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/notes",
+      "mappings": "https://data.bioontology.org/ontologies/MEDDRA/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/MEDDRA?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FMEDDRA%2F10001668",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK Negative",
+    "synonym": [
+      "ALK Tyrosine Kinase Receptor Negative",
+      "ALK Receptor Tyrosine Kinase Negative",
+      "Anaplastic Lymphoma Kinase Negative",
+      "CD246 Antigen Negative",
+      "ALK Negative",
+      "Anaplastic Lymphoma Receptor Tyrosine Kinase Negative",
+      "Anaplastic Lymphoma Kinase Receptor Negative",
+      "CD246 Negative"
+    ],
+    "definition": [
+      "Indicates that expression of ALK has not been detected in a sample."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C133707",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C133707",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK Gene",
+    "synonym": [
+      "ALK Receptor Tyrosine Kinase Gene",
+      "ALK",
+      "ALK Gene"
+    ],
+    "definition": [
+      "This gene is involved in brain development and neuronal specificity."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38184",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38184",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK Pathway",
+    "synonym": [
+      "ALK Pathway",
+      "ALK in cardiac myocytes"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38982",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C38982",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK Inhibitor",
+    "synonym": [
+      "Anaplastic Lymphoma Kinase Inhibitor",
+      "ALK Inhibitor"
+    ],
+    "definition": [
+      "Any agent that inhibits the activity of the receptor tyrosine kinase anaplastic lymphoma kinase (ALK)."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C141136",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C141136",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK Positive",
+    "synonym": [
+      "Anaplastic Lymphoma Kinase Positive",
+      "ALK-Positive",
+      "ALK Positive",
+      "ALK+"
+    ],
+    "definition": [
+      "Indicates that ALK expression has been detected in a sample."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128831",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C128831",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK, THR1151MET",
+    "cui": [
+      "C2676143"
+    ],
+    "semanticType": [
+      "T028"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/OMIM/105590.0004",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004",
+      "ontology": "https://data.bioontology.org/ontologies/OMIM",
+      "children": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/children",
+      "parents": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMIM?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0004",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK, ARG1275GLN",
+    "cui": [
+      "C2676140"
+    ],
+    "semanticType": [
+      "T028"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/OMIM/105590.0001",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001",
+      "ontology": "https://data.bioontology.org/ontologies/OMIM",
+      "children": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/children",
+      "parents": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMIM?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0001",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK, GLY1128ALA",
+    "cui": [
+      "C2676141"
+    ],
+    "semanticType": [
+      "T028"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/OMIM/105590.0002",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002",
+      "ontology": "https://data.bioontology.org/ontologies/OMIM",
+      "children": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/children",
+      "parents": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMIM?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0002",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK, ARG1192PRO",
+    "cui": [
+      "C2676142"
+    ],
+    "semanticType": [
+      "T028"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/OMIM/105590.0003",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003",
+      "ontology": "https://data.bioontology.org/ontologies/OMIM",
+      "children": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/children",
+      "parents": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMIM?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590.0003",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK (UK)",
+    "cui": [
+      "C0591003"
+    ],
+    "semanticType": [
+      "T093"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/RCD/wy0Aa",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa",
+      "ontology": "https://data.bioontology.org/ontologies/RCD",
+      "children": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/children",
+      "parents": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/parents",
+      "descendants": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/instances",
+      "tree": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/tree",
+      "notes": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/notes",
+      "mappings": "https://data.bioontology.org/ontologies/RCD/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/RCD?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FRCD%2Fwy0Aa",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "EML4-ALK",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://www.semanticweb.org/admin/ontologies/OM#EML4-ALK",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK",
+      "ontology": "https://data.bioontology.org/ontologies/OMCO",
+      "children": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/children",
+      "parents": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMCO/classes/http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMCO?p=classes&conceptid=http%3A%2F%2Fwww.semanticweb.org%2Fadmin%2Fontologies%2FOM%23EML4-ALK",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK-negative",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://www.semanticweb.org/taon#ALK-negative",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative",
+      "ontology": "https://data.bioontology.org/ontologies/TAON",
+      "children": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/children",
+      "parents": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/parents",
+      "descendants": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/instances",
+      "tree": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/tree",
+      "notes": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/notes",
+      "mappings": "https://data.bioontology.org/ontologies/TAON/classes/http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/TAON?p=classes&conceptid=http%3A%2F%2Fwww.semanticweb.org%2Ftaon%23ALK-negative",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK family",
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://www.drugtargetontology.org/dto/DTO_03300122",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122",
+      "ontology": "https://data.bioontology.org/ontologies/DTO",
+      "children": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/children",
+      "parents": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/parents",
+      "descendants": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/instances",
+      "tree": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/tree",
+      "notes": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/notes",
+      "mappings": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/DTO?p=classes&conceptid=http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03300122",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK gene",
+    "definition": [
+      "This gene encodes a receptor tyrosine kinase, which belongs to the insulin receptor superfamily. This protein comprises an extracellular domain, an hydrophobic stretch corresponding to a single pass transmembrane region, and an intracellular kinase domain. It plays an important role in the development of the brain and exerts its effects on specific neurons in the nervous system. This gene has been found to be rearranged, mutated, or amplified in a series of tumours including anaplastic large cell lymphomas, neuroblastoma, and non-small cell lung cancer. The chromosomal rearrangements are the most common genetic alterations in this gene, which result in creation of multiple fusion genes in tumourigenesis, including ALK (chromosome 2)/EML4 (chromosome 2), ALK/RANBP2 (chromosome 2), ALK/ATIC (chromosome 2), ALK/TFG (chromosome 3), ALK/NPM1 (chromosome 5), ALK/SQSTM1 (chromosome 5), ALK/KIF5B (chromosome 10), ALK/CLTC (chromosome 17), ALK/TPM4 (chromosome 19), and ALK/MSN (chromosome X).[provided by RefSeq, Jan 2011]"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://www.drugtargetontology.org/dto/DTO_03200022",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022",
+      "ontology": "https://data.bioontology.org/ontologies/DTO",
+      "children": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/children",
+      "parents": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/parents",
+      "descendants": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/instances",
+      "tree": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/tree",
+      "notes": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/notes",
+      "mappings": "https://data.bioontology.org/ontologies/DTO/classes/http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/DTO?p=classes&conceptid=http%3A%2F%2Fwww.drugtargetontology.org%2Fdto%2FDTO_03200022",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK+ histiocytosis",
+    "synonym": [
+      "anaplastic lymphoma kinase positive histiocytosis"
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/MONDO_0022338",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338",
+      "ontology": "https://data.bioontology.org/ontologies/MONDO",
+      "children": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/children",
+      "parents": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/parents",
+      "descendants": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/instances",
+      "tree": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/tree",
+      "notes": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/notes",
+      "mappings": "https://data.bioontology.org/ontologies/MONDO/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/MONDO?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FMONDO_0022338",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK Protein Measurement",
+    "synonym": [
+      "ALK Protein Measurement",
+      "ALK Protein",
+      "ALK Tyrosine Kinase Receptor Measurement",
+      "ALK"
+    ],
+    "definition": [
+      "The determination of the amount of ALK protein present in a sample."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C154805",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C154805",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK Tyrosine Kinase Receptor",
+    "synonym": [
+      "Anaplastic Lymphoma Kinase",
+      "CD246 Antigen",
+      "EC 2.7.10.1",
+      "ALK Tyrosine Kinase Receptor",
+      "ALK"
+    ],
+    "definition": [
+      "ALK tyrosine kinase receptor (1620 aa, ~176 kDa) is encoded by the human ALK gene. This protein is involved in ligand binding, tyrosine phosphorylation and signal transduction."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27032",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C27032",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK wt Allele",
+    "synonym": [
+      "ALK Receptor Tyrosine Kinase wt Allele",
+      "Anaplastic Lymphoma Kinase (Ki-1) Gene",
+      "ALK wt Allele",
+      "Anaplastic Lymphoma Receptor Tyrosine Kinase Gene",
+      "ALK",
+      "CD246",
+      "NBLST3"
+    ],
+    "definition": [
+      "Human ALK wild-type allele is located within 2p23 and is approximately 729 kb in length. This allele, which encodes ALK tyrosine kinase receptor protein, plays a role in brain development and exerts its effects on specific neurons in the nervous system."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51738",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738",
+      "ontology": "https://data.bioontology.org/ontologies/NCIT",
+      "children": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/children",
+      "parents": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/parents",
+      "descendants": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/instances",
+      "tree": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/tree",
+      "notes": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/notes",
+      "mappings": "https://data.bioontology.org/ontologies/NCIT/classes/http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/NCIT?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C51738",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ANAPLASTIC LYMPHOMA KINASE",
+    "synonym": [
+      "NEUROBLASTOMA, SUSCEPTIBILITY TO, 3",
+      "ALK/NPM1 FUSION GENE",
+      "ALK/EML4 FUSION GENE",
+      "ALK",
+      "ALK/CARS FUSION GENE",
+      "ALK/RNF213 FUSION GENE",
+      "ALK/CLTC FUSION GENE"
+    ],
+    "cui": [
+      "C1332080"
+    ],
+    "semanticType": [
+      "T028",
+      "T033"
+    ],
+    "obsolete": false,
+    "matchType": "synonym",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.bioontology.org/ontology/OMIM/105590",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590",
+      "ontology": "https://data.bioontology.org/ontologies/OMIM",
+      "children": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/children",
+      "parents": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/parents",
+      "descendants": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/instances",
+      "tree": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/tree",
+      "notes": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/notes",
+      "mappings": "https://data.bioontology.org/ontologies/OMIM/classes/http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/OMIM?p=classes&conceptid=http%3A%2F%2Fpurl.bioontology.org%2Fontology%2FOMIM%2F105590",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "semanticType": "http://bioportal.bioontology.org/ontologies/umls/hasSTY",
+      "cui": "http://bioportal.bioontology.org/ontologies/umls/cui",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK tyrosine kinase receptor (mouse)",
+    "synonym": [
+      "Alk"
+    ],
+    "definition": [
+      "An ALK tyrosine kinase receptor that is encoded in the genome of mouse."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/PR_P97793",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793",
+      "ontology": "https://data.bioontology.org/ontologies/PR",
+      "children": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/children",
+      "parents": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/parents",
+      "descendants": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/instances",
+      "tree": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/tree",
+      "notes": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/notes",
+      "mappings": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/PR?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_P97793",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK tyrosine kinase receptor (human)",
+    "synonym": [
+      "ALK"
+    ],
+    "definition": [
+      "An ALK tyrosine kinase receptor that is encoded in the genome of human."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/PR_Q9UM73",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73",
+      "ontology": "https://data.bioontology.org/ontologies/PR",
+      "children": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/children",
+      "parents": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/parents",
+      "descendants": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/instances",
+      "tree": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/tree",
+      "notes": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/notes",
+      "mappings": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/PR?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_Q9UM73",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK tyrosine kinase receptor, signal peptide removed form (human)",
+    "synonym": [
+      "ALK"
+    ],
+    "definition": [
+      "An ALK tyrosine kinase receptor (human) that has had the signal peptide removed. UniProtKB:Q9UM73, 19-1620."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/PR_000062248",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248",
+      "ontology": "https://data.bioontology.org/ontologies/PR",
+      "children": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/children",
+      "parents": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/parents",
+      "descendants": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/instances",
+      "tree": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/tree",
+      "notes": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/notes",
+      "mappings": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/PR?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000062248",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  },
+  {
+    "prefLabel": "ALK tyrosine kinase receptor",
+    "synonym": [
+      "CD246",
+      "ALK receptor tyrosine kinase",
+      "anaplastic lymphoma kinase",
+      "ALK"
+    ],
+    "definition": [
+      "A protein that is a translation product of the human ALK gene or a 1:1 ortholog thereof."
+    ],
+    "obsolete": false,
+    "matchType": "prefLabel",
+    "ontologyType": "ONTOLOGY",
+    "provisional": false,
+    "@id": "http://purl.obolibrary.org/obo/PR_000001282",
+    "@type": "http://www.w3.org/2002/07/owl#Class",
+    "links": {
+      "self": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282",
+      "ontology": "https://data.bioontology.org/ontologies/PR",
+      "children": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/children",
+      "parents": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/parents",
+      "descendants": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/descendants",
+      "ancestors": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/ancestors",
+      "instances": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/instances",
+      "tree": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/tree",
+      "notes": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/notes",
+      "mappings": "https://data.bioontology.org/ontologies/PR/classes/http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282/mappings",
+      "ui": "http://bioportal.bioontology.org/ontologies/PR?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FPR_000001282",
+      "@context": {
+        "self": "http://www.w3.org/2002/07/owl#Class",
+        "ontology": "http://data.bioontology.org/metadata/Ontology",
+        "children": "http://www.w3.org/2002/07/owl#Class",
+        "parents": "http://www.w3.org/2002/07/owl#Class",
+        "descendants": "http://www.w3.org/2002/07/owl#Class",
+        "ancestors": "http://www.w3.org/2002/07/owl#Class",
+        "instances": "http://data.bioontology.org/metadata/Instance",
+        "tree": "http://www.w3.org/2002/07/owl#Class",
+        "notes": "http://data.bioontology.org/metadata/Note",
+        "mappings": "http://data.bioontology.org/metadata/Mapping",
+        "ui": "http://www.w3.org/2002/07/owl#Class"
+      }
+    },
+    "@context": {
+      "@vocab": "http://data.bioontology.org/metadata/",
+      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "synonym": "http://www.w3.org/2004/02/skos/core#altLabel",
+      "definition": "http://www.w3.org/2004/02/skos/core#definition",
+      "obsolete": "http://www.w3.org/2002/07/owl#deprecated",
+      "@language": "en"
+    }
+  }
+]
