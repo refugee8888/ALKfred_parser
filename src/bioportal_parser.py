@@ -6,6 +6,7 @@ import os
 
 src = Path("data/raw_bioportal_db.json")
 dst = Path("data/parsed_bioportal_data.json")
+payload = Path("data/NCIT_bioportal_dump.json")
 load_dotenv(Path("src/.env"))
 bioportal_api_key = os.getenv("BIOPORTAL_API_KEY")
 
@@ -16,32 +17,33 @@ with src.open("r", encoding="utf-8") as f:
 
 # This will grab the actual node list
 def fetch_ncit_from_bioportal() -> list[dict]:
-    result = []
+    results = {}
     
-    for nodes in data["collection"]:
-        
-            result.append(nodes["links"]["self"] )
-        
-    return result
-
-def call_ontology_api()->list[dict]:
-    x = fetch_ncit_from_bioportal()
-    print(f"Found {len(x)} nodes")
-    b =[]
-    for m in x:
-        SITE=m
-        if "NCIT" in m:
-            resp = requests.get(SITE, headers=HEADERS, timeout=5)
+    for node in data["collection"]:
+        class_url = node["links"]["self"]
+        ontology = node["links"]["ontology"]
+        if "NCIT" in ontology or "MONDO" in ontology or "HGNC" in ontology:
+            resp = requests.get(class_url, headers=HEADERS, timeout=5)
             if resp.status_code == 200:
+                payload = resp.json()
+                class_id = payload.get("@id")
                 
-                b.append(resp.json())
-                
-                
-    with open("data/NCIT_bioportal_dump.json", "w") as f:
-        json.dump(b,f,indent=2, ensure_ascii=False)
+                if class_id:
+                    results[class_id] = {
+                        
+                        "label": payload.get("prefLabel"),
+                        "synonyms": payload.get("synonym", []),
+                        "defs": payload.get("definition", [])
+                    }
+                    print(f"Added entry for {class_id}")  
+    with open(dst, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
+
+
     
 if __name__ == "__main__":
-    call_ontology_api()
+    fetch_ncit_from_bioportal()
+    
     
 
 
