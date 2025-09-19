@@ -1,34 +1,36 @@
 import time
 import requests
+from utils import help_request
+import json
 
 GRAPHQL_URL = "https://civicdb.org/api/graphql"
 HEADERS = {"Content-Type": "application/json"}
+API_THROTTLE = 0.2
 
 
-def ping_civic_api():
-    print("\U0001F50E Pinging CIViC API endpoint...")
-    try:
-        response = requests.options(GRAPHQL_URL, timeout=5)
-        response = requests.post(
-            GRAPHQL_URL,
-            json={"query": '''query { gene(entrezSymbol: "ALK") { name } }'''},
-            headers=HEADERS
-        )
-        if response.status_code in (200, 204):
-            print(f"✅ CIViC API is reachable ({response.status_code})")
-        else:
-            print(f"⚠️ CIViC API responded with unexpected status: {response.status_code}")
-    except Exception as e:
-        print(f"❌ CIViC API not reachable: {e}")
+# def ping_civic_api():
+    
+    # print("\U0001F50E Pinging CIViC API endpoint...")
+    # try:
+    #     response = requests.options(GRAPHQL_URL, timeout=5)
+    #     response = requests.post(
+    #         GRAPHQL_URL,
+    #         json={"query": '''query { gene(entrezSymbol: "ALK") { name } }'''},
+    #         headers=HEADERS
+    #     )
+    #     if response.status_code in (200, 204):
+    #         print(f"✅ CIViC API is reachable ({response.status_code})")
+    #     else:
+    #         print(f"⚠️ CIViC API responded with unexpected status: {response.status_code}")
+    # except Exception as e:
+    #     print(f"❌ CIViC API not reachable: {e}")
 
 def fetch_civic_all_evidence_items():
     after_cursor = None
     all_items = []
     page = 1
-
     while True:
-        print(f"🔎 Fetching page {page} of CIViC evidenceItems...")
-        query = f"""
+      query = f"""
         {{
           evidenceItems(status: ACCEPTED, first: 500{f', after: "{after_cursor}"' if after_cursor else ''}) {{
             pageInfo {{
@@ -54,16 +56,19 @@ def fetch_civic_all_evidence_items():
           }}
         }}
         """
-        response = requests.post(GRAPHQL_URL, json={"query": query}, headers=HEADERS)
-        response.raise_for_status()
-        data = response.json()["data"]["evidenceItems"]
-        all_items.extend(data["nodes"])
 
-        if not data["pageInfo"]["hasNextPage"]:
-            break
-        after_cursor = data["pageInfo"]["endCursor"]
-        page += 1
-        time.sleep(0.2)
+        # response = requests.post(GRAPHQL_URL, json={"query": query}, headers=HEADERS)
+        # response.raise_for_status()
+      req = help_request("https://civicdb.org/api/graphql", {"Content-Type": "application/json"}, {"query": query}, "POST")
+      data = req["data"]["evidenceItems"]
+      all_items.extend(data["nodes"])
+
+      if not data["pageInfo"]["hasNextPage"]:
+          break
+      after_cursor = data["pageInfo"]["endCursor"]
+      page += 1
+      print(f"New entry found {page}")
+      time.sleep(API_THROTTLE)
 
     return all_items
 
@@ -98,3 +103,7 @@ def fetch_civic_molecular_profile(profile_name: str) -> list[dict]:
         }
         for v in nodes[0]["variants"]
     ]
+
+
+if __name__ == "__main__":
+  print(fetch_civic_all_evidence_items())
