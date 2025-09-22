@@ -1,109 +1,106 @@
 import time
 import requests
-from utils import help_request
+from utils import help_request, graphql_query
 import json
+import logging
 
 GRAPHQL_URL = "https://civicdb.org/api/graphql"
 HEADERS = {"Content-Type": "application/json"}
 API_THROTTLE = 0.2
 
-
-# def ping_civic_api():
-    
-    # print("\U0001F50E Pinging CIViC API endpoint...")
-    # try:
-    #     response = requests.options(GRAPHQL_URL, timeout=5)
-    #     response = requests.post(
-    #         GRAPHQL_URL,
-    #         json={"query": '''query { gene(entrezSymbol: "ALK") { name } }'''},
-    #         headers=HEADERS
-    #     )
-    #     if response.status_code in (200, 204):
-    #         print(f"✅ CIViC API is reachable ({response.status_code})")
-    #     else:
-    #         print(f"⚠️ CIViC API responded with unexpected status: {response.status_code}")
-    # except Exception as e:
-    #     print(f"❌ CIViC API not reachable: {e}")
-
 def fetch_civic_all_evidence_items():
     after_cursor = None
     all_items = []
+    seen_ids = set()
     page = 1
+    MAX_PAGES = 10000
+
+    query = """
+      query ($first: Int!, $after: String) {
+        evidenceItems(status: ACCEPTED, first: $first, after: $after) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          nodes {
+            id
+            significance
+            evidenceDirection
+            description
+            molecularProfile { name }
+            therapies { name }
+            disease { name diseaseAliases }
+          }
+        }
+      }
+    """
+
     while True:
-      query = f"""
-        {{
-          evidenceItems(status: ACCEPTED, first: 500{f', after: "{after_cursor}"' if after_cursor else ''}) {{
-            pageInfo {{
-              hasNextPage
-              endCursor
-            }}
-            nodes {{
-              id
-              significance
-              evidenceDirection
-              description
-              molecularProfile {{
-                name
-              }}
-              therapies {{
-                name
-              }}
-              disease {{
-                name
-                diseaseAliases
-              }}
-            }}
-          }}
-        }}
-        """
+        data = graphql_query(
+            url= GRAPHQL_URL,
+            query=query,
+            variables={"first": 500, "after": after_cursor},
+            headers= HEADERS,
+        )
 
-        # response = requests.post(GRAPHQL_URL, json={"query": query}, headers=HEADERS)
-        # response.raise_for_status()
-      req = help_request("https://civicdb.org/api/graphql", {"Content-Type": "application/json"}, {"query": query}, "POST")
-      data = req["data"]["evidenceItems"]
-      all_items.extend(data["nodes"])
+        evidence_items = data["evidenceItems"]
+        for node in evidence_items["nodes"]:
+            if node["id"] not in seen_ids:
+                seen_ids.add(node["id"])
+                all_items.append(node)
 
-      if not data["pageInfo"]["hasNextPage"]:
-          break
-      after_cursor = data["pageInfo"]["endCursor"]
-      page += 1
-      print(f"New entry found {page}")
-      time.sleep(API_THROTTLE)
+        if not evidence_items["pageInfo"]["hasNextPage"]:
+            break
+
+        after_cursor = evidence_items["pageInfo"]["endCursor"]
+        page += 1
+        logging.info("Fetched page %s with %s items", page, len(all_items))
+        time.sleep(API_THROTTLE)
+
+        if page > MAX_PAGES:
+            raise RuntimeError("Exceeded max pages — likely stuck in a loop")
 
     return all_items
 
 def fetch_civic_molecular_profile(profile_name: str) -> list[dict]:
-    query = f"""
-    {{
-      molecularProfiles(name: "{profile_name}") {{
-        nodes {{
-          variants {{
+    query = """
+     query ($name: String!){
+      molecularProfiles(name: $name) {
+        nodes {
+          variants {
             name
-            ... on GeneVariant {{
+            ... on GeneVariant {
               alleleRegistryId
-            }}
-            feature {{
+            }
+            feature {
               name
-            }}
-          }}
-        }}
-      }}
-    }}
+            }
+          }
+        }
+      }
+    }
     """
-    response = requests.post(GRAPHQL_URL, json={"query": query}, headers=HEADERS)
-    response.raise_for_status()
-    nodes = response.json()["data"]["molecularProfiles"]["nodes"]
+    data = graphql_query(
+            url= GRAPHQL_URL,
+            query=query,
+            variables={"name": profile_name},
+            headers= HEADERS,
+        )
+    nodes = data["molecularProfiles"]["nodes"]  
     if not nodes:
         return []
 
     return [
         {
-            "variant": f"{v['feature']['name']} {v['name']}".strip(),
+            "variant": " ".join(
+    filter(None, [v.get("feature", {}).get("name"), v.get("name")])
+                  ),
             "ca_id": v.get("alleleRegistryId") or None
         }
         for v in nodes[0]["variants"]
     ]
 
 
-if __name__ == "__main__":
-  print(fetch_civic_all_evidence_items())
+# if __name__ == "__main__":
+
+#   print(fetch_civic_molecular_profile("ALK"))

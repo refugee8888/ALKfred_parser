@@ -3,13 +3,38 @@ import json
 import sys
 import api_calls
 import civic_parser
-import openai
+
 from dotenv import load_dotenv
 import re
 from civic_parser import gene_in_molecular_profile
+import logging, argparse
+from openai import OpenAI
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
+args = parser.parse_args()
+
+logging.basicConfig(
+    level=logging.DEBUG if args.verbose else logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+
+
+
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    logging.error("Missing OPENAI_API_KEY in environment or .env file")
+    sys.exit(1)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
+
+
+
+
+
 
 def get_matching_diseases(user_input, evidence_items):
     disease_names = set()
@@ -46,17 +71,17 @@ Diseases:
     try:
         print("\U0001F9E0 Asking OpenAI to match diseases...")
         
-        response = openai.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You are a precise biomedical disease matcher."},
                 {"role": "user", "content": prompt},
             ],
             temperature=0.0,
-            max_completion_tokens=500
+            max_tokens=500
         )
-
         reply = response.choices[0].message.content
+
         
         if not reply:
             raise ValueError("⚠️ OpenAI returned no content in the response.")
@@ -87,7 +112,7 @@ def save_to_json(data, path="data/curated_resistance_db.json"):
         json.dump(data, f, indent=2)
 
 if __name__ == "__main__":
-    api_calls.ping_civic_api()
+    
     try:
         symbol = input("Enter a gene symbol: ").strip().upper()
         disease_prompt = input("Enter a disease name or acronym (e.g., NSCLC): ").strip()
