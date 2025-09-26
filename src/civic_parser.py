@@ -1,69 +1,65 @@
 import re
-import itertools
 import api_calls
-import openai
-import numpy as np
-import os
 from utils import normalize
+from typing import Optional,Any,Annotated
+
 
 
 
 def generate_aliases(profile_name: str, components: list[dict]) -> list[str]:
-    aliases = set() #making sure no duplicate aliases are created
-    raw_aliases = set() #making sure no duplicate raw aliases are created
+    aliases: set[str] = set()
 
-    aliases.add(profile_name.strip()) #adding the profile name to the aliases and striping of extra white spaces
-    aliases.add(normalize(profile_name)) #adding the normalized profile name to the aliases
+    # Base aliases for the whole profile
+    base = profile_name.strip()
+    if base:
+        aliases.add(base)
+    norm_base = normalize(profile_name)
+    if norm_base:
+        aliases.add(norm_base)
 
-    variant_aliases = [] #we're storing variant aliases in a list
-    for comp in components: #we're iterating through the components which we will fetch from the api calls in out pasing function
-        raw = comp["variant"] #we're getting the variant from the component which will be a molecular profile dictionary 
-        raw_aliases.add(raw) # we're adding the comp["variant"] to the raw_aliases set to make sure no duplicates are created
+    variant_aliases: list[set[str]] = []
 
-        tokens = re.split(r"[:\-_\s]+", raw) #we're splitting the raw variant by common separators
-        gene = tokens[0].upper() if tokens else "" #we're getting the gene symbol from the tokens and make it uppercase
-        mutation = " ".join(tokens[1:]) if len(tokens) > 1 else "" #we're getting the mutation from the tokens
+    for comp in components:
+        raw = comp.get("variant", "") or ""
+        vset: set[str] = set()
 
-        vset = set([ #we're creating a set of aliases for the variant, reasonable presumptions for aliases
-            raw,
-            normalize(raw), #using the mormailze method to normalize the raw variant
-            f"{gene} {mutation}".strip(), #we're creating an alias for the variant
-            f"{mutation} in {gene}".strip(), #we're creating an alias for the variant
-            f"{gene} exon variant {mutation}".strip() #we're creating an alias for the variant
-        ])
+        # Always include a normalized per-variant form (if any)
+        nraw = normalize(raw)
+        if nraw:
+            vset.add(nraw)
 
-        if "fusion" in raw.lower(): #we're checking if the raw variant contains the word "fusion"
-            partner = raw.split("::")[0] if "::" in raw else "" #we're getting the partner gene from the raw variant only if this "::" symbol is in the string and we're splitting by it
-            fusion_gene = gene #we're getting the fusion gene from the raw variant; not sure if this is ok; we're always assuming that the ALK gene is second and the partner gene comes first; what happens if there's a ALK :: EML4 fusion
-            vset.update([ #we're updating the vset with the following aliases
-                f"{partner}-{fusion_gene}", #we're creating an alias for the variant
-                f"{fusion_gene} fusion",
-                f"{partner} fused to {fusion_gene}",
-                f"{fusion_gene} translocation",
-            ])
-        if "t1151" in raw.lower(): #we're checking if the raw variant contains the word "t1151"
-            vset.update(["T1151_L1152INS", "T1151dup"]) #we're updating the vset with the following aliases
+        # Gene + mutation (non-fusion shapes)
+        tokens = re.split(r"[:\-_–/\s]+", raw)  # include en dash U+2013
+        gene = tokens[0].upper() if tokens and tokens[0] else ""
+        mutation = " ".join(t for t in tokens[1:] if t) if len(tokens) > 1 else ""
+        if gene and mutation:
+            vset.update({f"{gene} {mutation}", f"{mutation} {gene}"})
 
-        variant_aliases.append(vset) #we're appending the vset to the variant_aliases list
+        # Fusion parsing: A-B, A::B, A/B, A–B [+ optional ' fusion']
+        m = re.search(r'(?i)\b([A-Z0-9]+)\s*(?:-|::|/|–)\s*([A-Z0-9]+)(?:\s+fusion)?\b', raw)
+        if m:
+            a, b = m.group(1).upper(), m.group(2).upper()
+            vset.update({
+                f"{a}-{b} fusion", f"{a}-{b}",
+                f"{b}-{a} fusion", f"{b}-{a}",
+                f"{a}::{b}", f"{b}::{a}",
+            })
 
-    # Flatten, clean, deduplicate
-    flat_aliases = set() #we're creating a set of flattened aliases
-    for vset in variant_aliases: #we're iterating through the variant_aliases list by vset
-        for v in vset: #we're iterating through the vset
-            if v and len(v) > 2: #we're checking if the alias is not empty and has more than 2 characters
-                flat_aliases.add(v.strip()) #we're adding the alias to the flat_aliases set for deduplication and we're also stripping off spaces
+        variant_aliases.append({re.sub(r'\s+', ' ', v).strip() for v in vset if v})
 
-    # Filter bad tokens BEFORE adding to aliases
-    flat_aliases = [a for a in flat_aliases if len(a) > 3 and a.lower() not in {"in", "with", "variant"}] #we're filtering out aliases that are less than 3 characters and contain the words "in", "with", or "variant"
+    # Flatten + filter
+    flat_aliases: set[str] = set()
+    for vset in variant_aliases:
+        for v in vset:
+            if len(v) > 3 and v.lower() not in {"in", "with", "variant"}:
+                flat_aliases.add(v)
 
     aliases.update(flat_aliases)
 
-    # Cross-product aliases
-    for combo in itertools.combinations(flat_aliases, 2): #we're iterating infinitely through all possible combos of 2 tokens in the flat_aliases set
-        aliases.add(f"{combo[0]} {combo[1]}") #we're adding the combo to the aliases set
-        aliases.add(f"{combo[1]} with {combo[0]}") #we're adding the combo to the aliases set
+    # Optional: cap to avoid downstream blowups (keep shortest first)
+    # aliases = set(sorted(aliases, key=len)[:20])
 
-    return sorted(set(a.strip() for a in aliases if a and len(a) > 3)) #we're returning the sorted set of aliases
+    return sorted(a for a in aliases if a and len(a) > 3)
 
 def disease_matches(disease_block, target): #this feels unnecesary since we're using openai to match diseases
     if not disease_block:
@@ -117,12 +113,41 @@ def parse_resistance_entries(evidence_items: list[dict], gene_filter: str = "") 
         if item.get("evidenceDirection") != "SUPPORTS":
             continue
 
-        therapies = item.get("therapies", [])
-        resistant_drugs = {t["name"] for t in therapies if t.get("name")}
-        if not resistant_drugs:
-            continue
+        therapies_raw = item.get("therapies") or []
+        therapies = []
+        seen = set()  # Set[Tuple[str, Optional[str]]]
 
-        print(f"📦 Saving profile: {profile_name} with {len(resistant_drugs)} resistant drugs")
+        for t in therapies_raw:
+            name = (t.get("name") or "").strip()
+            if not name:
+                continue
+            ncit = t.get("ncitId") or None
+            key = (normalize(name), ncit)   # 2-tuple literal, not tuple()
+
+            if key in seen:
+                continue
+            therapies.append({"name": name, "ncit_id": ncit})
+            seen.add(key)
+
+        if not therapies:
+            continue
+            
+            
+
+        # for t in therapies:
+        #     if t.get("name"):
+        #         resistant_drugs = {  t["name"]
+
+        #         }
+        #     if t.get("ncitId"):
+        #         therapy_ncitid = { t["ncitId"]}
+                
+        # resistant_drugs = {t["name"] for t in therapies if t.get("name")}
+                          
+        # if not resistant_drugs:
+        #     continue
+
+        print(f"📦 Saving profile: {profile_name} with {len(therapies)} therapies")
 
         # Enrichment caching
         if raw_name not in profile_enrichment_cache:
@@ -139,18 +164,24 @@ def parse_resistance_entries(evidence_items: list[dict], gene_filter: str = "") 
                 "canonical_id": canonical_id,
                 "components": components,
                 "aliases": set(aliases),
-                "resistant_to": set(resistant_drugs),
+                "therapies": therapies,
+                # "resistant_to": set(resistant_drugs),
+                # "therapy_ncitid": set(therapy_ncitid),
                 "evidence_count": 1,
                 "descriptions": [item["description"].strip()] if item.get("description") else [],
                 "disease_name": item["disease"]["name"],
+                "disease_doid": item["disease"]["doid"],
                 "disease_aliases": list(item.get("disease", {}).get("diseaseAliases", [])),
 
             }
         else:
             rules[profile_name]["evidence_count"] += 1
-            rules[profile_name]["resistant_to"].update(resistant_drugs)
+            # rules[profile_name]["resistant_to"].update(resistant_drugs)
+            # rules[profile_name]["therapy_ncitid"].update(therapy_ncitid)
+            rules[profile_name]["therapies"].append(therapies)
             rules[profile_name]["aliases"].update(aliases)
             rules[profile_name]["disease_name"] = item["disease"]["name"]
+            rules[profile_name]["disease_doid"] = item["disease"]["doid"]
             rules[profile_name]["disease_aliases"] = item["disease"]["diseaseAliases"]
             if item.get("description"):
                 rules[profile_name]["descriptions"].append(item["description"].strip())
@@ -162,9 +193,12 @@ def parse_resistance_entries(evidence_items: list[dict], gene_filter: str = "") 
 
     for entry in rules.values():
         entry["aliases"] = sorted(entry["aliases"])
-        entry["resistant_to"] = sorted(entry["resistant_to"])
+        # entry["resistant_to"] = sorted(entry["resistant_to"])
+        # entry["therapy_ncitid"] = sorted(entry["therapy_ncitid"])
+        # entry["therapies"] = entry["therapies"]
         entry["descriptions"] = sorted(set(entry.get("descriptions", [])))
         entry["disease_name"] = entry["disease_name"].strip()
+        entry["disease_doid"] = entry["disease_doid"].strip()
         entry["disease_aliases"] = sorted(set(entry.get("disease_aliases", [])))
         
 

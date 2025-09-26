@@ -28,8 +28,8 @@ def fetch_civic_all_evidence_items():
             evidenceDirection
             description
             molecularProfile { name }
-            therapies { name }
-            disease { name diseaseAliases }
+            therapies { name ncitId }
+            disease {doid name diseaseAliases }
           }
         }
       }
@@ -87,18 +87,22 @@ def fetch_civic_molecular_profile(profile_name: str) -> list[dict]:
             headers= HEADERS,
         )
     nodes = data["molecularProfiles"]["nodes"]  
-    if not nodes:
-        return []
-
-    return [
-        {
-            "variant": " ".join(
-    filter(None, [v.get("feature", {}).get("name"), v.get("name")])
-                  ),
-            "ca_id": v.get("alleleRegistryId") or None
-        }
-        for v in nodes[0]["variants"]
-    ]
+    results = []
+    seen = set()
+    for node in nodes:
+        for v in node.get("variants", []):
+            variant_label = " ".join(
+                filter(None, [v.get("feature", {}).get("name"), v.get("name")])
+            )
+            key = (variant_label, v.get("alleleRegistryId"))
+            if key not in seen:
+                seen.add(key)
+                results.append({
+                    "variant": variant_label.strip(),
+                    "ca_id": v.get("alleleRegistryId") or None
+                })
+    logging.debug("Fetched %s variants for profile %s", len(results), profile_name)
+    return results
 
 
 # if __name__ == "__main__":

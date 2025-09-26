@@ -8,7 +8,9 @@ THIRD_GEN_ALK_INHIBITORS = ["Lorlatinib"]
 mutations = {}
 for profile in db.values():
     aliases = profile.get("aliases",[])
-    resistant_to = profile.get("resistant_to",[])
+    # resistant_to = profile.get("resistant_to",[])
+    # therapy_ncitid = profile.get("therapy_ncitid",[])
+    therapies = profile.get("therapies",[])
     for component in profile["components"]:
         mutation_name = component.get("variant")
         canonical_id = component.get("ca_id")
@@ -19,15 +21,18 @@ for profile in db.values():
                 "name": mutation_name,
                 "canonical_id": canonical_id,
                 "aliases": set(aliases),
-                "resistant_to": set(resistant_to),
+                "therapies": therapies,
+                # "resistant_to": set(resistant_to),
+                # "theraphy_ncitid": set(therapy_ncitid),
                 "category": ""
             }
     
         mutations[mutation_name]["aliases"].update(aliases)
-        mutations[mutation_name]["resistant_to"].update(resistant_to)
-        if any(drug in resistant_to for drug in SECOND_GEN_ALK_INHIBITORS + THIRD_GEN_ALK_INHIBITORS):
+        # mutations[mutation_name]["resistant_to"].update(resistant_to)
+        mutations[mutation_name]["therapies"].append(therapies)
+        if any(drug in therapies for drug in SECOND_GEN_ALK_INHIBITORS + THIRD_GEN_ALK_INHIBITORS):
             mutations[mutation_name]["category"] = "resistant"
-        elif any(drug in resistant_to for drug in FIRST_GEN_ALK_INHIBITORS):
+        elif any(drug in therapies for drug in FIRST_GEN_ALK_INHIBITORS):
             mutations[mutation_name]["category"] = "driver"
         else:
             mutations[mutation_name]["category"] = "unknown"
@@ -39,7 +44,7 @@ for entry in mutations.values():
         "name": entry["name"],
         "canonical_id": entry["canonical_id"],
         "aliases": sorted(entry["aliases"]),
-        "resistant_to": sorted(entry["resistant_to"]),
+        "resistant_to": entry["therapies"],
         "category": entry["category"]
     })
 

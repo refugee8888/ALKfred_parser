@@ -38,6 +38,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def get_matching_diseases(user_input, evidence_items):
     disease_names = set()
+   
     for item in evidence_items:
         if not item or not isinstance(item, dict):
             continue
@@ -45,9 +46,14 @@ def get_matching_diseases(user_input, evidence_items):
         if not isinstance(disease, dict):
             disease = {}
         name = disease.get("name", "")
+        doid = disease.get("doid", "")
         aliases = disease.get("diseaseAliases", [])
         if name:
             disease_names.add(name.strip())
+        if doid:
+            disease_names.add(doid.strip())
+            
+
         for alias in aliases:
             if alias:
                 disease_names.add(alias.strip())
@@ -55,6 +61,7 @@ def get_matching_diseases(user_input, evidence_items):
     disease_names = sorted(disease_names)
     if not disease_names:
         return []
+    
 
     prompt = f"""
 You are a biomedical expert AI. Given this user query: '{user_input}'
@@ -114,8 +121,10 @@ def save_to_json(data, path="data/curated_resistance_db.json"):
 if __name__ == "__main__":
     
     try:
-        symbol = input("Enter a gene symbol: ").strip().upper()
+        symbol = "ALK"
+        # input("Enter a gene symbol: ").strip().upper()
         disease_prompt = input("Enter a disease name or acronym (e.g., NSCLC): ").strip()
+        
 
         all_items = api_calls.fetch_civic_all_evidence_items()
         matched_diseases = get_matching_diseases(disease_prompt, all_items)

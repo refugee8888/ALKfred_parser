@@ -1,9 +1,12 @@
 
+from asyncio import Runner
+from typing import Any
 from urllib import response
 import requests
 from requests.adapters import HTTPAdapter, Retry
 import json
 from graphql import GraphQLError
+import logging
 
 
 s = requests.Session()
@@ -26,7 +29,7 @@ s.mount('http://', HTTPAdapter(max_retries=retries))
     
 def normalize(s: str) -> str:
     #defining what normalizing should do
-    return s.lower().replace("::", "-").replace("_", "-").replace("fusion", "").strip()
+    return s.lower().replace("::", "-").replace("_", "-").strip()
 
 
 def help_request(url: str, headers: dict, payload: dict = None, method: str = "GET") -> dict:
@@ -39,10 +42,11 @@ def help_request(url: str, headers: dict, payload: dict = None, method: str = "G
         headers=headers,
         json=payload if method == "POST" else None,
         timeout=(connect, read))
-        resp.raise_for_status()
-        data = resp.json()
         if "application/json" not in resp.headers.get("Content-Type", ""):
             raise RuntimeError(f"Expected JSON but got {resp.headers.get('Content-Type')} from {url}")
+        resp.raise_for_status()
+        data = resp.json()
+        
 
 
 
@@ -53,9 +57,9 @@ def help_request(url: str, headers: dict, payload: dict = None, method: str = "G
         raise RuntimeError(f"Request to {url} failed: {e}")
         
     except ValueError as e:
-        raise RecursionError(f"Invalid JSON in response from {url}: {e}")
+        raise RuntimeError(f"Invalid JSON in response from {url}: {e}")
 
-def graphql_query(url: str, query: str, variables: dict | None = None, headers: dict | None = None) -> dict:
+def graphql_query(url: str, query: str, variables: dict | None = None, headers: dict | None = None) -> dict[str, Any]:
    
     # Runs a GraphQL query and enforces protocol semantics.
     # Returns only the 'data' field.
@@ -71,10 +75,16 @@ def graphql_query(url: str, query: str, variables: dict | None = None, headers: 
         # extract first error message & path
         msg = response["errors"][0].get("message", "Unknown error")
         path = response["errors"][0].get("path")
-        raise GraphQLError(f"{msg} (path={path})")
+        code = response["errors"].get("extensions", {}).get("code")
+        logging.debug("GraphQL errors: %s",response["errors"])
+        raise GraphQLError(f"{msg} (path={path}, code ={code})")
+        
 
     if "data" not in response or response["data"] is None:
+        logging.debug(response)
         raise GraphQLError("No data returned")
+        
+        
 
     return response["data"] 
 
