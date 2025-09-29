@@ -213,99 +213,12 @@
       {
         "variant": "ALK I1171",
         "ca_id": "CA346462880"
-      },
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK I1171N",
-        "ca_id": "CA16602371"
-      },
-      {
-        "variant": "ALK L1196M",
-        "ca_id": "CA16602593"
-      },
-      {
-        "variant": "ALK I1171T",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK G1202R",
-        "ca_id": "CA16602592"
-      },
-      {
-        "variant": "HIP1::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK I1171S",
-        "ca_id": "CA346462883"
-      },
-      {
-        "variant": "NPM1::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "v::ALK Fusion",
-        "ca_id": null
       }
     ],
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK Fusion HIP1",
-      "ALK Fusion NPM1",
-      "ALK Fusion V",
-      "ALK G1202R",
       "ALK I1171",
-      "ALK I1171N",
-      "ALK I1171S",
-      "ALK I1171T",
-      "ALK L1196M",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK-HIP1",
-      "ALK-HIP1 fusion",
-      "ALK-NPM1",
-      "ALK-NPM1 fusion",
-      "ALK-V",
-      "ALK-V fusion",
-      "ALK::EML4",
-      "ALK::HIP1",
-      "ALK::NPM1",
-      "ALK::V",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "G1202R ALK",
-      "HIP1 ALK Fusion",
-      "HIP1-ALK",
-      "HIP1-ALK fusion",
-      "HIP1::ALK",
       "I1171 ALK",
-      "I1171N ALK",
-      "I1171S ALK",
-      "I1171T ALK",
-      "L1196M ALK",
-      "NPM1 ALK Fusion",
-      "NPM1-ALK",
-      "NPM1-ALK fusion",
-      "NPM1::ALK",
-      "V ALK Fusion",
-      "V-ALK",
-      "V-ALK fusion",
-      "V::ALK",
-      "alk g1202r",
-      "alk i1171",
-      "alk i1171n",
-      "alk i1171s",
-      "alk i1171t",
-      "alk l1196m",
-      "eml4-alk fusion",
-      "hip1-alk fusion",
-      "npm1-alk fusion",
-      "v-alk fusion"
+      "alk i1171"
     ],
     "therapies": [
       {
@@ -335,7 +248,7 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk amplification": {
-    "canonical_id": "CA126713",
+    "canonical_id": null,
     "components": [
       {
         "variant": "EML4::ALK Fusion",
@@ -344,10 +257,6 @@
       {
         "variant": "ALK Amplification",
         "ca_id": null
-      },
-      {
-        "variant": "EGFR L858R",
-        "ca_id": "CA126713"
       }
     ],
     "aliases": [
@@ -357,14 +266,11 @@
       "ALK-EML4 fusion",
       "ALK::EML4",
       "Amplification ALK",
-      "EGFR L858R",
       "EML4 ALK Fusion",
       "EML4-ALK",
       "EML4-ALK fusion",
       "EML4::ALK",
-      "L858R EGFR",
       "alk amplification",
-      "egfr l858r",
       "eml4-alk fusion",
       "eml4-alk fusion and alk amplification"
     ],
@@ -400,16 +306,11 @@
       {
         "variant": "ALK C1156Y",
         "ca_id": "CA16602783"
-      },
-      {
-        "variant": "ALK L1198F",
-        "ca_id": "CA346473048"
       }
     ],
     "aliases": [
       "ALK C1156Y",
       "ALK Fusion EML4",
-      "ALK L1198F",
       "ALK-EML4",
       "ALK-EML4 fusion",
       "ALK::EML4",
@@ -418,9 +319,7 @@
       "EML4-ALK",
       "EML4-ALK fusion",
       "EML4::ALK",
-      "L1198F ALK",
       "alk c1156y",
-      "alk l1198f",
       "eml4-alk fusion",
       "eml4-alk fusion and alk c1156y"
     ],
@@ -616,26 +515,11 @@
       {
         "variant": "ALK G1202R",
         "ca_id": "CA16602592"
-      },
-      {
-        "variant": "ALK I1171N",
-        "ca_id": "CA16602371"
-      },
-      {
-        "variant": "ALK L1196M",
-        "ca_id": "CA16602593"
-      },
-      {
-        "variant": "ALK L1198F",
-        "ca_id": "CA346473048"
       }
     ],
     "aliases": [
       "ALK Fusion EML4",
       "ALK G1202R",
-      "ALK I1171N",
-      "ALK L1196M",
-      "ALK L1198F",
       "ALK-EML4",
       "ALK-EML4 fusion",
       "ALK::EML4",
@@ -644,13 +528,7 @@
       "EML4-ALK fusion",
       "EML4::ALK",
       "G1202R ALK",
-      "I1171N ALK",
-      "L1196M ALK",
-      "L1198F ALK",
       "alk g1202r",
-      "alk i1171n",
-      "alk l1196m",
-      "alk l1198f",
       "eml4-alk fusion",
       "eml4-alk fusion and alk g1202r"
     ],
@@ -690,26 +568,11 @@
       {
         "variant": "ALK L1196M",
         "ca_id": "CA16602593"
-      },
-      {
-        "variant": "ALK I1171N",
-        "ca_id": "CA16602371"
-      },
-      {
-        "variant": "ALK G1202R",
-        "ca_id": "CA16602592"
-      },
-      {
-        "variant": "ALK L1198F",
-        "ca_id": "CA346473048"
       }
     ],
     "aliases": [
       "ALK Fusion EML4",
-      "ALK G1202R",
-      "ALK I1171N",
       "ALK L1196M",
-      "ALK L1198F",
       "ALK-EML4",
       "ALK-EML4 fusion",
       "ALK::EML4",
@@ -717,14 +580,8 @@
       "EML4-ALK",
       "EML4-ALK fusion",
       "EML4::ALK",
-      "G1202R ALK",
-      "I1171N ALK",
       "L1196M ALK",
-      "L1198F ALK",
-      "alk g1202r",
-      "alk i1171n",
       "alk l1196m",
-      "alk l1198f",
       "eml4-alk fusion",
       "eml4-alk fusion and alk l1196m"
     ],
