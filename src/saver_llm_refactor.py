@@ -153,7 +153,7 @@ if __name__ == "__main__":
             print(f"🧮 Total evidence items matched: {len(filtered)}")
 
 
-        rules = civic_parser.parse_resistance_entries(filtered)
+        rules = civic_parser.parse_resistance_entries(filtered, fetch_components=api_calls.fetch_civic_molecular_profile)
         save_to_json(rules)
         print(f"\u2705 Saved {len(rules)} entries to curated_resistance_db.json")
 

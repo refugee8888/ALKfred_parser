@@ -1,5 +1,5 @@
 {
-  "eml4-alk fusion and alk t1151dup": {
+  "DOID:3908||eml4-alk fusion and alk t1151dup": {
     "canonical_id": "CA645528802",
     "components": [
       {
@@ -28,21 +28,22 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
-        "ncit_id": "C74061"
+        "name": "alectinib",
+        "ncit_id": "C101790"
       },
-      [
-        {
-          "name": "Alectinib",
-          "ncit_id": "C101790"
-        }
-      ],
-      [
-        {
-          "name": "ALK Inhibitor TAE684",
-          "ncit_id": "C171615"
-        }
-      ]
+      {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      },
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "resistant_to": [
+      "alectinib",
+      "alk inhibitor tae684",
+      "crizotinib"
     ],
     "evidence_count": 3,
     "descriptions": [
@@ -57,7 +58,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk l1152r": {
+  "DOID:3908||eml4-alk fusion and alk l1152r": {
     "canonical_id": "CA16602594",
     "components": [
       {
@@ -86,9 +87,12 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
+        "name": "crizotinib",
         "ncit_id": "C74061"
       }
+    ],
+    "resistant_to": [
+      "crizotinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -101,7 +105,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk g1269a": {
+  "DOID:3908||eml4-alk fusion and alk g1269a": {
     "canonical_id": "CA16602590",
     "components": [
       {
@@ -130,15 +134,12 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
+        "name": "crizotinib",
         "ncit_id": "C74061"
-      },
-      [
-        {
-          "name": "Crizotinib",
-          "ncit_id": "C74061"
-        }
-      ]
+      }
+    ],
+    "resistant_to": [
+      "crizotinib"
     ],
     "evidence_count": 2,
     "descriptions": [
@@ -152,7 +153,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk l1198f and alk c1156y": {
+  "DOID:3908||eml4-alk fusion and alk l1198f and alk c1156y": {
     "canonical_id": "CA346473048",
     "components": [
       {
@@ -188,9 +189,12 @@
     ],
     "therapies": [
       {
-        "name": "Lorlatinib",
+        "name": "lorlatinib",
         "ncit_id": "C113655"
       }
+    ],
+    "resistant_to": [
+      "lorlatinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -203,7 +207,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "alk i1171": {
+  "DOID:3908||alk i1171": {
     "canonical_id": "CA346462880",
     "components": [
       {
@@ -305,21 +309,17 @@
     ],
     "therapies": [
       {
-        "name": "Alectinib",
+        "name": "alectinib",
         "ncit_id": "C101790"
       },
-      [
-        {
-          "name": "Alectinib",
-          "ncit_id": "C101790"
-        }
-      ],
-      [
-        {
-          "name": "Crizotinib",
-          "ncit_id": "C74061"
-        }
-      ]
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "resistant_to": [
+      "alectinib",
+      "crizotinib"
     ],
     "evidence_count": 3,
     "descriptions": [
@@ -334,7 +334,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk amplification": {
+  "DOID:3908||eml4-alk fusion and alk amplification": {
     "canonical_id": "CA126713",
     "components": [
       {
@@ -370,21 +370,12 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
+        "name": "crizotinib",
         "ncit_id": "C74061"
-      },
-      [
-        {
-          "name": "Crizotinib",
-          "ncit_id": "C74061"
-        }
-      ],
-      [
-        {
-          "name": "Crizotinib",
-          "ncit_id": "C74061"
-        }
-      ]
+      }
+    ],
+    "resistant_to": [
+      "crizotinib"
     ],
     "evidence_count": 3,
     "descriptions": [
@@ -399,7 +390,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk c1156y": {
+  "DOID:3908||eml4-alk fusion and alk c1156y": {
     "canonical_id": "CA16602783",
     "components": [
       {
@@ -435,23 +426,22 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
-        "ncit_id": "C74061"
-      },
-      {
-        "name": "Ceritinib",
+        "name": "ceritinib",
         "ncit_id": "C115112"
       },
       {
-        "name": "Luminespib",
-        "ncit_id": "C71467"
+        "name": "crizotinib",
+        "ncit_id": "C74061"
       },
-      [
-        {
-          "name": "Crizotinib",
-          "ncit_id": "C74061"
-        }
-      ]
+      {
+        "name": "luminespib",
+        "ncit_id": "C71467"
+      }
+    ],
+    "resistant_to": [
+      "ceritinib",
+      "crizotinib",
+      "luminespib"
     ],
     "evidence_count": 2,
     "descriptions": [
@@ -465,7 +455,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk f1245c": {
+  "DOID:3908||eml4-alk fusion and alk f1245c": {
     "canonical_id": "CA279597",
     "components": [
       {
@@ -494,9 +484,12 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
+        "name": "crizotinib",
         "ncit_id": "C74061"
       }
+    ],
+    "resistant_to": [
+      "crizotinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -509,7 +502,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "alk i1171n and hip1-alk fusion": {
+  "DOID:3908||alk i1171n and hip1-alk fusion": {
     "canonical_id": "CA16602371",
     "components": [
       {
@@ -538,13 +531,17 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
-        "ncit_id": "C74061"
+        "name": "alectinib",
+        "ncit_id": "C101790"
       },
       {
-        "name": "Alectinib",
-        "ncit_id": "C101790"
+        "name": "crizotinib",
+        "ncit_id": "C74061"
       }
+    ],
+    "resistant_to": [
+      "alectinib",
+      "crizotinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -557,7 +554,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk i1171s": {
+  "DOID:3908||eml4-alk fusion and alk i1171s": {
     "canonical_id": "CA346462883",
     "components": [
       {
@@ -586,13 +583,17 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
-        "ncit_id": "C74061"
+        "name": "alectinib",
+        "ncit_id": "C101790"
       },
       {
-        "name": "Alectinib",
-        "ncit_id": "C101790"
+        "name": "crizotinib",
+        "ncit_id": "C74061"
       }
+    ],
+    "resistant_to": [
+      "alectinib",
+      "crizotinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -605,7 +606,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk g1202r": {
+  "DOID:3908||eml4-alk fusion and alk g1202r": {
     "canonical_id": "CA16602592",
     "components": [
       {
@@ -655,15 +656,17 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
-        "ncit_id": "C74061"
+        "name": "ceritinib",
+        "ncit_id": "C115112"
       },
-      [
-        {
-          "name": "Ceritinib",
-          "ncit_id": "C115112"
-        }
-      ]
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "resistant_to": [
+      "ceritinib",
+      "crizotinib"
     ],
     "evidence_count": 2,
     "descriptions": [
@@ -677,7 +680,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk l1196m": {
+  "DOID:3908||eml4-alk fusion and alk l1196m": {
     "canonical_id": "CA16602593",
     "components": [
       {
@@ -727,9 +730,12 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
+        "name": "crizotinib",
         "ncit_id": "C74061"
       }
+    ],
+    "resistant_to": [
+      "crizotinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -742,7 +748,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk s1206y": {
+  "DOID:3908||eml4-alk fusion and alk s1206y": {
     "canonical_id": "CA16602591",
     "components": [
       {
@@ -771,9 +777,12 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
+        "name": "crizotinib",
         "ncit_id": "C74061"
       }
+    ],
+    "resistant_to": [
+      "crizotinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -786,7 +795,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "alk f1174l": {
+  "DOID:3908||alk f1174l": {
     "canonical_id": "CA279586",
     "components": [
       {
@@ -801,9 +810,12 @@
     ],
     "therapies": [
       {
-        "name": "Crizotinib",
+        "name": "crizotinib",
         "ncit_id": "C74061"
       }
+    ],
+    "resistant_to": [
+      "crizotinib"
     ],
     "evidence_count": 1,
     "descriptions": [
@@ -816,7 +828,7 @@
       "Non-small Cell Lung Carcinoma"
     ]
   },
-  "eml4-alk fusion and alk v1180l": {
+  "DOID:3908||eml4-alk fusion and alk v1180l": {
     "canonical_id": "CA346473150",
     "components": [
       {
@@ -845,15 +857,17 @@
     ],
     "therapies": [
       {
-        "name": "Alectinib",
+        "name": "alectinib",
         "ncit_id": "C101790"
       },
-      [
-        {
-          "name": "Crizotinib",
-          "ncit_id": "C74061"
-        }
-      ]
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "resistant_to": [
+      "alectinib",
+      "crizotinib"
     ],
     "evidence_count": 2,
     "descriptions": [

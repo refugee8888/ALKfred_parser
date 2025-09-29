@@ -1,42 +1,78 @@
+# civic_parser.py
+from __future__ import annotations
+
+import logging
 import re
-import api_calls
+from typing import Callable, Optional
+
 from utils import normalize
-from typing import Optional,Any,Annotated
+
+__all__ = [
+    "generate_aliases",
+    "gene_in_molecular_profile",
+    "parse_resistance_entries",
+]
+
+logger = logging.getLogger(__name__)
 
 
+def generate_aliases(profile_name: str, components: list[dict[str, Optional[str]]]) -> list[str]:
+    """
+    Produce deterministic, compact aliases for a molecular profile (fusion ± secondary mutations).
 
+    Inputs
+    ------
+    profile_name : str
+        Raw CIViC molecularProfile.name.
+    components : list of {"variant": str, "ca_id": Optional[str]}
+        Variant components fetched upstream (e.g., from CIViC variants for this profile).
 
-def generate_aliases(profile_name: str, components: list[dict]) -> list[str]:
+    Rules
+    -----
+    - Always include:
+        - the stripped profile_name
+        - normalize(profile_name) as canonical text form
+    - For each component:
+        - include normalize(variant) if present
+        - if component looks like GENE + mutation → add "GENE <mut>" and "<mut> GENE"
+        - if fusion detected (A-B / A::B / A/B / A–B [en dash]) → add:
+          "A-B fusion", "A-B", "B-A fusion", "B-A", "A::B", "B::A"
+    - Clean: collapse whitespace, drop very short tokens (<= 3 chars), remove trivial words {"in","with","variant"}
+    - Deduplicate via set, return sorted list (deterministic)
+
+    Non-goals
+    ---------
+    - Do not generate HGVS strings.
+    - Do not explode combinatorially.
+    """
     aliases: set[str] = set()
 
-    # Base aliases for the whole profile
-    base = profile_name.strip()
+    base = (profile_name or "").strip()
     if base:
         aliases.add(base)
-    norm_base = normalize(profile_name)
-    if norm_base:
-        aliases.add(norm_base)
+    nbase = normalize(profile_name or "")
+    if nbase:
+        aliases.add(nbase)
 
     variant_aliases: list[set[str]] = []
 
-    for comp in components:
-        raw = comp.get("variant", "") or ""
+    for comp in components or []:
+        raw = (comp or {}).get("variant") or ""
         vset: set[str] = set()
 
-        # Always include a normalized per-variant form (if any)
         nraw = normalize(raw)
         if nraw:
             vset.add(nraw)
 
         # Gene + mutation (non-fusion shapes)
-        tokens = re.split(r"[:\-_–/\s]+", raw)  # include en dash U+2013
+        tokens = re.split(r"[:\-_–/\s]+", raw)  # includes en dash U+2013
         gene = tokens[0].upper() if tokens and tokens[0] else ""
         mutation = " ".join(t for t in tokens[1:] if t) if len(tokens) > 1 else ""
         if gene and mutation:
             vset.update({f"{gene} {mutation}", f"{mutation} {gene}"})
 
         # Fusion parsing: A-B, A::B, A/B, A–B [+ optional ' fusion']
-        m = re.search(r'(?i)\b([A-Z0-9]+)\s*(?:-|::|/|–)\s*([A-Z0-9]+)(?:\s+fusion)?\b', raw)
+        m = re.search(r"(?i)\b([A-Z0-9]+)\s*(?:-|::|/|–)\s*([A-Z0-9]+)(?:\s+fusion)?\b", raw)
         if m:
             a, b = m.group(1).upper(), m.group(2).upper()
             vset.update({
@@ -45,161 +81,262 @@ def generate_aliases(profile_name: str, components: list[dict]) -> list[str]:
                 f"{a}::{b}", f"{b}::{a}",
             })
 
-        variant_aliases.append({re.sub(r'\s+', ' ', v).strip() for v in vset if v})
+        # Clean & collect
+        cleaned = {re.sub(r"\s+", " ", v).strip() for v in vset if v}
+        variant_aliases.append(cleaned)
 
-    # Flatten + filter
-    flat_aliases: set[str] = set()
+    # Flatten & filter
+    noise = {"in", "with", "variant"}
+    flat: set[str] = set()
     for vset in variant_aliases:
         for v in vset:
-            if len(v) > 3 and v.lower() not in {"in", "with", "variant"}:
-                flat_aliases.add(v)
+            if len(v) > 3 and v.lower() not in noise:
+                flat.add(v)
 
-    aliases.update(flat_aliases)
-
-    # Optional: cap to avoid downstream blowups (keep shortest first)
-    # aliases = set(sorted(aliases, key=len)[:20])
-
+    aliases.update(flat)
     return sorted(a for a in aliases if a and len(a) > 3)
 
-def disease_matches(disease_block, target): #this feels unnecesary since we're using openai to match diseases
-    if not disease_block:
-        return False
-    target = target.lower().strip()
-    names = [
-        disease_block.get("name", "").lower().strip(),
-        disease_block.get("displayName", "").lower().strip(),
-        *[alias.lower().strip() for alias in disease_block.get("diseaseAliases") or []]
-    ]
-    return any(target in name for name in names)
 
 def gene_in_molecular_profile(mp_name: str, gene_symbol: str) -> bool:
     """
-    Returns True if gene_symbol appears in any token of the profile name,
-    including fusions or composite profiles.
+    Return True if `gene_symbol` appears as a token in `mp_name` (including split fusion parts).
+
+    - Case-insensitive, token-aware (splits on common separators).
+    - Handles fusions like "EML4::ALK" by splitting into ["EML4", "ALK"].
+    - No partials (e.g., "ALK" does not match "TALK1").
     """
     if not mp_name or not gene_symbol:
         return False
 
     gene_symbol = gene_symbol.upper()
-    mp_name = mp_name.upper()
+    mp_up = mp_name.upper()
 
-    # Split on common separators
-    tokens = re.split(r'[\s\-\_:;()/\\|&]+', mp_name)
-    # Also split fusions like EML4::ALK
-    fusion_parts = [part.strip() for fusion in re.findall(r'([A-Z0-9]+::[A-Z0-9]+)', mp_name) for part in fusion.split("::")]
+    # Tokenize by common separators
+    tokens = re.split(r"[\s\-\_:;()/\\|&]+", mp_up)
 
-    return gene_symbol in tokens or gene_symbol in fusion_parts
+    # Split fusion tokens like EML4::ALK
+    for fusion in re.findall(r"([A-Z0-9]+::[A-Z0-9]+)", mp_up):
+        tokens.extend(part.strip() for part in fusion.split("::") if part.strip())
+
+    return gene_symbol in tokens
 
 
+def _composite_key(doid: str, profile_norm: str) -> str:
+    """Create a stable string key for dicts that must be JSON-serializable."""
+    return f"DOID:{doid}||{profile_norm}"
 
-def parse_resistance_entries(evidence_items: list[dict], gene_filter: str = "") -> dict[str, dict]:
-    rules = {}
-    profile_enrichment_cache = {}
-    print("🧠 Building resistance rule DB from CIViC evidenceItems...")
+
+def parse_resistance_entries(
+    evidence_items: list[dict],
+    fetch_components: Optional[Callable[[str], list[dict[str, Optional[str]]]]] = None,
+) -> dict[str, dict]:
+    """
+    Aggregate CIViC evidence items into **profile-level resistance rules** for ALKfred.
+
+    Purpose
+    -------
+    Collapse many CIViC evidence items (EIDs) into one rule per
+    **(disease concept, molecular profile)** with clean IDs, therapies, aliases,
+    and citation-ready summaries. This function assumes upstream code already
+    filtered to the target gene (e.g., ALK).
+
+    Required fields per evidence item (from GraphQL)
+    ------------------------------------------------
+    - significance: str
+    - evidenceDirection: str
+    - description: Optional[str]
+    - molecularProfile.name: str
+    - disease: { name: str, doid: str, diseaseAliases: list[str] }
+      *NOTE: ensure `doid` is selected in the GraphQL query.*
+    - therapies: list[{ name: str, ncitId: Optional[str] }]
+      *NOTE: ensure `ncitId` is selected in the GraphQL query.*
+
+    Filters applied (why)
+    ---------------------
+    - Keep only items with:
+        * significance == "RESISTANCE"
+        * evidenceDirection == "SUPPORTS"
+        * at least one therapy present
+      Rationale: focus on resistant signals that support the claim and are clinically actionable.
+
+    Normalization and keying
+    ------------------------
+    - Normalize molecular profile strings via `utils.normalize` (single source of truth).
+    - Aggregate by **(disease_doid, normalized_profile_name)** to avoid cross-disease merges.
+      The returned dict uses a composite string key: "DOID:<id>||<normalized_profile>".
+
+    Output schema per key
+    ---------------------
+    {
+        "canonical_id": Optional[str],                       # first non-null CA ID in components
+        "components": [{"variant": str, "ca_id": Optional[str]}, ...],
+        "aliases": [str, ...],                               # sorted, deduped
+        "therapies": [{"name": str, "ncit_id": Optional[str]}, ...],  # flat, deduped
+        "resistant_to": [str, ...],                          # (compat) names derived from therapies
+        "evidence_count": int,
+        "descriptions": [str, ...],                          # unique, trimmed, sorted
+        "disease_name": str,
+        "disease_doid": str,
+        "disease_aliases": [str, ...]                        # unioned + sorted
+    }
+
+    Invariants
+    ----------
+    - No network I/O here; enrichment must be done upstream or injected via `fetch_components`.
+    - No prints; uses module logger for info/debug.
+    - Lists are deduped and sorted; `evidence_count >= 1` for all outputs.
+    - Items missing critical fields are skipped with DEBUG logs (no crash).
+
+    Returns
+    -------
+    dict[str, dict]: mapping of composite key to rule dict.
+    """
+    logger.info("🧠 Building resistance rule DB from CIViC evidenceItems...")
+    rules: dict[str, dict] = {}
+    profile_enrichment_cache: dict[str, list[dict[str, Optional[str]]]] = {}
 
     for item in evidence_items:
-        mp = item.get("molecularProfile")
-        if not mp or not mp.get("name"):
+        if not isinstance(item, dict):
+            logger.debug("Skipping non-dict evidence item: %r", item)
             continue
 
-        raw_name = mp["name"].strip()
-        profile_name = raw_name.lower().replace("::", "-")
-
-        if gene_filter and gene_filter.lower() not in profile_name:
-            continue
-
-        if item.get("significance", "").upper() != "RESISTANCE":
-            continue
-        if item.get("evidenceDirection") != "SUPPORTS":
-            continue
-
+        # --------------------
+        # Required blocks
+        # --------------------
+        mp = item.get("molecularProfile") or {}
+        disease = item.get("disease") or {}
         therapies_raw = item.get("therapies") or []
-        therapies = []
-        seen = set()  # Set[Tuple[str, Optional[str]]]
 
-        for t in therapies_raw:
-            name = (t.get("name") or "").strip()
-            if not name:
-                continue
-            ncit = t.get("ncitId") or None
-            key = (normalize(name), ncit)   # 2-tuple literal, not tuple()
+        mp_name_raw = (mp.get("name") or "").strip()
+        disease_name = (disease.get("name") or "").strip()
+        disease_doid = disease.get("doid")
 
-            if key in seen:
-                continue
-            therapies.append({"name": name, "ncit_id": ncit})
-            seen.add(key)
-
-        if not therapies:
+        if not mp_name_raw:
+            logger.debug("Skipping item with empty molecularProfile.name")
             continue
-            
-            
+        if not disease_doid:
+            logger.debug("Skipping item without disease.doid (name=%r)", disease_name)
+            continue
 
-        # for t in therapies:
-        #     if t.get("name"):
-        #         resistant_drugs = {  t["name"]
+        # --------------------
+        # Filters
+        # --------------------
+        sig = (item.get("significance") or "").strip().upper()
+        edir = (item.get("evidenceDirection") or "").strip().upper()
+        if sig != "RESISTANCE" or edir != "SUPPORTS":
+            continue
+        if not therapies_raw:
+            logger.debug("Skipping item with no therapies for profile %r", mp_name_raw)
+            continue
 
-        #         }
-        #     if t.get("ncitId"):
-        #         therapy_ncitid = { t["ncitId"]}
-                
-        # resistant_drugs = {t["name"] for t in therapies if t.get("name")}
-                          
-        # if not resistant_drugs:
-        #     continue
+        # --------------------
+        # Normalize & key
+        # --------------------
+        profile_norm = normalize(mp_name_raw)
+        key = _composite_key(disease_doid, profile_norm)
 
-        print(f"📦 Saving profile: {profile_name} with {len(therapies)} therapies")
-
-        # Enrichment caching
-        if raw_name not in profile_enrichment_cache:
-            components = api_calls.fetch_civic_molecular_profile(raw_name)
-            profile_enrichment_cache[raw_name] = components
+        # --------------------
+        # Enrichment (optional, injected)
+        # --------------------
+        if fetch_components:
+            if mp_name_raw not in profile_enrichment_cache:
+                try:
+                    components = fetch_components(mp_name_raw) or []
+                except Exception as e:
+                    logger.debug("Component fetch failed for %r: %s", mp_name_raw, e)
+                    components = []
+                profile_enrichment_cache[mp_name_raw] = components
+            else:
+                components = profile_enrichment_cache[mp_name_raw]
         else:
-            components = profile_enrichment_cache[raw_name]
+            components = []
 
-        canonical_id = next((c["ca_id"] for c in components if c["ca_id"]), profile_name)
-        aliases = generate_aliases(profile_name, components)
+        # canonical_id: first non-null CA ID
+        canonical_id = next((c.get("ca_id") for c in components if c.get("ca_id")), None)
 
-        if profile_name not in rules:
-            rules[profile_name] = {
+        # --------------------
+        # Build/merge rule
+        # --------------------
+        # Dedup therapies by (normalized name, ncit_id)
+        pairs: dict[tuple[str, str | None], str] = {}
+        for t in therapies_raw:
+            raw_name = (t.get("name") or "").strip()
+            if not raw_name:
+                continue
+            nid = t.get("ncitId") or t.get("ncit_id")
+            tkey = (normalize(raw_name), nid)  # dedupe key
+            pairs.setdefault(tkey, raw_name)   # keep first-seen display casing
+
+        therapies_list = sorted(
+            ({"name": disp, "ncit_id": nid} for ((_, nid), disp) in pairs.items()),
+            key=lambda x: (x["name"].lower(), x["ncit_id"] or ""),
+        )
+        rule_key = _composite_key(disease_doid, profile_norm)
+        # Prepare current entry
+        if rule_key not in rules:
+            rules[rule_key] = {
                 "canonical_id": canonical_id,
-                "components": components,
-                "aliases": set(aliases),
-                "therapies": therapies,
-                # "resistant_to": set(resistant_drugs),
-                # "therapy_ncitid": set(therapy_ncitid),
+                "components": list(components),  # shallow copy ok
+                "aliases": set(generate_aliases(profile_norm, components)),
+                "therapies": set((normalize(t["name"]), t["ncit_id"]) for t in therapies_list),
+                "resistant_to": set(n for (n, _nid) in ((normalize(t["name"]), t["ncit_id"]) for t in therapies_list)),
                 "evidence_count": 1,
-                "descriptions": [item["description"].strip()] if item.get("description") else [],
-                "disease_name": item["disease"]["name"],
-                "disease_doid": item["disease"]["doid"],
-                "disease_aliases": list(item.get("disease", {}).get("diseaseAliases", [])),
-
+                "descriptions": [ (item.get("description") or "").strip() ] if item.get("description") else [],
+                "disease_name": disease_name,
+                "disease_doid": disease_doid,
+                "disease_aliases": set(disease.get("diseaseAliases") or []),
             }
+            logger.debug("NEW rule: %s (%s)", key, mp_name_raw)
         else:
-            rules[profile_name]["evidence_count"] += 1
-            # rules[profile_name]["resistant_to"].update(resistant_drugs)
-            # rules[profile_name]["therapy_ncitid"].update(therapy_ncitid)
-            rules[profile_name]["therapies"].append(therapies)
-            rules[profile_name]["aliases"].update(aliases)
-            rules[profile_name]["disease_name"] = item["disease"]["name"]
-            rules[profile_name]["disease_doid"] = item["disease"]["doid"]
-            rules[profile_name]["disease_aliases"] = item["disease"]["diseaseAliases"]
-            if item.get("description"):
-                rules[profile_name]["descriptions"].append(item["description"].strip())
+            r = rules[rule_key]
+            r["evidence_count"] += 1
 
-            existing_components = {(c["variant"], c["ca_id"]) for c in rules[profile_name]["components"]}
+            # canonical_id: keep existing or take new if previously None
+            if not r.get("canonical_id") and canonical_id:
+                r["canonical_id"] = canonical_id
+
+            # merge components (by (variant, ca_id))
+            existing = {(c.get("variant"), c.get("ca_id")) for c in r.get("components", [])}
             for c in components:
-                if (c["variant"], c["ca_id"]) not in existing_components:
-                    rules[profile_name]["components"].append(c)
+                tup = (c.get("variant"), c.get("ca_id"))
+                if tup not in existing:
+                    r["components"].append(c)
 
-    for entry in rules.values():
-        entry["aliases"] = sorted(entry["aliases"])
-        # entry["resistant_to"] = sorted(entry["resistant_to"])
-        # entry["therapy_ncitid"] = sorted(entry["therapy_ncitid"])
-        # entry["therapies"] = entry["therapies"]
-        entry["descriptions"] = sorted(set(entry.get("descriptions", [])))
-        entry["disease_name"] = entry["disease_name"].strip()
-        entry["disease_doid"] = entry["disease_doid"].strip()
-        entry["disease_aliases"] = sorted(set(entry.get("disease_aliases", [])))
-        
+            # merge aliases
+            r["aliases"].update(generate_aliases(profile_norm, components))
+
+            # merge therapies (as normalized pairs)
+            r["therapies"].update((normalize(t["name"]), t["ncit_id"]) for t in therapies_list)
+            r["resistant_to"].update(normalize(t["name"]) for t in therapies_list)
+
+            # disease meta
+            r["disease_name"] = disease_name  # keep latest label
+            r["disease_aliases"].update(disease.get("diseaseAliases") or [])
+
+            # descriptions
+            if item.get("description"):
+                r["descriptions"].append(item["description"].strip())
+
+            logger.debug("UPDATE rule: %s (evidence += 1)", key)
+
+    # --------------------
+    # Finalize: sort lists, stringify therapies
+    # --------------------
+    for k, r in rules.items():
+        # aliases/descriptions/aliases sort + dedupe
+        r["aliases"] = sorted(set(a for a in r["aliases"] if a))
+        r["descriptions"] = sorted(set(d for d in r.get("descriptions", []) if d))
+        r["disease_aliases"] = sorted(set(a for a in r.get("disease_aliases", []) if a and a.strip()))
+
+        # therapies: convert set[(name_norm, ncit_id)] → list[{name, ncit_id}]
+        # Store display name as the de-normalized best-effort (here we keep normalized for consistency).
+        t_pairs = sorted(r["therapies"], key=lambda x: (x[0], x[1] or ""))
+        r["therapies"] = [{"name": name_norm, "ncit_id": ncit_id} for (name_norm, ncit_id) in t_pairs]
+
+        # backward-compat `resistant_to` as list of names
+        r["resistant_to"] = sorted(set(r["resistant_to"]))
+
+        # ensure disease_name is stripped
+        r["disease_name"] = (r.get("disease_name") or "").strip()
 
     return rules
