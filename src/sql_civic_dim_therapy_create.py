@@ -17,33 +17,43 @@ CREATE TABLE IF NOT EXISTS dim_therapy (
 )
 """)
 
+
+
 # Load JSON as a dict
 with open(JSON_PATH, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 # Collect rows (ncitid, label, synonyms_json, rxnorm_id)
-rows = []
+rows_theraphy = []
+
 for rec in data.values():                       # iterate values, not keys
     for t in rec.get("therapies", []):          # list of {"name":..., "ncit_id":...}
         ncit = t.get("ncit_id")
         label = t.get("name")
         if not ncit or not label:
             continue                            # skip malformed entries
-        rows.append((ncit, label, None, None))  # synonyms/rxnorm unknown for now
+        rows_theraphy.append((ncit, label, None, None))  # synonyms/rxnorm unknown for now
+  
+    
+
+
 
 # Bulk insert
 cur.executemany(
     "INSERT OR IGNORE INTO dim_therapy (ncitid, label, synonyms_json, rxnorm_id) VALUES (?,?,?,?)",
-    rows
+    rows_theraphy
 )
+
 conn.commit()
 
 # Verify inserts
 cur.execute("SELECT COUNT(*) FROM dim_therapy")
+
 print("rows in dim_therapy:", cur.fetchone()[0])
 
 # Optional: peek a few
 cur.execute("SELECT * FROM dim_therapy ORDER BY label LIMIT 5")
+
 for r in cur.fetchall():
     print(r)
 
