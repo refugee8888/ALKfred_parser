@@ -9,18 +9,39 @@ conn = sqlite3.connect(DB_PATH)
 cur = conn.cursor()
 cur.execute("""PRAGMA foreign_keys = ON""")
 
-
-cur.execute(""" CREATE TABLE IF NOT EXISTS dim_gene_variant (
-  variant_id TEXT PRIMARY KEY,   -- either CIViC ca_id, or your own generated UID
-  hgnc_id TEXT,                  -- HGNC stable ID for the gene (if known)
-  gene_symbol TEXT,     -- e.g. "ALK"
-  variant_label TEXT,   -- raw variant string, e.g. "ALK T1151dup"
-  hgvs_p TEXT,                   -- normalized protein-level HGVS if available
-  hgvs_c TEXT,                   -- optional: cDNA HGVS
-  aliases_json TEXT,             -- store multiple synonyms
-  confidence TEXT                -- HIGH/MED/LOW for mapping certainty
-)
+cur.execute("""
+CREATE TABLE IF NOT EXISTS evidence_fact (
+    fact_id TEXT PRIMARY KEY,
+    eid INTEGER NOT NULL,
+    mp_id TEXT,
+    variant_id TEXT NOT NULL,
+    doid TEXT NOT NULL,
+    ncit_id TEXT,
+    source TEXT,
+    direction TEXT,
+    significance TEXT,
+    evidence_level TEXT,
+    evidence_type TEXT,
+    rating INTEGER,
+    status TEXT,
+    pmids_json TEXT,
+    pub_year INTEGER,
+    description TEXT,
+    created_at_utc TEXT,
+    updated_at_utc TEXT,
+    run_id TEXT,
+    FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
+    FOREIGN KEY (doid) REFERENCES dim_disease(doid),
+    FOREIGN KEY (ncit_id) REFERENCES dim_therapy(ncit_id)
+);
 """)
+
+cur.execute("CREATE INDEX IF NOT EXISTS idx_fact_eid ON evidence_fact(eid);")
+cur.execute("CREATE INDEX IF NOT EXISTS idx_fact_doid_direction ON evidence_fact(doid, direction);")
+cur.execute("CREATE INDEX IF NOT EXISTS idx_fact_variant ON evidence_fact(variant_id);")
+cur.execute("CREATE INDEX IF NOT EXISTS idx_fact_therapy ON evidence_fact(ncit_id);")
+cur.execute("CREATE INDEX IF NOT EXISTS idx_fact_mp ON evidence_fact(mp_id);")
+
 
 # Load JSON as a dict
 with open(JSON_PATH, "r", encoding="utf-8") as f:

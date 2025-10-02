@@ -2,12 +2,12 @@ import json
 import sqlite3
 from pathlib import Path
 
-DB_PATH = "dim_disease_create.db"
+DB_PATH = "alkfred.db"
 JSON_PATH = Path("data/curated_resistance_db.json")  # use forward slashes or raw string
 
 conn = sqlite3.connect(DB_PATH)
 cur = conn.cursor()
-
+cur.execute("""PRAGMA foreign_keys = ON""")
 
 cur.execute(""" CREATE TABLE IF NOT EXISTS dim_disease (
   doid TEXT PRIMARY KEY,
