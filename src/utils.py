@@ -20,7 +20,10 @@ connect,read = 10,20
 s.mount('https://', HTTPAdapter(max_retries=retries))
 s.mount('http://', HTTPAdapter(max_retries=retries))
 
-
+logging.basicConfig(
+    level=logging.INFO,  # or DEBUG to also see debug() messages
+    format="%(asctime)s [%(levelname)s] %(message)s"
+)
 
         
 
@@ -30,7 +33,10 @@ s.mount('http://', HTTPAdapter(max_retries=retries))
 def normalize(s: str) -> str:
     #defining what normalizing should do
     return s.lower().replace("::", "-").replace("_", "-").strip()
-
+def normalize_label(s: str) -> str:
+    #defining what normalizing should do
+    return s.lower().replace("::", "-").replace("-", "_").replace(" ", "_").strip()
+    
 
 def help_request(url: str, headers: dict, payload: dict = None, method: str = "GET") -> dict:
     
@@ -47,9 +53,6 @@ def help_request(url: str, headers: dict, payload: dict = None, method: str = "G
         resp.raise_for_status()
         data = resp.json()
         
-
-
-
         return data 
     except requests.exceptions.Timeout:
         raise RuntimeError(f"Timeout after 10s for {url}")

@@ -1,2 +1,1 @@
-
-        all_items = api_calls.fetch_civic_
+cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_disease(label_norm);")

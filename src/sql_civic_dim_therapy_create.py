@@ -1,23 +1,41 @@
 import json
+from locale import normalize
+import logging
 import sqlite3
 from pathlib import Path
+
+from utils import normalize_label
 
 DB_PATH = "alkfred.db"
 JSON_PATH = Path("data/curated_resistance_db.json")  # use forward slashes or raw string
 
+logger = logging.getLogger(__name__)
+
 conn = sqlite3.connect(DB_PATH)
 cur = conn.cursor()
 cur.execute("""PRAGMA foreign_keys = ON""")
+try:
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS dim_therapy (
+    ncit_id TEXT PRIMARY KEY,
+    label_display TEXT NOT NULL,
+    label_norm TEXT NOT NULL ,
+    synonyms_json TEXT NOT NULL DEFAULT '[]',
+    rxnorm_id TEXT,
+    id_combo INTEGER NOT NULL DEFAULT 0,
+    combo_parts_json TEXT,
+    class_ids_json TEXT
 
-cur.execute("""
-CREATE TABLE IF NOT EXISTS dim_therapy (
-  ncitid TEXT PRIMARY KEY,
-  label TEXT NOT NULL,
-  synonyms_json TEXT,
-  rxnorm_id TEXT
-)
-""")
+    )
+    """)
+except sqlite3.Error as e:
+    logger.debug("Following errors happend while trying to create the database: %r", e)
+    raise e.sqlite_errorcode or e.sqlite_errorname
+    
 
+logger.info("Table dim_therapy created or already exists in %s", DB_PATH)
+
+cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_therapy(label_norm)")
 
 
 # Load JSON as a dict
@@ -28,12 +46,13 @@ with open(JSON_PATH, "r", encoding="utf-8") as f:
 rows_theraphy = []
 
 for rec in data.values():                       # iterate values, not keys
-    for t in rec.get("therapies", []):          # list of {"name":..., "ncit_id":...}
-        ncit = t.get("ncit_id")
-        label = t.get("name")
-        if not ncit or not label:
+    for t in rec.get("therapies"):          # list of {"name":..., "ncit_id":...}
+        ncit_id = t.get("ncit_id")
+        label_display = t.get("name","")
+        label_norm = normalize_label(label_display)
+        if not ncit_id or not label_display:
             continue                            # skip malformed entries
-        rows_theraphy.append((ncit, label, None, None))  # synonyms/rxnorm unknown for now
+        rows_theraphy.append((ncit_id, label_display, label_norm, "[]", None, 0, None, None))  # synonyms/rxnorm unknown for now
   
     
 
@@ -41,7 +60,7 @@ for rec in data.values():                       # iterate values, not keys
 
 # Bulk insert
 cur.executemany(
-    "INSERT OR IGNORE INTO dim_therapy (ncitid, label, synonyms_json, rxnorm_id) VALUES (?,?,?,?)",
+    "INSERT OR IGNORE INTO dim_therapy(ncit_id, label_display, label_norm, synonyms_json, rxnorm_id, id_combo, combo_parts_json, class_ids_json) VALUES (?,?,?,?,?,?,?,?)",
     rows_theraphy
 )
 
@@ -50,10 +69,10 @@ conn.commit()
 # Verify inserts
 cur.execute("SELECT COUNT(*) FROM dim_therapy")
 
-print("rows in dim_therapy:", cur.fetchone()[0])
-
+count = cur.fetchone()[0]
+logger.info(f"Table created with: {count}, rows")
 # Optional: peek a few
-cur.execute("SELECT * FROM dim_therapy ORDER BY label LIMIT 5")
+cur.execute("SELECT * FROM dim_therapy ORDER BY label_norm LIMIT 5")
 
 for r in cur.fetchall():
     print(r)
