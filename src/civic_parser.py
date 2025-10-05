@@ -281,6 +281,7 @@ def parse_resistance_entries(
                 "therapies": set((normalize(t["name"]), t["ncit_id"]) for t in therapies_list),
                 "resistant_to": set(n for (n, _nid) in ((normalize(t["name"]), t["ncit_id"]) for t in therapies_list)),
                 "evidence_count": 1,
+                "gene_symbol": mp_name_raw,
                 "descriptions": [ (item.get("description") or "").strip() ] if item.get("description") else [],
                 "disease_name": disease_name,
                 "disease_doid": disease_doid,
@@ -312,6 +313,8 @@ def parse_resistance_entries(
             # disease meta
             r["disease_name"] = disease_name  # keep latest label
             r["disease_aliases"].update(disease.get("diseaseAliases") or [])
+            
+            r["gene_symbol"] = mp_name_raw
 
             # descriptions
             if item.get("description"):

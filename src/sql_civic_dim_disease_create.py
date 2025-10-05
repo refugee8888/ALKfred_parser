@@ -30,6 +30,7 @@ try:
     """)
 except sqlite3.Error as e:
     logger.debug("Following errors happend while trying to create the database: %r", e)
+    raise e.sqlite_errorcode or e.sqlite_errorname
 
 logger.info("Table dim_disease created or already exists in %s", DB_PATH)
 
@@ -71,5 +72,6 @@ logger.info("dim_disease loaded with %d rows", count)
 cur.execute("SELECT * FROM dim_disease ORDER BY label_display LIMIT 200")
 for r in cur.fetchall():
     print(r)
+
 
 conn.close()

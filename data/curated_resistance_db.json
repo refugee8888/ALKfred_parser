@@ -46,6 +46,7 @@
       "crizotinib"
     ],
     "evidence_count": 3,
+    "gene_symbol": "EML4::ALK Fusion AND ALK T1151dup",
     "descriptions": [
       "A lung adenocarcinoma patient responded to crizotinib treatment for 12 months, after which the cancer relapsed and sequencing of the ALK tyrosine kinase domain revealed a 1151insT mutation. This mutation was not found in the pre-crizotinib biopsy. EML4-ALK T1151insT was expressed In Ba/F3 cells and an IC50 of 431.8 nM was obtained, which was 16 times higher than for EML4-ALK wild-type, indicating strong crizotinib resistance. EML4-ALK containing H3122 NSCLC cells were incubated in increasing levels of crizotinib inducing resistance. The resulting cell line H3122 CR2 had IC50 10x greater to crizotinib than parental H3122, and was found to contain 1151 insT mutation. In western blots, pALK levels in H3122 CR2 cells remained apparent under 1000 nM crizotinib, whereas pALK signal was ablated under these conditions in parental H3122 cells.",
       "Ba/F3 cells expressing EML4-ALK with 1151 Tins treated with alectinib had an IC50 of 165.7 nM, 16x higher than those expressing EML4-ALK wildtype variant 1. EML4-ALK variant 1 expressing H3122 NSCLC cell line was cultured in increasing levels of crizotinib to produce crizotinib resistant cell lines CR1, CR2 and CR3. H3122 CR2 was found to contain an 1151 insT ALK mutation and increased EML4-ALK levels. The H3122 CR2 cell line survival IC50 value for alectinib treatment was approximately 20x higher than that for H3122 cells.",
@@ -95,6 +96,7 @@
       "crizotinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK L1152R",
     "descriptions": [
       "Case-report of a patient with an acquired EML4::ALK L1152R mutation and resistance to crizotinib treatment. The L1152R variant was not present in the pre-crizotinib sample. A cell line model also showed resistance against ALK inhibition."
     ],
@@ -142,6 +144,7 @@
       "crizotinib"
     ],
     "evidence_count": 2,
+    "gene_symbol": "EML4::ALK Fusion AND ALK G1269A",
     "descriptions": [
       "2 out of 7 patients with an acquired resistance to crizotinib had a G1269A mutation. One of these patients also harbored a L1196M mutation. In vitro follow-up showed reduced crizotinib-induced ALK dephosphorylation (293T) and apoptosis (Ba/F3) when EML4-ALK G1269A overexpression was compared to EML4-ALK overexpression in these cell lines.",
       "This study analyzed patients with non small cell lung cancer (NSCLC) who were positive for EML4-ALK fusions (ALK+) and progressed on crizotinib monotherapy. One ALK+ patient harbored the common E6;A20 fusion with ALK G1269A co-mutation in post-crizotinib progression biopsies. The presence of ALK G1269A pre-crizotinib could not be evaluated. This patient was a 21 year old non-smoking male with adenocarcinoma, wt for KRAS and EGFR, negative for ALK copy number gain, who experienced crizotinib as a 2nd line therapy. The patient's best response on crizotinib was stable disease (377 days on treatment). In vitro, Ba/F3 cell line expressing EML4-ALK fusion (E6a;A20, a known sensitizing alteration) and ALK G1269A co-mutation demonstrated resistance to crizotinib treatment (341 nmol/L vs. 22 nmol/L) compared to Ba/F3 cells expressing EML4-ALK fusion. Resistance was determined by assessing cell viability and colony formation. Levels of phosphorylation of ALK, ERK, STAT3, and AKT were higher in ALK+ G1269A mutant cells than ALK+ controls, by western blot. The authors note that ALK G1269A likely induces resistance by preventing crizotinib from accessing its binding pocket in the ALK kinase domain."
@@ -197,6 +200,7 @@
       "lorlatinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK L1198F AND ALK C1156Y",
     "descriptions": [
       "Case report of a patient with metastatic ALK-rearranged NSCLC. After developing resistance to first and second line ALK inhibitors mediated by a C1156Y mutation, the patient had a partial response with the third generation ALK-inhibitor lorlatinib. The patient progressed on lorlatinib after 8 months, at which point whole exome sequencing revealed an EML4-ALK C1156Y\u2013L1198F double mutation. In vitro, the double mutation was resistant to lorlatinib but sensitive to crizotinib. The patient was started on crizotinib again and had a clinical response that lasted for 6 months."
     ],
@@ -235,6 +239,7 @@
       "crizotinib"
     ],
     "evidence_count": 3,
+    "gene_symbol": "ALK I1171",
     "descriptions": [
       "A 51 year old female never-smoker was diagnosed with stage IV NSCLC with liver metastases. ALK rearrangement was verified via FISH. She was treated with crizotinib at 250 mg twice daily but discontinued due to adverse response. She then started alectinib at 600 mg twice daily with partial response, but new liver metastases then formed at 5 months. Liver tumor biopsy was performed and was estimated to be 15% tumor tissue. Next-generation sequencing discovered an ALK I1171N mutation. The tumor was not sequenced prior to alectinib resistance.",
       "The I1171T mutation in ALK fusions was found in a NSCLC patient shown positive for ALK rearrangement via break apart FISH assay, who progressed after 8 months of crizotinib, and then progressed again after 4 months of alectinib. The MGH056-1 cell line was derived from this patient, and this cell line was resistant to alectinib. Sequencing of MGH056-1 cells revealed the I1171T mutation in ALK. In cell culture studies Ba/F3 cells with EML4-ALK I1171T required more that 10x the concentration of alectinib to significantly reduce viability that was required for EML4-ALK wild-type expressing cells. Computer simulation studies indicated that the I1171T mutation interfered with alectinib binding at the ALK active site.",
@@ -284,6 +289,7 @@
       "crizotinib"
     ],
     "evidence_count": 3,
+    "gene_symbol": "EML4::ALK Fusion AND ALK Amplification",
     "descriptions": [
       "Amplification of wild-type EML4-ALK in the non-small cell lung carcinoma cell line, H3122, caused resistance to crizotinib.",
       "One patient with ALK-rearranged non-small cell lung cancer and an acquired resistance to crizotinib showed new ALK amplification (4.1 fold increase compared to pre-crizotinib specimen as measured by FISH) and harbored an EGFR L858R mutation.",
@@ -343,6 +349,7 @@
       "luminespib"
     ],
     "evidence_count": 2,
+    "gene_symbol": "EML4::ALK Fusion AND ALK C1156Y",
     "descriptions": [
       "EML4-ALK variant 3 containing NSCLC cell line H2228 xenografts in SCID beige mice were treated with increasing doses of crizotinib up to 100 mg/kg per day by oral gavage. At approximately 40 days tumors progressed. 80 progressed tumors were tested for ALK mutations, and 6 mutant ALK variants were found. Two of the mutations were at ALK C1156Y. In Ba/F3 cells, EML4-ALK variant 3 with C1156Y was introduced and tested for crizotinib sensitivity. Survival IC50 value of 177 nM was reported, which is 9.3 times the IC50 reported for crizotinib in EML4-ALK wild-type Ba/F3 cells.",
       "In this case report, a patient with metastatic, ALK-rearranged NSCLC with C1156Y mutation had tumor progression under sequential treatment with first crizotinib, then ceritinib and finally AUY922. Subsequent chemotherapy (carboplatin\u2013pemetrexed) was administered and the patient had a response for 6 months before progression. Exome sequencing revealed the C1156Y mutation was present in <7% of the pretreatment tumor and in ~50% of the crizotinib tumor prior to ceritinib therapy."
@@ -391,6 +398,7 @@
       "crizotinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK F1245C",
     "descriptions": [
       "A 52 year old with a non-smoking history was diagnosed with stage IV NSCLC-adenocarcinoma and treated with chemotherapy.  Upon disease progression, the initial diagnostic biopsy tested positive for ALK-rearrangement using break apart FISH, but the ALK fusion was not sequenced for mutations. Break-apart signal was positive in 66% of tumor cells. Crizotinib was initiated and a sustained near complete response for 27 months was observed, after which an FDG-avid cervical lymph node appeared along with pleural effusions and pleural nodules. A pleural nodule was biopsied and profiled using hybrid-capture next generation sequencing, and revealed EML4-ALK variant 3 with F1245C mutation at mutant allele frequency of 2% and tumor purity of 13%. Crizotinib was maintained for 8 additional months due to low tumor burden and slow progression."
     ],
@@ -443,6 +451,7 @@
       "crizotinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "ALK I1171N AND HIP1::ALK Fusion",
     "descriptions": [
       "Case study describes a female (age 58) never-smoker presenting with stage IV NSCLC with an ALK rearrangement (confirmed by fish). Patient was treated with crizotinib (partial response) and alectinib (complete response). Liver metastasis was noted after 12 months with sequencing revealing a HIP1-ALK fusion with a I1171N variant."
     ],
@@ -495,6 +504,7 @@
       "crizotinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK I1171S",
     "descriptions": [
       "Case study describes a caucasian male (age 38) never smoker presenting with stage IV non-small cell lung cancer with an ALK rearrangement. Patient was given crizotinib and exhibited a partial response after 5 months with brain metastasis occurring at 21 months. Patient then received alectinib and exhibited partial response however liver metastasis presented after 12 months on alectinib. Sequencing of this liver metastasis revealed an EML4-ALK fusion with an I1171S variant at a variant frequency of 36% (tumor purity estimated as 70%)."
     ],
@@ -547,6 +557,7 @@
       "crizotinib"
     ],
     "evidence_count": 2,
+    "gene_symbol": "EML4::ALK Fusion AND ALK G1202R",
     "descriptions": [
       "Ba/F3 cells expressing EML4-ALK variant 1 with ALK G1202R mutation were assessed for ceritinib sensitivity. Crizotinib was shown to confer significantly more potency than ceritinib (43-fold decrease in IC50). EML4-ALK variant 3 NSCLC cell line H2228 was used in SCID mouse xenografts which were exposed to increasing crizotinib up to 100 mg/kg. Within 40 days tumors progressed, and progressed tumors were assayed for ALK mutation. Of 80 tumors, 6 had ALK mutation and 3 of these were G1202R. Treatment of crizotinib progressed tumors with ceritinib resulted in tumor growth which did not differ appreciably from crizotinib or vehicle treatment of these tumors.",
       "The G1202R mutation in the EML4-ALK fusion was found to confer resistance to crizotinib in Ba/F3 cells."
@@ -595,6 +606,7 @@
       "crizotinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK L1196M",
     "descriptions": [
       "The L1196M mutation in the EML4-ALK fusion was found to confer resistance to crizotinib in Ba/F3 cells."
     ],
@@ -642,6 +654,7 @@
       "crizotinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK S1206Y",
     "descriptions": [
       "The S1206Y mutation in the EML4-ALK fusion was found to confer resistance to crizotinib in Ba/F3 cells."
     ],
@@ -675,6 +688,7 @@
       "crizotinib"
     ],
     "evidence_count": 1,
+    "gene_symbol": "ALK F1174L",
     "descriptions": [
       "Ba/F3 cells expressing the EML4-ALK fusion containing an F1174L mutation were more resistant to crizotinib treatment than Ba/F3 cells expressing EML4-ALK without this mutation."
     ],
@@ -727,6 +741,7 @@
       "crizotinib"
     ],
     "evidence_count": 2,
+    "gene_symbol": "EML4::ALK Fusion AND ALK V1180L",
     "descriptions": [
       "The EML4 ALK variant 1 containing NSCLC cell line H3122 is highly sensitive to alectinib, and an alectinib resistant derivative cell line H3122 CHR-A1 was generated by incubation of H3122 in increasing levels of alectinib culminating in 1 micro-molar, over a course of 7 months. The ALK kinase domain mutation V1180L was found in these cells, and Ba/F3 cells expressing EML4 ALK  V1180L were highly resistant to alectinib. Simulations indicated that the V1180L mutation interfered with alectinib binding. The V1180L mutation was found to be more resistant to alectinib than the I1171T mutation found in an ALK-positive NSCLC patient who developed alectinib resistance on lower dose alectinib  (300mg twice daily).",
       "The alectinib resistant cell line H3122 CHR-A1 was generated by culturing of the EML4-ALK (variant 1) containing cell line H3122 with increasing levels of alectinib. Molecular characterization of H3122 CHR-A1 revealed a V1180L ALK kinase domain mutation. The H3122 CHR-A1 cell line required approximately 10 fold increase in crizotinib concentration to induce similar levels of cell death to H3122. Ectopic expression of EML4-ALK V1180L rendered Ba/F3 cells moderately less susceptible to crizotinib than ectopic EML4-ALK."
