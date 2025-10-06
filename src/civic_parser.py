@@ -204,12 +204,19 @@ def parse_resistance_entries(
         # Required blocks
         # --------------------
         mp = item.get("molecularProfile") or {}
+        
         disease = item.get("disease") or {}
         therapies_raw = item.get("therapies") or []
 
-        mp_name_raw = (mp.get("name") or "").strip()
-        disease_name = (disease.get("name") or "").strip()
+        mp_name_raw = str(mp.get("name") or "").strip()
+        mp_id = mp.get("id", "")
+        disease_name = str(disease.get("name") or "").strip()
         disease_doid = disease.get("doid")
+
+
+        eid = str(item.get("id")or "").strip()
+        status = str(item.get("status")  or "").strip().upper()
+        source = item.get("source") or []
 
         if not mp_name_raw:
             logger.debug("Skipping item with empty molecularProfile.name")
@@ -218,13 +225,13 @@ def parse_resistance_entries(
             logger.debug("Skipping item without disease.doid (name=%r)", disease_name)
             continue
 
-        # --------------------
-        # Filters
-        # --------------------
-        sig = (item.get("significance") or "").strip().upper()
-        edir = (item.get("evidenceDirection") or "").strip().upper()
-        if sig != "RESISTANCE" or edir != "SUPPORTS":
-            continue
+       
+        significance = (item.get("significance") or "").strip().upper()
+        direction = (item.get("evidenceDirection") or "").strip().upper()
+        evidence_level = (item.get("evidenceLevel") or "").strip().upper()
+        evidence_type = (item.get("evidenceType") or "").strip().upper()
+        evidence_rating = item.get("evidenceRating")
+       
         if not therapies_raw:
             logger.debug("Skipping item with no therapies for profile %r", mp_name_raw)
             continue
@@ -272,11 +279,21 @@ def parse_resistance_entries(
             key=lambda x: (x["name"].lower(), x["ncit_id"] or ""),
         )
         rule_key = _composite_key(disease_doid, profile_norm)
+       
         # Prepare current entry
         if rule_key not in rules:
             rules[rule_key] = {
                 "canonical_id": canonical_id,
                 "components": list(components),  # shallow copy ok
+                "eid": eid,
+                "mp_id": mp_id,
+                "status": status,
+                "source": source,
+                "significance": significance,
+                "direction": direction,
+                "evidence_level": evidence_level,
+                "evidence_type": evidence_type,
+                "evidence_rating": evidence_rating,
                 "aliases": set(generate_aliases(profile_norm, components)),
                 "therapies": set((normalize(t["name"]), t["ncit_id"]) for t in therapies_list),
                 "resistant_to": set(n for (n, _nid) in ((normalize(t["name"]), t["ncit_id"]) for t in therapies_list)),
@@ -286,10 +303,12 @@ def parse_resistance_entries(
                 "disease_name": disease_name,
                 "disease_doid": disease_doid,
                 "disease_aliases": set(disease.get("diseaseAliases") or []),
+                "eids": set()
             }
             logger.debug("NEW rule: %s (%s)", key, mp_name_raw)
         else:
             r = rules[rule_key]
+            
             r["evidence_count"] += 1
 
             # canonical_id: keep existing or take new if previously None
@@ -302,6 +321,18 @@ def parse_resistance_entries(
                 tup = (c.get("variant"), c.get("ca_id"))
                 if tup not in existing:
                     r["components"].append(c)
+            # # evidence_metadata by eid
+            r["eids"].add(eid)
+            # mp_id,status,source,significance,direction,evidence_level,evidence_type,evidence_rating
+            # r["eid"] = eid
+            # r["mp_id"] = mp_id
+            # r["status"] = status
+            # r["source"] = source
+            # r["significance"] = significance
+            # r["direction"] = direction
+            # r["evidence_level"] = evidence_level
+            # r["evidence_type"] = evidence_type
+            # r["evidence_rating"] = evidence_rating            
 
             # merge aliases
             r["aliases"].update(generate_aliases(profile_norm, components))
@@ -338,6 +369,8 @@ def parse_resistance_entries(
 
         # backward-compat `resistant_to` as list of names
         r["resistant_to"] = sorted(set(r["resistant_to"]))
+
+        r["eids"] = sorted(r["eids"])
 
         # ensure disease_name is stripped
         r["disease_name"] = (r.get("disease_name") or "").strip()

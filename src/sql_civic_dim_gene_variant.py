@@ -50,9 +50,10 @@ for rec in data.values():
         gene_symbol = comp.get("gene_symbol", "")
         label_display = comp.get("variant","")
         label_norm = normalize_label(label_display)
+        aliases_json = json.dumps(rec.get("aliases"))
     
     
-        rows_gene_variant.append((variant_id, civic_ca_id, None, gene_symbol, label_display, label_norm, None, None, "[]", None))
+        rows_gene_variant.append((variant_id, civic_ca_id, None, gene_symbol, label_display, label_norm, None, None, aliases_json, None))
     
     
 

@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS evidence_fact (
     variant_id TEXT NOT NULL,
     doid TEXT NOT NULL,
     ncit_id TEXT,
-    source TEXT,
+    source_json TEXT,
     direction TEXT,
     significance TEXT,
     evidence_level TEXT,
@@ -66,7 +66,7 @@ for rec in data.values():
 # Bulk insert
 
 cur.executemany(
-    "INSERT OR IGNORE INTO dim_gene_variant (variant_id, hgnc_id, gene_symbol, variant_label, hgvs_p, hgvs_c, aliases_json, confidence) VALUES (?,?,?,?,?,?,?,?)",
+    "INSERT OR IGNORE INTO fact_evidence(fact_id,eid,mp_id,variant_id,doid,ncit_id,source,direction,significance,evidence_level,evidence_type,rating,status,pmids_json,pub_year,description,created_at_utc,updated_at_utc,run_id)) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
     rows_gene_variant
 )
 conn.commit()

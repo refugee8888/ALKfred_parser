@@ -43,11 +43,14 @@ with open(JSON_PATH, "r", encoding="utf-8") as f:
 
 # Collect rows
 rows_disease = []
+
 for rec in data.values():                       # iterate values, not keys
     doid = rec.get("disease_doid")
     label_display = rec.get("disease_name")
     label_norm = normalize_label(label_display)
-    rows_disease.append((doid, label_display, label_norm , "[]", None, None, "[]"))
+    
+    synonyms_json = json.dumps(rec.get("disease_aliases"))
+    rows_disease.append((doid, label_display, label_norm , synonyms_json, None, None, "[]"))
     
     
 

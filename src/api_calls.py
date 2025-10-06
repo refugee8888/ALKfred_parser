@@ -25,12 +25,17 @@ def fetch_civic_all_evidence_items():
           }
           nodes {
             id
+            status
             significance
+            evidenceType
+            evidenceLevel
+            evidenceRating
             evidenceDirection
             description
-            molecularProfile { name }
+            molecularProfile { id name }
             therapies { name ncitId }
             disease {doid name diseaseAliases }
+            source { ascoAbstractId citationId pmcId sourceType title }
           }
         }
       }
