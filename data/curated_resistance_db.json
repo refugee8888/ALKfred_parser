@@ -15,7 +15,8 @@
       "citationId": "20979469",
       "pmcId": "PMC3014291",
       "sourceType": "PUBMED",
-      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer."
+      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
+      "publicationYear": 2010
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",
@@ -139,7 +140,8 @@
       "citationId": "24670165",
       "pmcId": "PMC4079055",
       "sourceType": "PUBMED",
-      "title": "Ceritinib in ALK-rearranged non-small-cell lung cancer."
+      "title": "Ceritinib in ALK-rearranged non-small-cell lung cancer.",
+      "publicationYear": 2014
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",
@@ -193,7 +195,8 @@
       "citationId": "22277784",
       "pmcId": "PMC3385512",
       "sourceType": "PUBMED",
-      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers."
+      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
+      "publicationYear": 2012
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -279,7 +282,8 @@
       "citationId": "21791641",
       "pmcId": "PMC3278914",
       "sourceType": "PUBMED",
-      "title": "A novel ALK secondary mutation and EGFR signaling cause resistance to ALK kinase inhibitors."
+      "title": "A novel ALK secondary mutation and EGFR signaling cause resistance to ALK kinase inhibitors.",
+      "publicationYear": 2011
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -343,7 +347,8 @@
       "citationId": "22235099",
       "pmcId": "PMC3311875",
       "sourceType": "PUBMED",
-      "title": "Mechanisms of resistance to crizotinib in patients with ALK gene rearranged non-small cell lung cancer."
+      "title": "Mechanisms of resistance to crizotinib in patients with ALK gene rearranged non-small cell lung cancer.",
+      "publicationYear": 2012
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -414,7 +419,8 @@
       "citationId": "26698910",
       "pmcId": "PMC4773904",
       "sourceType": "PUBMED",
-      "title": "Resensitization to Crizotinib by the Lorlatinib ALK Resistance Mutation L1198F."
+      "title": "Resensitization to Crizotinib by the Lorlatinib ALK Resistance Mutation L1198F.",
+      "publicationYear": 2016
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -484,7 +490,8 @@
       "citationId": "20979469",
       "pmcId": "PMC3014291",
       "sourceType": "PUBMED",
-      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer."
+      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
+      "publicationYear": 2010
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",
@@ -573,7 +580,8 @@
       "citationId": "20979469",
       "pmcId": "PMC3014291",
       "sourceType": "PUBMED",
-      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer."
+      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
+      "publicationYear": 2010
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",
@@ -658,7 +666,8 @@
       "citationId": "25228534",
       "pmcId": "PMC4233168",
       "sourceType": "PUBMED",
-      "title": "Two novel ALK mutations mediate acquired resistance to the next-generation ALK inhibitor alectinib."
+      "title": "Two novel ALK mutations mediate acquired resistance to the next-generation ALK inhibitor alectinib.",
+      "publicationYear": 2014
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -740,7 +749,8 @@
       "citationId": "22235099",
       "pmcId": "PMC3311875",
       "sourceType": "PUBMED",
-      "title": "Mechanisms of resistance to crizotinib in patients with ALK gene rearranged non-small cell lung cancer."
+      "title": "Mechanisms of resistance to crizotinib in patients with ALK gene rearranged non-small cell lung cancer.",
+      "publicationYear": 2012
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -809,7 +819,8 @@
       "citationId": "26698910",
       "pmcId": "PMC4773904",
       "sourceType": "PUBMED",
-      "title": "Resensitization to Crizotinib by the Lorlatinib ALK Resistance Mutation L1198F."
+      "title": "Resensitization to Crizotinib by the Lorlatinib ALK Resistance Mutation L1198F.",
+      "publicationYear": 2016
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -893,7 +904,8 @@
       "citationId": "26775591",
       "pmcId": null,
       "sourceType": "PUBMED",
-      "title": "A novel acquired ALK F1245C mutation confers resistance to crizotinib in ALK-positive NSCLC but is sensitive to ceritinib."
+      "title": "A novel acquired ALK F1245C mutation confers resistance to crizotinib in ALK-positive NSCLC but is sensitive to ceritinib.",
+      "publicationYear": 2016
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",
@@ -961,7 +973,8 @@
       "citationId": "20979469",
       "pmcId": "PMC3014291",
       "sourceType": "PUBMED",
-      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer."
+      "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
+      "publicationYear": 2010
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",
@@ -1031,7 +1044,8 @@
       "citationId": "25393796",
       "pmcId": null,
       "sourceType": "PUBMED",
-      "title": "Identification of a novel HIP1-ALK fusion variant in Non-Small-Cell Lung Cancer (NSCLC) and discovery of ALK I1171 (I1171N/S) mutations in two ALK-rearranged NSCLC patients with resistance to Alectinib."
+      "title": "Identification of a novel HIP1-ALK fusion variant in Non-Small-Cell Lung Cancer (NSCLC) and discovery of ALK I1171 (I1171N/S) mutations in two ALK-rearranged NSCLC patients with resistance to Alectinib.",
+      "publicationYear": 2014
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -1100,7 +1114,8 @@
       "citationId": "25393796",
       "pmcId": null,
       "sourceType": "PUBMED",
-      "title": "Identification of a novel HIP1-ALK fusion variant in Non-Small-Cell Lung Cancer (NSCLC) and discovery of ALK I1171 (I1171N/S) mutations in two ALK-rearranged NSCLC patients with resistance to Alectinib."
+      "title": "Identification of a novel HIP1-ALK fusion variant in Non-Small-Cell Lung Cancer (NSCLC) and discovery of ALK I1171 (I1171N/S) mutations in two ALK-rearranged NSCLC patients with resistance to Alectinib.",
+      "publicationYear": 2014
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -1169,7 +1184,8 @@
       "citationId": "22277784",
       "pmcId": "PMC3385512",
       "sourceType": "PUBMED",
-      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers."
+      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
+      "publicationYear": 2012
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -1248,7 +1264,8 @@
       "citationId": "22277784",
       "pmcId": "PMC3385512",
       "sourceType": "PUBMED",
-      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers."
+      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
+      "publicationYear": 2012
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -1327,7 +1344,8 @@
       "citationId": "22277784",
       "pmcId": "PMC3385512",
       "sourceType": "PUBMED",
-      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers."
+      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
+      "publicationYear": 2012
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -1387,7 +1405,8 @@
       "citationId": "21030459",
       "pmcId": "PMC3045808",
       "sourceType": "PUBMED",
-      "title": "The neuroblastoma-associated F1174L ALK mutation causes resistance to an ALK kinase inhibitor in ALK-translocated cancers."
+      "title": "The neuroblastoma-associated F1174L ALK mutation causes resistance to an ALK kinase inhibitor in ALK-translocated cancers.",
+      "publicationYear": 2010
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -1441,7 +1460,8 @@
       "citationId": "25228534",
       "pmcId": "PMC4233168",
       "sourceType": "PUBMED",
-      "title": "Two novel ALK mutations mediate acquired resistance to the next-generation ALK inhibitor alectinib."
+      "title": "Two novel ALK mutations mediate acquired resistance to the next-generation ALK inhibitor alectinib.",
+      "publicationYear": 2014
     },
     "significance": "RESISTANCE",
     "direction": "SUPPORTS",
@@ -1534,7 +1554,8 @@
       "citationId": "24675041",
       "pmcId": "PMC4068971",
       "sourceType": "PUBMED",
-      "title": "The ALK inhibitor ceritinib overcomes crizotinib resistance in non-small cell lung cancer."
+      "title": "The ALK inhibitor ceritinib overcomes crizotinib resistance in non-small cell lung cancer.",
+      "publicationYear": 2014
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",
@@ -1588,7 +1609,8 @@
       "citationId": "18927303",
       "pmcId": null,
       "sourceType": "PUBMED",
-      "title": "Multiplex reverse transcription-PCR screening for EML4-ALK fusion transcripts."
+      "title": "Multiplex reverse transcription-PCR screening for EML4-ALK fusion transcripts.",
+      "publicationYear": 2008
     },
     "significance": "SENSITIVITYRESPONSE",
     "direction": "SUPPORTS",

@@ -376,3 +376,4 @@ def parse_resistance_entries(
         r["disease_name"] = (r.get("disease_name") or "").strip()
 
     return rules
+

@@ -35,7 +35,7 @@ def fetch_civic_all_evidence_items():
             molecularProfile { id name }
             therapies { name ncitId }
             disease {doid name diseaseAliases }
-            source { ascoAbstractId citationId pmcId sourceType title }
+            source { ascoAbstractId citationId pmcId sourceType title publicationYear }
           }
         }
       }

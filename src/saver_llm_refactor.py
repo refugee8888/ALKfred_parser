@@ -130,6 +130,7 @@ if __name__ == "__main__":
         matched_diseases = get_matching_diseases(disease_prompt, all_items)
 
         filtered = []
+        
         for ei in all_items:
             if not ei or not isinstance(ei, dict):
                 continue
@@ -156,6 +157,9 @@ if __name__ == "__main__":
         rules = civic_parser.parse_resistance_entries(filtered, fetch_components=api_calls.fetch_civic_molecular_profile)
         save_to_json(rules)
         print(f"\u2705 Saved {len(rules)} entries to curated_resistance_db.json")
+
+        save_to_json(filtered,path="data/civic_raw_evidence_db.json" )
+        print(f"\u2705 Saved {len(filtered)} entries to civic_raw_evidence_db.json")
 
     except Exception as e:
         print(f"\u274C Fatal error: {e}", file=sys.stderr)
