@@ -42,13 +42,13 @@ for rec in data:
                         # iterate values, not keys
     eid= rec.get("id", None)
 
-    source_json = json.dumps(rec.get("source", ""))
-    direction = rec.get(("evidenceDirection") or None).strip()
-    significance = rec.get(("significance") or None).strip()
-    evidence_level = rec.get(("evidenceLevel") or None).strip()
-    evidence_type = rec.get(("evidenceType") or None).strip()
+    source_json = json.dumps(rec.get("source", {}))
+    direction = rec.get(("evidenceDirection") or "").strip()
+    significance = rec.get(("significance") or "").strip()
+    evidence_level = rec.get(("evidenceLevel") or "").strip()
+    evidence_type = rec.get(("evidenceType") or "").strip()
     rating = rec.get(("evidenceRating") or None)
-    status = rec.get(("status") or None).strip()
+    status = rec.get(("status") or "").strip()
 
     src = rec.get("source") or {}
     citation_id = src.get("citationId")

@@ -1,5 +1,4 @@
 import json
-from locale import normalize
 import logging
 import sqlite3
 from pathlib import Path
@@ -30,7 +29,7 @@ try:
     """)
 except sqlite3.Error as e:
     logger.debug("Following errors happend while trying to create the database: %r", e)
-    raise e.sqlite_errorcode or e.sqlite_errorname
+    raise e
     
 
 logger.info("Table dim_therapy created or already exists in %s", DB_PATH)

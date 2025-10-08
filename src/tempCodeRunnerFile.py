@@ -1,1 +1,1 @@
-cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_disease(label_norm);")
+logger.info("Table dim_therapy created or already exists in %s", DB_PATH)

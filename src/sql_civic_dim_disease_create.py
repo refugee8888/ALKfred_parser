@@ -30,7 +30,7 @@ try:
     """)
 except sqlite3.Error as e:
     logger.debug("Following errors happend while trying to create the database: %r", e)
-    raise e.sqlite_errorcode or e.sqlite_errorname
+    raise e
 
 logger.info("Table dim_disease created or already exists in %s", DB_PATH)
 
@@ -49,7 +49,7 @@ for rec in data.values():                       # iterate values, not keys
     label_display = rec.get("disease_name")
     label_norm = normalize_label(label_display)
     
-    synonyms_json = json.dumps(rec.get("disease_aliases"))
+    synonyms_json = json.dumps(rec.get("disease_aliases", []))
     rows_disease.append((doid, label_display, label_norm , synonyms_json, None, None, "[]"))
     
     
