@@ -6,6 +6,4 @@ numpy
 graphql-core   
 pytest
 mypy
-black
-jupyterlab
-pyyaml
+blac

@@ -1,20 +1,13 @@
 {
   "name": "ALKfred Dev",
-  "build": {
-    "dockerfile": "../Dockerfile",
-    "context": ".."
-  },
+  "build": { "context": ".", "dockerfile": "Dockerfile" },
+
+  // Mount the whole repo once; everything (src, data, .env) comes with it
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
   "workspaceFolder": "/app",
+
   "remoteUser": "appuser",
-
-  "containerEnv": {
-    "PYTHONPATH": "/app/src"
-  },
-
-  "mounts": [
-    "source=${localWorkspaceFolder}/data,target=/app/data,type=bind",
-    "source=${localWorkspaceFolder}/src/.env,target=/app/.env,type=bind,readonly"
-  ],
+  "containerEnv": { "PYTHONPATH": "/app/src" },
 
   "customizations": {
     "vscode": {

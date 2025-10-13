@@ -4,8 +4,12 @@ FROM python:3.12-slim
 # Faster, cleaner Python
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
+# Install system dependencies (git, etc.)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-# Workdir
+    # Workdir
 WORKDIR /app
 
 # Copy requirements first for layer caching
