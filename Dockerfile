@@ -14,10 +14,6 @@ COPY requirements.txt ./
 # Install deps (add build tools later only if a wheel fails)
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source
-COPY src ./src
-COPY utils.py models.py ./
-
 # Non-root user
 RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser
