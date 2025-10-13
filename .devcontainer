@@ -1,0 +1,25 @@
+{
+  "name": "ALKfred Dev",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/app",
+  "remoteUser": "appuser",
+  "mounts": [
+    "source=${localWorkspaceFolder}/data,target=/app/data,type=bind",
+    "source=${localWorkspaceFolder}/.env,target=/app/.env,type=bind,readonly"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+  "postCreateCommand": "python --version"
+}

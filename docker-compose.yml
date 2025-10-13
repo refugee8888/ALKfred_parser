@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  alkfred:
+    build: .
+    working_dir: /app/src
+    command: ["python", "saver_llm_refactor.py"]
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env:ro
+      - ./src:/app/src       # dev convenience; remove for prod-like runs
+      - ./utils.py:/app/utils.py
+      - ./models.py:/app/models.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    tty: true

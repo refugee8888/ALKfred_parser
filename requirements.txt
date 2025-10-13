@@ -22,3 +22,24 @@ mypy>=1.8.0
 # Jupyter support (for notebooks/testing logic)
 ipython>=8.10.0
 jupyterlab>=4.0.0
+
+# GraphQL
+graphql-core>=3.0.0
+
+# YAML
+pyyaml>=6.0.0
+
+# GraphQL client
+graphql-client>=3.0.0
+
+# Logging
+logging>=0.5.0
+
+# Argument parsing
+argparse>=1.0.0
+
+# Pathlib
+pathlib>=1.0.0
+
+# JSON
+json>=2.0.0

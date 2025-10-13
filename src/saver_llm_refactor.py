@@ -3,16 +3,42 @@ import json
 import sys
 import api_calls
 import civic_parser
-import openai
+
 from dotenv import load_dotenv
 import re
 from civic_parser import gene_in_molecular_profile
+import logging, argparse
+from openai import OpenAI
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
+args = parser.parse_args()
+
+logging.basicConfig(
+    level=logging.DEBUG if args.verbose else logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+
+
+
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    logging.error("Missing OPENAI_API_KEY in environment or .env file")
+    sys.exit(1)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
+
+
+
+
+
 
 def get_matching_diseases(user_input, evidence_items):
     disease_names = set()
+   
     for item in evidence_items:
         if not item or not isinstance(item, dict):
             continue
@@ -20,9 +46,14 @@ def get_matching_diseases(user_input, evidence_items):
         if not isinstance(disease, dict):
             disease = {}
         name = disease.get("name", "")
+        doid = disease.get("doid", "")
         aliases = disease.get("diseaseAliases", [])
         if name:
             disease_names.add(name.strip())
+        if doid:
+            disease_names.add(doid.strip())
+            
+
         for alias in aliases:
             if alias:
                 disease_names.add(alias.strip())
@@ -30,6 +61,7 @@ def get_matching_diseases(user_input, evidence_items):
     disease_names = sorted(disease_names)
     if not disease_names:
         return []
+    
 
     prompt = f"""
 You are a biomedical expert AI. Given this user query: '{user_input}'
@@ -46,17 +78,17 @@ Diseases:
     try:
         print("\U0001F9E0 Asking OpenAI to match diseases...")
         
-        response = openai.chat.completions.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You are a precise biomedical disease matcher."},
                 {"role": "user", "content": prompt},
             ],
             temperature=0.0,
-            max_completion_tokens=500
+            max_tokens=500
         )
-
         reply = response.choices[0].message.content
+
         
         if not reply:
             raise ValueError("⚠️ OpenAI returned no content in the response.")
@@ -87,15 +119,18 @@ def save_to_json(data, path="data/curated_resistance_db.json"):
         json.dump(data, f, indent=2)
 
 if __name__ == "__main__":
-    api_calls.ping_civic_api()
+    
     try:
-        symbol = input("Enter a gene symbol: ").strip().upper()
+        symbol = "ALK"
+        # input("Enter a gene symbol: ").strip().upper()
         disease_prompt = input("Enter a disease name or acronym (e.g., NSCLC): ").strip()
+        
 
         all_items = api_calls.fetch_civic_all_evidence_items()
         matched_diseases = get_matching_diseases(disease_prompt, all_items)
 
         filtered = []
+        
         for ei in all_items:
             if not ei or not isinstance(ei, dict):
                 continue
@@ -119,9 +154,12 @@ if __name__ == "__main__":
             print(f"🧮 Total evidence items matched: {len(filtered)}")
 
 
-        rules = civic_parser.parse_resistance_entries(filtered)
+        rules = civic_parser.parse_resistance_entries(filtered, fetch_components=api_calls.fetch_civic_molecular_profile)
         save_to_json(rules)
         print(f"\u2705 Saved {len(rules)} entries to curated_resistance_db.json")
+
+        save_to_json(filtered,path="data/civic_raw_evidence_db.json" )
+        print(f"\u2705 Saved {len(filtered)} entries to civic_raw_evidence_db.json")
 
     except Exception as e:
         print(f"\u274C Fatal error: {e}", file=sys.stderr)

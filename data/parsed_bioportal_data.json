@@ -1,0 +1,120 @@
+{
+  "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:427": {
+    "label": "ALK",
+    "synonyms": [],
+    "defs": []
+  },
+  "http://identifiers.org/hgnc/427": {
+    "label": "ALK",
+    "synonyms": [
+      "CD246",
+      "ALK1",
+      "ALK receptor tyrosine kinase"
+    ],
+    "defs": []
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C133707": {
+    "label": "ALK Negative",
+    "synonyms": [
+      "ALK Tyrosine Kinase Receptor Negative",
+      "ALK Receptor Tyrosine Kinase Negative",
+      "Anaplastic Lymphoma Kinase Negative",
+      "CD246 Antigen Negative",
+      "ALK Negative",
+      "Anaplastic Lymphoma Receptor Tyrosine Kinase Negative",
+      "Anaplastic Lymphoma Kinase Receptor Negative",
+      "CD246 Negative"
+    ],
+    "defs": [
+      "Indicates that expression of ALK has not been detected in a sample."
+    ]
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38184": {
+    "label": "ALK Gene",
+    "synonyms": [
+      "ALK Receptor Tyrosine Kinase Gene",
+      "ALK",
+      "ALK Gene"
+    ],
+    "defs": [
+      "This gene is involved in brain development and neuronal specificity."
+    ]
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38982": {
+    "label": "ALK Pathway",
+    "synonyms": [
+      "ALK Pathway",
+      "ALK in cardiac myocytes"
+    ],
+    "defs": []
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C141136": {
+    "label": "ALK Inhibitor",
+    "synonyms": [
+      "Anaplastic Lymphoma Kinase Inhibitor",
+      "ALK Inhibitor"
+    ],
+    "defs": [
+      "Any agent that inhibits the activity of the receptor tyrosine kinase anaplastic lymphoma kinase (ALK)."
+    ]
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C128831": {
+    "label": "ALK Positive",
+    "synonyms": [
+      "Anaplastic Lymphoma Kinase Positive",
+      "ALK-Positive",
+      "ALK Positive",
+      "ALK+"
+    ],
+    "defs": [
+      "Indicates that ALK expression has been detected in a sample."
+    ]
+  },
+  "http://purl.obolibrary.org/obo/MONDO_0022338": {
+    "label": "ALK+ histiocytosis",
+    "synonyms": [
+      "anaplastic lymphoma kinase positive histiocytosis"
+    ],
+    "defs": []
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C154805": {
+    "label": "ALK Protein Measurement",
+    "synonyms": [
+      "ALK Protein Measurement",
+      "ALK Protein",
+      "ALK Tyrosine Kinase Receptor Measurement",
+      "ALK"
+    ],
+    "defs": [
+      "The determination of the amount of ALK protein present in a sample."
+    ]
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C27032": {
+    "label": "ALK Tyrosine Kinase Receptor",
+    "synonyms": [
+      "Anaplastic Lymphoma Kinase",
+      "CD246 Antigen",
+      "EC 2.7.10.1",
+      "ALK Tyrosine Kinase Receptor",
+      "ALK"
+    ],
+    "defs": [
+      "ALK tyrosine kinase receptor (1620 aa, ~176 kDa) is encoded by the human ALK gene. This protein is involved in ligand binding, tyrosine phosphorylation and signal transduction."
+    ]
+  },
+  "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51738": {
+    "label": "ALK wt Allele",
+    "synonyms": [
+      "ALK Receptor Tyrosine Kinase wt Allele",
+      "Anaplastic Lymphoma Kinase (Ki-1) Gene",
+      "ALK wt Allele",
+      "Anaplastic Lymphoma Receptor Tyrosine Kinase Gene",
+      "ALK",
+      "CD246",
+      "NBLST3"
+    ],
+    "defs": [
+      "Human ALK wild-type allele is located within 2p23 and is approximately 729 kb in length. This allele, which encodes ALK tyrosine kinase receptor protein, plays a role in brain development and exerts its effects on specific neurons in the nervous system."
+    ]
+  }
+}
