@@ -1,29 +1,25 @@
-# Base: small, reliable
 FROM python:3.12-slim
 
-# Faster, cleaner Python
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
-# Install system dependencies (git, etc.)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    git \
-    && rm -rf /var/lib/apt/lists/*
 
-    # Workdir
 WORKDIR /app
 
-# Copy requirements first for layer caching
-COPY requirements.txt ./
+# System deps (git etc.)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+ && rm -rf /var/lib/apt/lists/*
 
-# Install deps (add build tools later only if a wheel fails)
+# Python deps
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Non-root user
-RUN useradd -m appuser && chown -R appuser:appuser /app
-USER appuser
+# App code
+COPY src ./src
 
-# Ensure data dir exists (will usually be a bind mount)
-RUN mkdir -p /app/data
+# Prepare non-root user, but DON'T switch users here
+RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
 
-# Default: do nothing dangerous; override via compose or devcontainer
-CMD ["python", "--version"]
+# Keep root as final image user so devcontainer "features" can build
+# (Dev Containers will run as appuser because we set remoteUser in devcontainer.json)
+CMD ["bash"]
