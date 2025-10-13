@@ -1,0 +1,25 @@
+# Python cruft
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite
+.venv/
+.env
+.env.*
+.ipynb_checkpoints
+dist/
+build/
+
+# OS/editor junk
+.DS_Store
+.vscode/
+.idea/
+
+# Data (mounted, never copied)
+data/*
+!data/README.md        # optional placeholder
+
+# Git
+.git
+.gitignore
