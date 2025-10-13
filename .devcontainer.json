@@ -24,5 +24,7 @@
     }
   },
 
-  "postCreateCommand": "python --version"
+  "postCreateCommand": ["python --version", 
+  "git config --global user.name 'refugee8888' && git config --global user.email 'paulostaci88@gmail.com'"
+]
 }
