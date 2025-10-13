@@ -1,45 +1,11 @@
-# Core runtime (Python 3.10+ recommended)
-python-dotenv>=1.0.0
-
-# Data structures and parsing
-pandas>=2.0.0
-numpy>=1.24.0
-
-# JSON and API handling
-requests>=2.31.0
-
-# AI/LLM integration
-openai>=1.0.0
-
-# Standard library modules (no installation needed)
-# - json, os, sys, re, itertools, time, pathlib
-
-# Dev tools (optional but useful)
-black>=24.0.0
-pytest>=8.0.0
-mypy>=1.8.0
-
-# Jupyter support (for notebooks/testing logic)
-ipython>=8.10.0
-jupyterlab>=4.0.0
-
-# GraphQL
-graphql-core>=3.0.0
-
-# YAML
-pyyaml>=6.0.0
-
-# GraphQL client
-graphql-client>=3.0.0
-
-# Logging
-logging>=0.5.0
-
-# Argument parsing
-argparse>=1.0.0
-
-# Pathlib
-pathlib>=1.0.0
-
-# JSON
-json>=2.0.0
+python-dotenv
+requests
+openai
+pandas
+numpy
+graphql-core   
+pytest
+mypy
+black
+jupyterlab
+pyyaml
