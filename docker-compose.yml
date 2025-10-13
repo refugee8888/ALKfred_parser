@@ -1,15 +1,16 @@
-version: "3.9"
+name: alkfred
+
 services:
   alkfred:
     build: .
     working_dir: /app/src
-    command: ["python", "saver_llm_refactor.py"]
+    command: ["bash"]   # keeps a shell for exec; you can override per-run
     volumes:
       - ./data:/app/data
-      - ./.env:/app/.env:ro
-      - ./src:/app/src       # dev convenience; remove for prod-like runs
-      - ./utils.py:/app/utils.py
-      - ./models.py:/app/models.py
+      - ./src:/app/src
+      # choose ONE of these depending on where your .env is:
+      # - ./.env:/app/.env:ro
+      - ./src/.env:/app/.env:ro
     environment:
-      - PYTHONUNBUFFERED=1
-    tty: true
+      PYTHONUNBUFFERED: "1"
+      PYTHONPATH: /app/src

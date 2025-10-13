@@ -125,16 +125,79 @@
     ],
     "therapies": [
       {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      },
+      {
         "name": "crizotinib",
         "ncit_id": "C74061"
       }
     ],
     "resistant_to": [
+      "ceritinib",
       "crizotinib"
     ],
-    "category": "driver",
+    "category": "resistant",
     "profiles": [
       "DOID:3908||eml4-alk fusion and alk f1245c"
+    ]
+  },
+  {
+    "name": "ALK Fusion (unspecified partner)",
+    "canonical_id": null,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "ALK G1269A",
+      "Fusion (unspecified partner) ALK",
+      "G1269A ALK",
+      "alk fusion (unspecified partner)",
+      "alk g1269a",
+      "alk g1269a and v-alk fusion",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      },
+      {
+        "name": "brigatinib",
+        "ncit_id": "C98831"
+      },
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      },
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      },
+      {
+        "name": "lorlatinib",
+        "ncit_id": "C113655"
+      },
+      {
+        "name": "pemetrexed",
+        "ncit_id": "C61614"
+      },
+      {
+        "name": "retaspimycin hydrochloride",
+        "ncit_id": "C48401"
+      }
+    ],
+    "resistant_to": [
+      "alectinib",
+      "brigatinib",
+      "ceritinib",
+      "crizotinib",
+      "lorlatinib",
+      "pemetrexed",
+      "retaspimycin hydrochloride"
+    ],
+    "category": "resistant",
+    "profiles": [
+      "DOID:3908||alk g1269a and v-alk fusion",
+      "DOID:3908||v-alk fusion"
     ]
   },
   {
@@ -163,11 +226,16 @@
       {
         "name": "crizotinib",
         "ncit_id": "C74061"
+      },
+      {
+        "name": "tanespimycin",
+        "ncit_id": "C37899"
       }
     ],
     "resistant_to": [
       "ceritinib",
-      "crizotinib"
+      "crizotinib",
+      "tanespimycin"
     ],
     "category": "resistant",
     "profiles": [
@@ -178,6 +246,7 @@
     "name": "ALK G1269A",
     "canonical_id": "CA16602590",
     "aliases": [
+      "ALK Fusion (unspecified partner)",
       "ALK Fusion EML4",
       "ALK G1269A",
       "ALK-EML4",
@@ -187,22 +256,31 @@
       "EML4-ALK",
       "EML4-ALK fusion",
       "EML4::ALK",
+      "Fusion (unspecified partner) ALK",
       "G1269A ALK",
+      "alk fusion (unspecified partner)",
       "alk g1269a",
+      "alk g1269a and v-alk fusion",
       "eml4-alk fusion",
       "eml4-alk fusion and alk g1269a"
     ],
     "therapies": [
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      },
       {
         "name": "crizotinib",
         "ncit_id": "C74061"
       }
     ],
     "resistant_to": [
+      "ceritinib",
       "crizotinib"
     ],
-    "category": "driver",
+    "category": "resistant",
     "profiles": [
+      "DOID:3908||alk g1269a and v-alk fusion",
       "DOID:3908||eml4-alk fusion and alk g1269a"
     ]
   },
@@ -220,12 +298,22 @@
         "ncit_id": "C101790"
       },
       {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      },
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      },
+      {
         "name": "crizotinib",
         "ncit_id": "C74061"
       }
     ],
     "resistant_to": [
       "alectinib",
+      "alk inhibitor tae684",
+      "ceritinib",
       "crizotinib"
     ],
     "category": "resistant",
@@ -359,14 +447,24 @@
     ],
     "therapies": [
       {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      },
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      },
+      {
         "name": "crizotinib",
         "ncit_id": "C74061"
       }
     ],
     "resistant_to": [
+      "alectinib",
+      "ceritinib",
       "crizotinib"
     ],
-    "category": "driver",
+    "category": "resistant",
     "profiles": [
       "DOID:3908||eml4-alk fusion and alk l1196m"
     ]
@@ -394,16 +492,43 @@
     ],
     "therapies": [
       {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      },
+      {
         "name": "lorlatinib",
         "ncit_id": "C113655"
       }
     ],
     "resistant_to": [
+      "crizotinib",
       "lorlatinib"
     ],
     "category": "resistant",
     "profiles": [
       "DOID:3908||eml4-alk fusion and alk l1198f and alk c1156y"
+    ]
+  },
+  {
+    "name": "ALK Mutation",
+    "canonical_id": null,
+    "aliases": [
+      "ALK Mutation",
+      "Mutation ALK",
+      "alk mutation"
+    ],
+    "therapies": [
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      }
+    ],
+    "resistant_to": [
+      "ceritinib"
+    ],
+    "category": "resistant",
+    "profiles": [
+      "DOID:3908||alk mutation"
     ]
   },
   {
@@ -468,12 +593,17 @@
       {
         "name": "crizotinib",
         "ncit_id": "C74061"
+      },
+      {
+        "name": "tanespimycin",
+        "ncit_id": "C37899"
       }
     ],
     "resistant_to": [
       "alectinib",
       "alk inhibitor tae684",
-      "crizotinib"
+      "crizotinib",
+      "tanespimycin"
     ],
     "category": "resistant",
     "profiles": [
@@ -504,17 +634,141 @@
         "ncit_id": "C101790"
       },
       {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      },
+      {
+        "name": "brigatinib",
+        "ncit_id": "C98831"
+      },
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      },
+      {
         "name": "crizotinib",
         "ncit_id": "C74061"
       }
     ],
     "resistant_to": [
       "alectinib",
+      "alk inhibitor tae684",
+      "brigatinib",
+      "ceritinib",
       "crizotinib"
     ],
     "category": "resistant",
     "profiles": [
       "DOID:3908||eml4-alk fusion and alk v1180l"
+    ]
+  },
+  {
+    "name": "EML4::ALK e20::e20",
+    "canonical_id": null,
+    "aliases": [
+      "ALK e20 e20 EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK e20 e20",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "eml4-alk e20-e20"
+    ],
+    "therapies": [
+      {
+        "name": "alvespimycin",
+        "ncit_id": "C38142"
+      },
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "resistant_to": [
+      "alvespimycin",
+      "crizotinib"
+    ],
+    "category": "driver",
+    "profiles": [
+      "DOID:3908||eml4-alk e20-e20"
+    ]
+  },
+  {
+    "name": "EML4::ALK e2::e20",
+    "canonical_id": null,
+    "aliases": [
+      "ALK e2 e20 EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK e2 e20",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "eml4-alk e2-e20"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "resistant_to": [
+      "crizotinib"
+    ],
+    "category": "driver",
+    "profiles": [
+      "DOID:3908||eml4-alk e2-e20"
+    ]
+  },
+  {
+    "name": "EML4::ALK e6::e20",
+    "canonical_id": null,
+    "aliases": [
+      "ALK e6 e20 EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK e6 e20",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "eml4-alk e6-e20"
+    ],
+    "therapies": [
+      {
+        "name": "2,4-pyrimidinediamine",
+        "ncit_id": null
+      },
+      {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      },
+      {
+        "name": "alvespimycin",
+        "ncit_id": "C38142"
+      },
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      },
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "resistant_to": [
+      "2,4-pyrimidinediamine",
+      "alk inhibitor tae684",
+      "alvespimycin",
+      "ceritinib",
+      "crizotinib"
+    ],
+    "category": "resistant",
+    "profiles": [
+      "DOID:3908||eml4-alk e6-e20"
     ]
   },
   {
@@ -589,6 +843,14 @@
         "ncit_id": "C171615"
       },
       {
+        "name": "alvespimycin",
+        "ncit_id": "C38142"
+      },
+      {
+        "name": "brigatinib",
+        "ncit_id": "C98831"
+      },
+      {
         "name": "ceritinib",
         "ncit_id": "C115112"
       },
@@ -603,18 +865,36 @@
       {
         "name": "luminespib",
         "ncit_id": "C71467"
+      },
+      {
+        "name": "retaspimycin hydrochloride",
+        "ncit_id": "C48401"
+      },
+      {
+        "name": "tanespimycin",
+        "ncit_id": "C37899"
+      },
+      {
+        "name": "whi-p154",
+        "ncit_id": null
       }
     ],
     "resistant_to": [
       "alectinib",
       "alk inhibitor tae684",
+      "alvespimycin",
+      "brigatinib",
       "ceritinib",
       "crizotinib",
       "lorlatinib",
-      "luminespib"
+      "luminespib",
+      "retaspimycin hydrochloride",
+      "tanespimycin",
+      "whi-p154"
     ],
     "category": "resistant",
     "profiles": [
+      "DOID:3908||eml4-alk fusion",
       "DOID:3908||eml4-alk fusion and alk amplification",
       "DOID:3908||eml4-alk fusion and alk c1156y",
       "DOID:3908||eml4-alk fusion and alk f1245c",
