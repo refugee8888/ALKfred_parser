@@ -4,7 +4,7 @@ services:
   alkfred:
     build: .
     working_dir: /app/src
-    command: ["bash"]   # keeps a shell for exec; you can override per-run
+    command: ["sleep","infinity","bash"]   # keeps a shell for exec; you can override per-run
     volumes:
       - ./data:/app/data
       - ./src:/app/src
