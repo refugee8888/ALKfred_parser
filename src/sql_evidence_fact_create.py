@@ -4,9 +4,9 @@ from __future__ import annotations
 import sqlite3
 import uuid
 from datetime import datetime, timezone
-from pathlib import Path
+from alkfred import config
 
-DB_PATH = Path("alkfred.db")
+DB_PATH = config.default_db_path()
 UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
 RUN_ID = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
@@ -40,7 +40,7 @@ def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 def main():
-    conn = sqlite3.connect(DB_PATH.as_posix())
+    conn = config.get_conn(DB_PATH.as_posix())
     conn.execute("PRAGMA foreign_keys = ON")
     cur = conn.cursor()
 

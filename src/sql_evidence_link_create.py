@@ -11,11 +11,12 @@ from pathlib import Path
 
 from utils import normalize_label
 import api_calls  # uses fetch_civic_molecular_profile(mp_name)
+from alkfred import config
 
 # ----------------------------
 # Config
 # ----------------------------
-DB_PATH = Path("alkfred.db")
+DB_PATH = config.default_db_path()
 RAW_JSON_PATH = Path("data/civic_raw_evidence_db.json")  # list of CIViC evidence nodes
 RUN_ID = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
@@ -179,7 +180,7 @@ def main():
     if not isinstance(nodes, list):
         raise ValueError("civic_raw_evidence_db.json must be a list of evidence nodes")
 
-    conn = sqlite3.connect(DB_PATH.as_posix())
+    conn = config.get_conn(DB_PATH.as_posix())
     conn.execute("PRAGMA foreign_keys = ON")
     cur = conn.cursor()
 

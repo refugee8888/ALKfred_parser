@@ -1,4 +1,5 @@
-import dotenv
+import json
+from dotenv import load_dotenv
 import os
 
 from pathlib import Path
@@ -17,8 +18,7 @@ def data_dir() -> Path:
 
 def default_db_path() -> Path:
     # Return the absolute default database path
-    d = data_dir() / "alkfred"
-    d.mkdir(parents=True, exist_ok=True)
+    d = data_dir() / "alkfred.sqlite"
     return d
 
 def env_path() -> Path:
@@ -28,10 +28,10 @@ def env_path() -> Path:
 
 def load_env() -> None:
     # Load the environment file
-    path = env_path() / ".env"
+    path = env_path()
     if not path.exists():
-        raise FileNotFoundError(f"Environment file not found at {env_path}")
-    dotenv.load_dotenv(path, override=False)
+        raise FileNotFoundError(f"Environment file not found at {path}")
+    load_dotenv(path, override=False)
 
 def get_env(key: str, required: bool = True) -> str | None:
     # Get the environment variable
@@ -58,10 +58,19 @@ def get_conn(db_path: str | Path | None) -> sqlite3.Connection:
     
     return conn
 
-def norm_general_use(text: str) -> str:
+def norm(text: str) -> str:
     # Normalize the text for general use
     return text.lower().strip()
 
+def save_to_json(data, path) -> json:
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2)
+
+def load_from_json(path) -> dict:
+    with open(path, "r") as f:
+        data = json.load(f)
+    return data
+    
 
     
 

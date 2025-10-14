@@ -5,13 +5,14 @@ from pathlib import Path
 from dotenv.main import logger
 
 from utils import normalize_label
+from alkfred import config
 
 
 
-DB_PATH = "alkfred.db"
+DB_PATH = config.default_db_path()
 JSON_PATH = Path("data/curated_resistance_db.json")  # use forward slashes or raw string
 
-conn = sqlite3.connect(DB_PATH)
+conn = config.get_conn(DB_PATH)
 cur = conn.cursor()
 cur.execute("""PRAGMA foreign_keys = ON""")
 
