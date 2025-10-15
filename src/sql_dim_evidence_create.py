@@ -9,28 +9,28 @@ JSON_PATH = Path("data/civic_raw_evidence_db.json")  # use forward slashes or ra
 
 conn = config.get_conn(DB_PATH)
 cur = conn.cursor()
-cur.execute("""PRAGMA foreign_keys = ON""")
+# cur.execute("""PRAGMA foreign_keys = ON""")
 
-cur.execute("""
-CREATE TABLE IF NOT EXISTS dim_evidence (
+# cur.execute("""
+# CREATE TABLE IF NOT EXISTS dim_evidence (
     
-    eid INTEGER PRIMARY KEY,
-    source_json TEXT,
-    direction TEXT,
-    significance TEXT,
-    evidence_level TEXT,
-    evidence_type TEXT,
-    rating INTEGER,
-    status TEXT,
-    pmids_json TEXT,
-    pub_year INTEGER,
-    description TEXT,
-    created_at_utc TEXT,
-    updated_at_utc TEXT
-    )
-""")
+#     eid INTEGER PRIMARY KEY,
+#     source_json TEXT,
+#     direction TEXT,
+#     significance TEXT,
+#     evidence_level TEXT,
+#     evidence_type TEXT,
+#     rating INTEGER,
+#     status TEXT,
+#     pmids_json TEXT,
+#     pub_year INTEGER,
+#     description TEXT,
+#     created_at_utc TEXT,
+#     updated_at_utc TEXT
+#     )
+# """)
 
-cur.execute("CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);")
+# cur.execute("CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);")
 
 # Load JSON as a dict
 with open(JSON_PATH, "r", encoding="utf-8") as f:
@@ -80,15 +80,15 @@ cur.executemany(
 )
 conn.commit()
 
-# Verify inserts
+# # Verify inserts
 
-cur.execute("SELECT COUNT(*) FROM dim_evidence")
-print("rows in dim_evidence:", cur.fetchone()[0])
+# cur.execute("SELECT COUNT(*) FROM dim_evidence")
+# print("rows in dim_evidence:", cur.fetchone()[0])
 
-# Optional: peek a few
+# # Optional: peek a few
 
-cur.execute("SELECT * FROM dim_evidence ORDER BY eid LIMIT 10")
-for r in cur.fetchall():
-    print(r)
+# cur.execute("SELECT * FROM dim_evidence ORDER BY eid LIMIT 10")
+# for r in cur.fetchall():
+#     print(r)
 
 conn.close()

@@ -32,29 +32,29 @@ def utc_now_iso() -> str:
 
 # ----------------------------
 # Ensure DDL (bridge)
-# ----------------------------
-LINK_DDL = """
-CREATE TABLE IF NOT EXISTS evidence_link (
-  eid             INTEGER NOT NULL,
-  doid            TEXT    NOT NULL,
-  variant_id      TEXT    NOT NULL,
-  ncit_id         TEXT    NOT NULL,
-  mp_name         TEXT,         -- optional provenance
-  therapy_label   TEXT,         -- optional provenance (as seen in CIViC)
-  created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
-  run_id          TEXT,
-  PRIMARY KEY (eid, doid, variant_id, ncit_id),
-  FOREIGN KEY (eid)        REFERENCES dim_evidence(eid),
-  FOREIGN KEY (doid)       REFERENCES dim_disease(doid),
-  FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
-  FOREIGN KEY (ncit_id)    REFERENCES dim_therapy(ncit_id)
-);
-"""
-IDX_LINKS = [
-    "CREATE INDEX IF NOT EXISTS idx_link_doid_variant ON evidence_link(doid, variant_id);",
-    "CREATE INDEX IF NOT EXISTS idx_link_therapy      ON evidence_link(ncit_id);",
-    "CREATE INDEX IF NOT EXISTS idx_link_eid          ON evidence_link(eid);",
-]
+# # ----------------------------
+# LINK_DDL = """
+# CREATE TABLE IF NOT EXISTS evidence_link (
+#   eid             INTEGER NOT NULL,
+#   doid            TEXT    NOT NULL,
+#   variant_id      TEXT    NOT NULL,
+#   ncit_id         TEXT    NOT NULL,
+#   mp_name         TEXT,         -- optional provenance
+#   therapy_label   TEXT,         -- optional provenance (as seen in CIViC)
+#   created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+#   run_id          TEXT,
+#   PRIMARY KEY (eid, doid, variant_id, ncit_id),
+#   FOREIGN KEY (eid)        REFERENCES dim_evidence(eid),
+#   FOREIGN KEY (doid)       REFERENCES dim_disease(doid),
+#   FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
+#   FOREIGN KEY (ncit_id)    REFERENCES dim_therapy(ncit_id)
+# );
+# """
+# IDX_LINKS = [
+#     "CREATE INDEX IF NOT EXISTS idx_link_doid_variant ON evidence_link(doid, variant_id);",
+#     "CREATE INDEX IF NOT EXISTS idx_link_therapy      ON evidence_link(ncit_id);",
+#     "CREATE INDEX IF NOT EXISTS idx_link_eid          ON evidence_link(eid);",
+# ]
 LINK_INSERT_SQL = """
 INSERT OR IGNORE INTO evidence_link
   (eid, doid, variant_id, ncit_id, mp_name, therapy_label, created_at_utc, run_id)
@@ -184,11 +184,11 @@ def main():
     conn.execute("PRAGMA foreign_keys = ON")
     cur = conn.cursor()
 
-    # Ensure evidence_link exists
-    cur.execute(LINK_DDL)
-    for s in IDX_LINKS:
-        cur.execute(s)
-    conn.commit()
+    # # Ensure evidence_link exists
+    # cur.execute(LINK_DDL)
+    # for s in IDX_LINKS:
+    #     cur.execute(s)
+    # conn.commit()
 
     # Preload dim caches
     seen_doid, therapy_by_ncit, therapy_by_norm, variant_ids, evidence_eids = preload_dim_caches(cur)
@@ -289,23 +289,23 @@ def main():
         conn.commit()
 
     # Report
-    cur.execute("SELECT COUNT(*) FROM evidence_link")
-    total = cur.fetchone()[0]
-    logging.info("links inserted this run: %d; total links: %d", inserted_links, total)
-    logging.info("skipped (non-RESISTANCE/SUPPORTS): %d", skipped_direction)
-    logging.info("skipped (missing doid/mp_name/therapies): %d", skipped_missing_bits)
-    logging.info("skipped (no therapy match): %d", skipped_no_therapy_match)
-    logging.info("skipped (no components): %d", skipped_no_components)
+    # cur.execute("SELECT COUNT(*) FROM evidence_link")
+    # total = cur.fetchone()[0]
+    # logging.info("links inserted this run: %d; total links: %d", inserted_links, total)
+    # logging.info("skipped (non-RESISTANCE/SUPPORTS): %d", skipped_direction)
+    # logging.info("skipped (missing doid/mp_name/therapies): %d", skipped_missing_bits)
+    # logging.info("skipped (no therapy match): %d", skipped_no_therapy_match)
+    # logging.info("skipped (no components): %d", skipped_no_components)
 
-    # Optional peek
-    cur.execute("""
-        SELECT eid, doid, variant_id, ncit_id
-        FROM evidence_link
-        ORDER BY eid, variant_id, ncit_id
-        LIMIT 10
-    """)
-    for r in cur.fetchall():
-        print(r)
+    # # Optional peek
+    # cur.execute("""
+    #     SELECT eid, doid, variant_id, ncit_id
+    #     FROM evidence_link
+    #     ORDER BY eid, variant_id, ncit_id
+    #     LIMIT 10
+    # """)
+    # for r in cur.fetchall():
+    #     print(r)
 
     conn.close()
 

@@ -16,26 +16,26 @@ logger = logging.getLogger(__name__)
 
 conn = config.get_conn(DB_PATH)
 cur = conn.cursor()
-cur.execute("""PRAGMA foreign_keys = ON""")
-try:
-    cur.execute(f""" CREATE TABLE IF NOT EXISTS dim_disease (
-    doid TEXT PRIMARY KEY,
-    label_display TEXT NOT NULL,
-    label_norm TEXT NOT NULL,
-    synonyms_json TEXT NOT NULL DEFAULT '[]',
-    mondo_id TEXT,
-    ncit_id TEXT,
-    lineage_json TEXT NOT NULL DEFAULT '[]'
+# cur.execute("""PRAGMA foreign_keys = ON""")
+# try:
+#     cur.execute(f""" CREATE TABLE IF NOT EXISTS dim_disease (
+#     doid TEXT PRIMARY KEY,
+#     label_display TEXT NOT NULL,
+#     label_norm TEXT NOT NULL,
+#     synonyms_json TEXT NOT NULL DEFAULT '[]',
+#     mondo_id TEXT,
+#     ncit_id TEXT,
+#     lineage_json TEXT NOT NULL DEFAULT '[]'
 
-    )
-    """)
-except sqlite3.Error as e:
-    logger.debug("Following errors happend while trying to create the database: %r", e)
-    raise e
+#     )
+#     """)
+# except sqlite3.Error as e:
+#     logger.debug("Following errors happend while trying to create the database: %r", e)
+#     raise e
 
 logger.info("Table dim_disease created or already exists in %s", DB_PATH)
 
-cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_disease(label_norm);")
+# cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_disease(label_norm);")
 
 
 # Load JSON as a dict
@@ -67,15 +67,15 @@ conn.commit()
 
 # Verify inserts
 
-cur.execute("SELECT COUNT(*) FROM dim_disease")
-count = cur.fetchone()[0]
-logger.info("dim_disease loaded with %d rows", count)
+# cur.execute("SELECT COUNT(*) FROM dim_disease")
+# count = cur.fetchone()[0]
+# logger.info("dim_disease loaded with %d rows", count)
 
-# Optional: peek a few
+# # Optional: peek a few
 
-cur.execute("SELECT * FROM dim_disease ORDER BY label_display LIMIT 200")
-for r in cur.fetchall():
-    print(r)
+# cur.execute("SELECT * FROM dim_disease ORDER BY label_display LIMIT 200")
+# for r in cur.fetchall():
+#     print(r)
 
 
 conn.close()

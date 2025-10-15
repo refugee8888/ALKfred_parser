@@ -10,31 +10,31 @@ DB_PATH = config.default_db_path()
 UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
 RUN_ID = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
-FACT_DDL = """
-CREATE TABLE IF NOT EXISTS fact_evidence (
-  fact_id         TEXT PRIMARY KEY,
-  eid             INTEGER NOT NULL,
-  variant_id      TEXT NOT NULL,
-  doid            TEXT NOT NULL,
-  ncit_id         TEXT NOT NULL,
-  direction       TEXT NOT NULL DEFAULT 'RESISTANT',
-  significance    TEXT NOT NULL DEFAULT 'RESISTANCE',
-  created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
-  run_id          TEXT,
-  FOREIGN KEY (eid)        REFERENCES dim_evidence(eid),
-  FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
-  FOREIGN KEY (doid)       REFERENCES dim_disease(doid),
-  FOREIGN KEY (ncit_id)    REFERENCES dim_therapy(ncit_id)
-);
-"""
-FACT_UNIQUE = """
-CREATE UNIQUE INDEX IF NOT EXISTS uq_fact_tuple
-ON fact_evidence(eid, doid, variant_id, ncit_id);
-"""
-IDX1 = "CREATE INDEX IF NOT EXISTS idx_fact_doid_dir ON fact_evidence(doid, direction);"
-IDX2 = "CREATE INDEX IF NOT EXISTS idx_fact_variant ON fact_evidence(variant_id);"
-IDX3 = "CREATE INDEX IF NOT EXISTS idx_fact_therapy ON fact_evidence(ncit_id);"
-IDX4 = "CREATE INDEX IF NOT EXISTS idx_fact_eid ON fact_evidence(eid);"
+# FACT_DDL = """
+# CREATE TABLE IF NOT EXISTS fact_evidence (
+#   fact_id         TEXT PRIMARY KEY,
+#   eid             INTEGER NOT NULL,
+#   variant_id      TEXT NOT NULL,
+#   doid            TEXT NOT NULL,
+#   ncit_id         TEXT NOT NULL,
+#   direction       TEXT NOT NULL DEFAULT 'RESISTANT',
+#   significance    TEXT NOT NULL DEFAULT 'RESISTANCE',
+#   created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+#   run_id          TEXT,
+#   FOREIGN KEY (eid)        REFERENCES dim_evidence(eid),
+#   FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
+#   FOREIGN KEY (doid)       REFERENCES dim_disease(doid),
+#   FOREIGN KEY (ncit_id)    REFERENCES dim_therapy(ncit_id)
+# );
+# """
+# FACT_UNIQUE = """
+# CREATE UNIQUE INDEX IF NOT EXISTS uq_fact_tuple
+# ON fact_evidence(eid, doid, variant_id, ncit_id);
+# """
+# IDX1 = "CREATE INDEX IF NOT EXISTS idx_fact_doid_dir ON fact_evidence(doid, direction);"
+# IDX2 = "CREATE INDEX IF NOT EXISTS idx_fact_variant ON fact_evidence(variant_id);"
+# IDX3 = "CREATE INDEX IF NOT EXISTS idx_fact_therapy ON fact_evidence(ncit_id);"
+# IDX4 = "CREATE INDEX IF NOT EXISTS idx_fact_eid ON fact_evidence(eid);"
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -51,10 +51,10 @@ def main():
         if not row:
             raise RuntimeError(f"Missing required table: {t}")
 
-    # ensure fact and indexes
-    cur.execute(FACT_DDL)
-    cur.execute(FACT_UNIQUE)
-    cur.execute(IDX1); cur.execute(IDX2); cur.execute(IDX3); cur.execute(IDX4)
+    # # ensure fact and indexes
+    # cur.execute(FACT_DDL)
+    # cur.execute(FACT_UNIQUE)
+    # cur.execute(IDX1); cur.execute(IDX2); cur.execute(IDX3); cur.execute(IDX4)
     conn.commit()
 
     # pull only rows that are valid by dims and meet evidence filters
@@ -91,21 +91,21 @@ def main():
     """, payload)
     conn.commit()
 
-    # report
-    print(f"Upserted {cur.rowcount} fact rows this run.")
-    cur.execute("SELECT COUNT(*) FROM fact_evidence")
-    total = cur.fetchone()[0]
-    print(f"Total fact rows: {total}")
+    # # report
+    # print(f"Upserted {cur.rowcount} fact rows this run.")
+    # cur.execute("SELECT COUNT(*) FROM fact_evidence")
+    # total = cur.fetchone()[0]
+    # print(f"Total fact rows: {total}")
 
-    # optional peek
-    cur.execute("""
-        SELECT eid, doid, variant_id, ncit_id, direction, significance
-        FROM fact_evidence
-        ORDER BY eid, variant_id, ncit_id
-        LIMIT 10
-    """)
-    for r in cur.fetchall():
-        print(r)
+    # # optional peek
+    # cur.execute("""
+    #     SELECT eid, doid, variant_id, ncit_id, direction, significance
+    #     FROM fact_evidence
+    #     ORDER BY eid, variant_id, ncit_id
+    #     LIMIT 10
+    # """)
+    # for r in cur.fetchall():
+    #     print(r)
 
     conn.close()
 

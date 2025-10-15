@@ -14,28 +14,28 @@ JSON_PATH = Path("data/curated_resistance_db.json")  # use forward slashes or ra
 
 conn = config.get_conn(DB_PATH)
 cur = conn.cursor()
-cur.execute("""PRAGMA foreign_keys = ON""")
+# cur.execute("""PRAGMA foreign_keys = ON""")
 
-try:
-    cur.execute(""" CREATE TABLE IF NOT EXISTS dim_gene_variant (
-    variant_id TEXT PRIMARY KEY,   -- either CIViC ca_id, or your own generated UID
-    civic_ca_id TEXT,
-    hgnc_id TEXT,                  -- HGNC stable ID for the gene (if known)
-    gene_symbol TEXT NOT NULL,     -- e.g. "ALK"
-    label_display TEXT NOT NULL,   -- raw variant string, e.g. "ALK T1151dup"
-    label_norm TEXT NOT NULL,
-    hgvs_p TEXT,                   -- normalized protein-level HGVS if available
-    hgvs_c TEXT,                   -- optional: cDNA HGVS
-    aliases_json TEXT NOT NULL DEFAULT '[]',             -- store multiple synonyms
-    confidence TEXT                -- HIGH/MED/LOW for mapping certainty
-    )
-    """)
-except sqlite3.Error as e:
-    logger.debug("Following errors happend while trying to create the database: %r", e)
-    raise e.sqlite_errorcode or e.sqlite_errorname
+# try:
+#     cur.execute(""" CREATE TABLE IF NOT EXISTS dim_gene_variant (
+#     variant_id TEXT PRIMARY KEY,   -- either CIViC ca_id, or your own generated UID
+#     civic_ca_id TEXT,
+#     hgnc_id TEXT,                  -- HGNC stable ID for the gene (if known)
+#     gene_symbol TEXT NOT NULL,     -- e.g. "ALK"
+#     label_display TEXT NOT NULL,   -- raw variant string, e.g. "ALK T1151dup"
+#     label_norm TEXT NOT NULL,
+#     hgvs_p TEXT,                   -- normalized protein-level HGVS if available
+#     hgvs_c TEXT,                   -- optional: cDNA HGVS
+#     aliases_json TEXT NOT NULL DEFAULT '[]',             -- store multiple synonyms
+#     confidence TEXT                -- HIGH/MED/LOW for mapping certainty
+#     )
+#     """)
+# except sqlite3.Error as e:
+#     logger.debug("Following errors happend while trying to create the database: %r", e)
+#     raise e.sqlite_errorcode or e.sqlite_errorname
 
-cur.execute("CREATE INDEX IF NOT EXISTS idx_gene_symbol ON dim_gene_variant(gene_symbol)")
-cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_gene_variant(label_norm)")
+# cur.execute("CREATE INDEX IF NOT EXISTS idx_gene_symbol ON dim_gene_variant(gene_symbol)")
+# cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_gene_variant(label_norm)")
 
 # Load JSON as a dict
 with open(JSON_PATH, "r", encoding="utf-8") as f:
@@ -68,15 +68,15 @@ cur.executemany(
 )
 conn.commit()
 
-# Verify inserts
+# # Verify inserts
 
-cur.execute("SELECT COUNT(*) FROM dim_gene_variant")
-print("rows in dim_gene_variant:", cur.fetchone()[0])
+# cur.execute("SELECT COUNT(*) FROM dim_gene_variant")
+# print("rows in dim_gene_variant:", cur.fetchone()[0])
 
-# Optional: peek a few
+# # Optional: peek a few
 
-cur.execute("SELECT * FROM dim_gene_variant ORDER BY variant_id LIMIT 200")
-for r in cur.fetchall():
-    print(r)
+# cur.execute("SELECT * FROM dim_gene_variant ORDER BY variant_id LIMIT 200")
+# for r in cur.fetchall():
+#     print(r)
 
 conn.close()

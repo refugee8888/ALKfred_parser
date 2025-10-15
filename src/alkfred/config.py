@@ -1,10 +1,15 @@
 import json
 from dotenv import load_dotenv
 import os
-
+import logging
 from pathlib import Path
 import sqlite3
 
+
+logging.basicConfig(
+    level=logging.INFO,  # or DEBUG to also see debug() messages
+    format="%(asctime)s [%(levelname)s] %(message)s"
+)
 
 def repo_root() -> Path:
     # Return the abosulte repo root
@@ -70,7 +75,18 @@ def load_from_json(path) -> dict:
     with open(path, "r") as f:
         data = json.load(f)
     return data
-    
+
+def apply_schema():
+    import sqlite3
+    schema_path = "src/alkfred/sql/schema.sql"
+    db_path = default_db_path()
+    print(f"Applying schema from {schema_path} to {db_path}")
+    conn = sqlite3.connect(db_path)
+    with open(schema_path, "r", encoding="utf-8") as f:
+        conn.executescript(f.read())
+    conn.commit()
+    conn.close()
+
 
     
 

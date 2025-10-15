@@ -13,29 +13,29 @@ logger = logging.getLogger(__name__)
 
 conn = config.get_conn(DB_PATH)
 cur = conn.cursor()
-cur.execute("""PRAGMA foreign_keys = ON""")
-try:
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS dim_therapy (
-    ncit_id TEXT PRIMARY KEY,
-    label_display TEXT NOT NULL,
-    label_norm TEXT NOT NULL ,
-    synonyms_json TEXT NOT NULL DEFAULT '[]',
-    rxnorm_id TEXT,
-    id_combo INTEGER NOT NULL DEFAULT 0,
-    combo_parts_json TEXT,
-    class_ids_json TEXT
+# cur.execute("""PRAGMA foreign_keys = ON""")
+# try:
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS dim_therapy (
+#     ncit_id TEXT PRIMARY KEY,
+#     label_display TEXT NOT NULL,
+#     label_norm TEXT NOT NULL ,
+#     synonyms_json TEXT NOT NULL DEFAULT '[]',
+#     rxnorm_id TEXT,
+#     id_combo INTEGER NOT NULL DEFAULT 0,
+#     combo_parts_json TEXT,
+#     class_ids_json TEXT
 
-    )
-    """)
-except sqlite3.Error as e:
-    logger.debug("Following errors happend while trying to create the database: %r", e)
-    raise e
+#     )
+#     """)
+# except sqlite3.Error as e:
+#     logger.debug("Following errors happend while trying to create the database: %r", e)
+#     raise e
     
 
 logger.info("Table dim_therapy created or already exists in %s", DB_PATH)
 
-cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_therapy(label_norm)")
+# cur.execute("CREATE INDEX IF NOT EXISTS idx_label_norm ON dim_therapy(label_norm)")
 
 
 # Load JSON as a dict
@@ -66,15 +66,15 @@ cur.executemany(
 
 conn.commit()
 
-# Verify inserts
-cur.execute("SELECT COUNT(*) FROM dim_therapy")
+# # Verify inserts
+# cur.execute("SELECT COUNT(*) FROM dim_therapy")
 
-count = cur.fetchone()[0]
-logger.info(f"Table created with: {count}, rows")
-# Optional: peek a few
-cur.execute("SELECT * FROM dim_therapy ORDER BY label_norm LIMIT 5")
+# count = cur.fetchone()[0]
+# logger.info(f"Table created with: {count}, rows")
+# # Optional: peek a few
+# cur.execute("SELECT * FROM dim_therapy ORDER BY label_norm LIMIT 5")
 
-for r in cur.fetchall():
-    print(r)
+# for r in cur.fetchall():
+#     print(r)
 
 conn.close()
