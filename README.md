@@ -1,4 +1,4 @@
-🧬 ALKfred
+nu🧬 ALKfred
 
 Hi, I’m Paul. I don’t come from a computer science background — I actually run a small video editing business in Romania. In 2025, I decided to learn Python from scratch, and instead of going through endless tutorials, I wanted to build something that mattered to me. That’s how ALKfred was born.
 
@@ -157,6 +157,3 @@ If you’re using **Cursor** or **VS Code**, you can develop directly inside a *
 * Only commit `.env.example` for placeholders.
 * Sensitive data stays local in `./data/` and `.env`.
 
----
-
-Would you like me to extend this with a short **“🧪 Running Tests with Pytest (inside Docker)”** section so the README already anticipates your future CI/testing phase?
