@@ -25,9 +25,17 @@ args = parser.parse_args()
 
 # items = civic_fetch.fetch_civic_evidence(symbol = "ALK", raw_path = "/app/data/civic_raw_evidence_db.json", overwrite= args.overwrite )
 # civic_curate.curate_civic(items, curated_path = "/app/data/curated_resistance_db.json")
-# config.apply_schema()
+config.apply_schema()
+config.apply_dim_disease()
+config.apply_dim_gene_variant()
+config.apply_dim_therapy()
+config.apply_dim_evidence()
+config.apply_evidence_link()
+config.apply_fact_evidence()
 config.get_conn(config.default_db_path())
 cur = config.get_conn(config.default_db_path()).cursor()
+
+
 
 # cur.execute("SELECT COUNT(*) FROM dim_disease;")
 # count = cur.fetchone()[0]
@@ -76,11 +84,11 @@ print("rows in fact_evidence:", cur.fetchone()[0])
 
 # optional peek
 cur.execute("""
-    SELECT eid, doid, variant_id, ncit_id, direction, significance
-    FROM fact_evidence
-    ORDER BY eid, variant_id, ncit_id
-    LIMIT 10
-""")
+    SELECT UPPER(direction) AS dir, UPPER(significance) AS sig, COUNT(*) 
+    FROM dim_evidence
+    GROUP BY dir, sig
+    ORDER BY COUNT(*) DESC;
+    """)
 for r in cur.fetchall():
     print(r)
 

@@ -1,15 +1,24 @@
+from ast import main
 import json
+from pdb import run
 from dotenv import load_dotenv
 import os
 import logging
 from pathlib import Path
 import sqlite3
-
+import importlib
 
 logging.basicConfig(
     level=logging.INFO,  # or DEBUG to also see debug() messages
     format="%(asctime)s [%(levelname)s] %(message)s"
 )
+
+def _run_module_main(dotted: str):
+    mod = importlib.import_module(dotted)
+    if hasattr(mod, "main"):
+        mod.main()
+    else:
+        raise RuntimeError(f"{dotted} has no main()")
 
 def repo_root() -> Path:
     # Return the abosulte repo root
@@ -87,7 +96,28 @@ def apply_schema():
     conn.commit()
     conn.close()
 
+def apply_dim_disease():
+    print(f"Loading src/sql_civic_dim_disease_create.py to {default_db_path()}")
+    _run_module_main("sql_civic_dim_disease_create")
 
-    
+def apply_dim_gene_variant():
+    print(f"Loading src/sql_civic_dim_gene_variant.py to {default_db_path()}")
+    _run_module_main("sql_civic_dim_gene_variant")
+
+def apply_dim_therapy():
+    print(f"Loading src/sql_civic_dim_therapy_create.py to {default_db_path()}")
+    _run_module_main("sql_civic_dim_therapy_create")
+
+def apply_dim_evidence():
+    print(f"Loading src/sql_dim_evidence_create.py to {default_db_path()}")
+    _run_module_main("sql_dim_evidence_create")
+
+def apply_evidence_link():
+    print(f"Loading src/sql_evidence_link_create.py to {default_db_path()}")
+    _run_module_main("sql_evidence_link_create")
+
+def apply_fact_evidence():
+    print(f"Loading src/sql_evidence_fact_create.py to {default_db_path()}")
+    _run_module_main("sql_evidence_fact_create")
 
     
