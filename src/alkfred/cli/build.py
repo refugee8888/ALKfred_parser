@@ -83,13 +83,26 @@ print("rows in fact_evidence:", cur.fetchone()[0])
 
 
 # optional peek
-cur.execute("""
-    SELECT UPPER(direction) AS dir, UPPER(significance) AS sig, COUNT(*) 
-    FROM dim_evidence
-    GROUP BY dir, sig
-    ORDER BY COUNT(*) DESC;
+# cur.execute("""
+#     SELECT UPPER(direction) AS dir, UPPER(significance) AS sig, COUNT(*) 
+#     FROM dim_evidence
+#     GROUP BY dir, sig
+#     ORDER BY COUNT(*) DESC;
+#     """)
+# cur.execute("""SELECT f.eid, f.doid, f.variant_id, t.ncit_id, t.label_display AS therapy, f.direction, f.significance
+#     FROM fact_evidence f
+#     JOIN dim_therapy t ON t.therapy_id = f.therapy_id
+#     ORDER BY f.eid
+#     LIMIT 10;""")
+cur.execute("""SELECT DISTINCT f.doid, f.therapy_id
+    FROM fact_evidence f
+    JOIN dim_therapy t ON t.therapy_id = f.therapy_id
+    WHERE t.label_therapy_norm = 'lorlatinib';
     """)
-for r in cur.fetchall():
-    print(r)
+config.get_conn.row_factory = sqlite3.Row
+rows = cur.fetchall()
+for r in rows:
+    print(dict(r))
+
 
 
