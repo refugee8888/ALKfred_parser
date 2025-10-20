@@ -245,11 +245,11 @@ def main():
             eid = int(eid)
 
             # Filters (evidence grain)
-            direction = (ei.get("evidenceDirection") or "").strip().upper()
+            # direction = (ei.get("evidenceDirection") or "").strip().upper()
             # significance = (ei.get("significance") or "").strip().upper()
-            if direction != "SUPPORTS":
-                skipped_direction += 1
-                continue
+            # if direction != "SUPPORTS":
+            #     skipped_direction += 1
+            #     continue
 
             disease = ei.get("disease") or {}
             doid = disease.get("doid")
