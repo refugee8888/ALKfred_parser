@@ -85,7 +85,7 @@ def load_from_json(path) -> dict:
         data = json.load(f)
     return data
 
-def apply_schema():
+def apply_schema(db_path: Path):
     import sqlite3
     schema_path = "src/alkfred/sql/schema.sql"
     db_path = default_db_path()
@@ -97,6 +97,7 @@ def apply_schema():
     conn.close()
 
 def apply_dim_disease():
+    
     print(f"Loading src/sql_civic_dim_disease_create.py to {default_db_path()}")
     _run_module_main("sql_civic_dim_disease_create")
 

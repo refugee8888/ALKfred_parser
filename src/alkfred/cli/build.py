@@ -40,15 +40,17 @@ if __name__ == "__main__":
             if not Path(args.curated).exists():
                 logger.error("Curated file not found: %s (run with --source civic first)", args.curated)
                 sys.exit(2)
+        config.default_db_path = (lambda p=Path(args.db): lambda: p)()
+        config.data_dir        = (lambda p=Path(args.curated).parent: lambda: p)()
 
         # Build — ensure these functions consume the same paths
         config.apply_schema(db_path=args.db)
-        config.apply_dim_disease(db_path=args.db, curated_path=args.curated)
-        config.apply_dim_gene_variant(db_path=args.db, curated_path=args.curated)
-        config.apply_dim_therapy(db_path=args.db, curated_path=args.curated)
-        config.apply_dim_evidence(db_path=args.db, raw_path=args.raw)
-        config.apply_evidence_link(db_path=args.db, raw_path=args.raw)   # <-- critical
-        config.apply_fact_evidence(db_path=args.db)
+        config.apply_dim_disease()
+        config.apply_dim_gene_variant()
+        config.apply_dim_therapy()
+        config.apply_dim_evidence()
+        config.apply_evidence_link()   
+        config.apply_fact_evidence()
 
         logger.info("Database ready: %s", args.db)
     except Exception as e:
