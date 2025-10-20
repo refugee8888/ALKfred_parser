@@ -59,15 +59,6 @@
         "ncit_id": "C48401"
       }
     ],
-    "resistant_to": [
-      "alectinib",
-      "brigatinib",
-      "ceritinib",
-      "crizotinib",
-      "lorlatinib",
-      "pemetrexed",
-      "retaspimycin hydrochloride"
-    ],
     "evidence_count": 22,
     "gene_symbol": "v::ALK Fusion",
     "descriptions": [
@@ -101,27 +92,130 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "11121",
-      "1175",
-      "1198",
-      "1199",
-      "1200",
-      "1201",
-      "12012",
-      "1202",
-      "1272",
-      "1273",
-      "1279",
-      "1282",
-      "1419",
-      "1577",
-      "4835",
-      "4858",
-      "7284",
-      "7285",
-      "7286",
-      "8657",
-      "945"
+      "0",
+      "1",
+      "1187",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  "DOID:0050744||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "11218",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "28787259",
+      "pmcId": "PMC5617123",
+      "sourceType": "PUBMED",
+      "title": "Targeting ALK With Crizotinib in Pediatric Anaplastic Large Cell Lymphoma and Inflammatory Myofibroblastic Tumor: A Children's Oncology Group Study.",
+      "publicationYear": 2017
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "A",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 3,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "Crizotinib at 250mg daily was given to two patients with relapsed ALK-rearranged anaplastic large cell lymphoma (ALCL). Patient one, 26 yrs old, had been treated with the CHOP-15 chemotherapy regimen, then salvage chemotherapy to prepare for autologous bone marrow transplant but ultimately relapsed. After initiation of crizotinib, PET, CT and bone marrow aspirates showed complete remission of previous lesions at 28 days. At time of publication the patient continued to show persistent response at 6 months. A 20 year old patient relapsed after one month of CHOP, and was treated with further chemotherapy and autologous bone marrow transplantation resulting in partial response of 1 month. Crizotinib was initialized, and after 12 days PET scan showed complete regression of all lesions. On day 60 bone marrow aspirates were ALK-negative (pretreatment evaluation showed 8% ALK-positive). The authors conclude these two cases indicate sensitivity to crizotinib of relapsed ALK-rearranged ALCL.",
+      "In this phase I/II study, 26 patients with relapsed/refractory ALK-positive ALCL were administered crizotinib orally twice daily in 28-day cycles as a single agent for an indefinite duration. Patients with relapsed ALCL achieved an objective response rate of 90%. The overall response rates for patients with ALCL treated at doses of 165 and 280 mg/m2 were 83% and 90%, respectively. Rates of complete response were 83% and 80% for 165 and 280 mg/m2 dose groups, respectively. The most common grade 3 or 4 adverse event was decreased neutrophil count.",
+      "This trial enrolled 26 patients with anaplastic large cell lymphoma (ALCL). The groups received twice daily crizotinib at doses of either 165 or 280 mg/m2. 83% of the 165 mg/m2 ALCL patients had a complete response with a median treatment time of 2.79 years versus 80% of the 280 mg/m2 group with a median treatment time of 0.4 years. The most common drug-related adverse event was a decrease in neutrophil count in 33% of the patients dosed at 165 mg/m2 and 70% of the patients dosed at 290 mg/m2."
+    ],
+    "disease_name": "Anaplastic Large Cell Lymphoma",
+    "disease_doid": "0050744",
+    "disease_aliases": [],
+    "eids": [
+      "0",
+      "1",
+      "11218",
+      "2",
+      "3",
+      "4",
+      "6",
+      "7"
+    ]
+  },
+  "DOID:0050905||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "11122",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "29352732",
+      "pmcId": "PMC5947833",
+      "sourceType": "PUBMED",
+      "title": "Long-term effects of crizotinib in ALK-positive tumors (excluding NSCLC): A phase 1b open-label study.",
+      "publicationYear": 2018
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "A",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 3,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "9 patients with ALK-positive inflammatory myofibroblastic tumour (IMT) enrolled in the PROFILE 1013 (NCT01121588) phase 1b single-arm, open-label, multi-centre study received crizotinib. ORR was 67% for IMT (95% CI, 30\u201393), with 1 CR, 5 PRs, and 3 SDs. PFS at 2 years was 66.7% (95% CI, 28.2\u201387.8). Note that ALK positive included ALK mutations, but the mutation vs. fusion status for the patients in the IMT group was not specified.",
+      "As part of a phase 1 dose-escalation trial (NCT00939770), seven patients between ages 12 months and 22 years with relapsed or refractory inflammatory myofibroblastic tumors with ALK-rearrangement were given crizotinib. In six patients with measurable disease, responses included 3 with partial response and 3 with stable disease. One patient with evaluable disease had stable disease with treatment ongoing at the time of publication. Crizotinib was well tolerated in this group of pediatric patients.",
+      "In this phase I/II study, 14 patients with metastatic or inoperable ALK-positive IMT were administered crizotinib orally twice daily in 28-day cycles as a single agent for an indefinite duration. The overall response rate for patients with IMT (treated at 100, 165, and 280 mg/m2/dose) was 86%. Complete responses were seen in 36% of patients, partial response in 50%, and stable disease in the remaining 14%. Median time to first CR/PR was 28.5 days, and median duration of treatment was 1.63 years. The most common adverse event was decreased neutrophil count."
+    ],
+    "disease_name": "Inflammatory Myofibroblastic Tumor",
+    "disease_doid": "0050905",
+    "disease_aliases": [],
+    "eids": [
+      "1",
+      "11122",
+      "2",
+      "3",
+      "4",
+      "6",
+      "7"
     ]
   },
   "DOID:3908||alk mutation": {
@@ -159,9 +253,6 @@
         "ncit_id": "C115112"
       }
     ],
-    "resistant_to": [
-      "ceritinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "ALK Mutation",
     "descriptions": [
@@ -173,7 +264,355 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "1237"
+    ]
+  },
+  "DOID:0050744||npm1-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "NPM1::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "1241",
+    "mp_id": 509,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "23598171",
+      "pmcId": "PMC3730818",
+      "sourceType": "PUBMED",
+      "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
+      "publicationYear": 2013
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "B",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Fusion NPM1",
+      "ALK-NPM1",
+      "ALK-NPM1 fusion",
+      "ALK::NPM1",
+      "NPM1 ALK Fusion",
+      "NPM1-ALK",
+      "NPM1-ALK fusion",
+      "NPM1::ALK",
+      "npm1-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 2,
+    "gene_symbol": "NPM1::ALK Fusion",
+    "descriptions": [
+      "In the second part of this Phase I study NCT00939770, nine patients between the ages of 12 months and 22 years with anaplastic large cell lymphoma (ALCL), who were refractory to treatment and for whom no further known treatments were available, were treated with crizotinib. Six patients with detectable NPM-ALK transcript levels responded with partial response, 1 with complete response, and 1 with stable disease.  Crizotinib was well tolerated in these children.",
+      "NPM-ALK in anaplastic large cell lymphoma (ALCL) was the first ALK-fusion to be discovered and characterized.  In this study, targeted activity against NPM-ALK by the ALK and MET inhibitor crizotinib was assessed in cell lines and tumor xenograft models. Treatment of NPM-ALK positive ALCL cell lines Karpas299 and SU-DHL-1 potently inhibited growth, and this was seen to occur at concentrations which also inhibited NPM-ALK phosphorylation in these cells. Administration of 100mg/kg/d crizotinib resulted in complete regression of all tumors, indicating that NPM-ALK could be an effective target for crizotinib in ALCL."
+    ],
+    "disease_name": "Anaplastic Large Cell Lymphoma",
+    "disease_doid": "0050744",
+    "disease_aliases": [],
+    "eids": [
+      "1",
+      "1241",
+      "2",
+      "3",
+      "9"
+    ]
+  },
+  "DOID:162||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "2952",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "28183697",
+      "pmcId": "PMC5380583",
+      "sourceType": "PUBMED",
+      "title": "Safety and Antitumor Activity of the Multitargeted Pan-TRK, ROS1, and ALK Inhibitor Entrectinib: Combined Results from Two Phase I Trials (ALKA-372-001 and STARTRK-1).",
+      "publicationYear": 2017
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "B",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "entrectinib",
+        "ncit_id": "C114984"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "Two phase I studies in patients with advanced or metastatic solid tumors, including patients with active central nervous system (CNS) disease. Here, we summarize the overall safety and report the antitumor activity of entrectinib in a cohort of patients with tumors harboring NTRK1/2/3, ROS1, or ALK gene fusions Responses were observed in non-small cell lung cancer, colorectal cancer, mammary analogue secretory carcinoma, melanoma, and renal cell carcinoma, as early as 4 weeks after starting treatment and lasting as long as >2 years. Notably, a complete CNS response was achieved in a patient with SQSTM1-NTRK1-rearranged lung cancer."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "2952"
+    ]
+  },
+  "DOID:162||v-alk fusion or v-ros1 fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "11671",
+    "mp_id": 5222,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "35233056",
+      "pmcId": "PMC8888601",
+      "sourceType": "PUBMED",
+      "title": "Crizotinib in patients with tumors harboring ALK or ROS1 rearrangements in the NCI-MATCH trial.",
+      "publicationYear": 2022
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "B",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion or v-ros1 fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion OR v::ROS1 Fusion",
+    "descriptions": [
+      "This clinical study was conducted on patients harboring either ROS1 or ALK rearrangements, and were treated with Crizotinib. The two sub-protocols F(ALK rearrangements) and G(ROS1 rearrangements) had 4 evaluable patients each. Sub-protocols F and G had the response rates of 50% (90% CI; 9.8%-90.2%), and 25% (90% CI; 1.3-75.1) respectively. The PFS for sub-protocol F was 3.8 months and that for sub-protocol G was 4.3 months. Median overall survival for the sub-protocols F and G were 4.8 months and 6.2 months respectively. The study suggested modest antitumor activity for both the sub-protocols."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "11671"
+    ]
+  },
+  "DOID:3910||eml4-alk fusion and alk c1156y": {
+    "canonical_id": "CA16602783",
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      },
+      {
+        "variant": "ALK C1156Y",
+        "ca_id": "CA16602783"
+      }
+    ],
+    "eid": "236",
+    "mp_id": 4225,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "20979473",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "EML4-ALK mutations in lung cancer that confer resistance to ALK inhibitors.",
+      "publicationYear": 2010
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK C1156Y",
+      "ALK Fusion EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "C1156Y ALK",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "alk c1156y",
+      "eml4-alk fusion",
+      "eml4-alk fusion and alk c1156y"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK C1156Y",
+    "descriptions": [
+      "A 28 year-old patient with T4N3M1 stage lung adenocarcinoma harboring an EML4-ALK variant 1 fusion was treated with crizotinib after failing conventional therapy. The patient achieved a partial response, but progressed after 5 months of treatment. Molecular analysis at relapse identified C1156Y in the ALK kinase domain of the fusion at an allele frequency of 41.8%. This variant was undetected by Sanger sequencing in the tumor collected before crizotinib treatment. Cytotoxicity assays revealed Ba/F3 cells expressing EML4-ALK C1156Y were more resistant to crizontinib than those expressing EML4-ALK wildtype. Immunoblot demonstrated crizontinib reduced tyrosine phosphorylation of the wildtype fusion, but not the EML4-ALK C1156Y fusion."
+    ],
+    "disease_name": "Lung Adenocarcinoma",
+    "disease_doid": "3910",
+    "disease_aliases": [
+      "Bronchogenic Lung Adenocarcinoma",
+      "Nonsmall Cell Adenocarcinoma"
+    ],
+    "eids": [
+      "236"
+    ]
+  },
+  "DOID:3910||eml4-alk fusion and alk l1196m": {
+    "canonical_id": "CA16602593",
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      },
+      {
+        "variant": "ALK L1196M",
+        "ca_id": "CA16602593"
+      }
+    ],
+    "eid": "237",
+    "mp_id": 4230,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "20979473",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "EML4-ALK mutations in lung cancer that confer resistance to ALK inhibitors.",
+      "publicationYear": 2010
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK L1196M",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "L1196M ALK",
+      "alk l1196m",
+      "eml4-alk fusion",
+      "eml4-alk fusion and alk l1196m"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK L1196M",
+    "descriptions": [
+      "A 28 year-old patient with non-small cell lung cancer was found to harbor the EML4-ALK (E13;A20) fusion using reverse transcription PCR. Treatment with 250mg crizotinib twice daily resulted in rapid improvement of symptoms and disease control for 5 months, followed by rapid disease progression. Analysis of pleural effusion samples obtained after relapse found L1196M at an allele frequency of 14%. This variant was undetected by Sanger sequencing in the tumor collected before crizotinib treatment. Cytotoxicity assays revealed Ba/F3 cells expressing EML4-ALK L1196M were more resistant to crizontinib than those expressing EML4-ALK wildtype. Immunoblot demonstrated crizontinib reduced tyrosine phosphorylation of the wildtype fusion, but not the EML4-ALK L1196M fusion."
+    ],
+    "disease_name": "Lung Adenocarcinoma",
+    "disease_doid": "3910",
+    "disease_aliases": [
+      "Bronchogenic Lung Adenocarcinoma",
+      "Nonsmall Cell Adenocarcinoma"
+    ],
+    "eids": [
+      "237"
+    ]
+  },
+  "DOID:3910||eml4-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "262",
+    "mp_id": 5,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "20979473",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "EML4-ALK mutations in lung cancer that confer resistance to ALK inhibitors.",
+      "publicationYear": 2010
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "eml4-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion",
+    "descriptions": [
+      "A 28 year-old patient with non-small cell lung cancer that failed conventional therapy was found to harbor the EML4-ALK (E13;A20) fusion using reverse transcription PCR. Treatment with 250mg crizotinib twice daily resulted in rapid improvement of symptoms and disease control for 5 months."
+    ],
+    "disease_name": "Lung Adenocarcinoma",
+    "disease_doid": "3910",
+    "disease_aliases": [
+      "Bronchogenic Lung Adenocarcinoma",
+      "Nonsmall Cell Adenocarcinoma"
+    ],
+    "eids": [
+      "262"
+    ]
   },
   "DOID:3908||eml4-alk fusion and alk t1151dup": {
     "canonical_id": "CA645528802",
@@ -236,12 +675,6 @@
         "ncit_id": "C37899"
       }
     ],
-    "resistant_to": [
-      "alectinib",
-      "alk inhibitor tae684",
-      "crizotinib",
-      "tanespimycin"
-    ],
     "evidence_count": 4,
     "gene_symbol": "EML4::ALK Fusion AND ALK T1151dup",
     "descriptions": [
@@ -257,9 +690,13 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1347",
-      "1348",
-      "1349"
+      "1",
+      "3",
+      "4",
+      "444",
+      "7",
+      "8",
+      "9"
     ]
   },
   "DOID:3908||eml4-alk fusion and alk l1152r": {
@@ -311,9 +748,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "crizotinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "EML4::ALK Fusion AND ALK L1152R",
     "descriptions": [
@@ -325,7 +759,9 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "763"
+    ]
   },
   "DOID:3908||eml4-alk fusion and alk g1269a": {
     "canonical_id": "CA16602590",
@@ -376,9 +812,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "crizotinib"
-    ],
     "evidence_count": 2,
     "gene_symbol": "EML4::ALK Fusion AND ALK G1269A",
     "descriptions": [
@@ -392,7 +825,10 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "765"
+      "5",
+      "6",
+      "7",
+      "764"
     ]
   },
   "DOID:3908||eml4-alk fusion and alk l1198f and alk c1156y": {
@@ -455,10 +891,6 @@
         "ncit_id": "C113655"
       }
     ],
-    "resistant_to": [
-      "crizotinib",
-      "lorlatinib"
-    ],
     "evidence_count": 2,
     "gene_symbol": "EML4::ALK Fusion AND ALK L1198F AND ALK C1156Y",
     "descriptions": [
@@ -471,7 +903,9 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "844"
+      "4",
+      "8",
+      "843"
     ]
   },
   "DOID:3908||eml4-alk e6-e20": {
@@ -531,13 +965,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "2,4-pyrimidinediamine",
-      "alk inhibitor tae684",
-      "alvespimycin",
-      "ceritinib",
-      "crizotinib"
-    ],
     "evidence_count": 7,
     "gene_symbol": "EML4::ALK e6::e20",
     "descriptions": [
@@ -556,12 +983,15 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1192",
-      "1194",
-      "1195",
-      "1197",
-      "1205",
-      "1340"
+      "0",
+      "1",
+      "1193",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "9"
     ]
   },
   "DOID:3908||eml4-alk fusion": {
@@ -621,13 +1051,6 @@
         "ncit_id": null
       }
     ],
-    "resistant_to": [
-      "alvespimycin",
-      "crizotinib",
-      "lorlatinib",
-      "retaspimycin hydrochloride",
-      "whi-p154"
-    ],
     "evidence_count": 5,
     "gene_symbol": "EML4::ALK Fusion",
     "descriptions": [
@@ -644,10 +1067,66 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1188",
-      "1203",
-      "1206",
-      "1332"
+      "0",
+      "1",
+      "1207",
+      "2",
+      "3",
+      "6",
+      "8"
+    ]
+  },
+  "DOID:0050905||ranbp2-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "RANBP2::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "1244",
+    "mp_id": 510,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "20979472",
+      "pmcId": "PMC3014292",
+      "sourceType": "PUBMED",
+      "title": "Crizotinib in ALK-rearranged inflammatory myofibroblastic tumor.",
+      "publicationYear": 2010
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Fusion RANBP2",
+      "ALK-RANBP2",
+      "ALK-RANBP2 fusion",
+      "ALK::RANBP2",
+      "RANBP2 ALK Fusion",
+      "RANBP2-ALK",
+      "RANBP2-ALK fusion",
+      "RANBP2::ALK",
+      "ranbp2-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "RANBP2::ALK Fusion",
+    "descriptions": [
+      "ALK-rearrangements are seen in 50% of inflammatory myofibroblastic tumor (IMT) cases. A 44 year old man was diagnosed with IMT.  He was treated with surgery and catheter placement for administration of cisplatin, doxyrubicin and mitomycin C.  Break-apart FISH showed ALK rearrangement, and immunohistochemical staining was characteristic of RANBP2 rearrangement. After further chemotherapy along with maintenance imatinib, crizotinib was started at 200mg twice daily, and a maximal partial response was achieved 5 months later, with regrowth occurring 2 months later. After further surgery, crizotinib was restarted at 250mg twice daily and almost 2 years later the patient was in complete radiographic remission. Another patient with non-ALK rearranged IMT was administered crizotinib in this study but did not respond."
+    ],
+    "disease_name": "Inflammatory Myofibroblastic Tumor",
+    "disease_doid": "0050905",
+    "disease_aliases": [],
+    "eids": [
+      "1244"
     ]
   },
   "DOID:3908||alk i1171": {
@@ -697,12 +1176,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "alectinib",
-      "alk inhibitor tae684",
-      "ceritinib",
-      "crizotinib"
-    ],
     "evidence_count": 7,
     "gene_symbol": "ALK I1171",
     "descriptions": [
@@ -721,12 +1194,302 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1284",
-      "1285",
-      "1287",
-      "1344",
-      "1367",
-      "1368"
+      "1",
+      "1283",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ]
+  },
+  "DOID:8923||alk alternative transcript (ati)": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Alternative Transcript (ATI)",
+        "ca_id": null
+      }
+    ],
+    "eid": "1936",
+    "mp_id": 813,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "26444240",
+      "pmcId": "PMC4807020",
+      "sourceType": "PUBMED",
+      "title": "Alternative transcription initiation leads to expression of a novel ALK isoform in cancer.",
+      "publicationYear": 2015
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Alternative Transcript (ATI)",
+      "Alternative Transcript (ATI) ALK",
+      "alk alternative transcript (ati)"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK Alternative Transcript (ATI)",
+    "descriptions": [
+      "Expression of an alternative ALK transcript (ATI), encompassing exons 20\u201329 preceded by ~400 base pairs (bp) of intron 19, but not exons 1\u201319 was identified in three samples of thyroid cancer and melanoma. In TCGA samples, ALK ATI was expressed in approx. 11% of melanoma samples. Functional activity of ALK ATI was shown in-vitro. In vivo studies confirmed oncogenic activity of ALK ATI similar to other ALK mutations or fusions and sensitivity to crizotinib. A patient with metastatic melanoma and ALK ATI expression but no MET or ALK aberrations identified with FISH and a 341-gene panel sequencing  was treated with crizotinib and had symptomatic improvement and tumor shrinkage within 6 weeks of therapy"
+    ],
+    "disease_name": "Skin Melanoma",
+    "disease_doid": "8923",
+    "disease_aliases": [
+      "Cutaneous Malignant Melanoma",
+      "Cutaneous Melanoma",
+      "Malignant Ear Melanoma",
+      "Malignant Lip Melanoma",
+      "Malignant Lower Limb Melanoma",
+      "Malignant Melanoma Of Ear And/or External Auricular Canal",
+      "Malignant Melanoma Of Skin Of Lower Limb",
+      "Malignant Melanoma Of Skin Of Trunk Except Scrotum",
+      "Malignant Melanoma Of Skin Of Upper Limb",
+      "Malignant Neck Melanoma",
+      "Malignant Scalp Melanoma",
+      "Malignant Trunk Melanoma",
+      "Malignant Upper Limb Melanoma"
+    ],
+    "eids": [
+      "1936"
+    ]
+  },
+  "DOID:0050929||alk alternative transcript (ati)": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Alternative Transcript (ATI)",
+        "ca_id": null
+      }
+    ],
+    "eid": "7421",
+    "mp_id": 813,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "29054983",
+      "pmcId": "PMC5752582",
+      "sourceType": "PUBMED",
+      "title": "ALK Inhibitor Response in Melanomas Expressing EML4-ALK Fusions and Alternate ALK Isoforms.",
+      "publicationYear": 2018
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "DOES_NOT_SUPPORT",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Alternative Transcript (ATI)",
+      "Alternative Transcript (ATI) ALK",
+      "alk alternative transcript (ati)"
+    ],
+    "therapies": [
+      {
+        "name": "entrectinib",
+        "ncit_id": "C114984"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK Alternative Transcript (ATI)",
+    "descriptions": [
+      "ALK expression was analyzed in 45 melanoma patient-derived xenografts (PDXs), with 11/45 showing ALK expression. Four PDX tumours had only wild-type ALK expression, four had only ALK alternative transcript (ATI) expression, two had wild-type and ATI expression, and one had ALK ATI and multiple EML4-ALK fusion variants. In vitro and in vivo experiments showed that an EML4-ALK fusion expressing sample responded to ALK inhibitors while wild-type ALK and ALK ATI expressing samples did not. Decreased activity in downstream signaling targets with ALK inhibitor treatment was noted for samples expressing fusion ALK but not those expressing only ALK ATI. Further, a patient with metastatic mucosal melanoma expressing ALK ATI was treated with the ALK/ROS1/TRK inhibitor entrectinib but experienced rapid clinical and radiologic progression resulting in treatment discontinuation after two weeks."
+    ],
+    "disease_name": "Mucosal Melanoma",
+    "disease_doid": "0050929",
+    "disease_aliases": [],
+    "eids": [
+      "7421"
+    ]
+  },
+  "DOID:7474||eml4-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "9228",
+    "mp_id": 5,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "32600123",
+      "pmcId": "PMC7328355",
+      "sourceType": "PUBMED",
+      "title": "Acquired multiple mutations ALK I1171N, L1196M and G1202R mediate lorlatinib resistance in EML4-ALK-rearranged malignant pleural mesothelioma: a case report.",
+      "publicationYear": 2020
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "eml4-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion",
+    "descriptions": [
+      "A 33 year old M non-smoker with no cancer family history and no known exposure to asbestos showed weakness, chest pain, and plural effusion (PE) accumulation. Mass in right lung was seen under enhanced CT. Patient was diagnosed with stage IIIB (cT4N2M0) malignant pleural mesothelioma (MPM) using National Comprehensive Cancer Network (NCCN) guidelines on MPM staging (v.1.2018). \n\nPatient was given palliative chemotherapy for two cycles, which reduced the PE and improved physical mobility. Targeted NGS panel with 520 genes of PE showed EML4::ALK variant 3 (allelic fraction 24.21%). After 1 month symptoms were alleviated and NGS showed reduced EML4::ALK abundance (allelic fraction 8.22%). After 2 months CT showed tumor shrinkage. This was evaluated as partial response."
+    ],
+    "disease_name": "Malignant Pleural Mesothelioma",
+    "disease_doid": "7474",
+    "disease_aliases": [
+      "Malignant Mesothelioma Of Pleura"
+    ],
+    "eids": [
+      "9228"
+    ]
+  },
+  "DOID:769||alk i1171t": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK I1171T",
+        "ca_id": null
+      }
+    ],
+    "eid": "9404",
+    "mp_id": 3239,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "29907598",
+      "pmcId": "PMC6071567",
+      "sourceType": "PUBMED",
+      "title": "Clinical response of the novel activating ALK-I1171T mutation in neuroblastoma to the ALK inhibitor ceritinib.",
+      "publicationYear": 2018
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK I1171T",
+      "I1171T ALK",
+      "alk i1171t"
+    ],
+    "therapies": [
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK I1171T",
+    "descriptions": [
+      "This case reports a 16-mo-old boy with metastatic neuroblastoma (stage M). Genomic analysis of a diagnostic biopsy of the tumor and matched normal identified two germline mutations in FANCA and somatic ALK-I1171T mutation. Functional investigation of this mutation including PC12 cell neurite outgrowth, NIH3T3 transformation and phosophoproteomics showing increased ALK signaling all suggested that it was a gain function. The patient was treated with Ceritinib as a monotherapy for 7.5 months. The residual primary decreased in size (44% volume reduction at 6 months of treatment) and was surgically removed. At 21 months of followup a complete remission was observed (including all metastatic sites)."
+    ],
+    "disease_name": "Neuroblastoma",
+    "disease_doid": "769",
+    "disease_aliases": [],
+    "eids": [
+      "9404"
+    ]
+  },
+  "DOID:7474||eml4-alk fusion and alk i1171n and alk l1196m": {
+    "canonical_id": "CA16602371",
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      },
+      {
+        "variant": "ALK I1171N",
+        "ca_id": "CA16602371"
+      },
+      {
+        "variant": "ALK L1196M",
+        "ca_id": "CA16602593"
+      }
+    ],
+    "eid": "11115",
+    "mp_id": 4328,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "32600123",
+      "pmcId": "PMC7328355",
+      "sourceType": "PUBMED",
+      "title": "Acquired multiple mutations ALK I1171N, L1196M and G1202R mediate lorlatinib resistance in EML4-ALK-rearranged malignant pleural mesothelioma: a case report.",
+      "publicationYear": 2020
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 4,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK I1171N",
+      "ALK L1196M",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "I1171N ALK",
+      "L1196M ALK",
+      "alk i1171n",
+      "alk l1196m",
+      "eml4-alk fusion",
+      "eml4-alk fusion and alk i1171n and alk l1196m"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      },
+      {
+        "name": "lorlatinib",
+        "ncit_id": "C113655"
+      }
+    ],
+    "evidence_count": 2,
+    "gene_symbol": "EML4::ALK Fusion AND ALK I1171N AND ALK L1196M",
+    "descriptions": [
+      "A 33 year old male with no smoking history or known exposure to asbestos was diagnosed with malignant pleural mesothelioma (MPM). EML4::ALK was found using a panel of 520 genes in NGS, and the patient responded to alectinib treatment. At 3.5 months, symptoms worsened, cough returned and blood tumor markers including NSE, SCC, and CA-125 were increased. Progressive disease was confirmed after 4.5 months of alectinib. NGS of plasma showed ALK kinase domain mutations I1171N (allelic fraction 4.24%) and L1196M (allelic fraction 0.33%).",
+      "This case report describes a 33 year-old non-smoker with no known exposure to asbestos who was diagnosed with stage IIIB malignant pleural mesothelioma. Panel next generation sequencing (NGS) of 520 genes revealed an EML4::ALK fusion and the patient was subsequently treated with alectinib. After 1 month of therapy the patient showed clinical improvement, and plasma NGS revealed a decrease in EML4::ALK allele fraction (AF) from 24.21% to 8.22%. Progressive disease was confirmed after 4.5 months of alectinib therapy at which time plasma NGS revealed the emergence of two acquired resistance mutations, I1171N (AF=4.24%) and L1196M (AF=0.33). He then received lorlatinib and achieved a PR within one month with 34% tumour shrinkage, suggesting lorlatinib sensitivity despite compound I1171N and L1196M acquired mutations. He began showing signs of progression after 3.6 months of lorlatinib treatment and plasma NGS at that time identified a third concurrent acquired resistance mutation G1202R (AF=3.07%) in cis with L1196M."
+    ],
+    "disease_name": "Malignant Pleural Mesothelioma",
+    "disease_doid": "7474",
+    "disease_aliases": [
+      "Malignant Mesothelioma Of Pleura"
+    ],
+    "eids": [
+      "1",
+      "11115",
+      "3"
     ]
   },
   "DOID:3908||eml4-alk fusion and alk amplification": {
@@ -778,9 +1541,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "crizotinib"
-    ],
     "evidence_count": 3,
     "gene_symbol": "EML4::ALK Fusion AND ALK Amplification",
     "descriptions": [
@@ -795,8 +1555,11 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "440",
-      "767"
+      "0",
+      "4",
+      "6",
+      "7",
+      "766"
     ]
   },
   "DOID:3908||eml4-alk fusion and alk c1156y": {
@@ -860,12 +1623,6 @@
         "ncit_id": "C71467"
       }
     ],
-    "resistant_to": [
-      "ceritinib",
-      "crizotinib",
-      "lorlatinib",
-      "luminespib"
-    ],
     "evidence_count": 3,
     "gene_symbol": "EML4::ALK Fusion AND ALK C1156Y",
     "descriptions": [
@@ -880,8 +1637,263 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1346",
-      "842"
+      "1",
+      "2",
+      "3",
+      "4",
+      "6",
+      "8",
+      "841"
+    ]
+  },
+  "DOID:162||eml4-alk e6-e20": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "EML4::ALK e6::e20",
+        "ca_id": null
+      }
+    ],
+    "eid": "1245",
+    "mp_id": 499,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "25408655",
+      "pmcId": "PMC4209277",
+      "sourceType": "PUBMED",
+      "title": "A Poorly Differentiated Malignant Neoplasm Lacking Lung Markers Harbors an EML4-ALK Rearrangement and Responds to Crizotinib.",
+      "publicationYear": 2014
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK e6 e20 EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK e6 e20",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "eml4-alk e6-e20"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK e6::e20",
+    "descriptions": [
+      "This case study presented a 53-year-old never-smoker with a poorly differentiated malignant neoplasm. Morphology and immunohistochemistry were unable to establish the primary tumor site. Right upper extremity (RUE), scalp, and multiple lung lesions were apparent. A lung lesion sample with sufficient material for molecular profiling was not attainable but sufficient material was present from the RUE for hybrid capture genomic profiling  (FoundationOne kit was used). EML4-ALK variant 3 was found, and the patient was started on crizotinib. Rapid symptom improvement was seen. After 1 month, a CT scan showed significant size reduction in lung tumors, and after 5 months the patient was asymptomatic with an entirely negative examination."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "1245"
+    ]
+  },
+  "DOID:0050745||cltc-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "CLTC::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "1265",
+    "mp_id": 516,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "26221234",
+      "pmcId": "PMC4509179",
+      "sourceType": "PUBMED",
+      "title": "Promising response of anaplastic lymphoma kinase-positive large B-cell lymphoma to crizotinib salvage treatment: case report and review of literature.",
+      "publicationYear": 2015
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion CLTC",
+      "ALK-CLTC",
+      "ALK-CLTC fusion",
+      "ALK::CLTC",
+      "CLTC ALK Fusion",
+      "CLTC-ALK",
+      "CLTC-ALK fusion",
+      "CLTC::ALK",
+      "cltc-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      },
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 2,
+    "gene_symbol": "CLTC::ALK Fusion",
+    "descriptions": [
+      "A 21 year old male presented with lymphadenopathy and a low density mass in pancreas. Histopathological analysis showed diffuse tumor cell infiltrate (CD20/EMA negative) with cytoplasmic ALK. RT-PCR indicated CLTC-ALK fusion. The patient was diagnosed with splenic ALK + diffuse large B cell lymphoma (DLBCL), Stage III, Group A with an IPI of 3. CHOP-21 chemotherapy regimen was administered with improvement in abdominal lymph nodes but worsening in retroperitoneal lymph nodes assessed via standardized uptake values. Subsequent ICE chemotherapy regiment relieved some symptoms prompting the patient to refuse further treatment despite other indications of disease progression. Therapy was reinstated after worsening of disease. GEMOX chemotherapy was administered with dexamethasone and 250mg crizotinib twice daily resulting in symptom relief, decreased lymphadenopathy and LDH decline. The disease then progressed and the patient died 2 months after crizotinib initiation. The authors conclude that partial response to crizotinib was observed and that in future trials ALK rearranged DLBCL patients might see increased benefit with earlier application of targeted therapy during the treatment course.",
+      "A cell line called LM1 was established from the bone marrow of a 13 year old female patient with relapsed CLTC-ALK positive diffuse large B-cell lymphoma (DLBCL). The patient had been heavily treated with chemotherapy before establishment of the cell line. The cell line maintained the tumor immunophenotype.  SNP analysis of patient bone marrow mononuclear cells and LM1 showed chromosomal changes associated with the cell line but 94.7% of SNPs were identically called.  ALK kinase inhibitor TAE684 induced cell death in LM1 cells at low nanomolar concentrations, while it did not significantly effect the ALK-rearrangement negative DLBCL cell line Karpas422.  LM1 cells formed tumors in 3/10 SCID and 9/10 NOD-SCID mice.  CD30 and CD138 immmunostaining were maintained between original tumor and LM1 xenografts. In mice, LM1 but not Karpas422 xenografts regressed with TAE684 administration, and complete remission for 13 weeks was observed before experiment was terminated."
+    ],
+    "disease_name": "Diffuse Large B-cell Lymphoma",
+    "disease_doid": "0050745",
+    "disease_aliases": [],
+    "eids": [
+      "1",
+      "1265",
+      "2",
+      "6"
+    ]
+  },
+  "DOID:769||alk f1174l": {
+    "canonical_id": "CA279586",
+    "components": [
+      {
+        "variant": "ALK F1174L",
+        "ca_id": "CA279586"
+      }
+    ],
+    "eid": "1271",
+    "mp_id": 8,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "23598171",
+      "pmcId": "PMC3730818",
+      "sourceType": "PUBMED",
+      "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
+      "publicationYear": 2013
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "DOES_NOT_SUPPORT",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK F1174L",
+      "F1174L ALK",
+      "alk f1174l"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      },
+      {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      },
+      {
+        "name": "azd3463",
+        "ncit_id": null
+      },
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      },
+      {
+        "name": "lorlatinib",
+        "ncit_id": "C113655"
+      }
+    ],
+    "evidence_count": 7,
+    "gene_symbol": "ALK F1174L",
+    "descriptions": [
+      "CH5424802 (Alectinib) is effective in inhibiting the activity of the F1174L ALK mutant in a kinase activity assay and proliferation assay using neuroblastoma KELLY cells.",
+      "Cells lines expressing ALK harboring the F1174L mutation are less sensitive to growth inhibition by crizotinib than cells expressing the R1275Q mutation. The authors conclude that this effect should be surmountable with higher doses of crizotinib and/or with higher-affinity inhibitors.",
+      "Efficacy of the second generation ALK inhibitor PF-06463922 was tested on ALK mutation F1174L containing neuroblastoma-derived cells.  COG-N-453x and SH-SY5Y xenografts showed some inhibition when treated with crizotinib, but showed complete growth inhibition with PF-06463922 treatment.  This corresponded to 0% event free survival (EFS) in these mice by 6 weeks with crizotinib treatment, but 100% EFS with PF-06463922 treatment. Comparison of crizotinib and PF-06463922 growth inhibition in F1174L cells SH-SY5Y, NBSD 415-IMDM and KELLY showed increased sensitivity to PF-06463922, as compared to crizotinib. Inhibition effects were not seen on neuroblastoma cells with wild type ALK (NB-EBc1, SK-N-BE(2)C). Decreased phosphorylation on ALK tyrosine 1278 was seen with PF-06463922 over crizotinib at 10 and 100 nM concentrations in SH-SY5Y cells. PF-06463922 was well tolerated in the in-vivo models.",
+      "High levels of crizotinib can overcome drug resistance of Ba/F3 cells expressing the EML4-ALK fusion containing the F1174L mutation.",
+      "In a Phase I trial (NCT00939770) of the drug crizotinib in pediatric patients, a subset of 11 neuroblastoma patients were characterized for mutations in ALK. Of these 11 patients, 4 had the F1174L mutation. Among these 4 patients, stable disease (SD) was observed in one, and progressive disease (PD) was observed in 3 others after administration of crizotinib. In contrast, in the remaining 7 patients with mutations different than F1174L, 4 had PD, 2 had SD and one had complete response as best response after initiation of crizotinib.",
+      "SH-SY5Y and Kelly cells with mutant ALK (F1174L) and Ba/F3 cells overexpressing ALK harboring the F1174L mutation are sensitive to TAE684-mediated growth inhibition.",
+      "The SH-SY5Y neuroblastoma cell line containing the F1174L ALK mutation was found to undergo cell death when treated with the ALK/IGF1R inhibitor AZD3463. These cells were more sensitive than other neuroblastoma cell lines containing wild-type ALK. Marked inhibition of soft agar colony formation of SH-SY5Y cells was also observed with drug treatment. AZD3463 inhibited Akt signaling in these cells within two hours of treatment, and activated apoptosis and autophagy pathways. Treatment of SH-SY5Y cells implanted into left kidneys of nude mice resulted in almost complete tumor regression."
+    ],
+    "disease_name": "Neuroblastoma",
+    "disease_doid": "769",
+    "disease_aliases": [],
+    "eids": [
+      "1",
+      "1271",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8",
+      "9"
+    ]
+  },
+  "DOID:769||alk f1245c": {
+    "canonical_id": "CA279597",
+    "components": [
+      {
+        "variant": "ALK F1245C",
+        "ca_id": "CA279597"
+      }
+    ],
+    "eid": "1333",
+    "mp_id": 545,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "23598171",
+      "pmcId": "PMC3730818",
+      "sourceType": "PUBMED",
+      "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
+      "publicationYear": 2013
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK F1245C",
+      "F1245C ALK",
+      "alk f1245c"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      },
+      {
+        "name": "lorlatinib",
+        "ncit_id": "C113655"
+      }
+    ],
+    "evidence_count": 2,
+    "gene_symbol": "ALK F1245C",
+    "descriptions": [
+      "A participant in Children's Oncology Group (COG) study AVDL0912 with measurable neuroblastoma mutated at ALK F1245C was administered crizotinib at 100mg twice daily.  The patient showed progressive disease as best response after two 28-day cycles on crizotinib.",
+      "Patient derived xenografts of neuroblastoma Felix cells with F1245C ALK mutation in CB17 SCID mice showed growth inhibition with crizotinib treatment over control, and mice had improved duration of event-free survival (EFS) with crizotinib treatment over vehicle, but EFS with crizotinib went down to 0% by six weeks.  In contrast, PF-06463922 treatment induced complete tumor regression and EFS rate of 100% at six weeks.  PF-06463922 inhibited viability in Felix cells at 37x efficacy over crizotinib, with IC50 values of 21.8 +/- 0.4 and 814.0 +/- 119 respectively.  PF-06463922 was well tolerated in the animal models."
+    ],
+    "disease_name": "Neuroblastoma",
+    "disease_doid": "769",
+    "disease_aliases": [],
+    "eids": [
+      "0",
+      "1",
+      "1333",
+      "3"
     ]
   },
   "DOID:3908||eml4-alk fusion and alk f1245c": {
@@ -937,10 +1949,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "ceritinib",
-      "crizotinib"
-    ],
     "evidence_count": 2,
     "gene_symbol": "EML4::ALK Fusion AND ALK F1245C",
     "descriptions": [
@@ -954,7 +1962,512 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1339"
+      "1",
+      "1338",
+      "3",
+      "9"
+    ]
+  },
+  "DOID:3910||alk g1202r and v-alk fusion": {
+    "canonical_id": "CA16602592",
+    "components": [
+      {
+        "variant": "ALK G1202R",
+        "ca_id": "CA16602592"
+      },
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "1357",
+    "mp_id": 4236,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "22277784",
+      "pmcId": "PMC3385512",
+      "sourceType": "PUBMED",
+      "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
+      "publicationYear": 2012
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "ALK G1202R",
+      "Fusion (unspecified partner) ALK",
+      "G1202R ALK",
+      "alk fusion (unspecified partner)",
+      "alk g1202r",
+      "alk g1202r and v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK G1202R AND v::ALK Fusion",
+    "descriptions": [
+      "A patient with ALK-rearranged lung adenocarcinoma responded to crizotinib treatment and then had relapse. Biopsy was taken within half a month and total DNA was extracted from the sample. Exons 20-28, which correspond to the tyrosine kinase domain of ALK, were sequenced, and ALK G1202R was found. CKIT focal amplification by FISH was also observed. Tumor sample before crizotinib treatment was not available in this case."
+    ],
+    "disease_name": "Lung Adenocarcinoma",
+    "disease_doid": "3910",
+    "disease_aliases": [
+      "Bronchogenic Lung Adenocarcinoma",
+      "Nonsmall Cell Adenocarcinoma"
+    ],
+    "eids": [
+      "1357"
+    ]
+  },
+  "DOID:3910||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "1691",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "25922291",
+      "pmcId": "PMC4418215",
+      "sourceType": "PUBMED",
+      "title": "Detection of Crizotinib-Sensitive Lung Adenocarcinomas With MET, ALK, and ROS1 Genomic Alterations via Comprehensive Genomic Profiling.",
+      "publicationYear": 2015
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "In an evaluation of a patient with crizotinib-sensitive lung adenocarcinoma, an EML4-ALK-E13;A20 rearrangement was identified using CGP.  The patient attained a reduction in the target lesions by 14.2%, however, the patient relapsed 17 months later."
+    ],
+    "disease_name": "Lung Adenocarcinoma",
+    "disease_doid": "3910",
+    "disease_aliases": [
+      "Bronchogenic Lung Adenocarcinoma",
+      "Nonsmall Cell Adenocarcinoma"
+    ],
+    "eids": [
+      "1691"
+    ]
+  },
+  "DOID:769||alk f1245v": {
+    "canonical_id": "CA345003",
+    "components": [
+      {
+        "variant": "ALK F1245V",
+        "ca_id": "CA345003"
+      }
+    ],
+    "eid": "2987",
+    "mp_id": 1269,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "28183697",
+      "pmcId": "PMC5380583",
+      "sourceType": "PUBMED",
+      "title": "Safety and Antitumor Activity of the Multitargeted Pan-TRK, ROS1, and ALK Inhibitor Entrectinib: Combined Results from Two Phase I Trials (ALKA-372-001 and STARTRK-1).",
+      "publicationYear": 2017
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK F1245V",
+      "F1245V ALK",
+      "alk f1245v"
+    ],
+    "therapies": [
+      {
+        "name": "entrectinib",
+        "ncit_id": "C114984"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK F1245V",
+    "descriptions": [
+      "Clinical trial of entrectinib in patients with ALK/ROS/TRK altered tumors. One patient with an ALK F1245V-mutant neuroblastoma achieved a durable, confirmed partial response (PR) lasting 8.3 months. The patient remained on study treatment for more than 3.5 years because of clinical benefit."
+    ],
+    "disease_name": "Neuroblastoma",
+    "disease_doid": "769",
+    "disease_aliases": [],
+    "eids": [
+      "2987"
+    ]
+  },
+  "DOID:234||strn-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "STRN::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "5952",
+    "mp_id": 2094,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "26933125",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "Oncogenic ALK Fusion in Rare and Aggressive Subtype of Colorectal Adenocarcinoma as a Potential Therapeutic Target.",
+      "publicationYear": 2016
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion STRN",
+      "ALK-STRN",
+      "ALK-STRN fusion",
+      "ALK::STRN",
+      "STRN ALK Fusion",
+      "STRN-ALK",
+      "STRN-ALK fusion",
+      "STRN::ALK",
+      "strn-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "STRN::ALK Fusion",
+    "descriptions": [
+      "Patients with metastatic colorectal cancer with STRN-ALK fusion, sporadic microsatellite instability high (MSI-H) and KRAS R164Q received ALK inhibitor ceritinib. After pts received ceritinib perinumbilica cutaneous metastasis disappeared. Although the size of pelvic tumor by CT scan did not changed, there has been resolution of all contrast enhancing tumor by CT scan."
+    ],
+    "disease_name": "Colon Adenocarcinoma",
+    "disease_doid": "234",
+    "disease_aliases": [
+      "Adenocarcinoma Of Colon",
+      "Colonic Adenocarcinoma"
+    ],
+    "eids": [
+      "5952"
+    ]
+  },
+  "DOID:0080522||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "5954",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "24687827",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "Remarkable Response to Crizotinib in Woman With Anaplastic Lymphoma Kinase-Rearranged Anaplastic Thyroid Carcinoma.",
+      "publicationYear": 2015
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "A patient with anaplastic thyroid carcinoma harboring ALK rearrangement received crizotinib after chemotherapy for pulmonary recurrence. Crizotinib showed confirmed response of more than 90% by tumor volume, and her response has been stable on follow-up."
+    ],
+    "disease_name": "Anaplastic Thyroid Carcinoma",
+    "disease_doid": "0080522",
+    "disease_aliases": [
+      "Thyroid Gland Anaplastic Carcinoma"
+    ],
+    "eids": [
+      "5954"
+    ]
+  },
+  "DOID:9256||cad-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "CAD::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "7481",
+    "mp_id": 2638,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "26633560",
+      "pmcId": "PMC4701996",
+      "sourceType": "PUBMED",
+      "title": "Novel CAD-ALK gene rearrangement is drugable by entrectinib in colorectal cancer.",
+      "publicationYear": 2015
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion CAD",
+      "ALK-CAD",
+      "ALK-CAD fusion",
+      "ALK::CAD",
+      "CAD ALK Fusion",
+      "CAD-ALK",
+      "CAD-ALK fusion",
+      "CAD::ALK",
+      "cad-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "entrectinib",
+        "ncit_id": "C114984"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "CAD::ALK Fusion",
+    "descriptions": [
+      "A patient with colorectal cancer harboring a CAD-ALK fusion gene was treated with the ALK inhibitor entrectinib, resulting in durable objective tumor response. A CT scan four weeks after treatment initiation showed a 38% reduction in target lesions, and response was ongoing after 4 months."
+    ],
+    "disease_name": "Colorectal Cancer",
+    "disease_doid": "9256",
+    "disease_aliases": [],
+    "eids": [
+      "7481"
+    ]
+  },
+  "DOID:5742||kank4-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "KANK4::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "10327",
+    "mp_id": 3869,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "35005993",
+      "pmcId": "PMC8769132",
+      "sourceType": "PUBMED",
+      "title": "Exceptional Clinical Response to Alectinib in Pancreatic Acinar Cell Carcinoma With a Novel ALK-KANK4 Gene Fusion.",
+      "publicationYear": 2022
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion KANK4",
+      "ALK-KANK4",
+      "ALK-KANK4 fusion",
+      "ALK::KANK4",
+      "KANK4 ALK Fusion",
+      "KANK4-ALK",
+      "KANK4-ALK fusion",
+      "KANK4::ALK",
+      "kank4-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "KANK4::ALK Fusion",
+    "descriptions": [
+      "Case report of a 62-year old male patient diagnosed with pancreatic acinar cell carcinoma. Liver metastases were diagnosed and treatment was started with gemcitabine plus nab-paclitaxel regimen. After disease progression, patient received chemotherapy with fluorouracil, leucovorin, and irinotecan for 6 months followed by disease progression and third-line fluorouracil, leucovorin, and oxaliplatin again followed by disease-progression. Sequencing using the FoundationOne CDxF1CDx assay revealed  ASXL1 R596fs*107 and BCORL1 V937fs*10 mutations as well as a KANK4-ALK gene fusion, which was confirmed by FISH. Treatment with alectinib was started and partial response was ongoing 4 months from the start of therapy."
+    ],
+    "disease_name": "Pancreatic Acinar Cell Adenocarcinoma",
+    "disease_doid": "5742",
+    "disease_aliases": [
+      "Pancreatic Acinar Cell Carcinoma"
+    ],
+    "eids": [
+      "10327"
+    ]
+  },
+  "DOID:7474||eml4-alk fusion and alk g1202r and alk i1171n and alk l1196m": {
+    "canonical_id": "CA16602592",
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      },
+      {
+        "variant": "ALK G1202R",
+        "ca_id": "CA16602592"
+      },
+      {
+        "variant": "ALK I1171N",
+        "ca_id": "CA16602371"
+      },
+      {
+        "variant": "ALK L1196M",
+        "ca_id": "CA16602593"
+      }
+    ],
+    "eid": "11114",
+    "mp_id": 4329,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "32600123",
+      "pmcId": "PMC7328355",
+      "sourceType": "PUBMED",
+      "title": "Acquired multiple mutations ALK I1171N, L1196M and G1202R mediate lorlatinib resistance in EML4-ALK-rearranged malignant pleural mesothelioma: a case report.",
+      "publicationYear": 2020
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK G1202R",
+      "ALK I1171N",
+      "ALK L1196M",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "G1202R ALK",
+      "I1171N ALK",
+      "L1196M ALK",
+      "alk g1202r",
+      "alk i1171n",
+      "alk l1196m",
+      "eml4-alk fusion",
+      "eml4-alk fusion and alk g1202r and alk i1171n and alk l1196m"
+    ],
+    "therapies": [
+      {
+        "name": "lorlatinib",
+        "ncit_id": "C113655"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK G1202R AND ALK I1171N AND ALK L1196M",
+    "descriptions": [
+      "This case report describes a 33 year-old non-smoker with no known exposure to asbestos who was diagnosed with stage IIIB malignant pleural mesothelioma. Panel next generation sequencing (NGS) of 520 genes revealed an EML4::ALK fusion and the patient was subsequently treated with alectinib. After 1 month of therapy the patient showed clinical improvement, and plasma NGS revealed a decrease in EML4::ALK allele fraction (AF) from 24.21% to 8.22%. Progressive disease was confirmed after 4.5 months of alectinib therapy at which time plasma NGS revealed the emergence of two acquired resistance mutations, I1171N (AF=4.24%) and L1196M (AF=0.33). He then received lorlatinib and achieved a PR within one month with 34% tumour shrinkage. He began showing signs of progression after 3.6 months of lorlatinib treatment. Plasma NGS at that time identified a third concurrent acquired resistance mutation G1202R (AF=3.07%) in cis with L1196M, suggesting the combination of concurrent I1171N, L1196M, and G1202R were responsible for acquired resistance to lorlatinib."
+    ],
+    "disease_name": "Malignant Pleural Mesothelioma",
+    "disease_doid": "7474",
+    "disease_aliases": [
+      "Malignant Mesothelioma Of Pleura"
+    ],
+    "eids": [
+      "11114"
+    ]
+  },
+  "DOID:6482||eml4-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "1121",
+    "mp_id": 5,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "23181703",
+      "pmcId": "PMC3515412",
+      "sourceType": "PUBMED",
+      "title": "A case of lung adenocarcinoma harboring EGFR mutation and EML4-ALK fusion gene.",
+      "publicationYear": 2012
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "eml4-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "erlotinib",
+        "ncit_id": "C65530"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion",
+    "descriptions": [
+      "A 39-year-old man presented was observed to have lung acinar adenocarcinoma. Treatment with chemotherapy produced no remarkable response. A EGFR L858R point mutation was observed; the patient was therefore treated with erlotinib, but the disease progressed after 30 days. A second biopsy identified a EML4-ALK fusion, which may explain the therapeutic resistance."
+    ],
+    "disease_name": "Lung Acinar Adenocarcinoma",
+    "disease_doid": "6482",
+    "disease_aliases": [
+      "Acinar Adenocarcinoma Of The Lung"
+    ],
+    "eids": [
+      "1121"
     ]
   },
   "DOID:3908||eml4-alk e20-e20": {
@@ -1002,10 +2515,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "alvespimycin",
-      "crizotinib"
-    ],
     "evidence_count": 3,
     "gene_symbol": "EML4::ALK e20::e20",
     "descriptions": [
@@ -1020,8 +2529,127 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1196",
-      "1204"
+      "0",
+      "1",
+      "1189",
+      "2",
+      "4",
+      "6",
+      "9"
+    ]
+  },
+  "DOID:0050745||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "1264",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "24330038",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "Crizotinib in refractory ALK-positive diffuse large B-cell lymphoma: a case report with a short-term response.",
+      "publicationYear": 2014
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "A 27 year old female patient with advanced-stage IV, CD20 negative diffuse large B cell lymphoma (DLBCL). ALK rearrangement was determined by FISH, but the ALK fusion partner was not determined due to limited tissue. The patient underwent treatment with CHOP chemotherapy regimen and radiation but did not respond. The patient progressed following salvage chemotherapy and autologous stem cell transplant. Crizotinib was then administered at 250 mg twice daily, and LDH levels rapidly dropped along with disappearance of palpable lymphadenopathy, but progression ensued after 21 days and the patient died soon after. The authors attribute the short response to crizotinib to the possibility of this tumor having an ALK fusion variant less responsive to ALK inhibition and to a high Ki-67 index in the patient, and deem that despite the brief response, crizotinib shows promise in ALK rearranged DLBCL."
+    ],
+    "disease_name": "Diffuse Large B-cell Lymphoma",
+    "disease_doid": "0050745",
+    "disease_aliases": [],
+    "eids": [
+      "1264"
+    ]
+  },
+  "DOID:769||alk r1275q": {
+    "canonical_id": "CA341482",
+    "components": [
+      {
+        "variant": "ALK R1275Q",
+        "ca_id": "CA341482"
+      }
+    ],
+    "eid": "1269",
+    "mp_id": 9,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "23598171",
+      "pmcId": "PMC3730818",
+      "sourceType": "PUBMED",
+      "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
+      "publicationYear": 2013
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK R1275Q",
+      "R1275Q ALK",
+      "alk r1275q"
+    ],
+    "therapies": [
+      {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      },
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      },
+      {
+        "name": "lorlatinib",
+        "ncit_id": "C113655"
+      }
+    ],
+    "evidence_count": 5,
+    "gene_symbol": "ALK R1275Q",
+    "descriptions": [
+      "A cohort of pediatric neuroblastoma patients ages 12 months to 22 years were assessed for response to crizotinib in a Phase I study.  11 patients in this cohort had characterized ALK mutations, 4 of which were R1275Q mutation. Two of these R1275Q mutations were germline and two were somatic. Of these 2 somatic R1275Q patients, 1 showed progressive disease (PD) and 1 showed stable disease (SD). In contrast, of the 7 characterized patients with ALK mutations that were not R1275Q, 6 showed PD and 1 SD. The stable disease patient had an R1275L mutation in ALK. In general, patients with germline or somatic R1275Q mutations or R1275L mutations had 1 complete response, 3 SD and one PD, while patients with other ALK mutations had 6 PD.",
+      "Cells lines expressing ALK harboring the F1174L mutation are less sensitive to growth inhibition by crizotinib than cells expressing the R1275Q mutation.",
+      "In NB-1643 and LAN-5 neuroblastoma cell lines containing R1275Q mutation, PF-06463922 showed 51 and 19 fold greater effect on cell viability over crizotinib treatment respectively. ALK wild-type neuroblastoma cell lines did not show differential sensitivity to the treatments within the sensitivity range of R1275Q cells, and had IC50 values above 3800 nM to the inhibitors. NB-1653 cells induced tumors in CB17 SCID mice and crizotinib treatment inhibited tumor growth over vehicle treatment, but PF-06463922 induced complete tumor regression.",
+      "The SMS-KCNR cell line harboring the R1275Q mutation was resistant to TAE684.",
+      "This Phase I study of crizotinib involved a cohort of pediatric neuroblastoma patients between ages 12 months and 22 years. In 11 patients with characterized ALK mutations, 4 had R1275Q mutations, and two of these were germline mutations.  Of these 2 germline patients, 1 showed stable disease (SD) and 1 complete response (CR). In contrast, in the 7 characterized patients with ALK mutations that were not R1275Q, 6 showed PD and 1 SD. The authors conclude this finding is promising and merits further study."
+    ],
+    "disease_name": "Neuroblastoma",
+    "disease_doid": "769",
+    "disease_aliases": [],
+    "eids": [
+      "0",
+      "1",
+      "1269",
+      "2",
+      "3",
+      "4",
+      "7",
+      "8"
     ]
   },
   "DOID:3908||alk i1171n and hip1-alk fusion": {
@@ -1077,10 +2705,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "alectinib",
-      "crizotinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "ALK I1171N AND HIP1::ALK Fusion",
     "descriptions": [
@@ -1092,7 +2716,9 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "1483"
+    ]
   },
   "DOID:3908||eml4-alk fusion and alk i1171s": {
     "canonical_id": "CA346462883",
@@ -1147,10 +2773,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "alectinib",
-      "crizotinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "EML4::ALK Fusion AND ALK I1171S",
     "descriptions": [
@@ -1162,7 +2784,165 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "1484"
+    ]
+  },
+  "DOID:1901||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "6042",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "26942346",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "Targeted Treatment of a Rare Vaginal Sarcoma With an Anaplastic Lymphoma Kinase Inhibitor.",
+      "publicationYear": 2016
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "Patient was 34-year-old woman with vaginal sarcoma, which was excised with positive surgical margins. Fluorescence in situ hybridization testing of her tumor revealed  anaplastic lymphoma kinase gene rearrangements. A 3-cm mass recurred 1 month later. Treatment with crizotinib resulted in complete regression of all visible or palpable tumor within 3 weeks."
+    ],
+    "disease_name": "Vagina Sarcoma",
+    "disease_doid": "1901",
+    "disease_aliases": [
+      "Sarcoma Of The Vagina"
+    ],
+    "eids": [
+      "6042"
+    ]
+  },
+  "DOID:0080372||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "6043",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "25028698",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "A case report of epithelioid inflammatory myofibroblastic sarcoma with RANBP2-ALK fusion gene treated with the ALK inhibitor, crizotinib.",
+      "publicationYear": 2014
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "This is a case report of a  22-year-old Japanese man with a pelvic mesenchymal neoplasm. Tumor analysis include IHC and RT-PCR led to diagnosis of epithelioid inflammatory myofibroblastic sarcoma with RANBP2-ALK fusion. Despite two surgical excision procedures, local recurrence rapidly occurred, and the tumor developed resistance to conventional chemotherapy with doxorubicin. Subsequent administration of crizotinib resulted in relief of severe pain and durable tumor shrinkage at least 10 months."
+    ],
+    "disease_name": "Epithelioid Inflammatory Myofibroblastic Sarcoma",
+    "disease_doid": "0080372",
+    "disease_aliases": [],
+    "eids": [
+      "6043"
+    ]
+  },
+  "DOID:3260||fus-tfcp2 fusion and alk exon 2-18 deletion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "FUS::TFCP2 Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "12406",
+    "mp_id": 5452,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "39302072",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "Diagnostic and Therapeutic Implications of a FUS::TFCP2 Fusion and ALK Activation in a Metastatic Rhabdomyosarcoma.",
+      "publicationYear": 2024
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "C",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "FUS TFCP2 Fusion",
+      "FUS-TFCP2",
+      "FUS-TFCP2 fusion",
+      "FUS::TFCP2",
+      "TFCP2 Fusion FUS",
+      "TFCP2-FUS",
+      "TFCP2-FUS fusion",
+      "TFCP2::FUS",
+      "fus-tfcp2 fusion",
+      "fus-tfcp2 fusion and alk exon 2-18 deletion"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "FUS::TFCP2 Fusion AND ALK Exon 2-18 Deletion",
+    "descriptions": [
+      "A 31 year old male initially thought to have a mandibular osteosarcoma that was resected and treated with adjuvant radiation and cisplatin-doxorubicin. He had a mandibular recurrence with multiple pulmonary nodules 12 months after diagnosis, at which point he underwent whole genome and whole transcriptome sequencing of their lesion. In both RNA and DNA, an in-frame deletion of exons 2-18 of ALK which retains the kinase domain and leads to activation as well as a FUS::TFCP2 fusion resulting from a rearrangements between FUS intron 6 (exons 1-6) and TFCP2 intron 1 (exons 2-15) were identified. His cancer progressed following ifosfamide-etoposide chemotherapy and then after radiation with regorafenib, leading to hypoxic respiratory failure and mechanical ventilation. Compassionate use of alectinib was then given, resulting in dramatic clinical improvement within 48 hours, allowing him to stop ventilation. By 2 weeks there was radiological evidence of response. After 3 weeks there was new evidence of subcutaneous metastasis and pericardial involvement. The patient died of his disease 4 weeks after starting alectinib. The authors posit that this is still evidence of response but this was short lived due to the aggressiveness of the tumor and it's advanced stage at the time of treatment."
+    ],
+    "disease_name": "Spindle Cell Rhabdomyosarcoma",
+    "disease_doid": "3260",
+    "disease_aliases": [
+      "Sclerosing Rhabdomyosarcoma",
+      "Spindle Cell/Sclerosing Rhabdomyosarcoma",
+      "Synonym Rhabdomyosarcoma, Spindle Cell/sclerosing Type"
+    ],
+    "eids": [
+      "12406"
+    ]
   },
   "DOID:3908||eml4-alk fusion and alk g1202r": {
     "canonical_id": "CA16602592",
@@ -1221,11 +3001,6 @@
         "ncit_id": "C37899"
       }
     ],
-    "resistant_to": [
-      "ceritinib",
-      "crizotinib",
-      "tanespimycin"
-    ],
     "evidence_count": 3,
     "gene_symbol": "EML4::ALK Fusion AND ALK G1202R",
     "descriptions": [
@@ -1240,8 +3015,12 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1345",
-      "1352"
+      "1",
+      "2",
+      "3",
+      "4",
+      "441",
+      "5"
     ]
   },
   "DOID:3908||eml4-alk fusion and alk l1196m": {
@@ -1301,11 +3080,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "alectinib",
-      "ceritinib",
-      "crizotinib"
-    ],
     "evidence_count": 3,
     "gene_symbol": "EML4::ALK Fusion AND ALK L1196M",
     "descriptions": [
@@ -1320,8 +3094,10 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1341",
-      "141"
+      "1",
+      "3",
+      "4",
+      "442"
     ]
   },
   "DOID:3908||eml4-alk fusion and alk s1206y": {
@@ -1373,9 +3149,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "crizotinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "EML4::ALK Fusion AND ALK S1206Y",
     "descriptions": [
@@ -1387,7 +3160,56 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "443"
+    ]
+  },
+  "DOID:0050905||alk f1174l": {
+    "canonical_id": "CA279586",
+    "components": [
+      {
+        "variant": "ALK F1174L",
+        "ca_id": "CA279586"
+      }
+    ],
+    "eid": "32",
+    "mp_id": 8,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "21030459",
+      "pmcId": "PMC3045808",
+      "sourceType": "PUBMED",
+      "title": "The neuroblastoma-associated F1174L ALK mutation causes resistance to an ALK kinase inhibitor in ALK-translocated cancers.",
+      "publicationYear": 2010
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK F1174L",
+      "F1174L ALK",
+      "alk f1174l"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK F1174L",
+    "descriptions": [
+      "Ba/F3 cells expressing the RANBP2-ALK fusion containing an F1174L mutation were more resistant to crizotinib treatment than Ba/F3 cells expressing RANBP2-ALK without this mutation."
+    ],
+    "disease_name": "Inflammatory Myofibroblastic Tumor",
+    "disease_doid": "0050905",
+    "disease_aliases": [],
+    "eids": [
+      "32"
+    ]
   },
   "DOID:3908||alk f1174l": {
     "canonical_id": "CA279586",
@@ -1424,9 +3246,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "crizotinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "ALK F1174L",
     "descriptions": [
@@ -1438,7 +3257,9 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "33"
+    ]
   },
   "DOID:3908||eml4-alk fusion and alk v1180l": {
     "canonical_id": "CA346473150",
@@ -1505,13 +3326,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "alectinib",
-      "alk inhibitor tae684",
-      "brigatinib",
-      "ceritinib",
-      "crizotinib"
-    ],
     "evidence_count": 5,
     "gene_symbol": "EML4::ALK Fusion AND ALK V1180L",
     "descriptions": [
@@ -1528,10 +3342,52 @@
       "Non-small Cell Lung Carcinoma"
     ],
     "eids": [
-      "1288",
-      "1289",
-      "1290",
-      "1291"
+      "0",
+      "1",
+      "1286",
+      "2",
+      "8",
+      "9"
+    ]
+  },
+  "DOID:769||alk exon 4-11 deletion": {
+    "canonical_id": null,
+    "components": [],
+    "eid": "1336",
+    "mp_id": 546,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "27049722",
+      "pmcId": "PMC5045374",
+      "sourceType": "PUBMED",
+      "title": "Brigatinib, an anaplastic lymphoma kinase inhibitor, abrogates activity and growth in ALK-positive neuroblastoma cells, Drosophila and mice.",
+      "publicationYear": 2016
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "alk exon 4-11 deletion"
+    ],
+    "therapies": [
+      {
+        "name": "brigatinib",
+        "ncit_id": "C98831"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK Exon 4-11 Deletion",
+    "descriptions": [
+      "The MYCN amplification positive relapsed neuroblastoma-derived cell line CLB-BAR contains the driver ALK DEL 11-14 mutation, which removes extracellular domain exons 4 through 11. Brigatinib treatment of CLB-BAR cells reduced MYCN protein levels and ALK phosphorylation (Y1604) similar to crizotnib. Brigatinib reduced CLB-BAR cellular proliferation more effectively than crizotinib (IC50 75.2 vs 186.4nM). CLB-BAR xenografts in BalbC/NUDE mice responded to brigatinib with reduced tumor volume and weight (N=8/group) as well as reduced ALK phosphorylation and MYCN levels compared to untreated controls. Release of brigatinib administration at day 15 resulted in tumor growth (N=2)."
+    ],
+    "disease_name": "Neuroblastoma",
+    "disease_doid": "769",
+    "disease_aliases": [],
+    "eids": [
+      "1336"
     ]
   },
   "DOID:3908||alk g1269a and v-alk fusion": {
@@ -1577,9 +3433,6 @@
         "ncit_id": "C115112"
       }
     ],
-    "resistant_to": [
-      "ceritinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "ALK G1269A AND v::ALK Fusion",
     "descriptions": [
@@ -1591,7 +3444,392 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "1342"
+    ]
+  },
+  "DOID:162||eml4-alk fusion and alk g1202r": {
+    "canonical_id": "CA16602592",
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      },
+      {
+        "variant": "ALK G1202R",
+        "ca_id": "CA16602592"
+      }
+    ],
+    "eid": "1350",
+    "mp_id": 4237,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "25727400",
+      "pmcId": "PMC4529334",
+      "sourceType": "PUBMED",
+      "title": "Activity of second-generation ALK inhibitors against crizotinib-resistant mutants in an NPM-ALK model compared to EML4-ALK.",
+      "publicationYear": 2015
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK G1202R",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "G1202R ALK",
+      "alk g1202r",
+      "eml4-alk fusion",
+      "eml4-alk fusion and alk g1202r"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      },
+      {
+        "name": "brigatinib",
+        "ncit_id": "C98831"
+      }
+    ],
+    "evidence_count": 2,
+    "gene_symbol": "EML4::ALK Fusion AND ALK G1202R",
+    "descriptions": [
+      "Ba/F3 cell line expressing EML4-ALK variant 3 with G1202R ALK mutation was assessed for alectinib sensitivity and IC50 for survival of 868 nM was reported, which was 64.4x higher than the IC50 reported for alectinib on Ba/F3 with EML4-ALK wild-type. Similar experiments using NPM-ALK instead of EML4-ALK yielded survival IC50 of 549 nM of NPM-ALK G1202R to alectinib, which was 27.9 times higher than IC50 for NPM-ALK wild-type. Western blots of Ba/F3 with NPM-ALK wild-type showed ablation of pALK levels above 100 nM alectinib, while pALK levels were essentially unchanged up to 1000 nM in NPM-ALK G1202R Ba/F3 cells.",
+      "This study compared drug responses in Ba/F3 cells expressing either EML4-ALK or NPM-ALK fusions, with or without G1202R ALK mutation. Cells expressing the EML4-ALK variant 3 with G1202R ALK mutation were more resistant to brigatinib treatment (IC50 325 nM) than cells expressing wildtype EML4-ALK variant 3 (IC50 6 nM). These same experiments performed with the NPM-ALK fusion resulted in IC50 of 149 nM for G1202R and 11nM for wild type, consistent with resistance. In Western blots, ablation of pALK with brigatinib treatment above 100 nM was seen in Ba/F3 cells expressing NPM-ALK wildtype, but remained apparent at 1000 nM brigatinib in NPM-ALK G1202R cells, despite dose-dependent reduction."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "1",
+      "1350",
+      "3",
+      "5"
+    ]
+  },
+  "DOID:162||alk g1269a and v-alk fusion": {
+    "canonical_id": "CA16602590",
+    "components": [
+      {
+        "variant": "ALK G1269A",
+        "ca_id": "CA16602590"
+      },
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "1354",
+    "mp_id": 4311,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "25727400",
+      "pmcId": "PMC4529334",
+      "sourceType": "PUBMED",
+      "title": "Activity of second-generation ALK inhibitors against crizotinib-resistant mutants in an NPM-ALK model compared to EML4-ALK.",
+      "publicationYear": 2015
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 3,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "ALK G1269A",
+      "Fusion (unspecified partner) ALK",
+      "G1269A ALK",
+      "alk fusion (unspecified partner)",
+      "alk g1269a",
+      "alk g1269a and v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "alectinib",
+        "ncit_id": "C101790"
+      },
+      {
+        "name": "brigatinib",
+        "ncit_id": "C98831"
+      },
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      }
+    ],
+    "evidence_count": 3,
+    "gene_symbol": "ALK G1269A AND v::ALK Fusion",
+    "descriptions": [
+      "EML4-ALK with ALK G1269A has been seen in crizotinib resistant NSCLC, and this mutation was tested for Brigatinib sensitivity via ectopic expression in Ba/F3 cells, where half maximal inhibitory concentration of 9 nM was seen, which was 1.5 times the IC50 of EML4-ALK wild-type to brigatinib. NPM-ALK G1269A was also tested for brigatinib sensitivity, and IC50 values of 11 nM were reported for both NPM-ALK G1269A and NPM-ALK wild-type. In western blotting, brigatinib at and above 100 nM ablated pALK signal (Y 1604), indicating sensitivity of this variant to brigatinib together with the other results.",
+      "EML4-ALK with ALK G1269A mutation was tested for sensitivity to alectinib using Ba/F3 cells. In Ba/F3 cells with ectopic EML4-ALK variant 1 G1269A, IC50 of 84 nM was reported with alectinib, which was a 6 fold increase over IC50 for EML4-ALK wild-type. The authors considered a fold difference of 4 to 10 between the alectinib-sensitized wild-type and mutant variant to indicate a resistant mutant variant. In the background of the NPM-ALK fusion, IC50 for G1269A mutation was 104 nM, which was 5.3 fold that reported for NPM-ALK wild-type. Western blots of alectinib treated NPM-ALK G1269A were performed and reduced pALK Y1604 was seen at 300 nM alectinib, and no pALK at 1000 nM. In contrast pALK signal was ablated at and above 100 nM in NPM-ALK wild-type.",
+      "EML4-ALK with G1269A mutation was tested for sensitivity to ceritinib via transduction into Ba/F3 cells and generation of survival curves varying ceritinib concentration. IC50 of 33 nM was seen, which was 1.5 times the IC50 for EML4-ALK wild-type, indicating sensitivity of the G1269A mutation to ceritinib in the context of EML4-ALK. The mutation was also tested for ceritinib sensitivity in the context of NPM-ALK, where IC50 values were reported of 19 nM and 20 nM for mutant and wild-type versions, respectively, also indicating sensitivity. In western blots,  Y1604 pALK levels for wild-type NPM-ALK were ablated at 100 nM, while at 100 nM residual pALK levels were seen in G1269A blotting, with ablation of signal at and above 300 nM, which differed somewhat from the equivalent IC50 values reported for mutant and wild-type in the NPM-ALK background, but still agrees with sensitivity to ceritinib for this mutation."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "1",
+      "1354",
+      "3",
+      "5"
+    ]
+  },
+  "DOID:162||alk r1275q": {
+    "canonical_id": "CA341482",
+    "components": [
+      {
+        "variant": "ALK R1275Q",
+        "ca_id": "CA341482"
+      }
+    ],
+    "eid": "39",
+    "mp_id": 9,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "18923525",
+      "pmcId": "PMC2587486",
+      "sourceType": "PUBMED",
+      "title": "Activating mutations in ALK provide a therapeutic target in neuroblastoma.",
+      "publicationYear": 2008
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK R1275Q",
+      "R1275Q ALK",
+      "alk r1275q"
+    ],
+    "therapies": [
+      {
+        "name": "alk inhibitor tae684",
+        "ncit_id": "C171615"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "ALK R1275Q",
+    "descriptions": [
+      "TAE684 inhibits growth of Ba/F3 cells expressing ALK mutations; however, cells with the R1275Q mutation were inhibited at a higher IC50 than those expressing F1174L."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "39"
+    ]
+  },
+  "DOID:162||eml4-alk fusion and alk f1245c": {
+    "canonical_id": "CA279597",
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      },
+      {
+        "variant": "ALK F1245C",
+        "ca_id": "CA279597"
+      }
+    ],
+    "eid": "1337",
+    "mp_id": 4221,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "22034911",
+      "pmcId": "PMC3265718",
+      "sourceType": "PUBMED",
+      "title": "Crizotinib-resistant mutants of EML4-ALK identified through an accelerated mutagenesis screen.",
+      "publicationYear": 2011
+    },
+    "significance": "RESISTANCE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK F1245C",
+      "ALK Fusion EML4",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "F1245C ALK",
+      "alk f1245c",
+      "eml4-alk fusion",
+      "eml4-alk fusion and alk f1245c"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK F1245C",
+    "descriptions": [
+      "A Ba/F3 cell line expressing EML4-ALK variant 1 was created, and then exposed to the DNA modifying agent ENU. Cells were subsequently cultured in 96 well plates at increasing concentrations of crizotinib (250, 500, 720, 1000, 1440 and 2000 nM). Cell growth occurred in all wells at 250 nM, and was absent at 2000 nM. From 500 through 1440 nM there were progressively fewer resistant clones present. 422 mutations representing 16 different sites were identified. EML4-ALK F1245C was found at 500 nM crizotinib, and was among the 10 most frequently observed mutations. Ba/F3 cells with unaltered EML4-ALK had crizotinib IC50 values for viability of 132 +/- 45 nM. EML4-ALK F1245C clones from the selection assay had IC50 viability value of 425 +/- 100 nM, while Ba/F3 cells expressing reintroduced EML4-ALK F1245C had IC50 value of 269 +/- 194 nM."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "1337"
+    ]
+  },
+  "DOID:162||eml4-alk fusion and alk s1206y": {
+    "canonical_id": "CA16602591",
+    "components": [
+      {
+        "variant": "EML4::ALK Fusion",
+        "ca_id": null
+      },
+      {
+        "variant": "ALK S1206Y",
+        "ca_id": "CA16602591"
+      }
+    ],
+    "eid": "1343",
+    "mp_id": 4309,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "24675041",
+      "pmcId": "PMC4068971",
+      "sourceType": "PUBMED",
+      "title": "The ALK inhibitor ceritinib overcomes crizotinib resistance in non-small cell lung cancer.",
+      "publicationYear": 2014
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK Fusion EML4",
+      "ALK S1206Y",
+      "ALK-EML4",
+      "ALK-EML4 fusion",
+      "ALK::EML4",
+      "EML4 ALK Fusion",
+      "EML4-ALK",
+      "EML4-ALK fusion",
+      "EML4::ALK",
+      "S1206Y ALK",
+      "alk s1206y",
+      "eml4-alk fusion",
+      "eml4-alk fusion and alk s1206y"
+    ],
+    "therapies": [
+      {
+        "name": "ceritinib",
+        "ncit_id": "C115112"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "EML4::ALK Fusion AND ALK S1206Y",
+    "descriptions": [
+      "Ba/F3 cells expressing the EML4-ALK S1206Y variant were treated with ceritinib, and survival GI50 value of 1.5 nM was obtained, which compares favorably with GI50 of 1.7 for the highly ceritinib sensitive EML4-ALK wild-type variant obtained in parallel experiments, as well as the GI50 value of 16 nM obtained for crizotinib treatment of EML4-ALK wild-type."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "1343"
+    ]
+  },
+  "DOID:162||npm1-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "NPM1::ALK Fusion",
+        "ca_id": null
+      }
+    ],
+    "eid": "1356",
+    "mp_id": 509,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "25727400",
+      "pmcId": "PMC4529334",
+      "sourceType": "PUBMED",
+      "title": "Activity of second-generation ALK inhibitors against crizotinib-resistant mutants in an NPM-ALK model compared to EML4-ALK.",
+      "publicationYear": 2015
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "D",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 2,
+    "aliases": [
+      "ALK Fusion NPM1",
+      "ALK-NPM1",
+      "ALK-NPM1 fusion",
+      "ALK::NPM1",
+      "NPM1 ALK Fusion",
+      "NPM1-ALK",
+      "NPM1-ALK fusion",
+      "NPM1::ALK",
+      "npm1-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "NPM1::ALK Fusion",
+    "descriptions": [
+      "In Ba/F3 cells, crizotinib sensitivty of the NPM-ALK variant was compared to crizotinib sensitivity of EML4-ALK variant 3. 50% of maximal inhibitory concentration for NPM-ALK was 42 nM, which was approximately 4x greater than IC50 of 11 nM obtained for EML4-ALK. The IC50 for parental Ba/F3 supplemented with IL3 was 2299 nM, resulting in a fold difference of 209.2 for EML4-ALK and 55.1 for NPM-ALK, indicating some reduced sensitivity for NPM-ALK in direct comparison to EML4-ALK, but substantial sensitization to crizotinib for NPM-ALK in Ba/F3 cells."
+    ],
+    "disease_name": "Cancer",
+    "disease_doid": "162",
+    "disease_aliases": [
+      "Malignant Neoplasm",
+      "Malignant Tumor",
+      "Primary Cancer"
+    ],
+    "eids": [
+      "1356"
+    ]
   },
   "DOID:3908||eml4-alk e2-e20": {
     "canonical_id": null,
@@ -1634,9 +3872,6 @@
         "ncit_id": "C74061"
       }
     ],
-    "resistant_to": [
-      "crizotinib"
-    ],
     "evidence_count": 1,
     "gene_symbol": "EML4::ALK e2::e20",
     "descriptions": [
@@ -1648,6 +3883,111 @@
       "Non-small Cell Lung Cancer",
       "Non-small Cell Lung Carcinoma"
     ],
-    "eids": []
+    "eids": [
+      "1190"
+    ]
+  },
+  "DOID:0050861||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "1334",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "19737969",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "Exon array profiling detects EML4-ALK fusion in breast, colorectal, and non-small cell lung cancers.",
+      "publicationYear": 2009
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "E",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 1,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "26 colorectal adenocarcinoma samples were run on Affymetrix human Exon 1.0 arrays and a computational method that assessed differential 5' and 3' gene expression for each gene was used to find potential rearrangements.  One sample showed potential rearrangement and RT-PCR demonstrated an EML4-ALK fusion where EML4 exon 21 was fused to ALK exon 13. This EML4-ALK variant is different from those commonly found in NSCLC. Genomic PCR verified the existence of the fusion breakpoint in intronic space, indicating that some colorectal adenocarcinoma may have targetable ALK-fusion driver mutations."
+    ],
+    "disease_name": "Colorectal Adenocarcinoma",
+    "disease_doid": "0050861",
+    "disease_aliases": [],
+    "eids": [
+      "1334"
+    ]
+  },
+  "DOID:1612||v-alk fusion": {
+    "canonical_id": null,
+    "components": [
+      {
+        "variant": "ALK Fusion (unspecified partner)",
+        "ca_id": null
+      }
+    ],
+    "eid": "1335",
+    "mp_id": 495,
+    "status": "ACCEPTED",
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "19737969",
+      "pmcId": null,
+      "sourceType": "PUBMED",
+      "title": "Exon array profiling detects EML4-ALK fusion in breast, colorectal, and non-small cell lung cancers.",
+      "publicationYear": 2009
+    },
+    "significance": "SENSITIVITYRESPONSE",
+    "direction": "SUPPORTS",
+    "evidence_level": "E",
+    "evidence_type": "PREDICTIVE",
+    "evidence_rating": 1,
+    "aliases": [
+      "ALK Fusion (unspecified partner)",
+      "Fusion (unspecified partner) ALK",
+      "alk fusion (unspecified partner)",
+      "v-alk fusion"
+    ],
+    "therapies": [
+      {
+        "name": "crizotinib",
+        "ncit_id": "C74061"
+      }
+    ],
+    "evidence_count": 1,
+    "gene_symbol": "v::ALK Fusion",
+    "descriptions": [
+      "84 breast cancer samples acquired from commercial sources were assayed on Affymetrix human exon 1.0 arrays. A computational method was used to find potential gene fusions which assessed differential exon expression between the 3' and 5' ends of each gene. Two potential fusions were found and assessed using RNA ligase mediated rapid amplifiation of cDNA ends and RT-PCR. The fusions were EML4-ALK variants 1 and 2. Genomic PCR identified fusion breakpoints, and these differed from breakpoints for these EML4-ALK variants reported in NSCLC."
+    ],
+    "disease_name": "Breast Cancer",
+    "disease_doid": "1612",
+    "disease_aliases": [
+      "Breast Tumor",
+      "Malignant Neoplasm Of Breast",
+      "Malignant Tumor Of The Breast",
+      "Mammary Cancer",
+      "Mammary Tumor",
+      "Primary Breast Cancer"
+    ],
+    "eids": [
+      "1335"
+    ]
   }
 }

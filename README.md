@@ -1,4 +1,4 @@
-nu mi🧬 ALKfred
+🧬 ALKfred
 
 Hi, I’m Paul. I don’t come from a computer science background — I actually run a small video editing business in Romania. In 2025, I decided to learn Python from scratch, and instead of going through endless tutorials, I wanted to build something that mattered to me. That’s how ALKfred was born.
 

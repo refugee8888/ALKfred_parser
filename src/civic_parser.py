@@ -126,71 +126,11 @@ def _composite_key(doid: str, profile_norm: str) -> str:
     return f"DOID:{doid}||{profile_norm}"
 
 
-def parse_resistance_entries(
+def parse_entries(
     evidence_items: list[dict],
     fetch_components: Optional[Callable[[str], list[dict[str, Optional[str]]]]] = None,
 ) -> dict[str, dict]:
-    """
-    Aggregate CIViC evidence items into **profile-level resistance rules** for ALKfred.
-
-    Purpose
-    -------
-    Collapse many CIViC evidence items (EIDs) into one rule per
-    **(disease concept, molecular profile)** with clean IDs, therapies, aliases,
-    and citation-ready summaries. This function assumes upstream code already
-    filtered to the target gene (e.g., ALK).
-
-    Required fields per evidence item (from GraphQL)
-    ------------------------------------------------
-    - significance: str
-    - evidenceDirection: str
-    - description: Optional[str]
-    - molecularProfile.name: str
-    - disease: { name: str, doid: str, diseaseAliases: list[str] }
-      *NOTE: ensure `doid` is selected in the GraphQL query.*
-    - therapies: list[{ name: str, ncitId: Optional[str] }]
-      *NOTE: ensure `ncitId` is selected in the GraphQL query.*
-
-    Filters applied (why)
-    ---------------------
-    - Keep only items with:
-        * significance == "RESISTANCE"
-        * evidenceDirection == "SUPPORTS"
-        * at least one therapy present
-      Rationale: focus on resistant signals that support the claim and are clinically actionable.
-
-    Normalization and keying
-    ------------------------
-    - Normalize molecular profile strings via `utils.normalize` (single source of truth).
-    - Aggregate by **(disease_doid, normalized_profile_name)** to avoid cross-disease merges.
-      The returned dict uses a composite string key: "DOID:<id>||<normalized_profile>".
-
-    Output schema per key
-    ---------------------
-    {
-        "canonical_id": Optional[str],                       # first non-null CA ID in components
-        "components": [{"variant": str, "ca_id": Optional[str]}, ...],
-        "aliases": [str, ...],                               # sorted, deduped
-        "therapies": [{"name": str, "ncit_id": Optional[str]}, ...],  # flat, deduped
-        "resistant_to": [str, ...],                          # (compat) names derived from therapies
-        "evidence_count": int,
-        "descriptions": [str, ...],                          # unique, trimmed, sorted
-        "disease_name": str,
-        "disease_doid": str,
-        "disease_aliases": [str, ...]                        # unioned + sorted
-    }
-
-    Invariants
-    ----------
-    - No network I/O here; enrichment must be done upstream or injected via `fetch_components`.
-    - No prints; uses module logger for info/debug.
-    - Lists are deduped and sorted; `evidence_count >= 1` for all outputs.
-    - Items missing critical fields are skipped with DEBUG logs (no crash).
-
-    Returns
-    -------
-    dict[str, dict]: mapping of composite key to rule dict.
-    """
+    
     logger.info("🧠 Building resistance rule DB from CIViC evidenceItems...")
     rules: dict[str, dict] = {}
     profile_enrichment_cache: dict[str, list[dict[str, Optional[str]]]] = {}
@@ -296,14 +236,13 @@ def parse_resistance_entries(
                 "evidence_rating": evidence_rating,
                 "aliases": set(generate_aliases(profile_norm, components)),
                 "therapies": set((normalize(t["name"]), t["ncit_id"]) for t in therapies_list),
-                "resistant_to": set(n for (n, _nid) in ((normalize(t["name"]), t["ncit_id"]) for t in therapies_list)),
                 "evidence_count": 1,
                 "gene_symbol": mp_name_raw,
                 "descriptions": [ (item.get("description") or "").strip() ] if item.get("description") else [],
                 "disease_name": disease_name,
                 "disease_doid": disease_doid,
                 "disease_aliases": set(disease.get("diseaseAliases") or []),
-                "eids": set()
+                "eids": {eid}
             }
             logger.debug("NEW rule: %s (%s)", key, mp_name_raw)
         else:
@@ -322,24 +261,13 @@ def parse_resistance_entries(
                 if tup not in existing:
                     r["components"].append(c)
             # # evidence_metadata by eid
-            r["eids"].add(eid)
-            # mp_id,status,source,significance,direction,evidence_level,evidence_type,evidence_rating
-            # r["eid"] = eid
-            # r["mp_id"] = mp_id
-            # r["status"] = status
-            # r["source"] = source
-            # r["significance"] = significance
-            # r["direction"] = direction
-            # r["evidence_level"] = evidence_level
-            # r["evidence_type"] = evidence_type
-            # r["evidence_rating"] = evidence_rating            
-
+            r["eids"].update(eid)
+         
             # merge aliases
             r["aliases"].update(generate_aliases(profile_norm, components))
 
             # merge therapies (as normalized pairs)
             r["therapies"].update((normalize(t["name"]), t["ncit_id"]) for t in therapies_list)
-            r["resistant_to"].update(normalize(t["name"]) for t in therapies_list)
 
             # disease meta
             r["disease_name"] = disease_name  # keep latest label
@@ -366,9 +294,6 @@ def parse_resistance_entries(
         # Store display name as the de-normalized best-effort (here we keep normalized for consistency).
         t_pairs = sorted(r["therapies"], key=lambda x: (x[0], x[1] or ""))
         r["therapies"] = [{"name": name_norm, "ncit_id": ncit_id} for (name_norm, ncit_id) in t_pairs]
-
-        # backward-compat `resistant_to` as list of names
-        r["resistant_to"] = sorted(set(r["resistant_to"]))
 
         r["eids"] = sorted(r["eids"])
 
