@@ -64,6 +64,9 @@ updated_at_utc TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);
+UPDATE dim_evidence
+SET significance='SENSITIVITY'
+WHERE significance='SENSITIVITYRESPONSE';
 
 
 CREATE TABLE IF NOT EXISTS evidence_link (
@@ -94,8 +97,8 @@ eid             INTEGER NOT NULL,
 variant_id      TEXT NOT NULL,
 doid            TEXT NOT NULL,
 therapy_id      TEXT NOT NULL,
-direction       TEXT NOT NULL DEFAULT 'RESISTANT',
-significance    TEXT NOT NULL DEFAULT 'RESISTANCE',
+direction       TEXT NOT NULL DEFAULT 'N/A',
+significance    TEXT NOT NULL DEFAULT 'N/A',
 created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
 run_id          TEXT,
 FOREIGN KEY (eid)        REFERENCES dim_evidence(eid),
@@ -112,4 +115,6 @@ CREATE INDEX IF NOT EXISTS idx_fact_doid_dir ON fact_evidence(doid, direction);
 CREATE INDEX IF NOT EXISTS idx_fact_variant ON fact_evidence(variant_id);
 CREATE INDEX IF NOT EXISTS idx_fact_therapy ON fact_evidence(therapy_id);
 CREATE INDEX IF NOT EXISTS idx_fact_eid ON fact_evidence(eid);
+CREATE INDEX IF NOT EXISTS idx_fact_keys ON fact_evidence(variant_id, therapy_id, doid);
+CREATE INDEX IF NOT EXISTS idx_fact_semantics ON fact_evidence(direction, significance);
 

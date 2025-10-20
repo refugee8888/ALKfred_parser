@@ -36,8 +36,6 @@ def main():
         JOIN dim_disease    d  ON d.doid        = el.doid
         JOIN dim_gene_variant v ON v.variant_id = el.variant_id
         JOIN dim_therapy    t  ON t.therapy_id  = el.therapy_id
-        WHERE UPPER(COALESCE(de.direction,''))   = 'SUPPORTS'
-          AND UPPER(COALESCE(de.significance,'')) = 'RESISTANCE'
     """)
     rows = cur.fetchall()
     if not rows:

@@ -207,16 +207,17 @@ def upsert_dim_evidence_min(cur: sqlite3.Cursor, ei: dict, evidence_eids: set[in
 # ----------------------------
 # Main populate
 # ----------------------------
-def main():
-    if not RAW_JSON_PATH.exists():
+def main(raw_path: str, db_path: str):
+    
+    if not raw_path.exists():
         raise FileNotFoundError(f"Raw CIViC JSON not found: {RAW_JSON_PATH}")
-
-    with RAW_JSON_PATH.open("r", encoding="utf-8") as f:
+    with raw_path.open("r", encoding="utf-8") as f:
         nodes = json.load(f)
+   
     if not isinstance(nodes, list):
         raise ValueError("civic_raw_evidence_db.json must be a list of evidence nodes")
 
-    conn = config.get_conn(DB_PATH.as_posix())
+    conn = config.get_conn(db_path.as_posix())
     conn.execute("PRAGMA foreign_keys = ON")
     cur = conn.cursor()
 
@@ -244,7 +245,7 @@ def main():
             # Filters (evidence grain)
             direction = (ei.get("evidenceDirection") or "").strip().upper()
             significance = (ei.get("significance") or "").strip().upper()
-            if not (direction == "SUPPORTS" and significance == "RESISTANCE"):
+            if direction != "SUPPORTS":
                 skipped_direction += 1
                 continue
 
