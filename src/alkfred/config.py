@@ -8,6 +8,9 @@ from pathlib import Path
 import sqlite3
 import importlib
 
+
+
+
 logging.basicConfig(
     level=logging.INFO,  # or DEBUG to also see debug() messages
     format="%(asctime)s [%(levelname)s] %(message)s"
@@ -98,27 +101,27 @@ def apply_schema(db_path: Path):
 
 def apply_dim_disease():
     
-    print(f"Loading src/sql_civic_dim_disease_create.py to {default_db_path()}")
-    _run_module_main("sql_civic_dim_disease_create")
+    print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.dim_load.civic_dim_disease_create")
 
 def apply_dim_gene_variant():
-    print(f"Loading src/sql_civic_dim_gene_variant.py to {default_db_path()}")
-    _run_module_main("sql_civic_dim_gene_variant")
+    print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_gene_variant.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.dim_load.civic_dim_gene_variant")
 
 def apply_dim_therapy():
-    print(f"Loading src/sql_civic_dim_therapy_create.py to {default_db_path()}")
-    _run_module_main("sql_civic_dim_therapy_create")
+    print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_therapy_create.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.dim_load.civic_dim_therapy_create")
 
 def apply_dim_evidence():
-    print(f"Loading src/sql_dim_evidence_create.py to {default_db_path()}")
-    _run_module_main("sql_dim_evidence_create")
+    print(f"Loading /app/src/alkfred/sql/dim_load/sql_dim_evidence_create.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.dim_load.civic_dim_evidence_create")
 
 def apply_evidence_link():
     print(f"Loading src/sql_evidence_link_create.py to {default_db_path()}")
-    _run_module_main("sql_evidence_link_create")
+    _run_module_main("alkfred.sql.evidence_link_create")
 
 def apply_fact_evidence():
-    print(f"Loading src/sql_evidence_fact_create.py to {default_db_path()}")
-    _run_module_main("sql_evidence_fact_create")
+    print(f"Loading /app/src/alkfred/sql/sql_evidence_fact_create.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.evidence_fact_create")
 
     

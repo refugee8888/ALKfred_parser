@@ -7,6 +7,7 @@ from alkfred import config
 
 
 
+
 DB_PATH = config.default_db_path()
 JSON_PATH = Path("data/civic_raw_evidence_db.json")  # use forward slashes or raw string    
 
