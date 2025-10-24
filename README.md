@@ -1,71 +1,143 @@
-nu🧬 ALKfred
 
-Hi, I’m Paul. I don’t come from a computer science background — I actually run a small video editing business in Romania. In 2025, I decided to learn Python from scratch, and instead of going through endless tutorials, I wanted to build something that mattered to me. That’s how ALKfred was born.
+🧬 ALKfred
 
-I’m not an expert programmer (far from it), and a lot of this project has been me stumbling, googling, breaking code, and piecing things back together. But along the way, I’ve learned how to work with APIs, parse JSON, use ontologies, and organize code into something bigger than a toy script.
+CIViC Oncology Evidence ETL + Query Engine (Dockerized)
 
-ALKfred is my attempt to create a tool that helps track and eventually predict resistance mutations in ALK-positive non-small cell lung cancer (NSCLC). Patients eventually develop resistance to ALK inhibitors, but the knowledge about which mutations cause which resistance is scattered across databases like CIViC, BioPortal, MONDO, and NCIt. ALKfred’s goal is to bring those pieces together in one place.
+ALKfred is a containerized, open-source pipeline that mirrors the CIViC cancer variant knowledgebase into a normalized SQLite schema.
+It automates fetching, parsing, and loading of gene–variant–disease–therapy evidence, enabling local querying and variant resistance analysis without external dependencies.
 
-🚀 What it Can Do Right Now
+⸻
 
-Pull resistance evidence items from CIViC via GraphQL
+📦 Features
+	•	🔗 Automated CIViC API ingestion (GraphQL evidenceItems)
+	•	🧹 Normalization and deduplication of variants, diseases, and therapies
+	•	🗃️ Star-schema SQLite database for reproducible queries
+	•	🧠 Variant-level resistance/sensitivity mapping
+	•	🧪 Pytest coverage for ETL, schema, and CLI validation
+	•	🐳 Full Docker support for isolated development
 
-Query BioPortal ontologies (still experimental)
+⸻
 
-Parse variant names, aliases, and associated diseases
+🧱 Project Architecture
 
-Store results in JSON-based resistance rule databases
+CIViC API
+  ↓
+civic_fetch.py   →  raw JSON
+  ↓
+civic_curate.py  →  curated JSON
+  ↓
+schema.sql       →  database structure
+  ↓
+dim_load/*.py    →  dimension & fact population
+  ↓
+SQLite           →  queryable DB
 
-📂 Repo Structure
-ALKfred/
-├── data/
-│   ├── curated_resistance_db.json
-│   ├── mutation_resistance_db.json
-│   ├── raw_bioportal_db.json
-│   └── ALK_Positive_Lung_Non_Small_Cell_Cancer.json
-├── src/
-│   ├── data_modules/
-│   │   ├── api_calls.py
-│   │   ├── bioportal_parser.py
-│   │   ├── bioportal_query_mini.py
-│   │   └── civic_parser.py
-│   ├── resistance_builder.py
-│   ├── saver_llm_refactor.py
-│   └── utils.py
+Component	Purpose
+api_calls.py	GraphQL pagination and CIViC API interaction
+civic_fetch.py	Downloads evidence by gene symbol and writes raw JSON
+civic_curate.py	Normalizes, deduplicates, and aggregates variant data
+civic_parser.py	Internal helpers for molecular profile parsing
+config.py	Manages paths, environment, DB connection, and schema application
+sql/	Contains schema definition and loaders for dim/fact tables
+cli/build.py	Main pipeline entry point (--source, --overwrite, --limit)
+cli/query.py	Prototype CLI query runner
+bioportal_parser.py, bioportal_query_mini.py	Experimental modules for ontology enrichment
+utils.py	Normalization, I/O, and JSON utilities
+tests/	pytest unit and integration tests
 
-🎯 Roadmap
 
-This project is still in its early stages. Here’s where I’d like it to go:
+⸻
 
- Clean up and extend BioPortal integration
+🐳 Docker Setup
 
- Improve parsing logic for more mutations and diseases
+1. Build and launch container
 
- Add proper unit tests (none yet)
+docker-compose up --build -d
 
- Build a simple API/CLI interface
+This starts a long-running container with:
+	•	src/ mounted into /app/src
+	•	data/ mounted into /app/data
+	•	.env injected into /app/.env
+	•	Python path automatically set to /app/src
 
- Long-term: explore predictive modeling of mutation evolution
+To access the environment:
 
-🤝 Why I’m Sharing This
+docker exec -it alkfred-alkfred-1 bash
 
-I’ve been building ALKfred mostly alone, but I’d love to hear from others. Maybe you’re a researcher, a bioinformatics dev, or just someone learning Python who wants to work on something meaningful.
+2. Run ETL inside container
 
-If you see bad code — tell me.
+python -m alkfred.cli.build \
+  --source civic \
+  --raw data/civic_raw_evidence_db.json \
+  --curated data/curated_resistance_db.json \
+  --db data/alkfred.sqlite \
+  --overwrite \
+  --limit 500 \
+  --verbose
 
-If you know a better way — show me.
 
-If you just want to hang out and talk bioinformatics/Python — even better.
+⸻
 
-Even the smallest contributions (fixing a typo, improving a README, writing one test) would mean a lot.
+🧪 Testing
 
-🛠️ Tech Stack
+Inside the container:
 
-Python 3.12
+pytest -v
 
-Libraries: requests, dotenv, json
+Tests cover:
+	•	Fetch logic (test_civic_fetch.py)
+	•	Schema creation (test_sql_dims.py)
+	•	CLI smoke tests (test_smoke_cli.py)
+	•	Utility normalization (test_utils.py)
 
-Data Sources: CIViC, BioPortal, MONDO, NCIt
+⸻
+
+⚙️ Schema Summary
+
+Table	Description
+dim_disease	Disease labels, DOIDs, NCIT, MONDO references
+dim_gene_variant	Gene symbol, variant label, and aliases
+dim_therapy	Therapy name and NCIT reference
+dim_evidence	Evidence metadata (significance, direction, level)
+evidence_link	Bridges evidence to its variant, therapy, and disease
+fact_evidence	Aggregated analytic layer for resistance/sensitivity queries
+
+
+⸻
+
+🧠 Example Query
+
+SELECT variant,
+       resistant_therapies,
+       sensitive_therapies
+FROM fact_evidence_summary
+WHERE doid = '3908';
+
+Sample output:
+
+variant         | resistant_therapies                | sensitive_therapies
+----------------|------------------------------------|-----------------------------
+eml4_alk_fusion | crizotinib,ceritinib,lorlatinib    | alectinib,brigatinib
+alk_g1202r      | crizotinib,ceritinib               | tanespimycin
+
+
+⸻
+
+🧰 Development
+
+Local environment (no Docker)
+
+pip install -r requirements.txt
+export PYTHONPATH=src
+python -m alkfred.cli.build --source civic --overwrite
+
+Linting & formatting
+
+ruff check src
+black src
+
+
+⸻
 
 📜 License
 
