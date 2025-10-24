@@ -1,4 +1,4 @@
-🧬 ALKfred
+nu🧬 ALKfred
 
 Hi, I’m Paul. I don’t come from a computer science background — I actually run a small video editing business in Romania. In 2025, I decided to learn Python from scratch, and instead of going through endless tutorials, I wanted to build something that mattered to me. That’s how ALKfred was born.
 
@@ -69,91 +69,24 @@ Data Sources: CIViC, BioPortal, MONDO, NCIt
 
 📜 License
 
-GNU GENERAL PUBLIC LICENSE - The GNU General Public License is a free, copyleft license for software and other kinds of works.
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
+You may freely use, modify, and distribute ALKfred, provided all derived works remain open source under the same license.
 
-👋 Final Note
+See LICENSE for details.
 
-ALKfred isn’t production-ready. It’s messy, it breaks, and I’m still figuring things out as I go. But it’s real, it’s important to me, and it’s how I’m learning to code.
+⸻
 
-If you want to give feedback, open an issue. If you want to build with me, fork it and send a PR. And if you just want to follow the journey, hit ⭐.
+🗺️ Roadmap
+	•	Add MONDO + NCIT ontology enrichment (BioPortal API)
+	•	CLI subcommands for query and filtering
+	•	Export to parquet / CSV
+	•	Add GitHub Actions for continuous testing
+	•	Extend to multi-gene fetching
 
-Thanks for reading.
+⸻
 
-— Paul
+🧩 Maintainer
 
-
-## 💻 Running ALKfred
-
-ALKfred runs in a fully reproducible **Docker** environment — no manual setup needed.
-Everything (Python version, dependencies, environment) is consistent across macOS, Windows, and Linux.
-
----
-
-### 🐳 Quick Start (Docker Desktop or CLI)
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/refugee8888/ALKfred_parser.git
-cd ALKfred_parser
-
-# 2. Create your local .env file
-cp src/.env.example src/.env
-# (add your CIViC / OpenAI API keys, etc.)
-
-# 3. Build the Docker image
-docker compose build
-
-# 4. Run any script, for example:
-docker compose run --rm alkfred python civic_parser.py
-```
-
-#### 🧩 Notes
-
-* Local data and databases live in `./data` and are **mounted** into `/app/data` inside the container.
-* The `.env` file is **mounted read-only** into `/app/.env`.
-* Nothing sensitive is baked into the image.
-
----
-
-### ⚙️ Common Commands
-
-| Task                            | Command                                                        |
-| ------------------------------- | -------------------------------------------------------------- |
-| Run main CLI                    | `docker compose run --rm alkfred python saver_llm_refactor.py` |
-| Open interactive shell          | `docker compose run --rm alkfred bash`                         |
-| Rebuild after dependency change | `docker compose build --no-cache`                              |
-| Stop all containers             | `docker compose down`                                          |
-
----
-
-## 🧠 Developing inside a Dev Container *(recommended for Mac + Windows)*
-
-If you’re using **Cursor** or **VS Code**, you can develop directly inside a **Dev Container** for consistent dependencies and environment.
-
-1. Open the project folder.
-2. When prompted, click **“Reopen in Container.”**
-3. Wait for the container to build (first time only).
-4. Run and test your scripts normally — all dependencies are preinstalled.
-5. Commit and push changes as usual (Git runs on your host filesystem).
-
-> 💡 This ensures identical environments on macOS and Windows, while keeping your local files and Git history intact.
-
----
-
-## 🧹 Maintenance
-
-| Action                             | What to do                                                              |
-| ---------------------------------- | ----------------------------------------------------------------------- |
-| **Add a new dependency**           | Edit `requirements.txt` → Rebuild container                             |
-| **Update Docker image**            | `docker compose build`                                                  |
-| **Temporary install for testing**  | Inside container: `pip install lib` → then pin it in `requirements.txt` |
-| **Clean up old containers/images** | `docker system prune`                                                   |
-
----
-
-## 🔐 Security Notes
-
-* **Never commit** your real `.env` file or actual datasets.
-* Only commit `.env.example` for placeholders.
-* Sensitive data stays local in `./data/` and `.env`.
+Independent Data Engineer Paul Ostaci
+Maintains ETL, schema, and CLI stack for oncology data pipelines.
 
