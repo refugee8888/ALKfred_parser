@@ -15,7 +15,7 @@ def test_fetch_returns_cached_when_not_overwrite(tmp_path, monkeypatch):
     # Patch the api fetcher just to prove it won't be called
     monkeypatch.setattr(civic_fetch.api_calls, "fetch_civic_all_evidence_items", _fake_fetch)
 
-    out = civic_fetch.fetch_civic_evidence(symbol="ALK", raw_path=raw, overwrite=False, limit=None)
+    out = civic_fetch.fetch_civic_evidence(oncogene=None, raw_path=raw, overwrite=False, limit=None)
 
     assert out == [{"id": 1, "molecularProfile": {"name": "EML4-ALK"}}]
     assert called["count"] == 0  # no fetch
@@ -34,9 +34,9 @@ def test_fetch_filters_and_limit(tmp_path, monkeypatch):
     # patch network + gene detector
     monkeypatch.setattr(civic_fetch.api_calls, "fetch_civic_all_evidence_items", lambda: payload)
     monkeypatch.setattr(civic_fetch.civic_parser, "gene_in_molecular_profile",
-                        lambda name, symbol: (symbol == "ALK") and ("ALK" in (name or "")))
+                        lambda name, oncogene: (oncogene == "ALK") and ("ALK" in (name or "")))
 
-    out = civic_fetch.fetch_civic_evidence(symbol="ALK", raw_path=raw, overwrite=True, limit=1)
+    out = civic_fetch.fetch_civic_evidence(oncogene="ALK", raw_path=raw, overwrite=True, limit=1)
 
     # limited to 1 ALK item
     assert len(out) == 1
@@ -54,9 +54,9 @@ def test_fetch_overwrite_replaces_file(tmp_path, monkeypatch):
     monkeypatch.setattr(civic_fetch.api_calls, "fetch_civic_all_evidence_items",
                         lambda: [{"id": 101, "molecularProfile": {"name": "EML4-ALK"}}])
     monkeypatch.setattr(civic_fetch.civic_parser, "gene_in_molecular_profile",
-                        lambda name, symbol: True)
+                        lambda name, oncogene: True)
 
-    out = civic_fetch.fetch_civic_evidence(symbol="ALK", raw_path=raw, overwrite=True, limit=None)
+    out = civic_fetch.fetch_civic_evidence(oncogene=None, raw_path=raw, overwrite=True, limit=None)
 
     assert out == [{"id": 101, "molecularProfile": {"name": "EML4-ALK"}}]
     assert json.loads(raw.read_text()) == out
