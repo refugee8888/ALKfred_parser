@@ -1,6 +1,6 @@
 # evidence_link_populate.py
 from __future__ import annotations
-
+import re
 import json
 import logging
 import sqlite3
@@ -88,6 +88,8 @@ def _therapy_uuid_seed(ncit_id: str | None, label_norm: str) -> str:
     return f"therapy|{ncit_id}" if ncit_id else f"therapy|{label_norm}"
 
 
+
+
 def upsert_therapy_min(
     cur: sqlite3.Cursor,
     name: str,
@@ -102,6 +104,7 @@ def upsert_therapy_min(
       2) by normalized label via cache (+ attach ncit if newly provided)
       3) insert new (deterministic therapy_id via uuid5 over seed)
     """
+
     label_display = (name or "").strip()
     label_norm = normalize_label(label_display)
     if not label_norm:
@@ -137,18 +140,27 @@ def upsert_therapy_min(
     therapy_id_by_norm[label_norm] = therapy_id
     return therapy_id
 
+def _looks_like_gene(s: str | None) -> bool:
+        return bool(s and re.fullmatch(r"[A-Z0-9]{2,}", s))
 
 def upsert_variant_min(
     cur: sqlite3.Cursor,
     variant_label: str | None,
     civic_ca_id: str | None,
     variant_ids: set[str],
-    gene_symbol_default: str = "",
+    gene_symbol_default: str | None,
 ) -> str | None:
     """
     Returns variant_id. Uses CIViC CA if available; otherwise deterministic UUIDv5 over normalized label.
     Ensures a row exists in dim_gene_variant.
     """
+    gene_from_label = (variant_label or "").strip().split(" ")[0].upper()
+    gene_candidate = gene_from_label if _looks_like_gene(gene_from_label) else None
+
+    # prefer explicit default (from component or --oncogene) over label guess
+    gene_symbol = (gene_symbol_default or gene_candidate or "").strip().upper()
+    if not _looks_like_gene(gene_symbol):
+        return None
     label_display = (variant_label or "").strip()
     label_norm = normalize_label(label_display)
     if civic_ca_id:
@@ -306,7 +318,7 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
             # Batch insert
             if len(batch) >= BATCH:
                 cur.executemany(LINK_INSERT_SQL, batch)
-                inserted_links += cur.rowcount
+                inserted_links += len(batch)
                 batch.clear()
                 conn.commit()
 
@@ -316,7 +328,7 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
     # Flush remaining
     if batch:
         cur.executemany(LINK_INSERT_SQL, batch)
-        inserted_links += cur.rowcount
+        inserted_links += len(batch)
         batch.clear()
         conn.commit()
 
