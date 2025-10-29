@@ -5,15 +5,19 @@ This guide explains how to set up your environment, follow code conventions, and
 
 Project Setup
 1. Clone the repository
-
-``` git clone https://github.com/<your-username>/ALKfred.git
-cd ALKfred ```
+```bash
+git clone https://github.com/<your-username>/ALKfred.git
+cd ALKfred
+``` 
 
 2. Create a virtual environment
 
-``` python3 -m venv .venv
+```bash
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt ```
+pip install -r requirements.txt 
+```
+
 
 3. Environment variables
 
@@ -23,8 +27,9 @@ OPENAI_API_KEY=your_key
 BIOPORTAL_API_KEY=your_key
 
 4. Run tests to confirm setup
+```
 pytest -v
-
+```
 
 All tests should pass before submitting a pull request.
 
@@ -71,12 +76,15 @@ Example:
 ```python
 def test_normalize_label(monkeypatch):
     monkeypatch.setattr(utils, "normalize_label", lambda x: "alk")
-    assert utilss.normalize_label("ALK") == "alk" ```
+    assert utilss.normalize_label("ALK") == "alk" 
+```
 
 
 Run the full suite:
 
-``` pytest -v ```
+```bash
+pytest -v 
+```
 
 Git & Commit Conventions
 

@@ -52,9 +52,9 @@ Docker Setup
 
 1. Build and launch container
 
-'''
+```bash
 docker-compose up --build -d
-'''
+```
 
 This starts a long-running container with:
 	•	src/ mounted into /app/src
@@ -68,23 +68,26 @@ To access the environment:
 
 2. Run ETL inside container
 
-''' python -m alkfred.cli.build \
+```bash
+python -m alkfred.cli.build \
   --source civic \
   --raw data/civic_raw_evidence_db.json \
   --curated data/curated_resistance_db.json \
   --db data/alkfred.sqlite \
   --overwrite \
   --limit 500 \
-  --verbose '''
+  --verbose 
+```
+
 
 
 ⸻
 
-Testing
+3. Testing
 
 Inside the container:
 
-''' pytest -v '''
+``` pytest -v ```
 
 Tests cover:
 	•	Fetch logic (test_civic_fetch.py)
@@ -94,7 +97,7 @@ Tests cover:
 
 ⸻
 
-Schema Summary
+4. Schema Summary
 
 Table	Description
 dim_disease	Disease labels, DOIDs, NCIT, MONDO references
@@ -109,11 +112,15 @@ fact_evidence	Aggregated analytic layer for resistance/sensitivity queries
 
 Example Query
 
-''' SELECT variant,
+
+```sql
+SELECT variant,
        resistant_therapies,
        sensitive_therapies
 FROM fact_evidence_summary
-WHERE doid = '3908'; '''
+WHERE doid = '3908'; 
+```
+
 
 Sample output:
 
@@ -125,23 +132,28 @@ alk_g1202r      | crizotinib,ceritinib               | tanespimycin
 
 ⸻
 
-Development
+5. Development
 
 Local environment (no Docker)
 
-''' pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
 export PYTHONPATH=src
-python -m alkfred.cli.build --source civic --overwrite '''
+python -m alkfred.cli.build --source civic --overwrite 
+```
 
-Linting & formatting
+6. Linting & formatting
 
-''' ruff check src
-black src '''
+```bash
+ruff check src
+black src 
+
+```
 
 
 ⸻
 
-License
+7. License
 
 This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
 You may freely use, modify, and distribute ALKfred, provided all derived works remain open source under the same license.
@@ -150,7 +162,7 @@ See LICENSE for details.
 
 ⸻
 
-Roadmap
+8. Roadmap
 	•	Add MONDO + NCIT ontology enrichment (BioPortal API)
 	•	CLI subcommands for query and filtering
 	•	Export to parquet / CSV
@@ -159,7 +171,7 @@ Roadmap
 
 ⸻
 
-Maintainer
+9. Maintainer
 
 Independent Data Engineer Paul Ostaci
 Maintains ETL, schema, and CLI stack for oncology data pipelines.
