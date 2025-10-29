@@ -125,7 +125,7 @@ def _composite_key(doid: str, profile_norm: str) -> str:
     """Create a stable string key for dicts that must be JSON-serializable."""
     return f"DOID:{doid}||{profile_norm}"
 
-
+    
 def parse_entries(
     evidence_items: list[dict],
     fetch_components: Optional[Callable[[str], list[dict[str, Optional[str]]]]] = None,
@@ -166,7 +166,11 @@ def parse_entries(
             continue
 
        
-        significance = (item.get("significance") or "").strip().upper()
+        significance_raw = (item.get("significance") or "").strip().upper()
+        if significance_raw == "SENSITIVITYRESPONSE":
+            significance = "SENSITIVITY"
+        else:
+            significance = "RESISTANCE"
         direction = (item.get("evidenceDirection") or "").strip().upper()
         evidence_level = (item.get("evidenceLevel") or "").strip().upper()
         evidence_type = (item.get("evidenceType") or "").strip().upper()

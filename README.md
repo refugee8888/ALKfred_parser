@@ -132,6 +132,28 @@ alk_g1202r      | crizotinib,ceritinib               | tanespimycin
 
 ⸻
 
+CLI example queries:
+
+```bash
+python -m alkfred.cli.query query --variant "g1202r" --significance all --disease all 
+```
+
+Output:
+```bash
+
+2025-10-29 12:58:35,440 [INFO] Final query input: alk_g1202r
+2025-10-29 12:58:35,453 [INFO] Connected to database: /app/data/alkfred.sqlite
+{'eid': 1350, 'doid': '162', 'therapy_id': '217925c3-fecd-55d8-939a-bb3e0e6771b1', 'variant_id': 'CA16602592', 'label_display': 'alectinib', 'label_disease_norm': 'cancer', 'significance': 'RESISTANCE'}
+{'eid': 1351, 'doid': '162', 'therapy_id': '3563f716-82a6-5e59-b5e5-eaed446b01e4', 'variant_id': 'CA16602592', 'label_display': 'brigatinib', 'label_disease_norm': 'cancer', 'significance': 'RESISTANCE'}
+{'eid': 1345, 'doid': '3908', 'therapy_id': '08557006-b6a9-5db4-95fd-eb7a64d17a75', 'variant_id': 'CA16602592', 'label_display': 'ceritinib', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
+{'eid': 441, 'doid': '3908', 'therapy_id': 'dfdc51ba-63cd-5b9a-a09d-97276ae69538', 'variant_id': 'CA16602592', 'label_display': 'crizotinib', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
+{'eid': 1357, 'doid': '3910', 'therapy_id': 'dfdc51ba-63cd-5b9a-a09d-97276ae69538', 'variant_id': 'CA16602592', 'label_display': 'crizotinib', 'label_disease_norm': 'lung_adenocarcinoma', 'significance': 'RESISTANCE'}
+{'eid': 11114, 'doid': '7474', 'therapy_id': 'def3400c-ada4-522f-9045-568f229d11f0', 'variant_id': 'CA16602592', 'label_display': 'lorlatinib', 'label_disease_norm': 'malignant_pleural_mesothelioma', 'significance': 'RESISTANCE'}
+{'eid': 1352, 'doid': '3908', 'therapy_id': '3e17d968-3e24-5c0a-9369-fecc47533807', 'variant_id': 'CA16602592', 'label_display': 'tanespimycin', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'SENSITIVITY'}
+Number of rows: 7
+```
+
+
 5. Development
 
 Local environment (no Docker)
