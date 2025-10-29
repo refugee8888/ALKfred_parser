@@ -143,7 +143,7 @@ def upsert_variant_min(
     variant_label: str | None,
     civic_ca_id: str | None,
     variant_ids: set[str],
-    gene_symbol_default: str = "ALK",
+    gene_symbol_default: str = "",
 ) -> str | None:
     """
     Returns variant_id. Uses CIViC CA if available; otherwise deterministic UUIDv5 over normalized label.
@@ -203,16 +203,10 @@ def upsert_dim_evidence_min(cur: sqlite3.Cursor, ei: dict, evidence_eids: set[in
     )
     evidence_eids.add(eid)
 
-
-# ----------------------------
-# Main populate
-# ----------------------------
-def main():
+def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_raw_evidence_db.json"), oncogene = "") -> None:
     
-    raw_path = RAW_JSON_PATH
-    db_path = DB_PATH
     if not raw_path.exists():
-        raise FileNotFoundError(f"Raw CIViC JSON not found: {RAW_JSON_PATH}")
+        raise FileNotFoundError(f"Raw CIViC JSON not found: {raw_path}")
     with raw_path.open("r", encoding="utf-8") as f:
         nodes = json.load(f)
    
@@ -254,8 +248,11 @@ def main():
             disease = ei.get("disease") or {}
             doid = disease.get("doid")
             mp = ei.get("molecularProfile") or {}
+            mp_id = mp.get("id")
             mp_name = (mp.get("name") or "").strip()
             therapies = ei.get("therapies") or []
+
+            mp_key = mp_id if mp_id is not None else mp_name
 
             if not doid or not mp_name or not therapies:
                 skipped_missing_bits += 1
@@ -278,14 +275,19 @@ def main():
                 continue
 
             # Resolve molecular profile → component variants
-            if mp_name not in components_cache:
+            if mp_key not in components_cache:
                 try:
-                    components_cache[mp_name] = api_calls.fetch_civic_molecular_profile(mp_name) or []
+                    if mp_id is not None:
+                        # new, ID-based fetch (robust)
+                        components_cache[mp_key] = api_calls.fetch_civic_molecular_profile(mp_id=mp_id) or []
+                    else:
+                        # fallback, name-based (legacy)
+                        components_cache[mp_key] = api_calls.fetch_civic_molecular_profile(mp_name=mp_name) or []
                 except Exception as e:
-                    log.debug("Component fetch failed for %r: %s", mp_name, e)
-                    components_cache[mp_name] = []
+                    log.debug("Component fetch failed for %r: %s", mp_key, e)
+                    components_cache[mp_key] = []
 
-            comps = components_cache[mp_name]
+            comps = components_cache[mp_key]
             if not comps:
                 skipped_no_components += 1
                 continue
@@ -294,7 +296,7 @@ def main():
             for c in comps:
                 vlabel = (c.get("variant") or "").strip()
                 ca_id = c.get("ca_id") or None
-                variant_id = upsert_variant_min(cur, vlabel, ca_id, variant_ids)
+                variant_id = upsert_variant_min(cur, vlabel, ca_id, variant_ids, gene_symbol_default=oncogene)
                 if not variant_id:
                     continue
 
@@ -322,7 +324,15 @@ def main():
              inserted_links, skipped_direction, skipped_missing_bits, skipped_no_therapy_match, skipped_no_components)
 
     conn.close()
+# ----------------------------
+# Main populate
+# ----------------------------
+def main():
+     create_links(config.default_db_path(), Path("data/civic_raw_evidence_db.json"), oncogene="ALK")
+
+    
 
 
 if __name__ == "__main__":
     main()
+   

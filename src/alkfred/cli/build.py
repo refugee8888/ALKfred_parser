@@ -14,7 +14,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Welcome to ALKfred")
     p.add_argument("--overwrite", action="store_true", help="Refetch and rebuild JSONs even if they exist")
     p.add_argument("--limit", type = int)
-    p.add_argument("--oncogene", type=str)
+    p.add_argument("--oncogene", type=str, default= "ALK", help = "Target oncogene symbol")
     p.add_argument("--source", choices=["curated", "civic"], required=True)
     p.add_argument("--db", type=Path, default=config.default_db_path())
     p.add_argument("--curated", type=Path, default=config.data_dir() / "curated_resistance_db.json")
@@ -53,7 +53,7 @@ def main(argv=None) -> int:
     config.apply_dim_gene_variant()
     config.apply_dim_therapy()
     config.apply_dim_evidence()
-    config.apply_evidence_link()   
+    config.apply_evidence_link(oncogene=args.oncogene)   
     config.apply_fact_evidence()
 
     logger.info("Database ready: %s", args.db)

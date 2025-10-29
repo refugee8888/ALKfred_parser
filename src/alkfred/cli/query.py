@@ -26,10 +26,13 @@ def query_choices(variant_cli_choice: str, limit:int):
     
     try:
         conn = alkfred.config.get_conn(alkfred.config.default_db_path())
-        logger.info("Final query input: %s", alkfred.config.default_db_path())
+        logger.info("Connected to database: %s", alkfred.config.default_db_path())
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         
+            
+
+
         cur.execute("""SELECT f.eid, f.doid, f.therapy_id, f.variant_id, t.label_display, d.label_disease_norm, e.significance FROM fact_evidence AS f
                     JOIN dim_evidence AS e ON e.eid = f.eid
                     JOIN dim_disease AS d ON d.doid = f.doid

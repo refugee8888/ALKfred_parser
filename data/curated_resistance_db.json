@@ -1,12 +1,7 @@
 {
   "DOID:3908||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1187",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -24,9 +19,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 5,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -107,12 +99,7 @@
   },
   "DOID:0050744||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "11218",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -130,9 +117,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -164,12 +148,7 @@
   },
   "DOID:0050905||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "11122",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -187,9 +166,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -220,12 +196,7 @@
   },
   "DOID:3908||alk mutation": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Mutation",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1237",
     "mp_id": 508,
     "status": "ACCEPTED",
@@ -243,8 +214,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Mutation",
-      "Mutation ALK",
       "alk mutation"
     ],
     "therapies": [
@@ -270,12 +239,7 @@
   },
   "DOID:0050744||npm1-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "NPM1::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1241",
     "mp_id": 509,
     "status": "ACCEPTED",
@@ -293,14 +257,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion NPM1",
-      "ALK-NPM1",
-      "ALK-NPM1 fusion",
-      "ALK::NPM1",
-      "NPM1 ALK Fusion",
-      "NPM1-ALK",
-      "NPM1-ALK fusion",
-      "NPM1::ALK",
       "npm1-alk fusion"
     ],
     "therapies": [
@@ -328,12 +284,7 @@
   },
   "DOID:162||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "2952",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -351,9 +302,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -380,12 +328,7 @@
   },
   "DOID:162||v-alk fusion or v-ros1 fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "11671",
     "mp_id": 5222,
     "status": "ACCEPTED",
@@ -403,9 +346,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion or v-ros1 fusion"
     ],
     "therapies": [
@@ -431,17 +371,8 @@
     ]
   },
   "DOID:3910||eml4-alk fusion and alk c1156y": {
-    "canonical_id": "CA16602783",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK C1156Y",
-        "ca_id": "CA16602783"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "236",
     "mp_id": 4225,
     "status": "ACCEPTED",
@@ -459,18 +390,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK C1156Y",
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "C1156Y ALK",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "alk c1156y",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk c1156y"
     ],
     "therapies": [
@@ -495,17 +414,8 @@
     ]
   },
   "DOID:3910||eml4-alk fusion and alk l1196m": {
-    "canonical_id": "CA16602593",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK L1196M",
-        "ca_id": "CA16602593"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "237",
     "mp_id": 4230,
     "status": "ACCEPTED",
@@ -523,18 +433,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK L1196M",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "L1196M ALK",
-      "alk l1196m",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk l1196m"
     ],
     "therapies": [
@@ -560,12 +458,7 @@
   },
   "DOID:3910||eml4-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "262",
     "mp_id": 5,
     "status": "ACCEPTED",
@@ -583,14 +476,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk fusion"
     ],
     "therapies": [
@@ -615,17 +500,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk t1151dup": {
-    "canonical_id": "CA645528802",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK T1151dup",
-        "ca_id": "CA645528802"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "444",
     "mp_id": 4308,
     "status": "ACCEPTED",
@@ -643,18 +519,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK T1151dup",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "T1151dup ALK",
-      "alk t1151dup",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk t1151dup"
     ],
     "therapies": [
@@ -700,17 +564,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk l1152r": {
-    "canonical_id": "CA16602594",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK L1152R",
-        "ca_id": "CA16602594"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "763",
     "mp_id": 4255,
     "status": "ACCEPTED",
@@ -728,18 +583,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK L1152R",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "L1152R ALK",
-      "alk l1152r",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk l1152r"
     ],
     "therapies": [
@@ -764,17 +607,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk g1269a": {
-    "canonical_id": "CA16602590",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK G1269A",
-        "ca_id": "CA16602590"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "764",
     "mp_id": 4312,
     "status": "ACCEPTED",
@@ -792,18 +626,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK G1269A",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "G1269A ALK",
-      "alk g1269a",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk g1269a"
     ],
     "therapies": [
@@ -832,21 +654,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk l1198f and alk c1156y": {
-    "canonical_id": "CA346473048",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK L1198F",
-        "ca_id": "CA346473048"
-      },
-      {
-        "variant": "ALK C1156Y",
-        "ca_id": "CA16602783"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "843",
     "mp_id": 4253,
     "status": "ACCEPTED",
@@ -864,21 +673,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK C1156Y",
-      "ALK Fusion EML4",
-      "ALK L1198F",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "C1156Y ALK",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "L1198F ALK",
-      "alk c1156y",
-      "alk l1198f",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk l1198f and alk c1156y"
     ],
     "therapies": [
@@ -910,12 +704,7 @@
   },
   "DOID:3908||eml4-alk e6-e20": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK e6::e20",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1193",
     "mp_id": 499,
     "status": "ACCEPTED",
@@ -933,14 +722,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK e6 e20 EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK e6 e20",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk e6-e20"
     ],
     "therapies": [
@@ -996,12 +777,7 @@
   },
   "DOID:3908||eml4-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1207",
     "mp_id": 5,
     "status": "ACCEPTED",
@@ -1019,14 +795,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk fusion"
     ],
     "therapies": [
@@ -1078,12 +846,7 @@
   },
   "DOID:0050905||ranbp2-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "RANBP2::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1244",
     "mp_id": 510,
     "status": "ACCEPTED",
@@ -1101,14 +864,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion RANBP2",
-      "ALK-RANBP2",
-      "ALK-RANBP2 fusion",
-      "ALK::RANBP2",
-      "RANBP2 ALK Fusion",
-      "RANBP2-ALK",
-      "RANBP2-ALK fusion",
-      "RANBP2::ALK",
       "ranbp2-alk fusion"
     ],
     "therapies": [
@@ -1130,13 +885,8 @@
     ]
   },
   "DOID:3908||alk i1171": {
-    "canonical_id": "CA346462880",
-    "components": [
-      {
-        "variant": "ALK I1171",
-        "ca_id": "CA346462880"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1283",
     "mp_id": 523,
     "status": "ACCEPTED",
@@ -1154,8 +904,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK I1171",
-      "I1171 ALK",
       "alk i1171"
     ],
     "therapies": [
@@ -1207,12 +955,7 @@
   },
   "DOID:8923||alk alternative transcript (ati)": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Alternative Transcript (ATI)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1936",
     "mp_id": 813,
     "status": "ACCEPTED",
@@ -1230,8 +973,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Alternative Transcript (ATI)",
-      "Alternative Transcript (ATI) ALK",
       "alk alternative transcript (ati)"
     ],
     "therapies": [
@@ -1268,12 +1009,7 @@
   },
   "DOID:0050929||alk alternative transcript (ati)": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Alternative Transcript (ATI)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "7421",
     "mp_id": 813,
     "status": "ACCEPTED",
@@ -1291,8 +1027,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Alternative Transcript (ATI)",
-      "Alternative Transcript (ATI) ALK",
       "alk alternative transcript (ati)"
     ],
     "therapies": [
@@ -1315,12 +1049,7 @@
   },
   "DOID:7474||eml4-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "9228",
     "mp_id": 5,
     "status": "ACCEPTED",
@@ -1338,14 +1067,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk fusion"
     ],
     "therapies": [
@@ -1370,12 +1091,7 @@
   },
   "DOID:769||alk i1171t": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK I1171T",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "9404",
     "mp_id": 3239,
     "status": "ACCEPTED",
@@ -1393,8 +1109,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK I1171T",
-      "I1171T ALK",
       "alk i1171t"
     ],
     "therapies": [
@@ -1416,21 +1130,8 @@
     ]
   },
   "DOID:7474||eml4-alk fusion and alk i1171n and alk l1196m": {
-    "canonical_id": "CA16602371",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK I1171N",
-        "ca_id": "CA16602371"
-      },
-      {
-        "variant": "ALK L1196M",
-        "ca_id": "CA16602593"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "11115",
     "mp_id": 4328,
     "status": "ACCEPTED",
@@ -1448,21 +1149,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK I1171N",
-      "ALK L1196M",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "I1171N ALK",
-      "L1196M ALK",
-      "alk i1171n",
-      "alk l1196m",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk i1171n and alk l1196m"
     ],
     "therapies": [
@@ -1494,16 +1180,7 @@
   },
   "DOID:3908||eml4-alk fusion and alk amplification": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK Amplification",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "766",
     "mp_id": 4172,
     "status": "ACCEPTED",
@@ -1521,18 +1198,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Amplification",
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "Amplification ALK",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "alk amplification",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk amplification"
     ],
     "therapies": [
@@ -1563,17 +1228,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk c1156y": {
-    "canonical_id": "CA16602783",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK C1156Y",
-        "ca_id": "CA16602783"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "841",
     "mp_id": 4225,
     "status": "ACCEPTED",
@@ -1591,18 +1247,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK C1156Y",
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "C1156Y ALK",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "alk c1156y",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk c1156y"
     ],
     "therapies": [
@@ -1648,12 +1292,7 @@
   },
   "DOID:162||eml4-alk e6-e20": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK e6::e20",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1245",
     "mp_id": 499,
     "status": "ACCEPTED",
@@ -1671,14 +1310,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK e6 e20 EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK e6 e20",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk e6-e20"
     ],
     "therapies": [
@@ -1705,12 +1336,7 @@
   },
   "DOID:0050745||cltc-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "CLTC::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1265",
     "mp_id": 516,
     "status": "ACCEPTED",
@@ -1728,14 +1354,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion CLTC",
-      "ALK-CLTC",
-      "ALK-CLTC fusion",
-      "ALK::CLTC",
-      "CLTC ALK Fusion",
-      "CLTC-ALK",
-      "CLTC-ALK fusion",
-      "CLTC::ALK",
       "cltc-alk fusion"
     ],
     "therapies": [
@@ -1765,13 +1383,8 @@
     ]
   },
   "DOID:769||alk f1174l": {
-    "canonical_id": "CA279586",
-    "components": [
-      {
-        "variant": "ALK F1174L",
-        "ca_id": "CA279586"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1271",
     "mp_id": 8,
     "status": "ACCEPTED",
@@ -1789,8 +1402,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK F1174L",
-      "F1174L ALK",
       "alk f1174l"
     ],
     "therapies": [
@@ -1842,13 +1453,8 @@
     ]
   },
   "DOID:769||alk f1245c": {
-    "canonical_id": "CA279597",
-    "components": [
-      {
-        "variant": "ALK F1245C",
-        "ca_id": "CA279597"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1333",
     "mp_id": 545,
     "status": "ACCEPTED",
@@ -1866,8 +1472,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK F1245C",
-      "F1245C ALK",
       "alk f1245c"
     ],
     "therapies": [
@@ -1897,17 +1501,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk f1245c": {
-    "canonical_id": "CA279597",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK F1245C",
-        "ca_id": "CA279597"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1338",
     "mp_id": 4221,
     "status": "ACCEPTED",
@@ -1925,18 +1520,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK F1245C",
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "F1245C ALK",
-      "alk f1245c",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk f1245c"
     ],
     "therapies": [
@@ -1969,17 +1552,8 @@
     ]
   },
   "DOID:3910||alk g1202r and v-alk fusion": {
-    "canonical_id": "CA16602592",
-    "components": [
-      {
-        "variant": "ALK G1202R",
-        "ca_id": "CA16602592"
-      },
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1357",
     "mp_id": 4236,
     "status": "ACCEPTED",
@@ -1997,12 +1571,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "ALK G1202R",
-      "Fusion (unspecified partner) ALK",
-      "G1202R ALK",
-      "alk fusion (unspecified partner)",
-      "alk g1202r",
       "alk g1202r and v-alk fusion"
     ],
     "therapies": [
@@ -2028,12 +1596,7 @@
   },
   "DOID:3910||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1691",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -2051,9 +1614,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -2078,13 +1638,8 @@
     ]
   },
   "DOID:769||alk f1245v": {
-    "canonical_id": "CA345003",
-    "components": [
-      {
-        "variant": "ALK F1245V",
-        "ca_id": "CA345003"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "2987",
     "mp_id": 1269,
     "status": "ACCEPTED",
@@ -2102,8 +1657,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK F1245V",
-      "F1245V ALK",
       "alk f1245v"
     ],
     "therapies": [
@@ -2126,12 +1679,7 @@
   },
   "DOID:234||strn-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "STRN::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "5952",
     "mp_id": 2094,
     "status": "ACCEPTED",
@@ -2149,14 +1697,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion STRN",
-      "ALK-STRN",
-      "ALK-STRN fusion",
-      "ALK::STRN",
-      "STRN ALK Fusion",
-      "STRN-ALK",
-      "STRN-ALK fusion",
-      "STRN::ALK",
       "strn-alk fusion"
     ],
     "therapies": [
@@ -2182,12 +1722,7 @@
   },
   "DOID:0080522||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "5954",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -2205,9 +1740,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -2232,12 +1764,7 @@
   },
   "DOID:9256||cad-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "CAD::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "7481",
     "mp_id": 2638,
     "status": "ACCEPTED",
@@ -2255,14 +1782,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion CAD",
-      "ALK-CAD",
-      "ALK-CAD fusion",
-      "ALK::CAD",
-      "CAD ALK Fusion",
-      "CAD-ALK",
-      "CAD-ALK fusion",
-      "CAD::ALK",
       "cad-alk fusion"
     ],
     "therapies": [
@@ -2285,12 +1804,7 @@
   },
   "DOID:5742||kank4-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "KANK4::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "10327",
     "mp_id": 3869,
     "status": "ACCEPTED",
@@ -2308,14 +1822,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion KANK4",
-      "ALK-KANK4",
-      "ALK-KANK4 fusion",
-      "ALK::KANK4",
-      "KANK4 ALK Fusion",
-      "KANK4-ALK",
-      "KANK4-ALK fusion",
-      "KANK4::ALK",
       "kank4-alk fusion"
     ],
     "therapies": [
@@ -2339,25 +1845,8 @@
     ]
   },
   "DOID:7474||eml4-alk fusion and alk g1202r and alk i1171n and alk l1196m": {
-    "canonical_id": "CA16602592",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK G1202R",
-        "ca_id": "CA16602592"
-      },
-      {
-        "variant": "ALK I1171N",
-        "ca_id": "CA16602371"
-      },
-      {
-        "variant": "ALK L1196M",
-        "ca_id": "CA16602593"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "11114",
     "mp_id": 4329,
     "status": "ACCEPTED",
@@ -2375,24 +1864,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK G1202R",
-      "ALK I1171N",
-      "ALK L1196M",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "G1202R ALK",
-      "I1171N ALK",
-      "L1196M ALK",
-      "alk g1202r",
-      "alk i1171n",
-      "alk l1196m",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk g1202r and alk i1171n and alk l1196m"
     ],
     "therapies": [
@@ -2417,12 +1888,7 @@
   },
   "DOID:6482||eml4-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1121",
     "mp_id": 5,
     "status": "ACCEPTED",
@@ -2440,14 +1906,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk fusion"
     ],
     "therapies": [
@@ -2472,12 +1930,7 @@
   },
   "DOID:3908||eml4-alk e20-e20": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK e20::e20",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1189",
     "mp_id": 496,
     "status": "ACCEPTED",
@@ -2495,14 +1948,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK e20 e20 EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK e20 e20",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk e20-e20"
     ],
     "therapies": [
@@ -2540,12 +1985,7 @@
   },
   "DOID:0050745||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1264",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -2563,9 +2003,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -2587,13 +2024,8 @@
     ]
   },
   "DOID:769||alk r1275q": {
-    "canonical_id": "CA341482",
-    "components": [
-      {
-        "variant": "ALK R1275Q",
-        "ca_id": "CA341482"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1269",
     "mp_id": 9,
     "status": "ACCEPTED",
@@ -2611,8 +2043,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK R1275Q",
-      "R1275Q ALK",
       "alk r1275q"
     ],
     "therapies": [
@@ -2653,17 +2083,8 @@
     ]
   },
   "DOID:3908||alk i1171n and hip1-alk fusion": {
-    "canonical_id": "CA16602371",
-    "components": [
-      {
-        "variant": "ALK I1171N",
-        "ca_id": "CA16602371"
-      },
-      {
-        "variant": "HIP1::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1483",
     "mp_id": 4332,
     "status": "ACCEPTED",
@@ -2681,19 +2102,7 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion HIP1",
-      "ALK I1171N",
-      "ALK-HIP1",
-      "ALK-HIP1 fusion",
-      "ALK::HIP1",
-      "HIP1 ALK Fusion",
-      "HIP1-ALK",
-      "HIP1-ALK fusion",
-      "HIP1::ALK",
-      "I1171N ALK",
-      "alk i1171n",
-      "alk i1171n and hip1-alk fusion",
-      "hip1-alk fusion"
+      "alk i1171n and hip1-alk fusion"
     ],
     "therapies": [
       {
@@ -2721,17 +2130,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk i1171s": {
-    "canonical_id": "CA346462883",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK I1171S",
-        "ca_id": "CA346462883"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1484",
     "mp_id": 4357,
     "status": "ACCEPTED",
@@ -2749,18 +2149,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK I1171S",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "I1171S ALK",
-      "alk i1171s",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk i1171s"
     ],
     "therapies": [
@@ -2790,12 +2178,7 @@
   },
   "DOID:1901||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "6042",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -2813,9 +2196,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -2840,12 +2220,7 @@
   },
   "DOID:0080372||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "6043",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -2863,9 +2238,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -2888,12 +2260,7 @@
   },
   "DOID:3260||fus-tfcp2 fusion and alk exon 2-18 deletion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "FUS::TFCP2 Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "12406",
     "mp_id": 5452,
     "status": "ACCEPTED",
@@ -2911,15 +2278,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "FUS TFCP2 Fusion",
-      "FUS-TFCP2",
-      "FUS-TFCP2 fusion",
-      "FUS::TFCP2",
-      "TFCP2 Fusion FUS",
-      "TFCP2-FUS",
-      "TFCP2-FUS fusion",
-      "TFCP2::FUS",
-      "fus-tfcp2 fusion",
       "fus-tfcp2 fusion and alk exon 2-18 deletion"
     ],
     "therapies": [
@@ -2945,17 +2303,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk g1202r": {
-    "canonical_id": "CA16602592",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK G1202R",
-        "ca_id": "CA16602592"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "441",
     "mp_id": 4237,
     "status": "ACCEPTED",
@@ -2973,18 +2322,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK G1202R",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "G1202R ALK",
-      "alk g1202r",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk g1202r"
     ],
     "therapies": [
@@ -3024,17 +2361,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk l1196m": {
-    "canonical_id": "CA16602593",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK L1196M",
-        "ca_id": "CA16602593"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "442",
     "mp_id": 4230,
     "status": "ACCEPTED",
@@ -3052,18 +2380,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK L1196M",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "L1196M ALK",
-      "alk l1196m",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk l1196m"
     ],
     "therapies": [
@@ -3101,17 +2417,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk s1206y": {
-    "canonical_id": "CA16602591",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK S1206Y",
-        "ca_id": "CA16602591"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "443",
     "mp_id": 4309,
     "status": "ACCEPTED",
@@ -3129,18 +2436,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK S1206Y",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "S1206Y ALK",
-      "alk s1206y",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk s1206y"
     ],
     "therapies": [
@@ -3165,13 +2460,8 @@
     ]
   },
   "DOID:0050905||alk f1174l": {
-    "canonical_id": "CA279586",
-    "components": [
-      {
-        "variant": "ALK F1174L",
-        "ca_id": "CA279586"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "32",
     "mp_id": 8,
     "status": "ACCEPTED",
@@ -3189,8 +2479,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK F1174L",
-      "F1174L ALK",
       "alk f1174l"
     ],
     "therapies": [
@@ -3212,13 +2500,8 @@
     ]
   },
   "DOID:3908||alk f1174l": {
-    "canonical_id": "CA279586",
-    "components": [
-      {
-        "variant": "ALK F1174L",
-        "ca_id": "CA279586"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "33",
     "mp_id": 8,
     "status": "ACCEPTED",
@@ -3236,8 +2519,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK F1174L",
-      "F1174L ALK",
       "alk f1174l"
     ],
     "therapies": [
@@ -3262,17 +2543,8 @@
     ]
   },
   "DOID:3908||eml4-alk fusion and alk v1180l": {
-    "canonical_id": "CA346473150",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK V1180L",
-        "ca_id": "CA346473150"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1286",
     "mp_id": 4351,
     "status": "ACCEPTED",
@@ -3290,18 +2562,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK V1180L",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "V1180L ALK",
-      "alk v1180l",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk v1180l"
     ],
     "therapies": [
@@ -3391,17 +2651,8 @@
     ]
   },
   "DOID:3908||alk g1269a and v-alk fusion": {
-    "canonical_id": "CA16602590",
-    "components": [
-      {
-        "variant": "ALK G1269A",
-        "ca_id": "CA16602590"
-      },
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1342",
     "mp_id": 4311,
     "status": "ACCEPTED",
@@ -3419,12 +2670,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "ALK G1269A",
-      "Fusion (unspecified partner) ALK",
-      "G1269A ALK",
-      "alk fusion (unspecified partner)",
-      "alk g1269a",
       "alk g1269a and v-alk fusion"
     ],
     "therapies": [
@@ -3449,17 +2694,8 @@
     ]
   },
   "DOID:162||eml4-alk fusion and alk g1202r": {
-    "canonical_id": "CA16602592",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK G1202R",
-        "ca_id": "CA16602592"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1350",
     "mp_id": 4237,
     "status": "ACCEPTED",
@@ -3477,18 +2713,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK G1202R",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "G1202R ALK",
-      "alk g1202r",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk g1202r"
     ],
     "therapies": [
@@ -3522,17 +2746,8 @@
     ]
   },
   "DOID:162||alk g1269a and v-alk fusion": {
-    "canonical_id": "CA16602590",
-    "components": [
-      {
-        "variant": "ALK G1269A",
-        "ca_id": "CA16602590"
-      },
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1354",
     "mp_id": 4311,
     "status": "ACCEPTED",
@@ -3550,12 +2765,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 3,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "ALK G1269A",
-      "Fusion (unspecified partner) ALK",
-      "G1269A ALK",
-      "alk fusion (unspecified partner)",
-      "alk g1269a",
       "alk g1269a and v-alk fusion"
     ],
     "therapies": [
@@ -3594,13 +2803,8 @@
     ]
   },
   "DOID:162||alk r1275q": {
-    "canonical_id": "CA341482",
-    "components": [
-      {
-        "variant": "ALK R1275Q",
-        "ca_id": "CA341482"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "39",
     "mp_id": 9,
     "status": "ACCEPTED",
@@ -3618,8 +2822,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK R1275Q",
-      "R1275Q ALK",
       "alk r1275q"
     ],
     "therapies": [
@@ -3645,17 +2847,8 @@
     ]
   },
   "DOID:162||eml4-alk fusion and alk f1245c": {
-    "canonical_id": "CA279597",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK F1245C",
-        "ca_id": "CA279597"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1337",
     "mp_id": 4221,
     "status": "ACCEPTED",
@@ -3673,18 +2866,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK F1245C",
-      "ALK Fusion EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "F1245C ALK",
-      "alk f1245c",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk f1245c"
     ],
     "therapies": [
@@ -3710,17 +2891,8 @@
     ]
   },
   "DOID:162||eml4-alk fusion and alk s1206y": {
-    "canonical_id": "CA16602591",
-    "components": [
-      {
-        "variant": "EML4::ALK Fusion",
-        "ca_id": null
-      },
-      {
-        "variant": "ALK S1206Y",
-        "ca_id": "CA16602591"
-      }
-    ],
+    "canonical_id": null,
+    "components": [],
     "eid": "1343",
     "mp_id": 4309,
     "status": "ACCEPTED",
@@ -3738,18 +2910,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion EML4",
-      "ALK S1206Y",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK Fusion",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
-      "S1206Y ALK",
-      "alk s1206y",
-      "eml4-alk fusion",
       "eml4-alk fusion and alk s1206y"
     ],
     "therapies": [
@@ -3776,12 +2936,7 @@
   },
   "DOID:162||npm1-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "NPM1::ALK Fusion",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1356",
     "mp_id": 509,
     "status": "ACCEPTED",
@@ -3799,14 +2954,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 2,
     "aliases": [
-      "ALK Fusion NPM1",
-      "ALK-NPM1",
-      "ALK-NPM1 fusion",
-      "ALK::NPM1",
-      "NPM1 ALK Fusion",
-      "NPM1-ALK",
-      "NPM1-ALK fusion",
-      "NPM1::ALK",
       "npm1-alk fusion"
     ],
     "therapies": [
@@ -3833,12 +2980,7 @@
   },
   "DOID:3908||eml4-alk e2-e20": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "EML4::ALK e2::e20",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1190",
     "mp_id": 497,
     "status": "ACCEPTED",
@@ -3856,14 +2998,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 4,
     "aliases": [
-      "ALK e2 e20 EML4",
-      "ALK-EML4",
-      "ALK-EML4 fusion",
-      "ALK::EML4",
-      "EML4 ALK e2 e20",
-      "EML4-ALK",
-      "EML4-ALK fusion",
-      "EML4::ALK",
       "eml4-alk e2-e20"
     ],
     "therapies": [
@@ -3889,12 +3023,7 @@
   },
   "DOID:0050861||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1334",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -3912,9 +3041,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 1,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
@@ -3937,12 +3063,7 @@
   },
   "DOID:1612||v-alk fusion": {
     "canonical_id": null,
-    "components": [
-      {
-        "variant": "ALK Fusion (unspecified partner)",
-        "ca_id": null
-      }
-    ],
+    "components": [],
     "eid": "1335",
     "mp_id": 495,
     "status": "ACCEPTED",
@@ -3960,9 +3081,6 @@
     "evidence_type": "PREDICTIVE",
     "evidence_rating": 1,
     "aliases": [
-      "ALK Fusion (unspecified partner)",
-      "Fusion (unspecified partner) ALK",
-      "alk fusion (unspecified partner)",
       "v-alk fusion"
     ],
     "therapies": [
