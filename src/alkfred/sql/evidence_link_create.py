@@ -306,7 +306,7 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
             # Batch insert
             if len(batch) >= BATCH:
                 cur.executemany(LINK_INSERT_SQL, batch)
-                inserted_links += cur.rowcount
+                inserted_links += len(batch)
                 batch.clear()
                 conn.commit()
 
@@ -316,7 +316,7 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
     # Flush remaining
     if batch:
         cur.executemany(LINK_INSERT_SQL, batch)
-        inserted_links += cur.rowcount
+        inserted_links += len(batch)
         batch.clear()
         conn.commit()
 
