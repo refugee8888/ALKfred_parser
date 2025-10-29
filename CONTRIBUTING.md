@@ -5,14 +5,15 @@ This guide explains how to set up your environment, follow code conventions, and
 
 Project Setup
 1. Clone the repository
-''' git clone https://github.com/<your-username>/ALKfred.git
-cd ALKfred '''
+
+``` git clone https://github.com/<your-username>/ALKfred.git
+cd ALKfred ```
 
 2. Create a virtual environment
 
-''' python3 -m venv .venv
+``` python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt '''
+pip install -r requirements.txt ```
 
 3. Environment variables
 
@@ -67,14 +68,15 @@ Avoid touching real data paths; use tmp_path for all file I/O
 
 Example:
 
-''' def test_normalize_label(monkeypatch):
-        monkeypatch.setattr(utils, "normalize_label", lambda x: "alk")
-        assert utilss.normalize_label("ALK") == "alk" '''
+```python
+def test_normalize_label(monkeypatch):
+    monkeypatch.setattr(utils, "normalize_label", lambda x: "alk")
+    assert utilss.normalize_label("ALK") == "alk" ```
 
 
 Run the full suite:
 
-''' pytest -v '''
+``` pytest -v ```
 
 Git & Commit Conventions
 
