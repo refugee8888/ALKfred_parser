@@ -1,17 +1,18 @@
-🧬 Contributing to ALKfred
+Contributing to ALKfred
 
 Thank you for your interest in improving ALKfred, a CIViC-based oncology data engineering project.
 This guide explains how to set up your environment, follow code conventions, and contribute responsibly.
 
-📦 Project Setup
+Project Setup
 1. Clone the repository
-git clone https://github.com/<your-username>/ALKfred.git
-cd ALKfred
+''' git clone https://github.com/<your-username>/ALKfred.git
+cd ALKfred '''
 
 2. Create a virtual environment
-python3 -m venv .venv
+
+''' python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt '''
 
 3. Environment variables
 
@@ -26,7 +27,7 @@ pytest -v
 
 All tests should pass before submitting a pull request.
 
-🧱 Code Structure
+Code Structure
 src/alkfred/
 ├── etl/                 # Fetch, curate, and normalize CIViC data
 ├── sql/dim_load/        # SQLite dimension and fact loaders
@@ -35,7 +36,7 @@ src/alkfred/
 ├── config.py            # Paths, connections, env management
 └── tests/               # Pytest suite
 
-✏️ Coding Standards
+Coding Standards
 Rule	Example
 Follow PEP8 style	use 4 spaces, lowercase function names
 Use type hints	def fetch_data(symbol: str) -> list[dict]:
@@ -54,7 +55,7 @@ Args:
     limit (int | None): Max evidence items to retrieve.
 """
 
-🧪 Testing Rules
+Testing Rules
 
 Place tests under tests/ with filenames like test_<module>.py
 
@@ -66,16 +67,16 @@ Avoid touching real data paths; use tmp_path for all file I/O
 
 Example:
 
-def test_normalize_label(monkeypatch):
-    monkeypatch.setattr(utils, "normalize_label", lambda x: "alk")
-    assert utils.normalize_label("ALK") == "alk"
+''' def test_normalize_label(monkeypatch):
+        monkeypatch.setattr(utils, "normalize_label", lambda x: "alk")
+        assert utilss.normalize_label("ALK") == "alk" '''
 
 
 Run the full suite:
 
-pytest -v
+''' pytest -v '''
 
-🧩 Git & Commit Conventions
+Git & Commit Conventions
 
 Branch naming
 
@@ -93,7 +94,7 @@ test: add unit test for normalize_label
 
 Every commit should be atomic — one change, one purpose.
 
-🔄 Pull Requests
+Pull Requests
 
 Fork the repository
 
@@ -111,7 +112,7 @@ Before/after behavior summary
 
 Any new dependencies introduced
 
-🚫 Anti-Patterns
+Anti-Patterns
 
 ❌ Hardcoding paths (use config.data_dir() or config.default_db_path())
 
@@ -121,7 +122,8 @@ Any new dependencies introduced
 
 ❌ Running pytest on live CIViC API endpoints
 
-🧭 Roadmap Contributions
+
+Roadmap Contributions
 
 If you want to help expand ALKfred:
 
@@ -135,7 +137,8 @@ Refactor dim loaders for generic reuse
 
 Propose ideas in the Discussions tab before starting major rewrites.
 
-🪪 License
+
+License
 
 ALKfred is released under the GNU General Public License v3.0 (GPL-3.0).
 By contributing, you agree that your code will be distributed under the same license.
