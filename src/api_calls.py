@@ -4,10 +4,13 @@ from utils import help_request, graphql_query
 import json
 import logging
 import re
+from typing import Optional
 
 GRAPHQL_URL = "https://civicdb.org/api/graphql"
 HEADERS = {"Content-Type": "application/json"}
 API_THROTTLE = 0.2
+
+log = logging.getLogger(__name__)
 
 def fetch_civic_all_evidence_items():
     after_cursor = None
@@ -68,58 +71,37 @@ def fetch_civic_all_evidence_items():
 
     return all_items
 
-def fetch_civic_molecular_profile(profile_name: str) -> list[dict[str, str | None]]:
-    """
-    Return unique variant components for an exact CIViC molecular profile name.
-    Each component: {"variant": "<label>", "ca_id": <CA ID or None>}.
-    Filters out junk fusions like "V::ALK".
-    """
-    query = """
-    query ($name: String!) {
-      molecularProfiles(name: $name) {
-        nodes {
-          name
-          variants {
-            name
-            ... on GeneVariant { alleleRegistryId }
-            feature { name }
-          }
-        }
-      }
-    }
-    """
-    data = graphql_query(
-        url=GRAPHQL_URL,
-        query=query,
-        variables={"name": profile_name},
-        headers=HEADERS,
-    )
 
-    def canon(s: str) -> str:
+
+def fetch_civic_molecular_profile(
+    mp_id: Optional[int] = None,
+    mp_name: Optional[str] = None,
+) -> list[dict[str, str | None]]:
+    """
+    Return unique variant components for a CIViC molecular profile.
+    Each item: {"variant": "<gene + mutation or gene>", "ca_id": <CA ID or None>}.
+    Prefers exact ID lookup; falls back to exact (case-insensitive) name match.
+    """
+
+    def _canon(s: str) -> str:
         return (s or "").strip().lower()
 
-    def looks_like_gene(sym: str) -> bool:
-        # crude but effective: 2+ alphanum, not just a single letter placeholder
-        return bool(re.fullmatch(r"[A-Z0-9]{2,}", sym))
+    def _looks_like_gene(sym: str) -> bool:
+        # simple guard: >=2 uppercase letters/digits
+        return bool(re.fullmatch(r"[A-Z0-9]{2,}", sym or ""))
 
-    def valid_fusion(label: str) -> bool:
+    def _valid_fusion(label: str) -> bool:
+        # drop bogus "V::ALK" type fusions where one side isn't a real gene token
         m = re.search(r"(?i)\b([A-Z0-9]+)\s*(?:-|::|/|–)\s*([A-Z0-9]+)(?:\s+fusion)?\b", label or "")
         if not m:
             return True
         a, b = m.group(1), m.group(2)
-        return looks_like_gene(a) and looks_like_gene(b)
+        return _looks_like_gene(a) and _looks_like_gene(b)
 
-    nodes = (data.get("molecularProfiles") or {}).get("nodes") or []
-    exact_nodes = [n for n in nodes if canon(n.get("name")) == canon(profile_name)]
-    if not exact_nodes:
-        logging.debug("No exact node match for profile %r (found %d candidates).", profile_name, len(nodes))
-        return []
-
-    seen: set[tuple[str, str | None]] = set()
-    out: list[dict[str, str | None]] = []
-
-    for node in exact_nodes:
-        for v in node.get("variants") or []:
+    def _parse_variants(node: dict, profile_label_for_log: str) -> list[dict[str, str | None]]:
+        seen: set[tuple[str, str | None]] = set()
+        out: list[dict[str, str | None]] = []
+        for v in (node.get("variants") or []):
             gene = ((v.get("feature") or {}).get("name") or "").strip()
             mut  = (v.get("name") or "").strip()
             label = " ".join(p for p in [gene, mut] if p).strip()
@@ -127,11 +109,13 @@ def fetch_civic_molecular_profile(profile_name: str) -> list[dict[str, str | Non
 
             if not label:
                 continue
-            # Normalize CIViC’s generic “V:ALK Fusion” → human-safe label, or drop it
+
+            # Normalize CIViC’s generic "V:ALK Fusion" / "V::ALK" junk
             if re.search(r"(?i)\bV\s*(?:-|::|/|–)\s*ALK\b", label) or label.upper().startswith("V:ALK"):
                 label = "ALK Fusion (unspecified partner)"
-            if not valid_fusion(label):
-                logging.debug("Dropping junk fusion in %r: %r", profile_name, label)
+
+            if not _valid_fusion(label):
+                log.debug("Dropping junk fusion in %r: %r", profile_label_for_log, label)
                 continue
 
             key = (label, ca_id)
@@ -139,6 +123,77 @@ def fetch_civic_molecular_profile(profile_name: str) -> list[dict[str, str | Non
                 continue
             seen.add(key)
             out.append({"variant": label, "ca_id": ca_id})
+        log.debug("Parsed %d variants for profile %s", len(out), profile_label_for_log)
+        return out
 
-    logging.debug("Fetched %d variants for profile %s", len(out), profile_name)
-    return out
+    # --- Branch 1: ID-based (robust) ---
+    if mp_id is not None:
+        query = """
+        query ($id: Int!) {
+          molecularProfile(id: $id) {
+            id
+            name
+            variants {
+              name
+              ... on GeneVariant { alleleRegistryId }
+              feature { name }
+            }
+          }
+        }
+        """
+        data = graphql_query(
+            url=GRAPHQL_URL,
+            query=query,
+            variables={"id": mp_id},
+            headers=HEADERS,
+        )
+        node = (data or {}).get("molecularProfile")
+        if not node:
+            log.debug("No molecularProfile found for id=%r", mp_id)
+            return []
+        return _parse_variants(node, profile_label_for_log=f"id={mp_id} ({node.get('name')})")
+
+    # --- Branch 2: Name-based (fallback) ---
+    if mp_name:
+        query = """
+        query ($name: String!) {
+          molecularProfiles(name: $name) {
+            nodes {
+              id
+              name
+              variants {
+                name
+                ... on GeneVariant { alleleRegistryId }
+                feature { name }
+              }
+            }
+          }
+        }
+        """
+        data = graphql_query(
+            url=GRAPHQL_URL,
+            query=query,
+            variables={"name": mp_name},
+            headers=HEADERS,
+        )
+        nodes = ((data or {}).get("molecularProfiles") or {}).get("nodes") or []
+        # exact match (case-insensitive)
+        exact = [n for n in nodes if _canon(n.get("name")) == _canon(mp_name)]
+        if not exact:
+            log.debug("No exact node match for profile %r (found %d candidates).", mp_name, len(nodes))
+            return []
+        # If multiple exacts (rare), parse them all and dedupe via _parse_variants per node
+        out: list[dict[str, str | None]] = []
+        seen_pairs: set[tuple[str, str | None]] = set()
+        for node in exact:
+            parts = _parse_variants(node, profile_label_for_log=node.get("name") or mp_name)
+            for p in parts:
+                key = (p["variant"], p["ca_id"])
+                if key in seen_pairs:
+                    continue
+                seen_pairs.add(key)
+                out.append(p)
+        return out
+
+    # Nothing to do
+    return []

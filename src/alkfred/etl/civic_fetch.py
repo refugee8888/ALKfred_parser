@@ -7,7 +7,8 @@ import json
 
 
 
-def fetch_civic_evidence(symbol="ALK", raw_path=None, overwrite=False, limit: Optional[int] = None):
+def fetch_civic_evidence(oncogene = None, raw_path=None, overwrite=False, limit: Optional[int] = None):
+    
     
     if raw_path is None:
         raw_path = config.data_dir() / "civic_raw_evidence_db.json"
@@ -30,7 +31,7 @@ def fetch_civic_evidence(symbol="ALK", raw_path=None, overwrite=False, limit: Op
             mp_name = mp.get("name", "")
             # disease_name = disease.get("name", "")
             
-            if civic_parser.gene_in_molecular_profile(mp_name, symbol):
+            if civic_parser.gene_in_molecular_profile(mp_name, oncogene):
                 filtered.append(ei)
                 if limit is not None and len(filtered) >= limit:
                     break
