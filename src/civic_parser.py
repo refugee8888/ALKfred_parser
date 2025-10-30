@@ -166,9 +166,7 @@ def parse_entries(
             continue
 
        
-        significance_raw = (item.get("significance") or "").strip().upper()
-        if significance_raw != "SENSITIVITYRESPONSE" or significance_raw != "RESISTANCE":
-            significance = "N/A"
+        significance = (item.get("significance") or "").strip().upper()
         direction = (item.get("evidenceDirection") or "").strip().upper()
         evidence_level = (item.get("evidenceLevel") or "").strip().upper()
         evidence_type = (item.get("evidenceType") or "").strip().upper()

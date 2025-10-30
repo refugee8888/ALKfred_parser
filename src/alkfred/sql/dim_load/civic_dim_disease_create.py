@@ -8,7 +8,7 @@ from alkfred import config
 
 
 DB_PATH = config.default_db_path()
-JSON_PATH = Path("data/curated_resistance_db.json")  # use forward slashes or raw string
+JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")  # use forward slashes or raw string
 
 def main():
     
@@ -29,10 +29,12 @@ def main():
 
     # Collect rows
     rows_disease = []
+    data_dict = config.raw_json_list_to_dict(JSON_PATH)
 
-    for rec in data.values():                       # iterate values, not keys
-        doid = rec.get("disease_doid")
-        label_display = rec.get("disease_name")
+    for rec in data_dict.values():                       # iterate values, not keys
+        doid = rec.get("id")
+        disease = rec.get("disease")
+        label_display = disease.get("name")
         label_disease_norm = normalize_label(label_display)
         
         synonyms_json = json.dumps(rec.get("disease_aliases", []))
