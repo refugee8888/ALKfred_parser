@@ -118,3 +118,8 @@ CREATE INDEX IF NOT EXISTS idx_fact_eid ON fact_evidence(eid);
 CREATE INDEX IF NOT EXISTS idx_fact_keys ON fact_evidence(variant_id, therapy_id, doid);
 CREATE INDEX IF NOT EXISTS idx_fact_semantics ON fact_evidence(direction, significance);
 
+UPDATE fact_evidence
+SET significance='SENSITIVITY'
+WHERE UPPER(TRIM(significance)) IN ('SENSITIVITYRESPONSE','SENSITIVITY_RESPONSE','RESPONSE');
+
+

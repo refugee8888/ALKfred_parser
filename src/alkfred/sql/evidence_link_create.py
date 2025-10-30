@@ -250,13 +250,6 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
                 continue
             eid = int(eid)
 
-            # Filters (evidence grain)
-            # direction = (ei.get("evidenceDirection") or "").strip().upper()
-            # significance = (ei.get("significance") or "").strip().upper()
-            # if direction != "SUPPORTS":
-            #     skipped_direction += 1
-            #     continue
-
             disease = ei.get("disease") or {}
             doid = disease.get("doid")
             mp = ei.get("molecularProfile") or {}

@@ -13,7 +13,7 @@
       "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
       "publicationYear": 2010
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "A",
     "evidence_type": "PREDICTIVE",
@@ -111,7 +111,7 @@
       "title": "Targeting ALK With Crizotinib in Pediatric Anaplastic Large Cell Lymphoma and Inflammatory Myofibroblastic Tumor: A Children's Oncology Group Study.",
       "publicationYear": 2017
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "A",
     "evidence_type": "PREDICTIVE",
@@ -160,7 +160,7 @@
       "title": "Long-term effects of crizotinib in ALK-positive tumors (excluding NSCLC): A phase 1b open-label study.",
       "publicationYear": 2018
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "A",
     "evidence_type": "PREDICTIVE",
@@ -208,7 +208,7 @@
       "title": "Ceritinib in ALK-rearranged non-small-cell lung cancer.",
       "publicationYear": 2014
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "B",
     "evidence_type": "PREDICTIVE",
@@ -251,7 +251,7 @@
       "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
       "publicationYear": 2013
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "B",
     "evidence_type": "PREDICTIVE",
@@ -296,7 +296,7 @@
       "title": "Safety and Antitumor Activity of the Multitargeted Pan-TRK, ROS1, and ALK Inhibitor Entrectinib: Combined Results from Two Phase I Trials (ALKA-372-001 and STARTRK-1).",
       "publicationYear": 2017
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "B",
     "evidence_type": "PREDICTIVE",
@@ -340,7 +340,7 @@
       "title": "Crizotinib in patients with tumors harboring ALK or ROS1 rearrangements in the NCI-MATCH trial.",
       "publicationYear": 2022
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "B",
     "evidence_type": "PREDICTIVE",
@@ -384,7 +384,7 @@
       "title": "EML4-ALK mutations in lung cancer that confer resistance to ALK inhibitors.",
       "publicationYear": 2010
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -427,7 +427,7 @@
       "title": "EML4-ALK mutations in lung cancer that confer resistance to ALK inhibitors.",
       "publicationYear": 2010
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -470,7 +470,7 @@
       "title": "EML4-ALK mutations in lung cancer that confer resistance to ALK inhibitors.",
       "publicationYear": 2010
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -513,7 +513,7 @@
       "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -577,7 +577,7 @@
       "title": "A novel ALK secondary mutation and EGFR signaling cause resistance to ALK kinase inhibitors.",
       "publicationYear": 2011
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -620,7 +620,7 @@
       "title": "Mechanisms of resistance to crizotinib in patients with ALK gene rearranged non-small cell lung cancer.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -667,7 +667,7 @@
       "title": "Resensitization to Crizotinib by the Lorlatinib ALK Resistance Mutation L1198F.",
       "publicationYear": 2016
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -716,7 +716,7 @@
       "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
       "publicationYear": 2010
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -789,7 +789,7 @@
       "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
       "publicationYear": 2010
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -858,7 +858,7 @@
       "title": "Crizotinib in ALK-rearranged inflammatory myofibroblastic tumor.",
       "publicationYear": 2010
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -898,7 +898,7 @@
       "title": "Two novel ALK mutations mediate acquired resistance to the next-generation ALK inhibitor alectinib.",
       "publicationYear": 2014
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -967,7 +967,7 @@
       "title": "Alternative transcription initiation leads to expression of a novel ALK isoform in cancer.",
       "publicationYear": 2015
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1021,7 +1021,7 @@
       "title": "ALK Inhibitor Response in Melanomas Expressing EML4-ALK Fusions and Alternate ALK Isoforms.",
       "publicationYear": 2018
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "DOES_NOT_SUPPORT",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1061,7 +1061,7 @@
       "title": "Acquired multiple mutations ALK I1171N, L1196M and G1202R mediate lorlatinib resistance in EML4-ALK-rearranged malignant pleural mesothelioma: a case report.",
       "publicationYear": 2020
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1103,7 +1103,7 @@
       "title": "Clinical response of the novel activating ALK-I1171T mutation in neuroblastoma to the ALK inhibitor ceritinib.",
       "publicationYear": 2018
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1143,7 +1143,7 @@
       "title": "Acquired multiple mutations ALK I1171N, L1196M and G1202R mediate lorlatinib resistance in EML4-ALK-rearranged malignant pleural mesothelioma: a case report.",
       "publicationYear": 2020
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1192,7 +1192,7 @@
       "title": "Mechanisms of resistance to crizotinib in patients with ALK gene rearranged non-small cell lung cancer.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1241,7 +1241,7 @@
       "title": "Resensitization to Crizotinib by the Lorlatinib ALK Resistance Mutation L1198F.",
       "publicationYear": 2016
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1304,7 +1304,7 @@
       "title": "A Poorly Differentiated Malignant Neoplasm Lacking Lung Markers Harbors an EML4-ALK Rearrangement and Responds to Crizotinib.",
       "publicationYear": 2014
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1348,7 +1348,7 @@
       "title": "Promising response of anaplastic lymphoma kinase-positive large B-cell lymphoma to crizotinib salvage treatment: case report and review of literature.",
       "publicationYear": 2015
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1396,7 +1396,7 @@
       "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
       "publicationYear": 2013
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "DOES_NOT_SUPPORT",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1466,7 +1466,7 @@
       "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
       "publicationYear": 2013
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1514,7 +1514,7 @@
       "title": "A novel acquired ALK F1245C mutation confers resistance to crizotinib in ALK-positive NSCLC but is sensitive to ceritinib.",
       "publicationYear": 2016
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1565,7 +1565,7 @@
       "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1608,7 +1608,7 @@
       "title": "Detection of Crizotinib-Sensitive Lung Adenocarcinomas With MET, ALK, and ROS1 Genomic Alterations via Comprehensive Genomic Profiling.",
       "publicationYear": 2015
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1651,7 +1651,7 @@
       "title": "Safety and Antitumor Activity of the Multitargeted Pan-TRK, ROS1, and ALK Inhibitor Entrectinib: Combined Results from Two Phase I Trials (ALKA-372-001 and STARTRK-1).",
       "publicationYear": 2017
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1691,7 +1691,7 @@
       "title": "Oncogenic ALK Fusion in Rare and Aggressive Subtype of Colorectal Adenocarcinoma as a Potential Therapeutic Target.",
       "publicationYear": 2016
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1734,7 +1734,7 @@
       "title": "Remarkable Response to Crizotinib in Woman With Anaplastic Lymphoma Kinase-Rearranged Anaplastic Thyroid Carcinoma.",
       "publicationYear": 2015
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1776,7 +1776,7 @@
       "title": "Novel CAD-ALK gene rearrangement is drugable by entrectinib in colorectal cancer.",
       "publicationYear": 2015
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1816,7 +1816,7 @@
       "title": "Exceptional Clinical Response to Alectinib in Pancreatic Acinar Cell Carcinoma With a Novel ALK-KANK4 Gene Fusion.",
       "publicationYear": 2022
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1858,7 +1858,7 @@
       "title": "Acquired multiple mutations ALK I1171N, L1196M and G1202R mediate lorlatinib resistance in EML4-ALK-rearranged malignant pleural mesothelioma: a case report.",
       "publicationYear": 2020
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1900,7 +1900,7 @@
       "title": "A case of lung adenocarcinoma harboring EGFR mutation and EML4-ALK fusion gene.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1942,7 +1942,7 @@
       "title": "Anaplastic lymphoma kinase inhibition in non-small-cell lung cancer.",
       "publicationYear": 2010
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -1997,7 +1997,7 @@
       "title": "Crizotinib in refractory ALK-positive diffuse large B-cell lymphoma: a case report with a short-term response.",
       "publicationYear": 2014
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -2037,7 +2037,7 @@
       "title": "Safety and activity of crizotinib for paediatric patients with refractory solid tumours or anaplastic large-cell lymphoma: a Children's Oncology Group phase 1 consortium study.",
       "publicationYear": 2013
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -2096,7 +2096,7 @@
       "title": "Identification of a novel HIP1-ALK fusion variant in Non-Small-Cell Lung Cancer (NSCLC) and discovery of ALK I1171 (I1171N/S) mutations in two ALK-rearranged NSCLC patients with resistance to Alectinib.",
       "publicationYear": 2014
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -2143,7 +2143,7 @@
       "title": "Identification of a novel HIP1-ALK fusion variant in Non-Small-Cell Lung Cancer (NSCLC) and discovery of ALK I1171 (I1171N/S) mutations in two ALK-rearranged NSCLC patients with resistance to Alectinib.",
       "publicationYear": 2014
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -2190,7 +2190,7 @@
       "title": "Targeted Treatment of a Rare Vaginal Sarcoma With an Anaplastic Lymphoma Kinase Inhibitor.",
       "publicationYear": 2016
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -2232,7 +2232,7 @@
       "title": "A case report of epithelioid inflammatory myofibroblastic sarcoma with RANBP2-ALK fusion gene treated with the ALK inhibitor, crizotinib.",
       "publicationYear": 2014
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -2272,7 +2272,7 @@
       "title": "Diagnostic and Therapeutic Implications of a FUS::TFCP2 Fusion and ALK Activation in a Metastatic Rhabdomyosarcoma.",
       "publicationYear": 2024
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "C",
     "evidence_type": "PREDICTIVE",
@@ -2316,7 +2316,7 @@
       "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2374,7 +2374,7 @@
       "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2430,7 +2430,7 @@
       "title": "Mechanisms of acquired crizotinib resistance in ALK-rearranged lung Cancers.",
       "publicationYear": 2012
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2473,7 +2473,7 @@
       "title": "The neuroblastoma-associated F1174L ALK mutation causes resistance to an ALK kinase inhibitor in ALK-translocated cancers.",
       "publicationYear": 2010
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2513,7 +2513,7 @@
       "title": "The neuroblastoma-associated F1174L ALK mutation causes resistance to an ALK kinase inhibitor in ALK-translocated cancers.",
       "publicationYear": 2010
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2556,7 +2556,7 @@
       "title": "Two novel ALK mutations mediate acquired resistance to the next-generation ALK inhibitor alectinib.",
       "publicationYear": 2014
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2624,7 +2624,7 @@
       "title": "Brigatinib, an anaplastic lymphoma kinase inhibitor, abrogates activity and growth in ALK-positive neuroblastoma cells, Drosophila and mice.",
       "publicationYear": 2016
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2664,7 +2664,7 @@
       "title": "The ALK inhibitor ceritinib overcomes crizotinib resistance in non-small cell lung cancer.",
       "publicationYear": 2014
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2707,7 +2707,7 @@
       "title": "Activity of second-generation ALK inhibitors against crizotinib-resistant mutants in an NPM-ALK model compared to EML4-ALK.",
       "publicationYear": 2015
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2759,7 +2759,7 @@
       "title": "Activity of second-generation ALK inhibitors against crizotinib-resistant mutants in an NPM-ALK model compared to EML4-ALK.",
       "publicationYear": 2015
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2816,7 +2816,7 @@
       "title": "Activating mutations in ALK provide a therapeutic target in neuroblastoma.",
       "publicationYear": 2008
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2860,7 +2860,7 @@
       "title": "Crizotinib-resistant mutants of EML4-ALK identified through an accelerated mutagenesis screen.",
       "publicationYear": 2011
     },
-    "significance": "RESISTANCE",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2904,7 +2904,7 @@
       "title": "The ALK inhibitor ceritinib overcomes crizotinib resistance in non-small cell lung cancer.",
       "publicationYear": 2014
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2948,7 +2948,7 @@
       "title": "Activity of second-generation ALK inhibitors against crizotinib-resistant mutants in an NPM-ALK model compared to EML4-ALK.",
       "publicationYear": 2015
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "D",
     "evidence_type": "PREDICTIVE",
@@ -2992,7 +2992,7 @@
       "title": "Multiplex reverse transcription-PCR screening for EML4-ALK fusion transcripts.",
       "publicationYear": 2008
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "E",
     "evidence_type": "PREDICTIVE",
@@ -3035,7 +3035,7 @@
       "title": "Exon array profiling detects EML4-ALK fusion in breast, colorectal, and non-small cell lung cancers.",
       "publicationYear": 2009
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "E",
     "evidence_type": "PREDICTIVE",
@@ -3075,7 +3075,7 @@
       "title": "Exon array profiling detects EML4-ALK fusion in breast, colorectal, and non-small cell lung cancers.",
       "publicationYear": 2009
     },
-    "significance": "SENSITIVITY",
+    "significance": "N/A",
     "direction": "SUPPORTS",
     "evidence_level": "E",
     "evidence_type": "PREDICTIVE",
