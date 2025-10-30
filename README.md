@@ -110,28 +110,6 @@ fact_evidence	Aggregated analytic layer for resistance/sensitivity queries
 
 ⸻
 
-Example Query
-
-
-```sql
-SELECT variant,
-       resistant_therapies,
-       sensitive_therapies
-FROM fact_evidence_summary
-WHERE doid = '3908'; 
-```
-
-
-Sample output:
-
-variant         | resistant_therapies                | sensitive_therapies
-----------------|------------------------------------|-----------------------------
-eml4_alk_fusion | crizotinib,ceritinib,lorlatinib    | alectinib,brigatinib
-alk_g1202r      | crizotinib,ceritinib               | tanespimycin
-
-
-⸻
-
 CLI example queries:
 
 ```bash
