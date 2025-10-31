@@ -9,7 +9,7 @@ from alkfred import config
 
 
 DB_PATH = config.default_db_path()
-JSON_PATH = Path("data/curated_resistance_db.json") 
+JSON_PATH = Path("data/civic_raw_evidence_db.json") 
 
 def main():
     
@@ -17,29 +17,29 @@ def main():
     cur = conn.cursor()
 
     # Load JSON as a dict
-    with open(JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
+    data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    
     # Collect rows
     rows_gene_variant = []
 
-    for rec in data.values():
-        for comp in rec.get("components",[]):                      # iterate values, not keys
-            civic_ca_id= comp.get("ca_id", [])
-            variant_id = civic_ca_id if civic_ca_id else comp.get("variant")
-            gene_symbol = comp.get("gene_symbol", "")
-            label_display = comp.get("variant","")
+    for rec in data_dict.values():
+        entry = rec.get("molecularProfile",[])
+        for v in entry.get("variants", []):                   
+            civic_ca_id= v.get("alleleRegistryId", "")
+            variant_id = civic_ca_id if civic_ca_id else v.get("name")
+            gene_symbol = v.get("feature", {}).get("name", "")
+            label_display = v.get("name","")
             label_gene_variant_norm = normalize_label(label_display)
-            aliases_json = json.dumps(rec.get("aliases", []))
+            
         
         
-            rows_gene_variant.append((variant_id, civic_ca_id, None, gene_symbol, label_display, label_gene_variant_norm, None, None, aliases_json, None))
+            rows_gene_variant.append((variant_id, civic_ca_id, None, gene_symbol, label_display, label_gene_variant_norm, None, None, None))
         
 
     # Bulk insert
 
     cur.executemany(
-        "INSERT OR IGNORE INTO dim_gene_variant (variant_id, civic_ca_id, hgnc_id, gene_symbol, label_display, label_gene_variant_norm, hgvs_p, hgvs_c, aliases_json, confidence) VALUES (?,?,?,?,?,?,?,?,?,?)",
+        "INSERT OR IGNORE INTO dim_gene_variant (variant_id, civic_ca_id, hgnc_id, gene_symbol, label_display, label_gene_variant_norm, hgvs_p, hgvs_c, confidence) VALUES (?,?,?,?,?,?,?,?,?)",
         rows_gene_variant
     )
     conn.commit()

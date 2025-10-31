@@ -22,14 +22,11 @@ def main():
 
     logger.info("Table dim_disease created or already exists in %s", DB_PATH)
 
-
-    # Load JSON as a dict
-    with open(JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
+    data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    
     # Collect rows
     rows_disease = []
-    data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    
 
     for rec in data_dict.values():                       # iterate values, not keys
         doid = rec.get("id")

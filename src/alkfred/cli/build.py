@@ -32,18 +32,18 @@ def main(argv=None) -> int:
 
     if args.source == "civic":
     
-        items = civic_fetch.fetch_civic_evidence(
+        civic_fetch.fetch_civic_evidence(
             oncogene = args.oncogene,
             raw_path=args.raw,
             overwrite=args.overwrite,
             limit=args.limit,           # <-- actually use it
         )
-        civic_curate.curate_civic(items, curated_path=args.curated)
+    #     civic_curate.curate_civic(items, curated_path=args.curated)
         
-    else:
-        if not Path(args.curated).exists():
-            logger.error("Curated file not found: %s (run with --source civic first)", args.curated)
-            sys.exit(2)
+    # else:
+    #     if not Path(args.curated).exists():
+    #         logger.error("Curated file not found: %s (run with --source civic first)", args.curated)
+    #         sys.exit(2)
     # config.default_db_path = (lambda p=Path(args.db): lambda: p)()
     # config.data_dir        = (lambda p=Path(args.curated).parent: lambda: p)()
 

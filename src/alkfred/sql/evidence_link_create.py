@@ -284,10 +284,10 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
                 try:
                     if mp_id is not None:
                         # new, ID-based fetch (robust)
-                        components_cache[mp_key] = api_calls.fetch_civic_molecular_profile(mp_id=mp_id) or []
+                        components_cache[mp_key] = mp or []
                     else:
                         # fallback, name-based (legacy)
-                        components_cache[mp_key] = api_calls.fetch_civic_molecular_profile(mp_name=mp_name) or []
+                        components_cache[mp_key] = mp or []
                 except Exception as e:
                     log.debug("Component fetch failed for %r: %s", mp_key, e)
                     components_cache[mp_key] = []
@@ -298,9 +298,10 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
                 continue
 
             # Ensure variant rows exist, then cross-product links
-            for c in comps:
-                vlabel = (c.get("variant") or "").strip()
-                ca_id = c.get("ca_id") or None
+            # for c in comps:
+            for v in comps.get("variants" or []):
+                vlabel = (v.get("name") or "").strip()
+                ca_id = v.get("alleleRegistryId") or None
                 variant_id = upsert_variant_min(cur, vlabel, ca_id, variant_ids, gene_symbol_default=oncogene)
                 if not variant_id:
                     continue
