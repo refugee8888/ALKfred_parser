@@ -23,7 +23,6 @@ label_display TEXT NOT NULL,   -- raw variant string, e.g. "ALK T1151dup"
 label_gene_variant_norm TEXT NOT NULL,
 hgvs_p TEXT,                   -- normalized protein-level HGVS if available
 hgvs_c TEXT,                   -- optional: cDNA HGVS
-aliases_json TEXT NOT NULL DEFAULT '[]',             -- store multiple synonyms
 confidence TEXT                -- HIGH/MED/LOW for mapping certainty
 );
 
@@ -64,9 +63,7 @@ updated_at_utc TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);
-UPDATE dim_evidence
-SET significance='SENSITIVITY'
-WHERE significance='SENSITIVITYRESPONSE';
+
 
 
 CREATE TABLE IF NOT EXISTS evidence_link (
@@ -117,4 +114,5 @@ CREATE INDEX IF NOT EXISTS idx_fact_therapy ON fact_evidence(therapy_id);
 CREATE INDEX IF NOT EXISTS idx_fact_eid ON fact_evidence(eid);
 CREATE INDEX IF NOT EXISTS idx_fact_keys ON fact_evidence(variant_id, therapy_id, doid);
 CREATE INDEX IF NOT EXISTS idx_fact_semantics ON fact_evidence(direction, significance);
+
 

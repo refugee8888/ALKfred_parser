@@ -8,7 +8,7 @@ from alkfred import config
 
 
 DB_PATH = config.default_db_path()
-JSON_PATH = Path("data/curated_resistance_db.json")  # use forward slashes or raw string
+JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")  # use forward slashes or raw string
 
 def main():
     
@@ -22,17 +22,16 @@ def main():
 
     logger.info("Table dim_disease created or already exists in %s", DB_PATH)
 
-
-    # Load JSON as a dict
-    with open(JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
+    data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    
     # Collect rows
     rows_disease = []
+    
 
-    for rec in data.values():                       # iterate values, not keys
-        doid = rec.get("disease_doid")
-        label_display = rec.get("disease_name")
+    for rec in data_dict.values():                       # iterate values, not keys
+        doid = rec.get("id")
+        disease = rec.get("disease")
+        label_display = disease.get("name")
         label_disease_norm = normalize_label(label_display)
         
         synonyms_json = json.dumps(rec.get("disease_aliases", []))

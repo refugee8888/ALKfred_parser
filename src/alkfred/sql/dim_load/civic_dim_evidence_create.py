@@ -18,14 +18,11 @@ def main():
     conn = config.get_conn(DB_PATH)
     cur = conn.cursor()
 
-    # Load JSON as a dict
-    with open(JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    # Collect rows
+    data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    
     rows_evidence = []
 
-    for rec in data:
+    for rec in data_dict.values():
                             # iterate values, not keys
         eid= rec.get("id", None)
 

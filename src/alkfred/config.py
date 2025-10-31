@@ -7,6 +7,7 @@ import logging
 from pathlib import Path
 import sqlite3
 import importlib
+from typing import Any
 
 
 
@@ -37,7 +38,11 @@ def default_db_path() -> Path:
     # Return the absolute default database path
     d = data_dir() / "alkfred.sqlite"
     return d
+def raw_json_list_to_dict(path: Path) -> dict[Any,Any]:
+    raw_dict = {index: value for index,value in enumerate(load_from_json(path))}
+    return raw_dict
 
+    
 def env_path() -> Path:
     # Return the absolute environment directory
     d = repo_root() / ".env"
