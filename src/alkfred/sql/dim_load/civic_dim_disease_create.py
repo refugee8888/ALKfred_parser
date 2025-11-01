@@ -27,9 +27,16 @@ def main():
     # Collect rows
     rows_disease = []
     
+    def canon_doid(raw: str) -> str:
+        if not raw:
+            return None
+        s = str(raw).strip().upper()
+        s = s.replace(" ", "")  # remove spaces inside like 'DOID: 769'
+        return s if s.startswith("DOID:") else f"DOID:{s}"
+    
 
     for rec in data_dict.values():                       # iterate values, not keys
-        doid = rec.get("disease").get("doid")
+        doid = canon_doid(rec.get("disease").get("doid"))
         disease = rec.get("disease")
         label_display = disease.get("name")
         label_disease_norm = normalize_label(label_display)

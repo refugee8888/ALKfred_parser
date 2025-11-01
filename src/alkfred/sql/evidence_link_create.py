@@ -69,6 +69,14 @@ def preload_dim_caches(cur: sqlite3.Cursor):
 # ----------------------------
 # Minimal, defensive upserts (dimensions)
 # ----------------------------
+
+def canon_doid(raw: str) -> str:
+    if not raw:
+        return None
+    s = str(raw).strip().upper()
+    s = s.replace(" ", "")  # remove spaces inside like 'DOID: 769'
+    return s if s.startswith("DOID:") else f"DOID:{s}"
+
 def upsert_disease_min(cur: sqlite3.Cursor, doid: str, label_display: str | None, seen_doid: set[str]) -> None:
     if not doid or doid in seen_doid:
         return
@@ -251,7 +259,8 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
             eid = int(eid)
 
             disease = ei.get("disease") or {}
-            doid = disease.get("doid")
+            doid = canon_doid(ei.get("disease").get("doid"))
+            
             mp = ei.get("molecularProfile") or {}
             mp_id = mp.get("id")
             mp_name = (mp.get("name") or "").strip()
