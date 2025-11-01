@@ -29,19 +29,19 @@ def main():
     
 
     for rec in data_dict.values():                       # iterate values, not keys
-        doid = rec.get("id")
+        doid = rec.get("disease").get("doid")
         disease = rec.get("disease")
         label_display = disease.get("name")
         label_disease_norm = normalize_label(label_display)
         
-        synonyms_json = json.dumps(rec.get("disease_aliases", []))
-        rows_disease.append((doid, label_display, label_disease_norm , synonyms_json, None, None, "[]"))
+        
+        rows_disease.append((doid, label_display, label_disease_norm , None, None, "[]"))
         
 
     # Bulk insert
 
     cur.executemany(
-        "INSERT OR IGNORE INTO dim_disease (doid, label_display, label_disease_norm, synonyms_json, mondo_id, ncit_id, lineage_json) VALUES (?,?,?,?,?,?,?)",
+        "INSERT OR IGNORE INTO dim_disease (doid, label_display, label_disease_norm, mondo_id, ncit_id, lineage_json) VALUES (?,?,?,?,?,?)",
         rows_disease
     )
     conn.commit()

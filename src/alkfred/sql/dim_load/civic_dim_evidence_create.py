@@ -28,7 +28,7 @@ def main():
 
         source_json = json.dumps(rec.get("source", {}))
         direction = rec.get(("evidenceDirection") or "").strip()
-        significance = rec.get(("significance") or "").strip()
+        significance = rec.get(("significance") or "").strip().upper().replace("SENSITIVITYRESPONSE","SENSITIVTY")
         evidence_level = rec.get(("evidenceLevel") or "").strip()
         evidence_type = rec.get(("evidenceType") or "").strip()
         rating = rec.get(("evidenceRating") or None)

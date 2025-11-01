@@ -76,8 +76,8 @@ def upsert_disease_min(cur: sqlite3.Cursor, doid: str, label_display: str | None
     label_disease_norm = normalize_label(label_display)
     cur.execute(
         "INSERT OR IGNORE INTO dim_disease "
-        "(doid, label_display, label_disease_norm, synonyms_json, mondo_id, ncit_id, lineage_json) "
-        "VALUES (?, ?, ?, '[]', NULL, NULL, '[]')",
+        "(doid, label_display, label_disease_norm, mondo_id, ncit_id, lineage_json) "
+        "VALUES (?, ?, '[]', NULL, NULL, '[]')",
         (doid, label_display, label_disease_norm),
     )
     seen_doid.add(doid)
@@ -334,7 +334,7 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
 # Main populate
 # ----------------------------
 def main():
-     create_links(config.default_db_path(), Path("data/civic_raw_evidence_db.json"), oncogene="ALK")
+     create_links(config.default_db_path(), Path("data/civic_raw_evidence_db.json"), oncogene = None)
 
     
 
