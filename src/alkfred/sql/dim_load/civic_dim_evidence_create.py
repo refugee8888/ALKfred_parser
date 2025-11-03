@@ -23,7 +23,7 @@ def main():
     rows_evidence = []
 
     for rec in data_dict.values():
-                            # iterate values, not keys
+                            
         eid= rec.get("id", None)
 
         source_json = json.dumps(rec.get("source", {}))

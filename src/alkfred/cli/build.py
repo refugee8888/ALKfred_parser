@@ -15,7 +15,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--overwrite", action="store_true", help="Refetch and rebuild JSONs even if they exist")
     p.add_argument("--limit", type = int)
     p.add_argument("--oncogene", type=str, default= None, help = "Target oncogene symbol")
-    p.add_argument("--source", choices=["curated", "civic"], required=True)
+    p.add_argument("--source", choices=["civic"], required=True)
     p.add_argument("--db", type=Path, default=config.default_db_path())
     p.add_argument("--curated", type=Path, default=config.data_dir() / "curated_resistance_db.json")
     p.add_argument("--raw", type=Path, default=config.data_dir() / "civic_raw_evidence_db.json")
@@ -36,21 +36,14 @@ def main(argv=None) -> int:
             oncogene = args.oncogene,
             raw_path=args.raw,
             overwrite=args.overwrite,
-            limit=args.limit,           # <-- actually use it
+            limit=args.limit,          
         )
-    #     civic_curate.curate_civic(items, curated_path=args.curated)
-        
-    # else:
-    #     if not Path(args.curated).exists():
-    #         logger.error("Curated file not found: %s (run with --source civic first)", args.curated)
-    #         sys.exit(2)
-    # config.default_db_path = (lambda p=Path(args.db): lambda: p)()
-    # config.data_dir        = (lambda p=Path(args.curated).parent: lambda: p)()
-
-    # Build — ensure these functions consume the same paths
+   
     
     config.apply_schema(db_path=args.db)
+    config.apply_stg_evidence()
     config.apply_stg_disease()
+    config.apply_stg_molecular_profile()
     config.apply_dim_disease()
     config.apply_dim_gene_variant()
     config.apply_dim_therapy()

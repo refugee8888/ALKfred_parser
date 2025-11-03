@@ -1,37 +1,8 @@
 PRAGMA foreign_keys = ON;
 
-CREATE TABLE IF NOT EXISTS stg_disease(
-disease_id INTEGER PRIMARY KEY,
-doid TEXT NOT NULL,
-label_display TEXT NOT NULL,
-synonyms_json TEXT NOT NULL DEFAULT '[]'
-);
-
-CREATE TABLE IF NOT EXISTS itm_stg_group_by_doid(
-doid TEXT PRIMARY KEY,
-label_display TEXT NOT NULL,
-synonyms_json TEXT NOT NULL DEFAULT '[]'
-
-);
-
-CREATE TABLE IF NOT EXISTS stg_gene_variant (
-variant_id TEXT PRIMARY KEY,   
-civic_ca_id TEXT,                
-gene_symbol TEXT NOT NULL,     
-label_display TEXT NOT NULL               
-);
-
-CREATE TABLE IF NOT EXISTS stg_therapy (
-therapy_id TEXT PRIMARY KEY,
-ncit_id TEXT UNIQUE NULL,
-label_display TEXT NOT NULL
-
-);
-
-
-CREATE TABLE IF NOT EXISTS stg_evidence (
-    
-eid INTEGER PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS civic_stg_evidence (
+evidence_count INTEGER PRIMARY KEY,      
+eid INTEGER NOT NULL,
 source_json TEXT,
 direction TEXT,
 significance TEXT,
@@ -46,6 +17,54 @@ created_at_utc TEXT,
 updated_at_utc TEXT
 );
 
+CREATE TABLE IF NOT EXISTS civic_stg_disease(
+disease_count INTEGER PRIMARY KEY,
+eid INTEGER NOT NULL,
+doid TEXT NOT NULL,
+label_display TEXT NOT NULL,
+synonyms_json TEXT NOT NULL DEFAULT '[]'
+);
+
+CREATE INDEX IF NOT EXISTS idx_disease_count ON civic_stg_disease(disease_count);
+CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_disease(eid);
+CREATE INDEX IF NOT EXISTS idx_doid ON civic_stg_disease(doid);
+
+CREATE TABLE IF NOT EXISTS civic_stg_molecular_profile (
+molecular_profile_count INTEGER PRIMARY KEY,
+molecular_profile_id INTEGER NOT NULL,
+eid INTEGER NOT NULL,
+mp_name TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_molecular_profile_id ON civic_stg_molecular_profile(molecular_profile_id);
+CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_molecular_profile(eid);
+
+CREATE TABLE IF NOT EXISTS civic_stg_gene_variant (
+variant_id TEXT PRIMARY KEY,
+eid INTEGER NOT NULL,
+molecular_profile_id INTEGER NOT NULL,
+civic_ca_id TEXT,                
+gene_symbol TEXT NOT NULL,     
+label_display TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_gene_variant(eid);
+CREATE INDEX IF NOT EXISTS idx_variant_id ON civic_stg_gene_variant(variant_id);
+CREATE INDEX IF NOT EXISTS idx_molecular_profile_id ON civic_stg_gene_variant(molecular_profile_id);
+
+CREATE TABLE IF NOT EXISTS civic_stg_therapy (
+therapy_id TEXT PRIMARY KEY,
+eid INTEGER NOT NULL,
+molecular_profile_id INTEGER NOT NULL,
+ncit_id TEXT UNIQUE NULL,
+label_display TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_therapy_id ON civic_stg_therapy(therapy_id);
+CREATE INDEX IF NOT EXISTS idx_molecular_profile_id ON civic_stg_therapy(molecular_profile_id);
+CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_therapy(eid);
+
+
+
 CREATE TABLE IF NOT EXISTS dim_disease (
 doid TEXT PRIMARY KEY,
 label_display TEXT NOT NULL,
@@ -53,8 +72,7 @@ label_disease_norm TEXT NOT NULL,
 synonyms_json TEXT NOT NULL DEFAULT '[]',
 mondo_id TEXT,
 ncit_id TEXT,
-lineage_json TEXT NOT NULL DEFAULT '[]',
-FOREIGN KEY (doid) REFERENCES itm_stg_group_by_doid(doid)
+lineage_json TEXT NOT NULL DEFAULT '[]'
 );
 
 CREATE INDEX IF NOT EXISTS idx_label_disease_norm ON dim_disease(label_disease_norm);
@@ -69,8 +87,7 @@ label_display TEXT NOT NULL,
 label_gene_variant_norm TEXT NOT NULL,
 hgvs_p TEXT,                   
 hgvs_c TEXT,                   
-confidence TEXT,
-FOREIGN KEY (variant_id) REFERENCES stg_gene_variant(variant_id)              
+confidence TEXT           
 );
 
 CREATE INDEX IF NOT EXISTS idx_gene_symbol ON dim_gene_variant(gene_symbol);
@@ -85,8 +102,7 @@ synonyms_json TEXT NOT NULL DEFAULT '[]',
 rxnorm_id TEXT,
 id_combo INTEGER NOT NULL DEFAULT 0,
 combo_parts_json TEXT,
-class_ids_json TEXT,
-FOREIGN KEY (therapy_id) REFERENCES stg_disease(therapy_id)
+class_ids_json TEXT
 
 
 );
@@ -94,8 +110,7 @@ FOREIGN KEY (therapy_id) REFERENCES stg_disease(therapy_id)
 
 CREATE INDEX IF NOT EXISTS idx_label_therapy_norm ON dim_therapy(label_therapy_norm);
 
-CREATE TABLE IF NOT EXISTS dim_evidence (
-    
+CREATE TABLE IF NOT EXISTS dim_evidence (    
 eid INTEGER PRIMARY KEY,
 source_json TEXT,
 direction TEXT,
@@ -108,8 +123,7 @@ pmids_json TEXT,
 pub_year INTEGER,
 description TEXT,
 created_at_utc TEXT,
-updated_at_utc TEXT,
-FOREIGN KEY (eid) REFERENCES stg_evidence(eid)
+updated_at_utc TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);

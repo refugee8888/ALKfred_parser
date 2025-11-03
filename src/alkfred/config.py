@@ -8,6 +8,7 @@ from pathlib import Path
 import sqlite3
 import importlib
 from typing import Any
+from datetime import datetime, timezone
 
 
 
@@ -27,6 +28,9 @@ def _run_module_main(dotted: str):
 def repo_root() -> Path:
     # Return the abosulte repo root
     return Path(__file__).resolve().parents[2]
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def data_dir() -> Path:
     # Return the absolute data directory
@@ -104,9 +108,18 @@ def apply_schema(db_path: Path):
     conn.commit()
     conn.close()
 
+def apply_stg_evidence():
+    print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_evidence.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.stg_load.civic_stg_evidence")
+
 def apply_stg_disease():
     print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}")
-    _run_module_main("alkfred.sql.stg_load.civic_stg_disease_load")
+    _run_module_main("alkfred.sql.stg_load.civic_stg_disease")
+
+def apply_stg_molecular_profile():
+    print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_molecular_profile.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.stg_load.civic_stg_molecular_profile")
+
 def apply_dim_disease():
     
     print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}")
