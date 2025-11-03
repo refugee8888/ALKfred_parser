@@ -1,5 +1,50 @@
 PRAGMA foreign_keys = ON;
 
+CREATE TABLE IF NOT EXISTS stg_disease(
+disease_id INTEGER PRIMARY KEY,
+doid TEXT NOT NULL,
+label_display TEXT NOT NULL,
+synonyms_json TEXT NOT NULL DEFAULT '[]'
+);
+
+CREATE TABLE IF NOT EXISTS itm_stg_group_by_doid(
+doid TEXT PRIMARY KEY,
+label_display TEXT NOT NULL,
+synonyms_json TEXT NOT NULL DEFAULT '[]'
+
+);
+
+CREATE TABLE IF NOT EXISTS stg_gene_variant (
+variant_id TEXT PRIMARY KEY,   
+civic_ca_id TEXT,                
+gene_symbol TEXT NOT NULL,     
+label_display TEXT NOT NULL               
+);
+
+CREATE TABLE IF NOT EXISTS stg_therapy (
+therapy_id TEXT PRIMARY KEY,
+ncit_id TEXT UNIQUE NULL,
+label_display TEXT NOT NULL
+
+);
+
+
+CREATE TABLE IF NOT EXISTS stg_evidence (
+    
+eid INTEGER PRIMARY KEY,
+source_json TEXT,
+direction TEXT,
+significance TEXT,
+evidence_level TEXT,
+evidence_type TEXT,
+rating INTEGER,
+status TEXT,
+pmids_json TEXT,
+pub_year INTEGER,
+description TEXT,
+created_at_utc TEXT,
+updated_at_utc TEXT
+);
 
 CREATE TABLE IF NOT EXISTS dim_disease (
 doid TEXT PRIMARY KEY,
@@ -8,22 +53,24 @@ label_disease_norm TEXT NOT NULL,
 synonyms_json TEXT NOT NULL DEFAULT '[]',
 mondo_id TEXT,
 ncit_id TEXT,
-lineage_json TEXT NOT NULL DEFAULT '[]'
+lineage_json TEXT NOT NULL DEFAULT '[]',
+FOREIGN KEY (doid) REFERENCES itm_stg_group_by_doid(doid)
 );
 
 CREATE INDEX IF NOT EXISTS idx_label_disease_norm ON dim_disease(label_disease_norm);
 
 
 CREATE TABLE IF NOT EXISTS dim_gene_variant (
-variant_id TEXT PRIMARY KEY,   -- either CIViC ca_id, or your own generated UID
+variant_id TEXT PRIMARY KEY,   
 civic_ca_id TEXT,
-hgnc_id TEXT,                  -- HGNC stable ID for the gene (if known)
-gene_symbol TEXT NOT NULL,     -- e.g. "ALK"
-label_display TEXT NOT NULL,   -- raw variant string, e.g. "ALK T1151dup"
+hgnc_id TEXT,                  
+gene_symbol TEXT NOT NULL,     
+label_display TEXT NOT NULL,   
 label_gene_variant_norm TEXT NOT NULL,
-hgvs_p TEXT,                   -- normalized protein-level HGVS if available
-hgvs_c TEXT,                   -- optional: cDNA HGVS
-confidence TEXT                -- HIGH/MED/LOW for mapping certainty
+hgvs_p TEXT,                   
+hgvs_c TEXT,                   
+confidence TEXT,
+FOREIGN KEY (variant_id) REFERENCES stg_gene_variant(variant_id)              
 );
 
 CREATE INDEX IF NOT EXISTS idx_gene_symbol ON dim_gene_variant(gene_symbol);
@@ -38,7 +85,9 @@ synonyms_json TEXT NOT NULL DEFAULT '[]',
 rxnorm_id TEXT,
 id_combo INTEGER NOT NULL DEFAULT 0,
 combo_parts_json TEXT,
-class_ids_json TEXT
+class_ids_json TEXT,
+FOREIGN KEY (therapy_id) REFERENCES stg_disease(therapy_id)
+
 
 );
 
@@ -59,7 +108,8 @@ pmids_json TEXT,
 pub_year INTEGER,
 description TEXT,
 created_at_utc TEXT,
-updated_at_utc TEXT
+updated_at_utc TEXT,
+FOREIGN KEY (eid) REFERENCES stg_evidence(eid)
 );
 
 CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);

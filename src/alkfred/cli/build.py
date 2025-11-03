@@ -48,7 +48,9 @@ def main(argv=None) -> int:
     # config.data_dir        = (lambda p=Path(args.curated).parent: lambda: p)()
 
     # Build — ensure these functions consume the same paths
+    
     config.apply_schema(db_path=args.db)
+    config.apply_stg_disease()
     config.apply_dim_disease()
     config.apply_dim_gene_variant()
     config.apply_dim_therapy()

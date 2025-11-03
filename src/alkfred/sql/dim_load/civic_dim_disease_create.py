@@ -1,9 +1,8 @@
-import json
-import sqlite3
+
 from pathlib import Path
 import logging
 from dotenv.main import logger
-from utils import normalize_label
+from utils import normalize_label, canon_doid
 from alkfred import config
 
 
@@ -27,12 +26,6 @@ def main():
     # Collect rows
     rows_disease = []
     
-    def canon_doid(raw: str) -> str:
-        if not raw:
-            return None
-        s = str(raw).strip().upper()
-        s = s.replace(" ", "")  # remove spaces inside like 'DOID: 769'
-        return s if s.startswith("DOID:") else f"DOID:{s}"
     
 
     for rec in data_dict.values():                       # iterate values, not keys

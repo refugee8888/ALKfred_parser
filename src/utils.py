@@ -7,6 +7,7 @@ from requests.adapters import HTTPAdapter, Retry
 import json
 from graphql import GraphQLError
 import logging
+import uuid
 
 
 s = requests.Session()
@@ -36,7 +37,13 @@ def normalize(s: str) -> str:
 def normalize_label(s: str) -> str:
     #defining what normalizing should do
     return s.lower().replace("::", "-").replace("-", "_").replace(" ", "_").strip()
-    
+
+def canon_doid(raw: str) -> str:
+    if not raw:
+        return None
+    s = str(raw).strip().upper()
+    s = s.replace(" ", "")  # remove spaces inside like 'DOID: 769'
+    return s if s.startswith("DOID:") else f"DOID:{s}"
 
 def help_request(url: str, headers: dict, payload: dict = None, method: str = "GET") -> dict:
     
