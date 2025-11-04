@@ -24,13 +24,12 @@ def main():
     cur = conn.cursor()
 
 
-    logger.info("Table civic_stg_gene_variant created or already exists in %s", DB_PATH)
+    logger.info("Table civic_stg_therapy created or already exists in %s", DB_PATH)
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
     
     # Collect rows
-    rows_variant = []
-    seen_variant_ids = set()
+    rows_therapy = []
     
 
 
@@ -41,20 +40,16 @@ def main():
         eid = rec.get("id")
         
         
-        for r in rec.get("molecularProfile").get("variants"):
-            
-            variant_name = r.get("name", None) 
-            civic_ca_id = r.get("alleleRegistryId", None)
-            gene_symbol = r.get("feature").get("name") or None
-            
-            
+        for r in rec.get("therapies"):
+             
+            ncit_id = r.get("ncitId", None) 
+            therapy_name = r.get("name", None)
             unique_seed = str(uuid.uuid4())
-            variant_id = str(uuid.uuid5(UUID_NAMESPACE, unique_seed))
-            
-            seen_variant_ids.add(variant_id)
+            therapy_id = str(uuid.uuid5(UUID_NAMESPACE, unique_seed))
+
 
         
-            rows_variant.append((variant_id, eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name))
+            rows_therapy.append((therapy_id, eid, molecular_profile_id, ncit_id, therapy_name))
     
 
     # Bulk insert
@@ -62,8 +57,8 @@ def main():
     
     cur.executemany(
         """
-        INSERT INTO civic_stg_gene_variant (variant_id, eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name) VALUES (?,?,?,?,?,?)""",
-        rows_variant
+        INSERT INTO civic_stg_therapy (therapy_id, eid, molecular_profile_id, ncit_id, therapy_name) VALUES (?,?,?,?,?)""",
+        rows_therapy
     )
     conn.commit()
 

@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS civic_stg_therapy (
 therapy_id TEXT PRIMARY KEY,
 eid INTEGER NOT NULL,
 molecular_profile_id INTEGER NOT NULL,
-ncit_id TEXT UNIQUE NULL,
-label_display TEXT NOT NULL
+ncit_id TEXT,
+therapy_name TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_therapy_id ON civic_stg_therapy(therapy_id);
