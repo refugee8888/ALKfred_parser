@@ -120,6 +120,10 @@ def apply_stg_molecular_profile():
     print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_molecular_profile.py to {default_db_path()}")
     _run_module_main("alkfred.sql.stg_load.civic_stg_molecular_profile")
 
+def apply_stg_gene_variant():
+    print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_gene_variant.py to {default_db_path()}")
+    _run_module_main("alkfred.sql.stg_load.civic_stg_gene_variant")
+
 def apply_dim_disease():
     
     print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}")

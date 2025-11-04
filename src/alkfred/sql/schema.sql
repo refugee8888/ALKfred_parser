@@ -44,8 +44,8 @@ variant_id TEXT PRIMARY KEY,
 eid INTEGER NOT NULL,
 molecular_profile_id INTEGER NOT NULL,
 civic_ca_id TEXT,                
-gene_symbol TEXT NOT NULL,     
-label_display TEXT NOT NULL
+gene_symbol TEXT,     
+variant_name TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_gene_variant(eid);
 CREATE INDEX IF NOT EXISTS idx_variant_id ON civic_stg_gene_variant(variant_id);

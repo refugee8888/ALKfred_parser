@@ -44,6 +44,7 @@ def main(argv=None) -> int:
     config.apply_stg_evidence()
     config.apply_stg_disease()
     config.apply_stg_molecular_profile()
+    config.apply_stg_gene_variant()
     config.apply_dim_disease()
     config.apply_dim_gene_variant()
     config.apply_dim_therapy()
