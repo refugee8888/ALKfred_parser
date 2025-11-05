@@ -2,12 +2,16 @@ import json
 from pathlib import Path
 import logging
 from alkfred import config
+import uuid
+
+
 
 
 DB_PATH = config.default_db_path()
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
+unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
 def main():
 
     logger = logging.getLogger(__name__)
@@ -22,10 +26,15 @@ def main():
     # Collect rows
     rows_disease = []
     count = 0
+    
 
     for rec in data_dict.values():
         doid = rec.get("disease").get("doid")
         eid = rec.get("id")
+        
+        disease_count = unique_key_generator.generate_key()
+        
+
 
         if not doid or doid.strip() == "":
             count += 1
@@ -35,16 +44,16 @@ def main():
 
             disease = rec.get("disease")
 
-            label_display = disease.get("name")
+            disease_name= disease.get("name")
             synonyms_json = json.dumps(disease.get("diseaseAliases"))
 
-            rows_disease.append((eid, doid, label_display, synonyms_json))
+            rows_disease.append((disease_count, eid, doid, disease_name, synonyms_json))
 
     # Bulk insert
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_disease (eid, doid, label_display, synonyms_json) VALUES (?,?,?,?)""",
+        INSERT INTO civic_stg_disease (disease_count, eid, doid, disease_name, synonyms_json) VALUES (?,?,?,?,?)""",
         rows_disease,
     )
     conn.commit()

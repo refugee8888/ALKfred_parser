@@ -2,10 +2,12 @@ import json
 from pathlib import Path
 import logging
 from alkfred import config
+import uuid
 
 
 DB_PATH = config.default_db_path()
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
+unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
 
 
 def main():
@@ -23,6 +25,7 @@ def main():
     rows_evidence = []
 
     for rec in data_dict.values():
+        evidence_count = unique_key_generator.generate_key()
         eid = rec.get("id", None)
         status = rec.get("status")
         significance = rec.get("significance")
@@ -37,7 +40,7 @@ def main():
         updated_at_utc = config.utc_now_iso()
 
         rows_evidence.append(
-            (
+            (   evidence_count,
                 eid,
                 status,
                 significance,
@@ -57,7 +60,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_evidence (eid, status, significance, evidence_type, evidence_level, rating, direction, description, pmids_json, pub_year, created_at_utc, updated_at_utc) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
+        INSERT INTO civic_stg_evidence(evidence_count, eid, status, significance, evidence_type, evidence_level, rating, direction, description, pmids_json, pub_year, created_at_utc, updated_at_utc) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
         rows_evidence,
     )
     conn.commit()

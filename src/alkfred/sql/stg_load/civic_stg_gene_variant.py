@@ -6,7 +6,7 @@ import uuid
 
 DB_PATH = config.default_db_path()
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
+unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
 
     # Collect rows
     rows_variant = []
-    seen_variant_ids = set()
+    
 
     for rec in data_dict.values():
 
@@ -34,11 +34,9 @@ def main():
             variant_name = r.get("name", None)
             civic_ca_id = r.get("alleleRegistryId", None)
             gene_symbol = r.get("feature").get("name") or None
+            variant_id = unique_key_generator.generate_key()
 
-            unique_seed = str(uuid.uuid4())
-            variant_id = str(uuid.uuid5(UUID_NAMESPACE, unique_seed))
-
-            seen_variant_ids.add(variant_id)
+            
 
             rows_variant.append(
                 (

@@ -5,7 +5,7 @@ from alkfred import config
 
 DB_PATH = config.default_db_path()
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-
+unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
 
 def main():
 
@@ -24,17 +24,18 @@ def main():
     rows_molecular_profile = []
 
     for rec in data_dict.values():
+        molecular_profile_count = unique_key_generator.generate_key()
         molecular_profile_id = rec.get("molecularProfile").get("id")
         eid = rec.get("id")
         mp_name = rec.get("molecularProfile").get("name")
 
-        rows_molecular_profile.append((molecular_profile_id, eid, mp_name))
+        rows_molecular_profile.append((molecular_profile_count, molecular_profile_id, eid, mp_name))
 
     # Bulk insert
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_molecular_profile (molecular_profile_id, eid, mp_name) VALUES (?,?,?)""",
+        INSERT INTO civic_stg_molecular_profile (molecular_profile_count, molecular_profile_id, eid, mp_name) VALUES (?,?,?,?)""",
         rows_molecular_profile,
     )
     conn.commit()

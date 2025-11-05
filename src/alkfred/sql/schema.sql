@@ -1,9 +1,8 @@
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS civic_stg_evidence (
-evidence_count INTEGER PRIMARY KEY,      
+evidence_count TEXT PRIMARY KEY,      
 eid INTEGER NOT NULL,
-source_json TEXT,
 direction TEXT,
 significance TEXT,
 evidence_level TEXT,
@@ -17,11 +16,13 @@ created_at_utc TEXT,
 updated_at_utc TEXT
 );
 
+CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_evidence(eid);
+
 CREATE TABLE IF NOT EXISTS civic_stg_disease(
-disease_count INTEGER PRIMARY KEY,
+disease_count TEXT PRIMARY KEY,
 eid INTEGER NOT NULL,
 doid TEXT NOT NULL,
-label_display TEXT NOT NULL,
+disease_name TEXT NOT NULL,
 synonyms_json TEXT NOT NULL DEFAULT '[]'
 );
 
@@ -30,7 +31,7 @@ CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_disease(eid);
 CREATE INDEX IF NOT EXISTS idx_doid ON civic_stg_disease(doid);
 
 CREATE TABLE IF NOT EXISTS civic_stg_molecular_profile (
-molecular_profile_count INTEGER PRIMARY KEY,
+molecular_profile_count TEXT PRIMARY KEY,
 molecular_profile_id INTEGER NOT NULL,
 eid INTEGER NOT NULL,
 mp_name TEXT NOT NULL
@@ -66,16 +67,20 @@ CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_therapy(eid);
 
 
 CREATE TABLE IF NOT EXISTS dim_disease (
-doid TEXT PRIMARY KEY,
-label_display TEXT NOT NULL,
-label_disease_norm TEXT NOT NULL,
+disease_count_sk INTEGER PRIMARY KEY,
+disease_count TEXT NOT NULL UNIQUE,
+eid INTEGER NOT NULL,
+doid TEXT NOT NULL,
+disease_name TEXT NOT NULL,
+disease_name_norm TEXT NOT NULL,
 synonyms_json TEXT NOT NULL DEFAULT '[]',
 mondo_id TEXT,
 ncit_id TEXT,
 lineage_json TEXT NOT NULL DEFAULT '[]'
 );
 
-CREATE INDEX IF NOT EXISTS idx_label_disease_norm ON dim_disease(label_disease_norm);
+CREATE INDEX IF NOT EXISTS idx_doid ON dim_disease(doid);
+CREATE INDEX IF NOT EXISTS idx_disease_name_norm ON dim_disease(disease_name_norm);
 
 
 CREATE TABLE IF NOT EXISTS dim_gene_variant (
@@ -110,9 +115,10 @@ class_ids_json TEXT
 
 CREATE INDEX IF NOT EXISTS idx_label_therapy_norm ON dim_therapy(label_therapy_norm);
 
-CREATE TABLE IF NOT EXISTS dim_evidence (    
-eid INTEGER PRIMARY KEY,
-source_json TEXT,
+CREATE TABLE IF NOT EXISTS dim_evidence (
+evidence_count_sk INTEGER PRIMARY KEY,
+evidence_count TEXT NOT NULL UNIQUE,    
+eid INTEGER,
 direction TEXT,
 significance TEXT,
 evidence_level TEXT,
@@ -122,10 +128,12 @@ status TEXT,
 pmids_json TEXT,
 pub_year INTEGER,
 description TEXT,
+staging_table_ingest_lineage TEXT NOT NULL DEFAULT '[]',
 created_at_utc TEXT,
 updated_at_utc TEXT
 );
 
+CREATE INDEX IF NOT EXISTS idx_evidence_count ON dim_evidence(evidence_count);
 CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);
 
 

@@ -7,7 +7,7 @@ from alkfred import config
 DB_PATH = config.default_db_path()
 JSON_PATH = Path(
     "/app/data/civic_raw_evidence_db.json"
-)  # use forward slashes or raw string
+) 
 
 
 def main():
@@ -19,23 +19,23 @@ def main():
 
     logger.info("Table dim_disease created or already exists in %s", DB_PATH)
 
-    data_dict = config.raw_json_list_to_dict(JSON_PATH)
-
-    # Collect rows
     rows_disease = []
+    cur.execute("""SELECT disease_count, eid, doid, disease_name, synonyms_json 
+                FROM civic_stg_disease
+                """)
+    for r in cur.fetchall():
+        doid = canon_doid(r[2])
+        disease_name_norm = normalize_label(r[3])
+    
+        rows_disease.append((r[0], r[1], doid, r[3], disease_name_norm, r[4], None, None, '[]'))
 
-    for rec in data_dict.values():  # iterate values, not keys
-        doid = canon_doid(rec.get("disease").get("doid"))
-        disease = rec.get("disease")
-        label_display = disease.get("name")
-        label_disease_norm = normalize_label(label_display)
 
-        rows_disease.append((doid, label_display, label_disease_norm, None, None, "[]"))
 
-    # Bulk insert
+
 
     cur.executemany(
-        "INSERT OR IGNORE INTO dim_disease (doid, label_display, label_disease_norm, mondo_id, ncit_id, lineage_json) VALUES (?,?,?,?,?,?)",
+        """INSERT INTO dim_disease (disease_count, eid, doid, disease_name, 
+        disease_name_norm, synonyms_json, mondo_id, ncit_id, lineage_json) VALUES (?,?,?,?,?,?,?,?,?)""",
         rows_disease,
     )
     conn.commit()

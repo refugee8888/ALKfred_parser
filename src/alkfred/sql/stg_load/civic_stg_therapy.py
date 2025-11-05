@@ -6,7 +6,7 @@ import uuid
 
 DB_PATH = config.default_db_path()
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
+unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
 
 
 def main():
@@ -32,8 +32,8 @@ def main():
 
             ncit_id = r.get("ncitId", None)
             therapy_name = r.get("name", None)
-            unique_seed = str(uuid.uuid4())
-            therapy_id = str(uuid.uuid5(UUID_NAMESPACE, unique_seed))
+            
+            therapy_id = unique_key_generator.generate_key()
 
             rows_therapy.append(
                 (therapy_id, eid, molecular_profile_id, ncit_id, therapy_name)

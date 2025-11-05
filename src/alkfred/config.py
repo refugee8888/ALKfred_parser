@@ -7,6 +7,7 @@ import sqlite3
 import importlib
 from typing import Any
 from datetime import datetime, timezone
+import uuid
 
 
 logging.basicConfig(
@@ -14,6 +15,11 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
 )
 
+logger = logging.getLogger(__name__)
+UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
+    
+
+      
 
 def _run_module_main(dotted: str):
     mod = importlib.import_module(dotted)
@@ -208,3 +214,29 @@ def apply_fact_evidence(
         f"Loading /app/src/alkfred/sql/sql_evidence_fact_create.py to {default_db_path()}"
     )
     _run_module_main("alkfred.sql.evidence_fact_create")
+
+
+class UniqueKeyGenerator:
+
+    def __init__(self, initial_keys_list: set() = None):
+      
+        self.seen_keys: set[str] = initial_keys_list if initial_keys_list is not None else set()
+
+    def generate_key(self) -> str:
+        
+        while True:
+            seed = str(uuid.uuid4())
+            new_key = str(uuid.uuid5(UUID_NAMESPACE, seed))
+            if new_key not in self.seen_keys:
+                self.seen_keys.add(new_key)
+                try:
+                    with open("data/unique_keys_list.json", "w") as dump:
+                        json.dump(list(self.seen_keys), dump, indent= 2)
+                except Exception as e:
+                    logger.info("Could not save to file %s:", e)
+            return new_key
+
+    def get_seen_keys(self)->set():
+
+        return self.seen_keys
+
