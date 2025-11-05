@@ -1,6 +1,4 @@
-from ast import main
 import json
-from pdb import run
 from dotenv import load_dotenv
 import os
 import logging
@@ -11,12 +9,11 @@ from typing import Any
 from datetime import datetime, timezone
 
 
-
-
 logging.basicConfig(
     level=logging.INFO,  # or DEBUG to also see debug() messages
-    format="%(asctime)s [%(levelname)s] %(message)s"
+    format="%(asctime)s [%(levelname)s] %(message)s",
 )
+
 
 def _run_module_main(dotted: str):
     mod = importlib.import_module(dotted)
@@ -25,12 +22,15 @@ def _run_module_main(dotted: str):
     else:
         raise RuntimeError(f"{dotted} has no main()")
 
+
 def repo_root() -> Path:
     # Return the abosulte repo root
     return Path(__file__).resolve().parents[2]
 
+
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 
 def data_dir() -> Path:
     # Return the absolute data directory
@@ -38,19 +38,23 @@ def data_dir() -> Path:
     d.mkdir(parents=True, exist_ok=True)
     return d
 
+
 def default_db_path() -> Path:
     # Return the absolute default database path
     d = data_dir() / "alkfred.sqlite"
     return d
-def raw_json_list_to_dict(path: Path) -> dict[Any,Any]:
-    raw_dict = {index: value for index,value in enumerate(load_from_json(path))}
+
+
+def raw_json_list_to_dict(path: Path) -> dict[Any, Any]:
+    raw_dict = {index: value for index, value in enumerate(load_from_json(path))}
     return raw_dict
 
-    
+
 def env_path() -> Path:
     # Return the absolute environment directory
     d = repo_root() / ".env"
     return d
+
 
 def load_env() -> None:
     # Load the environment file
@@ -59,21 +63,25 @@ def load_env() -> None:
         raise FileNotFoundError(f"Environment file not found at {path}")
     load_dotenv(path, override=False)
 
+
 def get_env(key: str, required: bool = True) -> str | None:
     # Get the environment variable
     val = os.getenv(key)
     if required and not val:
         raise EnvironmentError(f"Environment variable {key} is not set")
-        
+
     return val
+
 
 def bioportal_api_key() -> str:
     # Get the Bioportal API key
     return get_env("BIOPORTAL_API_KEY", required=True)
 
+
 def openai_api_key() -> str:
     # Get the OpenAI API key
     return get_env("OPENAI_API_KEY", required=True)
+
 
 def get_conn(db_path: str | Path | None) -> sqlite3.Connection:
     # Get a connection to the database
@@ -81,26 +89,31 @@ def get_conn(db_path: str | Path | None) -> sqlite3.Connection:
         db_path = default_db_path()
     conn = sqlite3.connect(str(db_path), detect_types=sqlite3.PARSE_DECLTYPES)
     conn.row_factory = sqlite3.Row
-    
+
     return conn
+
 
 def norm(text: str) -> str:
     # Normalize the text for general use
     return text.lower().strip()
 
+
 def save_to_json(data, path) -> json:
     with open(path, "w") as f:
         json.dump(data, f, indent=2)
+
 
 def load_from_json(path) -> dict:
     with open(path, "r") as f:
         data = json.load(f)
     return data
 
+
 def apply_schema(db_path: Path):
     import sqlite3
+
     schema_path = "src/alkfred/sql/schema.sql"
-    
+
     print(f"Applying schema from {schema_path} to {db_path}")
     conn = sqlite3.connect(db_path)
     with open(schema_path, "r", encoding="utf-8") as f:
@@ -108,55 +121,90 @@ def apply_schema(db_path: Path):
     conn.commit()
     conn.close()
 
+
 def apply_stg_evidence():
-    print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_evidence.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_evidence.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.stg_load.civic_stg_evidence")
 
+
 def apply_stg_disease():
-    print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.stg_load.civic_stg_disease")
 
+
 def apply_stg_molecular_profile():
-    print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_molecular_profile.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_molecular_profile.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.stg_load.civic_stg_molecular_profile")
 
+
 def apply_stg_gene_variant():
-    print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_gene_variant.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_gene_variant.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.stg_load.civic_stg_gene_variant")
 
+
 def apply_stg_therapy():
-    print(f"Loading /app/src/alkfred/sql/stg_load/civic_stg_therapy.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_therapy.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.stg_load.civic_stg_therapy")
 
 
 def apply_dim_disease():
-    
-    print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}")
+
+    print(
+        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.dim_load.civic_dim_disease_create")
 
+
 def apply_dim_gene_variant():
-    print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_gene_variant.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_gene_variant.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.dim_load.civic_dim_gene_variant")
 
+
 def apply_dim_therapy():
-    print(f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_therapy_create.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_therapy_create.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.dim_load.civic_dim_therapy_create")
 
+
 def apply_dim_evidence():
-    print(f"Loading /app/src/alkfred/sql/dim_load/sql_dim_evidence_create.py to {default_db_path()}")
+    print(
+        f"Loading /app/src/alkfred/sql/dim_load/sql_dim_evidence_create.py to {default_db_path()}"
+    )
     _run_module_main("alkfred.sql.dim_load.civic_dim_evidence_create")
 
-def apply_evidence_link(db_path: Path | str = default_db_path(),
+
+def apply_evidence_link(
+    db_path: Path | str = default_db_path(),
     raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json",
-    oncogene = None) -> None:
+    oncogene=None,
+) -> None:
     from .sql.evidence_link_create import create_links
+
     db_path = Path(db_path)
     raw_path = Path(raw_path)
     print(f"Building evidence links → db={db_path} raw={raw_path} oncogene={oncogene}")
     create_links(db_path, raw_path, oncogene)
 
-def apply_fact_evidence(db_path: Path | str = default_db_path(), raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json", oncogene = None):
-    print(f"Loading /app/src/alkfred/sql/sql_evidence_fact_create.py to {default_db_path()}")
-    _run_module_main("alkfred.sql.evidence_fact_create")
 
-    
+def apply_fact_evidence(
+    db_path: Path | str = default_db_path(),
+    raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json",
+    oncogene=None,
+):
+    print(
+        f"Loading /app/src/alkfred/sql/sql_evidence_fact_create.py to {default_db_path()}"
+    )
+    _run_module_main("alkfred.sql.evidence_fact_create")

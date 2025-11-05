@@ -9,7 +9,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from utils import normalize_label
-import api_calls  # expects: fetch_civic_molecular_profile(mp_name) -> list[{"variant": str, "ca_id": str|None}]
 from alkfred import config
 
 # ----------------------------
@@ -36,6 +35,7 @@ INSERT OR IGNORE INTO evidence_link
   (eid, doid, variant_id, therapy_id, mp_name, therapy_label, created_at_utc, run_id)
 VALUES (?,?,?,?,?,?,?,?)
 """
+
 
 # ----------------------------
 # Preload read-only caches
@@ -70,6 +70,7 @@ def preload_dim_caches(cur: sqlite3.Cursor):
 # Minimal, defensive upserts (dimensions)
 # ----------------------------
 
+
 def canon_doid(raw: str) -> str:
     if not raw:
         return None
@@ -77,7 +78,10 @@ def canon_doid(raw: str) -> str:
     s = s.replace(" ", "")  # remove spaces inside like 'DOID: 769'
     return s if s.startswith("DOID:") else f"DOID:{s}"
 
-def upsert_disease_min(cur: sqlite3.Cursor, doid: str, label_display: str | None, seen_doid: set[str]) -> None:
+
+def upsert_disease_min(
+    cur: sqlite3.Cursor, doid: str, label_display: str | None, seen_doid: set[str]
+) -> None:
     if not doid or doid in seen_doid:
         return
     label_display = (label_display or "").strip() or doid
@@ -94,8 +98,6 @@ def upsert_disease_min(cur: sqlite3.Cursor, doid: str, label_display: str | None
 def _therapy_uuid_seed(ncit_id: str | None, label_norm: str) -> str:
     # Deterministic seed with entity prefix to avoid collisions with other entities
     return f"therapy|{ncit_id}" if ncit_id else f"therapy|{label_norm}"
-
-
 
 
 def upsert_therapy_min(
@@ -127,10 +129,15 @@ def upsert_therapy_min(
         therapy_id = therapy_id_by_norm[label_norm]
         # Attach NCIt if we have it now and it's not set yet
         if ncit_id:
-            cur.execute("SELECT ncit_id FROM dim_therapy WHERE therapy_id = ?", (therapy_id,))
+            cur.execute(
+                "SELECT ncit_id FROM dim_therapy WHERE therapy_id = ?", (therapy_id,)
+            )
             row = cur.fetchone()
             if row and (row[0] is None):
-                cur.execute("UPDATE dim_therapy SET ncit_id = ? WHERE therapy_id = ?", (ncit_id, therapy_id))
+                cur.execute(
+                    "UPDATE dim_therapy SET ncit_id = ? WHERE therapy_id = ?",
+                    (ncit_id, therapy_id),
+                )
             therapy_id_by_ncit[ncit_id] = therapy_id
         return therapy_id
 
@@ -148,8 +155,10 @@ def upsert_therapy_min(
     therapy_id_by_norm[label_norm] = therapy_id
     return therapy_id
 
+
 def _looks_like_gene(s: str | None) -> bool:
-        return bool(s and re.fullmatch(r"[A-Z0-9]{2,}", s))
+    return bool(s and re.fullmatch(r"[A-Z0-9]{2,}", s))
+
 
 def upsert_variant_min(
     cur: sqlite3.Cursor,
@@ -185,13 +194,21 @@ def upsert_variant_min(
         "INSERT OR IGNORE INTO dim_gene_variant "
         "(variant_id, civic_ca_id, hgnc_id, gene_symbol, label_display, label_gene_variant_norm, hgvs_p, hgvs_c, aliases_json, confidence) "
         "VALUES (?, ?, NULL, ?, ?, ?, NULL, NULL, '[]', NULL)",
-        (variant_id, civic_ca_id, gene_symbol_default, label_display or variant_id, label_norm or variant_id),
+        (
+            variant_id,
+            civic_ca_id,
+            gene_symbol_default,
+            label_display or variant_id,
+            label_norm or variant_id,
+        ),
     )
     variant_ids.add(variant_id)
     return variant_id
 
 
-def upsert_dim_evidence_min(cur: sqlite3.Cursor, ei: dict, evidence_eids: set[int]) -> None:
+def upsert_dim_evidence_min(
+    cur: sqlite3.Cursor, ei: dict, evidence_eids: set[int]
+) -> None:
     eid = ei.get("id")
     if eid is None:
         return
@@ -201,8 +218,8 @@ def upsert_dim_evidence_min(cur: sqlite3.Cursor, ei: dict, evidence_eids: set[in
 
     src = ei.get("source") or {}
     source_json = json.dumps(src)
-    direction   = (ei.get("evidenceDirection") or "").strip().upper()
-    significance= (ei.get("significance") or "").strip().upper()
+    direction = (ei.get("evidenceDirection") or "").strip().upper()
+    significance = (ei.get("significance") or "").strip().upper()
     ev_level = (ei.get("evidenceLevel") or "").strip().upper()
     ev_type = (ei.get("evidenceType") or "").strip().upper()
     rating = ei.get("evidenceRating")
@@ -219,17 +236,36 @@ def upsert_dim_evidence_min(cur: sqlite3.Cursor, ei: dict, evidence_eids: set[in
         "INSERT OR IGNORE INTO dim_evidence "
         "(eid, source_json, direction, significance, evidence_level, evidence_type, rating, status, pmids_json, pub_year, description, created_at_utc, updated_at_utc) "
         "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
-        (eid, source_json, direction, significance, ev_level, ev_type, rating, status, pmids_json, pub_year, description, now, None),
+        (
+            eid,
+            source_json,
+            direction,
+            significance,
+            ev_level,
+            ev_type,
+            rating,
+            status,
+            pmids_json,
+            pub_year,
+            description,
+            now,
+            None,
+        ),
     )
     evidence_eids.add(eid)
 
-def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_raw_evidence_db.json"), oncogene = "") -> None:
-    
+
+def create_links(
+    db_path=config.default_db_path(),
+    raw_path=Path("data/civic_raw_evidence_db.json"),
+    oncogene="",
+) -> None:
+
     if not raw_path.exists():
         raise FileNotFoundError(f"Raw CIViC JSON not found: {raw_path}")
     with raw_path.open("r", encoding="utf-8") as f:
         nodes = json.load(f)
-   
+
     if not isinstance(nodes, list):
         raise ValueError("civic_raw_evidence_db.json must be a list of evidence nodes")
 
@@ -238,7 +274,9 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
     cur = conn.cursor()
 
     # Caches from dims
-    seen_doid, id_by_ncit, id_by_norm, variant_ids, evidence_eids = preload_dim_caches(cur)
+    seen_doid, id_by_ncit, id_by_norm, variant_ids, evidence_eids = preload_dim_caches(
+        cur
+    )
 
     components_cache: dict[str, list[dict]] = {}
 
@@ -260,7 +298,7 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
 
             disease = ei.get("disease") or {}
             doid = canon_doid(ei.get("disease").get("doid"))
-            
+
             mp = ei.get("molecularProfile") or {}
             mp_id = mp.get("id")
             mp_name = (mp.get("name") or "").strip()
@@ -311,12 +349,25 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
             for v in comps.get("variants" or []):
                 vlabel = (v.get("name") or "").strip()
                 ca_id = v.get("alleleRegistryId") or None
-                variant_id = upsert_variant_min(cur, vlabel, ca_id, variant_ids, gene_symbol_default=oncogene)
+                variant_id = upsert_variant_min(
+                    cur, vlabel, ca_id, variant_ids, gene_symbol_default=oncogene
+                )
                 if not variant_id:
                     continue
 
                 for therapy_id, disp_name in resolved_therapies:
-                    batch.append((eid, doid, variant_id, therapy_id, mp_name, disp_name, utc_now_iso(), RUN_ID))
+                    batch.append(
+                        (
+                            eid,
+                            doid,
+                            variant_id,
+                            therapy_id,
+                            mp_name,
+                            disp_name,
+                            utc_now_iso(),
+                            RUN_ID,
+                        )
+                    )
 
             # Batch insert
             if len(batch) >= BATCH:
@@ -335,19 +386,26 @@ def create_links(db_path = config.default_db_path(), raw_path= Path("data/civic_
         batch.clear()
         conn.commit()
 
-    log.info("Inserted links: %d | skipped_direction=%d skipped_missing=%d skipped_no_therapy=%d skipped_no_components=%d",
-             inserted_links, skipped_direction, skipped_missing_bits, skipped_no_therapy_match, skipped_no_components)
+    log.info(
+        "Inserted links: %d | skipped_direction=%d skipped_missing=%d skipped_no_therapy=%d skipped_no_components=%d",
+        inserted_links,
+        skipped_direction,
+        skipped_missing_bits,
+        skipped_no_therapy_match,
+        skipped_no_components,
+    )
 
     conn.close()
+
+
 # ----------------------------
 # Main populate
 # ----------------------------
 def main():
-     create_links(config.default_db_path(), Path("data/civic_raw_evidence_db.json"), oncogene = None)
-
-    
+    create_links(
+        config.default_db_path(), Path("data/civic_raw_evidence_db.json"), oncogene=None
+    )
 
 
 if __name__ == "__main__":
     main()
-   

@@ -1,7 +1,6 @@
 # fact_evidence_build_from_dims.py
 from __future__ import annotations
 
-import sqlite3
 import uuid
 from datetime import datetime, timezone
 from alkfred import config
@@ -21,13 +20,23 @@ def main():
     cur = conn.cursor()
 
     # sanity: required tables
-    for t in ("dim_disease", "dim_gene_variant", "dim_therapy", "dim_evidence", "evidence_link", "fact_evidence"):
-        cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (t,))
+    for t in (
+        "dim_disease",
+        "dim_gene_variant",
+        "dim_therapy",
+        "dim_evidence",
+        "evidence_link",
+        "fact_evidence",
+    ):
+        cur.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name=?", (t,)
+        )
         if not cur.fetchone():
             raise RuntimeError(f"Missing required table: {t}")
 
     # Build facts from link + dims, preserving evidence filters
-    cur.execute("""
+    cur.execute(
+        """
         SELECT el.eid, el.doid, el.variant_id, el.therapy_id,
                UPPER(COALESCE(de.direction,''))   AS direction,
                UPPER(COALESCE(de.significance,'')) AS significance
@@ -36,7 +45,8 @@ def main():
         JOIN dim_disease    d  ON d.doid        = el.doid
         JOIN dim_gene_variant v ON v.variant_id = el.variant_id
         JOIN dim_therapy    t  ON t.therapy_id  = el.therapy_id
-    """)
+    """
+    )
     rows = cur.fetchall()
     if not rows:
         print("No eligible rows found (check evidence_link and dim_evidence filters).")
@@ -49,13 +59,28 @@ def main():
         # deterministic PK over the tuple
         key = f"{eid}|{doid}|{variant_id}|{therapy_id}"
         fact_id = str(uuid.uuid5(UUID_NAMESPACE, key))
-        payload.append((fact_id, eid, variant_id, doid, therapy_id, direction, significance, now_iso, RUN_ID))
+        payload.append(
+            (
+                fact_id,
+                eid,
+                variant_id,
+                doid,
+                therapy_id,
+                direction,
+                significance,
+                now_iso,
+                RUN_ID,
+            )
+        )
 
-    cur.executemany("""
+    cur.executemany(
+        """
         INSERT OR IGNORE INTO fact_evidence
             (fact_id, eid, variant_id, doid, therapy_id, direction, significance, created_at_utc, run_id)
         VALUES (?,?,?,?,?,?,?,?,?)
-    """, payload)
+    """,
+        payload,
+    )
     conn.commit()
     conn.close()
 

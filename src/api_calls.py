@@ -1,16 +1,13 @@
 import time
-import requests
-from utils import help_request, graphql_query
-import json
+from utils import graphql_query
 import logging
-import re
-from typing import Optional
 
 GRAPHQL_URL = "https://civicdb.org/api/graphql"
 HEADERS = {"Content-Type": "application/json"}
 API_THROTTLE = 0.2
 
 log = logging.getLogger(__name__)
+
 
 def fetch_civic_all_evidence_items():
     after_cursor = None
@@ -49,10 +46,10 @@ def fetch_civic_all_evidence_items():
 
     while True:
         data = graphql_query(
-            url= GRAPHQL_URL,
+            url=GRAPHQL_URL,
             query=query,
             variables={"first": 500, "after": after_cursor},
-            headers= HEADERS,
+            headers=HEADERS,
         )
 
         evidence_items = data["evidenceItems"]
@@ -73,7 +70,6 @@ def fetch_civic_all_evidence_items():
             raise RuntimeError("Exceeded max pages — likely stuck in a loop")
 
     return all_items
-
 
 
 # def fetch_civic_molecular_profile(

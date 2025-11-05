@@ -1,52 +1,47 @@
-
 from pathlib import Path
 import logging
-from dotenv.main import logger
 from utils import normalize_label, canon_doid
 from alkfred import config
 
 
 DB_PATH = config.default_db_path()
-JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")  # use forward slashes or raw string
+JSON_PATH = Path(
+    "/app/data/civic_raw_evidence_db.json"
+)  # use forward slashes or raw string
+
 
 def main():
-    
 
     logger = logging.getLogger(__name__)
-
 
     conn = config.get_conn(DB_PATH)
     cur = conn.cursor()
 
-
     logger.info("Table dim_disease created or already exists in %s", DB_PATH)
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
-    
+
     # Collect rows
     rows_disease = []
-    
-    
 
-    for rec in data_dict.values():                       # iterate values, not keys
+    for rec in data_dict.values():  # iterate values, not keys
         doid = canon_doid(rec.get("disease").get("doid"))
         disease = rec.get("disease")
         label_display = disease.get("name")
         label_disease_norm = normalize_label(label_display)
-        
-        
-        rows_disease.append((doid, label_display, label_disease_norm , None, None, "[]"))
-        
+
+        rows_disease.append((doid, label_display, label_disease_norm, None, None, "[]"))
 
     # Bulk insert
 
     cur.executemany(
         "INSERT OR IGNORE INTO dim_disease (doid, label_display, label_disease_norm, mondo_id, ncit_id, lineage_json) VALUES (?,?,?,?,?,?)",
-        rows_disease
+        rows_disease,
     )
     conn.commit()
 
     conn.close()
+
 
 if __name__ == "__main__":
     main()
