@@ -170,6 +170,13 @@ def apply_dim_disease():
     )
     _run_module_main("alkfred.sql.dim_load.civic_dim_disease_create")
 
+def apply_dim_molecular_profile():
+
+    print(
+        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_molecular_profile.py to {default_db_path()}"
+    )
+    _run_module_main("alkfred.sql.dim_load.civic_dim_molecular_profile")
+
 
 def apply_dim_gene_variant():
     print(

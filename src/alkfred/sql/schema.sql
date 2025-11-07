@@ -9,7 +9,7 @@ evidence_level TEXT,
 evidence_type TEXT,
 rating INTEGER,
 status TEXT,
-pmids_json TEXT,
+pmids_json TEXT NOT NULL DEFAULT '[]',
 pub_year INTEGER,
 description TEXT,
 created_at_utc TEXT,
@@ -66,66 +66,63 @@ CREATE INDEX IF NOT EXISTS idx_eid ON civic_stg_therapy(eid);
 
 
 
-CREATE TABLE IF NOT EXISTS dim_disease (
-disease_count_sk INTEGER PRIMARY KEY,
-disease_count TEXT NOT NULL UNIQUE,
-eid INTEGER NOT NULL,
-doid TEXT NOT NULL,
+CREATE TABLE IF NOT EXISTS civic_dim_disease (
+doid TEXT PRIMARY KEY,
 disease_name TEXT NOT NULL,
 disease_name_norm TEXT NOT NULL,
-synonyms_json TEXT NOT NULL DEFAULT '[]',
+synonyms_json TEXT NOT NULL CHECK (json_valid(synonyms_json)),
 mondo_id TEXT,
 ncit_id TEXT,
 lineage_json TEXT NOT NULL DEFAULT '[]'
 );
 
-CREATE INDEX IF NOT EXISTS idx_doid ON dim_disease(doid);
-CREATE INDEX IF NOT EXISTS idx_disease_name_norm ON dim_disease(disease_name_norm);
+CREATE INDEX IF NOT EXISTS idx_doid ON civic_dim_disease(doid);
+CREATE INDEX IF NOT EXISTS idx_disease_name_norm ON civic_dim_disease(disease_name_norm);
 
+CREATE TABLE IF NOT EXISTS civic_dim_molecular_profile(
+molecular_profile_id INTEGER PRIMARY KEY,
+mp_name TEXT NOT NULL,
+mp_name_norm TEXT NOT NULL
 
-CREATE TABLE IF NOT EXISTS dim_gene_variant (
+);
+
+CREATE TABLE IF NOT EXISTS civic_dim_gene_variant (
 variant_id TEXT PRIMARY KEY,   
 civic_ca_id TEXT,
 hgnc_id TEXT,                  
 gene_symbol TEXT NOT NULL,     
-label_display TEXT NOT NULL,   
-label_gene_variant_norm TEXT NOT NULL,
+variant_name TEXT NOT NULL,   
+variant_name_norm TEXT NOT NULL,
 hgvs_p TEXT,                   
-hgvs_c TEXT,                   
-confidence TEXT           
+hgvs_c TEXT            
 );
 
-CREATE INDEX IF NOT EXISTS idx_gene_symbol ON dim_gene_variant(gene_symbol);
-CREATE INDEX IF NOT EXISTS idx_label_gene_variant_norm ON dim_gene_variant(label_gene_variant_norm);
+CREATE INDEX IF NOT EXISTS idx_gene_symbol ON civic_dim_gene_variant(gene_symbol);
+CREATE INDEX IF NOT EXISTS idx_variant_name_norm ON civic_dim_gene_variant(variant_name_norm);
 
-CREATE TABLE IF NOT EXISTS dim_therapy (
-therapy_id TEXT PRIMARY KEY,
-ncit_id TEXT UNIQUE NULL,
-label_display TEXT NOT NULL,
-label_therapy_norm TEXT NOT NULL ,
+CREATE TABLE IF NOT EXISTS civic_dim_therapy (
+therapy_name_norm TEXT PRIMARY KEY,
+therapy_name TEXT NOT NULL,
+ncit_id TEXT,
 synonyms_json TEXT NOT NULL DEFAULT '[]',
 rxnorm_id TEXT,
 id_combo INTEGER NOT NULL DEFAULT 0,
 combo_parts_json TEXT,
-class_ids_json TEXT
-
-
+class_ids_json TEXT NOT NULL DEFAULT '[]'
 );
 
 
-CREATE INDEX IF NOT EXISTS idx_label_therapy_norm ON dim_therapy(label_therapy_norm);
+CREATE INDEX IF NOT EXISTS idx_therapy_name_norm ON civic_dim_therapy(therapy_name_norm);
 
-CREATE TABLE IF NOT EXISTS dim_evidence (
-evidence_count_sk INTEGER PRIMARY KEY,
-evidence_count TEXT NOT NULL UNIQUE,    
-eid INTEGER,
+CREATE TABLE IF NOT EXISTS civic_dim_evidence (  
+eid INTEGER PRIMARY KEY,
 direction TEXT,
 significance TEXT,
 evidence_level TEXT,
 evidence_type TEXT,
 rating INTEGER,
 status TEXT,
-pmids_json TEXT,
+pmids_json TEXT NOT NULL DEFAULT '[]',
 pub_year INTEGER,
 description TEXT,
 staging_table_ingest_lineage TEXT NOT NULL DEFAULT '[]',
@@ -133,12 +130,11 @@ created_at_utc TEXT,
 updated_at_utc TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_evidence_count ON dim_evidence(evidence_count);
-CREATE INDEX IF NOT EXISTS idx_evidence_eid ON dim_evidence(eid);
+CREATE INDEX IF NOT EXISTS idx_evidence_eid ON civic_dim_evidence(eid);
 
 
 
-CREATE TABLE IF NOT EXISTS evidence_link (
+CREATE TABLE IF NOT EXISTS civic_evidence_link (
   eid             INTEGER NOT NULL,
   doid            TEXT    NOT NULL,
   variant_id      TEXT    NOT NULL,
@@ -155,9 +151,9 @@ CREATE TABLE IF NOT EXISTS evidence_link (
 );
 
 
-CREATE INDEX IF NOT EXISTS idx_link_doid_variant ON evidence_link(doid, variant_id);
-CREATE INDEX IF NOT EXISTS idx_link_therapy      ON evidence_link(therapy_id);
-CREATE INDEX IF NOT EXISTS idx_link_eid          ON evidence_link(eid);
+CREATE INDEX IF NOT EXISTS idx_link_doid_variant ON civic_evidence_link(doid, variant_id);
+CREATE INDEX IF NOT EXISTS idx_link_therapy      ON civic_evidence_link(therapy_id);
+CREATE INDEX IF NOT EXISTS idx_link_eid          ON civic_evidence_link(eid);
 
 
 CREATE TABLE IF NOT EXISTS fact_evidence (

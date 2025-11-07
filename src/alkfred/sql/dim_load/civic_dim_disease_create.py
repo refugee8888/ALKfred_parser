@@ -2,7 +2,7 @@ from pathlib import Path
 import logging
 from utils import normalize_label, canon_doid
 from alkfred import config
-
+import json
 
 DB_PATH = config.default_db_path()
 JSON_PATH = Path(
@@ -17,25 +17,38 @@ def main():
     conn = config.get_conn(DB_PATH)
     cur = conn.cursor()
 
-    logger.info("Table dim_disease created or already exists in %s", DB_PATH)
+    logger.info("Table civic_dim_disease created or already exists in %s", DB_PATH)
 
     rows_disease = []
-    cur.execute("""SELECT disease_count, eid, doid, disease_name, synonyms_json 
+    cur.execute("""SELECT doid, disease_name, synonyms_json 
                 FROM civic_stg_disease
                 """)
     for r in cur.fetchall():
-        doid = canon_doid(r[2])
-        disease_name_norm = normalize_label(r[3])
-    
-        rows_disease.append((r[0], r[1], doid, r[3], disease_name_norm, r[4], None, None, '[]'))
+        doid = canon_doid(r[0])
+        disease_name_norm = normalize_label(r[1])
+        
+        rows_disease.append((doid, r[1], disease_name_norm, r[2], None, None, '[]'))
 
 
 
 
 
     cur.executemany(
-        """INSERT INTO dim_disease (disease_count, eid, doid, disease_name, 
-        disease_name_norm, synonyms_json, mondo_id, ncit_id, lineage_json) VALUES (?,?,?,?,?,?,?,?,?)""",
+        """INSERT INTO civic_dim_disease (
+        doid, disease_name, disease_name_norm, synonyms_json, mondo_id, ncit_id, lineage_json
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(doid) DO UPDATE SET
+        disease_name      = COALESCE(excluded.disease_name, civic_dim_disease .disease_name),
+        disease_name_norm = COALESCE(excluded.disease_name_norm, civic_dim_disease .disease_name_norm),
+        synonyms_json     = CASE
+                                WHEN excluded.synonyms_json IS NOT NULL
+                                AND excluded.synonyms_json != '[]'
+                                THEN excluded.synonyms_json
+                                ELSE civic_dim_disease .synonyms_json
+                            END,
+        mondo_id          = COALESCE(excluded.mondo_id, civic_dim_disease .mondo_id),
+        ncit_id           = COALESCE(excluded.ncit_id, civic_dim_disease .ncit_id),
+        lineage_json      = COALESCE(excluded.lineage_json, civic_dim_disease .lineage_json);""",
         rows_disease,
     )
     conn.commit()
