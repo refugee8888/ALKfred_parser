@@ -8,7 +8,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-from utils import normalize_label
+from utils import normalize_label, canon_doid
 from alkfred import config
 
 # ----------------------------
@@ -31,7 +31,7 @@ def utc_now_iso() -> str:
 
 
 LINK_INSERT_SQL = """
-INSERT OR IGNORE INTO evidence_link
+INSERT INTO evidence_link
   (eid, doid, variant_id, therapy_id, mp_name, therapy_label, created_at_utc, run_id)
 VALUES (?,?,?,?,?,?,?,?)
 """
@@ -68,16 +68,7 @@ def preload_dim_caches(cur: sqlite3.Cursor):
 
 # ----------------------------
 # Minimal, defensive upserts (dimensions)
-# ----------------------------
-
-
-def canon_doid(raw: str) -> str:
-    if not raw:
-        return None
-    s = str(raw).strip().upper()
-    s = s.replace(" ", "")  # remove spaces inside like 'DOID: 769'
-    return s if s.startswith("DOID:") else f"DOID:{s}"
-
+# ---------------------------
 
 def upsert_disease_min(
     cur: sqlite3.Cursor, doid: str, label_display: str | None, seen_doid: set[str]

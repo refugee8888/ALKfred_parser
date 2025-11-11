@@ -136,18 +136,19 @@ CREATE INDEX IF NOT EXISTS idx_evidence_eid ON civic_dim_evidence(eid);
 
 CREATE TABLE IF NOT EXISTS civic_evidence_link (
   eid             INTEGER NOT NULL,
-  doid            TEXT    NOT NULL,
-  variant_id      TEXT    NOT NULL,
-  therapy_id      TEXT    NOT NULL,
-  mp_name         TEXT,         -- optional provenance
-  therapy_label   TEXT,         -- optional provenance (as seen in CIViC)
+  doid            TEXT NOT NULL,
+  molecular_profile_id INTEGER NOT NULL,
+  variant_id      TEXT NOT NULL,
+  therapy_id      TEXT NOT NULL,
+  therapy_name   TEXT,
   created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
   run_id          TEXT,
-  PRIMARY KEY (eid, doid, variant_id, therapy_id),
-  FOREIGN KEY (eid)        REFERENCES dim_evidence(eid),
-  FOREIGN KEY (doid)       REFERENCES dim_disease(doid),
-  FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
-  FOREIGN KEY (therapy_id)    REFERENCES dim_therapy(therapy_id)
+  PRIMARY KEY (eid, doid, molecular_profile_id, variant_id, therapy_id),
+  FOREIGN KEY (eid)        REFERENCES civic_stg_evidence(eid),
+  FOREIGN KEY (doid)       REFERENCES civic_stg_disease(doid),
+  FOREIGN KEY (variant_id) REFERENCES civic_stg_gene_variant(variant_id),
+  FOREIGN KEY (therapy_id)    REFERENCES civic_stg_therapy(therapy_id),
+  FOREIGN KEY (molecular_profile_id) REFERENCES civic_stg_molecular_profile(molecular_profile_id)
 );
 
 
