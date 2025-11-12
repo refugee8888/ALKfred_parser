@@ -134,54 +134,53 @@ CREATE INDEX IF NOT EXISTS idx_evidence_eid ON civic_dim_evidence(eid);
 
 
 
-CREATE TABLE IF NOT EXISTS civic_evidence_link (
-  eid             INTEGER NOT NULL,
-  doid            TEXT NOT NULL,
-  molecular_profile_id INTEGER NOT NULL,
-  variant_id      TEXT NOT NULL,
-  therapy_id      TEXT NOT NULL,
-  therapy_name   TEXT,
-  created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
-  run_id          TEXT,
-  PRIMARY KEY (eid, doid, molecular_profile_id, variant_id, therapy_id),
-  FOREIGN KEY (eid)        REFERENCES civic_stg_evidence(eid),
-  FOREIGN KEY (doid)       REFERENCES civic_stg_disease(doid),
-  FOREIGN KEY (variant_id) REFERENCES civic_stg_gene_variant(variant_id),
-  FOREIGN KEY (therapy_id)    REFERENCES civic_stg_therapy(therapy_id),
-  FOREIGN KEY (molecular_profile_id) REFERENCES civic_stg_molecular_profile(molecular_profile_id)
+CREATE TABLE IF NOT EXISTS evidence_link (
+eid                INTEGER NOT NULL,
+doid               TEXT    NOT NULL,
+molecular_profile_id TEXT,
+variant_id         TEXT,
+ncit_id            TEXT,
+direction          TEXT    NOT NULL,
+significance       TEXT    NOT NULL,
+pub_year           INTEGER,
+created_at_utc     TEXT    NOT NULL DEFAULT (datetime('now')),
+PRIMARY KEY (eid, doid, molecular_profile_id, variant_id, ncit_id),
+FOREIGN KEY (eid)  REFERENCES civic_dim_evidence(eid),
+FOREIGN KEY (doid) REFERENCES civic_dim_disease(doid),
+FOREIGN KEY (molecular_profile_id) REFERENCES civic_dim_molecular_profile(molecular_profile_id),
+FOREIGN KEY (variant_id) REFERENCES civic_dim_gene_variant(variant_id),
+FOREIGN KEY (ncit_id) REFERENCES civic_dim_therapy(ncit_id),
+CHECK (direction IN ('SUPPORTS','DOES_NOT_SUPPORT','CONFLICTS','NA')),
+CHECK (significance IN ('RESISTANCE','SENSITIVITY','POSITIVE','NEGATIVE','POOR_OUTCOME'))
 );
 
+CREATE INDEX IF NOT EXISTS idx_el_eid   ON evidence_link(eid);
+CREATE INDEX IF NOT EXISTS idx_el_doid  ON evidence_link(doid);
+CREATE INDEX IF NOT EXISTS idx_el_ncit  ON evidence_link(ncit_id);
+CREATE INDEX IF NOT EXISTS idx_el_var   ON evidence_link(variant_id);
+CREATE INDEX IF NOT EXISTS idx_el_mp    ON evidence_link(molecular_profile_id);
+CREATE INDEX IF NOT EXISTS idx_el_sig   ON evidence_link(significance, direction);
 
-CREATE INDEX IF NOT EXISTS idx_link_doid_variant ON civic_evidence_link(doid, variant_id);
-CREATE INDEX IF NOT EXISTS idx_link_therapy      ON civic_evidence_link(therapy_id);
-CREATE INDEX IF NOT EXISTS idx_link_eid          ON civic_evidence_link(eid);
 
 
 CREATE TABLE IF NOT EXISTS fact_evidence (
-fact_id         TEXT PRIMARY KEY,
-eid             INTEGER NOT NULL,
-variant_id      TEXT NOT NULL,
-doid            TEXT NOT NULL,
-therapy_id      TEXT NOT NULL,
-direction       TEXT NOT NULL DEFAULT 'N/A',
-significance    TEXT NOT NULL DEFAULT 'N/A',
-created_at_utc  TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
-run_id          TEXT,
-FOREIGN KEY (eid)        REFERENCES dim_evidence(eid),
+doid                 TEXT    NOT NULL,
+molecular_profile_id INTEGER,
+variant_id           TEXT,
+ncit_id              TEXT,
+n_total              INTEGER NOT NULL,
+n_resist             INTEGER NOT NULL,
+n_sens               INTEGER NOT NULL,
+n_positive           INTEGER NOT NULL,
+n_poor_outcome       INTEGER NOT NULL,
+resist_ratio         REAL,     -- n_resist / n_total
+sens_ratio           REAL,     -- n_sens / n_total
+created_at_utc       TEXT    NOT NULL DEFAULT (datetime('now')),
+PRIMARY KEY (doid, molecular_profile_id, variant_id, ncit_id),
+FOREIGN KEY (doid)  REFERENCES dim_disease(doid),
+FOREIGN KEY (molecular_profile_id) REFERENCES dim_molecular_profile(molecular_profile_id),
 FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
-FOREIGN KEY (doid)       REFERENCES dim_disease(doid),
-FOREIGN KEY (therapy_id)    REFERENCES dim_therapy(therapy_id)
+FOREIGN KEY (ncit_id) REFERENCES dim_therapy(ncit_id)
 );
-
-
-CREATE UNIQUE INDEX IF NOT EXISTS uq_fact_tuple
-ON fact_evidence(eid, doid, variant_id, therapy_id);
-
-CREATE INDEX IF NOT EXISTS idx_fact_doid_dir ON fact_evidence(doid, direction);
-CREATE INDEX IF NOT EXISTS idx_fact_variant ON fact_evidence(variant_id);
-CREATE INDEX IF NOT EXISTS idx_fact_therapy ON fact_evidence(therapy_id);
-CREATE INDEX IF NOT EXISTS idx_fact_eid ON fact_evidence(eid);
-CREATE INDEX IF NOT EXISTS idx_fact_keys ON fact_evidence(variant_id, therapy_id, doid);
-CREATE INDEX IF NOT EXISTS idx_fact_semantics ON fact_evidence(direction, significance);
 
 

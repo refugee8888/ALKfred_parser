@@ -3,7 +3,7 @@ from pathlib import Path
 import logging
 from alkfred import config
 import uuid
-
+from utils import canon_doid
 
 
 
@@ -29,7 +29,7 @@ def main():
     
 
     for rec in data_dict.values():
-        doid = rec.get("disease").get("doid")
+        doid = canon_doid(rec.get("disease").get("doid"))
         eid = rec.get("id")
         
         disease_count = unique_key_generator.generate_key()

@@ -28,7 +28,7 @@ def main():
         evidence_count = unique_key_generator.generate_key()
         eid = rec.get("id", None)
         status = rec.get("status")
-        significance = rec.get("significance")
+        significance = rec.get("significance").strip().upper().replace("SENSITIVITYRESPONSE", "SENSITIVITY")
         evidence_type = rec.get("evidenceType")
         evidence_level = rec.get("evidenceLevel")
         rating = rec.get("evidenceRating")

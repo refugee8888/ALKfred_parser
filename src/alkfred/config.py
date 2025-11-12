@@ -199,18 +199,23 @@ def apply_dim_evidence():
     _run_module_main("alkfred.sql.dim_load.civic_dim_evidence_create")
 
 
-def apply_evidence_link(
-    db_path: Path | str = default_db_path(),
-    raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json",
-    oncogene=None,
-) -> None:
-    from .sql.evidence_link_create import create_links
+# def apply_evidence_link(
+#     db_path: Path | str = default_db_path(),
+#     raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json",
+#     oncogene=None,
+# ) -> None:
+#     from .sql.evidence_link_create import create_links
 
-    db_path = Path(db_path)
-    raw_path = Path(raw_path)
-    print(f"Building evidence links → db={db_path} raw={raw_path} oncogene={oncogene}")
-    create_links(db_path, raw_path, oncogene)
+#     db_path = Path(db_path)
+#     raw_path = Path(raw_path)
+#     print(f"Building evidence links → db={db_path} raw={raw_path} oncogene={oncogene}")
+#     create_links(db_path, raw_path, oncogene)
 
+def apply_evidence_link():
+    print(
+        f"Loading /app/src/alkfred/sql/evidence_link_create.py to {default_db_path()}"
+    )
+    _run_module_main("alkfred.sql.evidence_link_create")
 
 def apply_fact_evidence(
     db_path: Path | str = default_db_path(),

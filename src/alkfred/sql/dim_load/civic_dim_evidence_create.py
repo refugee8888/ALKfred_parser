@@ -99,7 +99,6 @@ def main():
         rating = COALESCE(excluded.rating, civic_dim_evidence.rating),
         status = COALESCE(excluded.status, civic_dim_evidence.status),
         description = COALESCE(excluded.description, civic_dim_evidence.description),
-        created_at_utc = COALESCE(excluded.created_at_utc, civic_dim_evidence.created_at_utc),
         updated_at_utc = COALESCE(excluded.updated_at_utc, civic_dim_evidence.updated_at_utc);""",
         rows_evidence,
     )

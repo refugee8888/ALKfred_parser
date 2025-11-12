@@ -55,7 +55,7 @@ def main(argv=None) -> int:
     config.apply_dim_gene_variant()
     config.apply_dim_therapy()
     config.apply_dim_evidence()
-    config.apply_evidence_link(oncogene=args.oncogene)
+    config.apply_evidence_link()
     config.apply_fact_evidence()
 
     logger.info("Database ready: %s", args.db)
