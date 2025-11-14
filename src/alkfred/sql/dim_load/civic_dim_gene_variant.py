@@ -1,51 +1,53 @@
-import json
-import sqlite3
 from pathlib import Path
-
-from dotenv.main import logger
-
-from utils import normalize_label
+import logging
+from utils import normalize_label, canon_doid
 from alkfred import config
-
+import json
 
 DB_PATH = config.default_db_path()
-JSON_PATH = Path("data/curated_resistance_db.json") 
+JSON_PATH = Path(
+    "/app/data/civic_raw_evidence_db.json"
+) 
+
 
 def main():
-    
+
+    logger = logging.getLogger(__name__)
+
     conn = config.get_conn(DB_PATH)
     cur = conn.cursor()
 
-    # Load JSON as a dict
-    with open(JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    logger.info("Table civic_dim_gene_variant created or already exists in %s", DB_PATH)
 
-    # Collect rows
     rows_gene_variant = []
+    cur.execute("""SELECT variant_id, civic_ca_id, gene_symbol, variant_name
+                FROM civic_stg_gene_variant
+                """)
+    for r in cur.fetchall():
+        
+        variant_name_norm = normalize_label(r[3])
+        gene_symbol = normalize_label(r[2])
+        rows_gene_variant.append((r[0], r[1], None, gene_symbol, r[3], variant_name_norm, None, None))
 
-    for rec in data.values():
-        for comp in rec.get("components",[]):                      # iterate values, not keys
-            civic_ca_id= comp.get("ca_id", [])
-            variant_id = civic_ca_id if civic_ca_id else comp.get("variant")
-            gene_symbol = comp.get("gene_symbol", "")
-            label_display = comp.get("variant","")
-            label_gene_variant_norm = normalize_label(label_display)
-            aliases_json = json.dumps(rec.get("aliases", []))
-        
-        
-            rows_gene_variant.append((variant_id, civic_ca_id, None, gene_symbol, label_display, label_gene_variant_norm, None, None, aliases_json, None))
-        
 
-    # Bulk insert
+
+
 
     cur.executemany(
-        "INSERT OR IGNORE INTO dim_gene_variant (variant_id, civic_ca_id, hgnc_id, gene_symbol, label_display, label_gene_variant_norm, hgvs_p, hgvs_c, aliases_json, confidence) VALUES (?,?,?,?,?,?,?,?,?,?)",
-        rows_gene_variant
+        """INSERT INTO civic_dim_gene_variant (
+       variant_id, civic_ca_id, hgnc_id, gene_symbol, variant_name, variant_name_norm, hgvs_p, hgvs_c
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?) 
+        ON CONFLICT(variant_id) DO UPDATE SET
+        civic_ca_id = COALESCE(excluded.civic_ca_id, civic_dim_gene_variant.civic_ca_id),
+        gene_symbol = COALESCE(excluded.gene_symbol, civic_dim_gene_variant.gene_symbol),
+        variant_name = COALESCE(excluded.variant_name, civic_dim_gene_variant.variant_name),
+        variant_name_norm = COALESCE(excluded.variant_name_norm, civic_dim_gene_variant.variant_name_norm);""",
+        rows_gene_variant,
     )
     conn.commit()
 
-
     conn.close()
+
 
 if __name__ == "__main__":
     main()

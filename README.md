@@ -1,5 +1,5 @@
 
-🧬 ALKfred
+ALKfred
 
 CIViC Oncology Evidence ETL + Query Engine (Dockerized)
 
@@ -8,17 +8,17 @@ It automates fetching, parsing, and loading of gene–variant–disease–therap
 
 ⸻
 
-📦 Features
-	•	🔗 Automated CIViC API ingestion (GraphQL evidenceItems)
-	•	🧹 Normalization and deduplication of variants, diseases, and therapies
-	•	🗃️ Star-schema SQLite database for reproducible queries
-	•	🧠 Variant-level resistance/sensitivity mapping
-	•	🧪 Pytest coverage for ETL, schema, and CLI validation
-	•	🐳 Full Docker support for isolated development
+Features
+	•	Automated CIViC API ingestion (GraphQL evidenceItems)
+	•	Normalization and deduplication of variants, diseases, and therapies
+	•	Star-schema SQLite database for reproducible queries
+	•	Variant-level resistance/sensitivity mapping
+	•	Pytest coverage for ETL, schema, and CLI validation
+	•	Full Docker support for isolated development
 
 ⸻
 
-🧱 Project Architecture
+Project Architecture
 
 CIViC API
   ↓
@@ -48,11 +48,13 @@ tests/	pytest unit and integration tests
 
 ⸻
 
-🐳 Docker Setup
+Docker Setup
 
 1. Build and launch container
 
+```bash
 docker-compose up --build -d
+```
 
 This starts a long-running container with:
 	•	src/ mounted into /app/src
@@ -62,10 +64,11 @@ This starts a long-running container with:
 
 To access the environment:
 
-docker exec -it alkfred-alkfred-1 bash
+''' docker exec -it alkfred-alkfred-1 bash '''
 
 2. Run ETL inside container
 
+```bash
 python -m alkfred.cli.build \
   --source civic \
   --raw data/civic_raw_evidence_db.json \
@@ -73,16 +76,18 @@ python -m alkfred.cli.build \
   --db data/alkfred.sqlite \
   --overwrite \
   --limit 500 \
-  --verbose
+  --verbose 
+```
+
 
 
 ⸻
 
-🧪 Testing
+3. Testing
 
 Inside the container:
 
-pytest -v
+``` pytest -v ```
 
 Tests cover:
 	•	Fetch logic (test_civic_fetch.py)
@@ -92,12 +97,12 @@ Tests cover:
 
 ⸻
 
-⚙️ Schema Summary
+4. Schema Summary
 
 Table	Description
 dim_disease	Disease labels, DOIDs, NCIT, MONDO references
 dim_gene_variant	Gene symbol, variant label, and aliases
-dim_therapy	Therapy name and NCIT reference
+dim_therapy		Therapy name and NCIT reference
 dim_evidence	Evidence metadata (significance, direction, level)
 evidence_link	Bridges evidence to its variant, therapy, and disease
 fact_evidence	Aggregated analytic layer for resistance/sensitivity queries
@@ -105,41 +110,50 @@ fact_evidence	Aggregated analytic layer for resistance/sensitivity queries
 
 ⸻
 
-🧠 Example Query
+CLI example queries:
 
-SELECT variant,
-       resistant_therapies,
-       sensitive_therapies
-FROM fact_evidence_summary
-WHERE doid = '3908';
+```bash
+python -m alkfred.cli.query query --variant "g1202r" --significance all --disease all 
+```
 
-Sample output:
+Output:
+```bash
 
-variant         | resistant_therapies                | sensitive_therapies
-----------------|------------------------------------|-----------------------------
-eml4_alk_fusion | crizotinib,ceritinib,lorlatinib    | alectinib,brigatinib
-alk_g1202r      | crizotinib,ceritinib               | tanespimycin
+2025-10-29 12:58:35,440 [INFO] Final query input: alk_g1202r
+2025-10-29 12:58:35,453 [INFO] Connected to database: /app/data/alkfred.sqlite
+{'eid': 1350, 'doid': '162', 'therapy_id': '217925c3-fecd-55d8-939a-bb3e0e6771b1', 'variant_id': 'CA16602592', 'label_display': 'alectinib', 'label_disease_norm': 'cancer', 'significance': 'RESISTANCE'}
+{'eid': 1351, 'doid': '162', 'therapy_id': '3563f716-82a6-5e59-b5e5-eaed446b01e4', 'variant_id': 'CA16602592', 'label_display': 'brigatinib', 'label_disease_norm': 'cancer', 'significance': 'RESISTANCE'}
+{'eid': 1345, 'doid': '3908', 'therapy_id': '08557006-b6a9-5db4-95fd-eb7a64d17a75', 'variant_id': 'CA16602592', 'label_display': 'ceritinib', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
+{'eid': 441, 'doid': '3908', 'therapy_id': 'dfdc51ba-63cd-5b9a-a09d-97276ae69538', 'variant_id': 'CA16602592', 'label_display': 'crizotinib', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
+{'eid': 1357, 'doid': '3910', 'therapy_id': 'dfdc51ba-63cd-5b9a-a09d-97276ae69538', 'variant_id': 'CA16602592', 'label_display': 'crizotinib', 'label_disease_norm': 'lung_adenocarcinoma', 'significance': 'RESISTANCE'}
+{'eid': 11114, 'doid': '7474', 'therapy_id': 'def3400c-ada4-522f-9045-568f229d11f0', 'variant_id': 'CA16602592', 'label_display': 'lorlatinib', 'label_disease_norm': 'malignant_pleural_mesothelioma', 'significance': 'RESISTANCE'}
+{'eid': 1352, 'doid': '3908', 'therapy_id': '3e17d968-3e24-5c0a-9369-fecc47533807', 'variant_id': 'CA16602592', 'label_display': 'tanespimycin', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'SENSITIVITY'}
+Number of rows: 7
+```
 
 
-⸻
-
-🧰 Development
+5. Development
 
 Local environment (no Docker)
 
+```bash
 pip install -r requirements.txt
 export PYTHONPATH=src
-python -m alkfred.cli.build --source civic --overwrite
+python -m alkfred.cli.build --source civic --overwrite 
+```
 
-Linting & formatting
+6. Linting & formatting
 
+```bash
 ruff check src
-black src
+black src 
+
+```
 
 
 ⸻
 
-📜 License
+7. License
 
 This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
 You may freely use, modify, and distribute ALKfred, provided all derived works remain open source under the same license.
@@ -148,7 +162,7 @@ See LICENSE for details.
 
 ⸻
 
-🗺️ Roadmap
+8. Roadmap
 	•	Add MONDO + NCIT ontology enrichment (BioPortal API)
 	•	CLI subcommands for query and filtering
 	•	Export to parquet / CSV
@@ -157,7 +171,7 @@ See LICENSE for details.
 
 ⸻
 
-🧩 Maintainer
+9. Maintainer
 
 Independent Data Engineer Paul Ostaci
 Maintains ETL, schema, and CLI stack for oncology data pipelines.
