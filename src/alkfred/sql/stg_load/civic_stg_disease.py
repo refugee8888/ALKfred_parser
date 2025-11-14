@@ -29,25 +29,28 @@ def main():
     
 
     for rec in data_dict.values():
-        doid = canon_doid(rec.get("disease").get("doid"))
+        
         eid = rec.get("id")
         
         disease_count = unique_key_generator.generate_key()
-        
+        disease = rec.get("disease")
 
-
-        if not doid or doid.strip() == "":
+        try:
+            doid = disease.get("doid")
+        except:
             count += 1
             logger.info("No doid found. Entries skipped: %s", count)
+            continue
+           
 
-        else:
+            
 
-            disease = rec.get("disease")
+        doid = canon_doid(disease.get("doid"))
 
-            disease_name= disease.get("name")
-            synonyms_json = json.dumps(disease.get("diseaseAliases"))
+        disease_name= disease.get("name")
+        synonyms_json = json.dumps(disease.get("diseaseAliases"))
 
-            rows_disease.append((disease_count, eid, doid, disease_name, synonyms_json))
+        rows_disease.append((disease_count, eid, doid, disease_name, synonyms_json))
 
     # Bulk insert
 

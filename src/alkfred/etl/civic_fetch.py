@@ -7,15 +7,15 @@ import json
 
 
 def fetch_civic_evidence(
-    oncogene=None, raw_path=None, overwrite=False, limit: Optional[int] = None
+    oncogene=None, civic_path=None, overwrite=False, limit: Optional[int] = None
 ):
 
-    if raw_path is None:
-        raw_path = config.data_dir() / "civic_raw_evidence_db.json"
-    raw_path = Path(raw_path)
+    if civic_path is None:
+        civic_path = config.data_dir() / "civic_raw_evidence_db.json"
+    civic_path = Path(civic_path)
 
-    if raw_path.exists() and not overwrite:
-        with raw_path.open("r", encoding="utf-8") as f:
+    if civic_path.exists() and not overwrite:
+        with civic_path.open("r", encoding="utf-8") as f:
             return json.load(f)
     # Fetch CIViC evidence
     all_items = api_calls.fetch_civic_all_evidence_items()
@@ -35,8 +35,8 @@ def fetch_civic_evidence(
             filtered.append(ei)
             if limit is not None and len(filtered) >= limit:
                 break
-    raw_path.parent.mkdir(parents=True, exist_ok=True)
+    civic_path.parent.mkdir(parents=True, exist_ok=True)
 
-    config.save_to_json(filtered, path=raw_path)
+    config.save_to_json(filtered, path=civic_path)
 
     return filtered

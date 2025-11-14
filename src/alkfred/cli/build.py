@@ -17,13 +17,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--limit", type=int)
     p.add_argument("--oncogene", type=str, default=None, help="Target oncogene symbol")
-    p.add_argument("--source", choices=["civic"], required=True)
+    p.add_argument("--source", choices=["civic", "test"], required=True)
     p.add_argument("--db", type=Path, default=config.default_db_path())
     p.add_argument(
-        "--curated", type=Path, default=config.data_dir() / "curated_resistance_db.json"
+        "--civic", type=Path, default=config.data_dir() / "civic_raw_evidence_db.json"
     )
     p.add_argument(
-        "--raw", type=Path, default=config.data_dir() / "civic_raw_evidence_db.json"
+        "--testcivic", type=Path, default=config.data_dir() / "civic_test.json"
     )
     p.add_argument("--verbose", action="store_true")
     return p
@@ -39,7 +39,7 @@ def main(argv=None) -> int:
 
         civic_fetch.fetch_civic_evidence(
             oncogene=args.oncogene,
-            raw_path=args.raw,
+            civic_path=args.civic,
             overwrite=args.overwrite,
             limit=args.limit,
         )

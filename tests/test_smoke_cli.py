@@ -26,52 +26,19 @@ def test_cli_help_runs(monkeypatch):
     assert "Welcome to ALKfred" in proc.stdout
 
 
-# def test_cli_overwrite_runs(monkeypatch):
-#     monkeypatch.setattr(
-#         "alkfred.etl.civic_fetch.fetch_civic_evidence",
-#         lambda *a, **kw: [{"id": 1, "molecularProfile": {"name": "ALK test"}}],
-#     )
-
-#     # Run the CLI in a subprocess so argparse is parsed naturally
-#     proc = subprocess.run(
-#         [
-#             sys.executable,
-#             "-m",
-#             "alkfred.cli.build",
-#             "--overwrite",
-#             "--source",
-#             "civic",
-#             "--limit",
-#             "1",
-#         ],
-#         stdout=subprocess.PIPE,
-#         stderr=subprocess.PIPE,
-#         text=True,
-#     )
-
-#     # Helpful output if it fails
-#     if proc.returncode != 0:
-#         print("\nSTDOUT:\n", proc.stdout)
-#         print("\nSTDERR:\n", proc.stderr)
-
-#     # Validate it ran without crashing
-#     assert proc.returncode == 0
-
-
 def test_cli_overwrite_runs(tmp_path):
-    curated = tmp_path / "curated.json"
-    raw = tmp_path / "raw.json"
+    
+    civic_path = tmp_path / "civic.json"
     db = tmp_path / "alkfred.sqlite"
 
     # tiny curated fixture so build can run without fetching
-    curated.write_text('{"DOID:3908||v-alk fusion": {"therapies":[{"name":"alectinib","ncit_id":"C113655"}], "evidence_count":1, "disease_doid":"3908", "gene_symbol":"v::ALK Fusion"}}')
-
+    civic_path.write_text('{"DOID:3908||v-alk fusion": {"therapies":[{"name":"alectinib","ncit_id":"C113655"}], "evidence_count":1, "disease_doid":"3908", "gene_symbol":"v::ALK Fusion"}}')
+    
     proc = subprocess.run(
         [
             sys.executable, "-m", "alkfred.cli.build",
-            "--source", "curated",
-            "--curated", str(curated),
-            "--raw", str(raw),
+            "--source", "test",
+            "--testcivic", str(civic_path),
             "--db", str(db),
             "--overwrite",
             "--verbose",

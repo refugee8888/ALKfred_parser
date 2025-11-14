@@ -27,12 +27,9 @@ def query_choices(variant_cli_choice: str, limit: int, significance: str, diseas
     else:
         raise ValueError("Please input relevant significance information")
 
-    gene_symbol = "ALK"
-    if gene_symbol in variant_cli_choice or gene_symbol.lower() in variant_cli_choice:
-        variant_cli_choice = utils.normalize_label(variant_cli_choice)
-    else:
-        variant_cli_choice = gene_symbol + " " + variant_cli_choice
-        variant_cli_choice = utils.normalize_label(variant_cli_choice)
+   
+    variant_cli_choice = utils.normalize_label(variant_cli_choice)
+    disease = utils.normalize(disease)
     logger.info("Final query input: %s", variant_cli_choice)
 
     try:
@@ -44,13 +41,13 @@ def query_choices(variant_cli_choice: str, limit: int, significance: str, diseas
         # query by all significance and all disease and all significance with user input disease
         if significance == "" or significance == "all":
             if disease == "" or disease == "all":
-                query = """SELECT f.eid, f.doid, f.therapy_id, f.variant_id, t.label_display, d.label_disease_norm, e.significance FROM fact_evidence AS f
-                    JOIN dim_evidence AS e ON e.eid = f.eid
-                    JOIN dim_disease AS d ON d.doid = f.doid
-                    JOIN dim_gene_variant AS v ON v.variant_id = f.variant_id
-                    JOIN dim_therapy AS t ON t.therapy_id = f.therapy_id
-                    WHERE v.label_gene_variant_norm = ?
-                    ORDER BY LOWER(t.label_display), f.eid 
+                query = """SELECT f.eid, f.doid, f.ncit_id, f.variant_id, t.therapy_name, d.disease_name_norm, e.significance FROM fact_evidence AS f
+                    JOIN civic_dim_evidence AS e ON e.eid = f.eid
+                    JOIN civic_dim_disease AS d ON d.doid = f.doid
+                    JOIN civic_dim_gene_variant AS v ON v.variant_id = f.variant_id
+                    JOIN civic_dim_therapy AS t ON t.ncit_id = f.ncit_id
+                    WHERE v.variant_name_norm = ?
+                    ORDER BY LOWER(t.therapy_name), f.eid 
                     LIMIT ?
 
                     """
@@ -63,13 +60,13 @@ def query_choices(variant_cli_choice: str, limit: int, significance: str, diseas
                     query_list.append(dict(row))
 
             else:
-                query = """SELECT f.eid, f.doid, f.therapy_id, f.variant_id, t.label_display, d.label_disease_norm, e.significance FROM fact_evidence AS f
-                    JOIN dim_evidence AS e ON e.eid = f.eid
-                    JOIN dim_disease AS d ON d.doid = f.doid
-                    JOIN dim_gene_variant AS v ON v.variant_id = f.variant_id
-                    JOIN dim_therapy AS t ON t.therapy_id = f.therapy_id
-                    WHERE v.label_gene_variant_norm = ? AND d.label_disease_norm = ?
-                    ORDER BY LOWER(t.label_display), f.eid 
+                query = """SELECT f.eid, f.doid, f.ncit_id, f.variant_id, t.therapy_name, d.disease_name_norm, e.significance FROM fact_evidence AS f
+                    JOIN civic_dim_evidence AS e ON e.eid = f.eid
+                    JOIN civic_dim_disease AS d ON d.doid = f.doid
+                    JOIN civic_dim_gene_variant AS v ON v.variant_id = f.variant_id
+                    JOIN civic_dim_therapy AS t ON t.ncit_id = f.ncit_id
+                    WHERE v.variant_name_norm = ? AND d.disease_name_norm = ?
+                    ORDER BY LOWER(t.therapy_name), f.eid 
                     LIMIT ?
 
                     """
@@ -83,14 +80,14 @@ def query_choices(variant_cli_choice: str, limit: int, significance: str, diseas
         # query for input significance but all disease and input significance and specified disease
         if significance == "RESISTANCE" or significance == "SENSITIVITY":
             if disease == "" or disease == "all":
-                query = """SELECT f.eid, f.doid, f.therapy_id, f.variant_id, t.label_display, d.label_disease_norm, e.significance FROM fact_evidence AS f
-                            JOIN dim_evidence AS e ON e.eid = f.eid
-                            JOIN dim_disease AS d ON d.doid = f.doid
-                            JOIN dim_gene_variant AS v ON v.variant_id = f.variant_id
-                            JOIN dim_therapy AS t ON t.therapy_id = f.therapy_id
-                            WHERE v.label_gene_variant_norm = ? AND e.significance = ?
-                            ORDER BY LOWER(t.label_display), f.eid 
-                            LIMIT ?
+                query = """SELECT f.eid, f.doid, f.ncit_id, f.variant_id, t.therapy_name, d.disease_name_norm, e.significance FROM fact_evidence AS f
+                        JOIN civic_dim_evidence AS e ON e.eid = f.eid
+                        JOIN civic_dim_disease AS d ON d.doid = f.doid
+                        JOIN civic_dim_gene_variant AS v ON v.variant_id = f.variant_id
+                        JOIN civic_dim_therapy AS t ON t.ncit_id = f.ncit_id
+                        WHERE v.variant_name_norm = ? AND e.significance = ?
+                        ORDER BY LOWER(t.therapy_name), f.eid 
+                        LIMIT ?
                             """
                 params = [variant_cli_choice, significance, limit]
 
@@ -101,13 +98,13 @@ def query_choices(variant_cli_choice: str, limit: int, significance: str, diseas
                 for row in rows:
                     query_list.append(dict(row))
             else:
-                query = """SELECT f.eid, f.doid, f.therapy_id, f.variant_id, t.label_display, d.label_disease_norm, e.significance FROM fact_evidence AS f
-                            JOIN dim_evidence AS e ON e.eid = f.eid
-                            JOIN dim_disease AS d ON d.doid = f.doid
-                            JOIN dim_gene_variant AS v ON v.variant_id = f.variant_id
-                            JOIN dim_therapy AS t ON t.therapy_id = f.therapy_id
-                            WHERE v.label_gene_variant_norm = ? AND e.significance = ? AND d.label_disease_norm = ?
-                            ORDER BY LOWER(t.label_display), f.eid 
+                query = """SELECT f.eid, f.doid, f.ncit_id, f.variant_id, t.therapy_name, d.disease_name_norm, e.significance FROM fact_evidence AS f
+                            JOIN civic_dim_evidence AS e ON e.eid = f.eid
+                            JOIN civic_dim_disease AS d ON d.doid = f.doid
+                            JOIN civic_dim_gene_variant AS v ON v.variant_id = f.variant_id
+                            JOIN civic_dim_therapy AS t ON t.ncit_id = f.ncit_id
+                            WHERE v.variant_name_norm = ? AND e.significance = ? AND d.disease_name_norm = ?
+                            ORDER BY LOWER(t.therapy_name), f.eid 
                             LIMIT ?
                             """
                 params = [variant_cli_choice, significance, disease, limit]

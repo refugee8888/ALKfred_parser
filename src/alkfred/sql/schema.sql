@@ -103,7 +103,7 @@ CREATE INDEX IF NOT EXISTS idx_variant_name_norm ON civic_dim_gene_variant(varia
 CREATE TABLE IF NOT EXISTS civic_dim_therapy (
 therapy_name_norm TEXT PRIMARY KEY,
 therapy_name TEXT NOT NULL,
-ncit_id TEXT,
+ncit_id TEXT UNIQUE,
 synonyms_json TEXT NOT NULL DEFAULT '[]',
 rxnorm_id TEXT,
 id_combo INTEGER NOT NULL DEFAULT 0,
@@ -113,6 +113,7 @@ class_ids_json TEXT NOT NULL DEFAULT '[]'
 
 
 CREATE INDEX IF NOT EXISTS idx_therapy_name_norm ON civic_dim_therapy(therapy_name_norm);
+CREATE INDEX IF NOT EXISTS idx_ncit_id ON civic_dim_therapy(ncit_id);
 
 CREATE TABLE IF NOT EXISTS civic_dim_evidence (  
 eid INTEGER PRIMARY KEY,
@@ -150,8 +151,11 @@ FOREIGN KEY (doid) REFERENCES civic_dim_disease(doid),
 FOREIGN KEY (molecular_profile_id) REFERENCES civic_dim_molecular_profile(molecular_profile_id),
 FOREIGN KEY (variant_id) REFERENCES civic_dim_gene_variant(variant_id),
 FOREIGN KEY (ncit_id) REFERENCES civic_dim_therapy(ncit_id),
-CHECK (direction IN ('SUPPORTS','DOES_NOT_SUPPORT','CONFLICTS','NA')),
-CHECK (significance IN ('RESISTANCE','SENSITIVITY','POSITIVE','NEGATIVE','POOR_OUTCOME'))
+CHECK (direction IN ('SUPPORTS','DOES_NOT_SUPPORT','NA')),
+CHECK (significance IN ('RESISTANCE','SENSITIVITY', 'ADVERSE_RESPONSE','REDUCED_SENSITIVITY',
+'BETTER_OUTCOME','POOR_OUTCOME','POSITIVE','NEGATIVE','PREDISPOSITION','PROTECTIVENESS',
+'ONCOGENITICITY','GAIN_OF_FUNCTION','LOSS_OF_FUNCTION','UNALTERED_FUNCTION','NEOMORPHIC',
+'DOMINANT_NEGATIVE','UNKNOWN','NA'))
 );
 
 CREATE INDEX IF NOT EXISTS idx_el_eid   ON evidence_link(eid);
@@ -164,23 +168,30 @@ CREATE INDEX IF NOT EXISTS idx_el_sig   ON evidence_link(significance, direction
 
 
 CREATE TABLE IF NOT EXISTS fact_evidence (
+eid                  INTEGER NOT NULL,
 doid                 TEXT    NOT NULL,
-molecular_profile_id INTEGER,
+molecular_profile_id TEXT,
 variant_id           TEXT,
 ncit_id              TEXT,
-n_total              INTEGER NOT NULL,
-n_resist             INTEGER NOT NULL,
-n_sens               INTEGER NOT NULL,
-n_positive           INTEGER NOT NULL,
-n_poor_outcome       INTEGER NOT NULL,
-resist_ratio         REAL,     -- n_resist / n_total
-sens_ratio           REAL,     -- n_sens / n_total
-created_at_utc       TEXT    NOT NULL DEFAULT (datetime('now')),
-PRIMARY KEY (doid, molecular_profile_id, variant_id, ncit_id),
-FOREIGN KEY (doid)  REFERENCES dim_disease(doid),
-FOREIGN KEY (molecular_profile_id) REFERENCES dim_molecular_profile(molecular_profile_id),
-FOREIGN KEY (variant_id) REFERENCES dim_gene_variant(variant_id),
-FOREIGN KEY (ncit_id) REFERENCES dim_therapy(ncit_id)
+direction            TEXT,
+significance         TEXT,
+pub_year             INTEGER,
+created_at_utc       TEXT DEFAULT (datetime('now')),
+PRIMARY KEY (eid, doid, molecular_profile_id, variant_id, ncit_id),
+
+
+FOREIGN KEY (eid, doid, molecular_profile_id, variant_id, ncit_id)
+REFERENCES evidence_link(eid, doid, molecular_profile_id, variant_id, ncit_id),
+FOREIGN KEY (eid)  REFERENCES civic_dim_evidence(eid),
+FOREIGN KEY (doid) REFERENCES civic_dim_disease(doid),
+FOREIGN KEY (molecular_profile_id) REFERENCES civic_dim_molecular_profile(molecular_profile_id),
+FOREIGN KEY (variant_id) REFERENCES civic_dim_gene_variant(variant_id),
+FOREIGN KEY (ncit_id) REFERENCES civic_dim_therapy(ncit_id)
 );
 
 
+CREATE INDEX IF NOT EXISTS idx_fact_doid ON fact_evidence(doid);
+CREATE INDEX IF NOT EXISTS idx_fact_ncit ON fact_evidence(ncit_id);
+CREATE INDEX IF NOT EXISTS idx_fact_variant ON fact_evidence(variant_id);
+CREATE INDEX IF NOT EXISTS idx_fact_mp ON fact_evidence(molecular_profile_id);
+CREATE INDEX IF NOT EXISTS idx_fact_sig_dir ON fact_evidence(significance, direction);
