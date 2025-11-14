@@ -24,21 +24,24 @@ CIViC API
   ↓
 civic_fetch.py   →  raw JSON
   ↓
-civic_curate.py  →  curated JSON
-  ↓
 schema.sql       →  database structure
   ↓
-dim_load/*.py    →  dimension & fact population
+stg_load/*.py    →  staging population
+  ↓
+dim_load/*.py    →  dimension population
+  ↓
+evidence_link.py → 	evidence link population
+  ↓
+fact_evidence.py → 	fact population
   ↓
 SQLite           →  queryable DB
 
 Component	Purpose
 api_calls.py	GraphQL pagination and CIViC API interaction
 civic_fetch.py	Downloads evidence by gene symbol and writes raw JSON
-civic_curate.py	Normalizes, deduplicates, and aggregates variant data
-civic_parser.py	Internal helpers for molecular profile parsing
+civic_parser.py	Internal helper for molecular profile parsing
 config.py	Manages paths, environment, DB connection, and schema application
-sql/	Contains schema definition and loaders for dim/fact tables
+sql/	Contains schema definition and loaders for stg/dim/link/fact tables
 cli/build.py	Main pipeline entry point (--source, --overwrite, --limit)
 cli/query.py	Prototype CLI query runner
 bioportal_parser.py, bioportal_query_mini.py	Experimental modules for ontology enrichment
@@ -71,8 +74,7 @@ To access the environment:
 ```bash
 python -m alkfred.cli.build \
   --source civic \
-  --raw data/civic_raw_evidence_db.json \
-  --curated data/curated_resistance_db.json \
+  --civic data/civic_raw_evidence_db.json \
   --db data/alkfred.sqlite \
   --overwrite \
   --limit 500 \
@@ -100,10 +102,16 @@ Tests cover:
 4. Schema Summary
 
 Table	Description
-dim_disease	Disease labels, DOIDs, NCIT, MONDO references
-dim_gene_variant	Gene symbol, variant label, and aliases
-dim_therapy		Therapy name and NCIT reference
-dim_evidence	Evidence metadata (significance, direction, level)
+civic_stg_disease
+civic_stg_evidence
+civic_stg_molecular_profile
+civic_stg_therapy
+civic_stg_gene_variant
+civic_dim_disease	Disease labels, DOIDs, NCIT, MONDO references
+civic_dim_gene_variant	Gene symbol, variant label
+civic_dim_molecular_profile Molecular profile id and name
+civic_dim_therapy		Therapy name and NCIT reference
+civic_dim_evidence	Evidence metadata (significance, direction, level)
 evidence_link	Bridges evidence to its variant, therapy, and disease
 fact_evidence	Aggregated analytic layer for resistance/sensitivity queries
 
@@ -119,15 +127,15 @@ python -m alkfred.cli.query query --variant "g1202r" --significance all --diseas
 Output:
 ```bash
 
-2025-10-29 12:58:35,440 [INFO] Final query input: alk_g1202r
-2025-10-29 12:58:35,453 [INFO] Connected to database: /app/data/alkfred.sqlite
-{'eid': 1350, 'doid': '162', 'therapy_id': '217925c3-fecd-55d8-939a-bb3e0e6771b1', 'variant_id': 'CA16602592', 'label_display': 'alectinib', 'label_disease_norm': 'cancer', 'significance': 'RESISTANCE'}
-{'eid': 1351, 'doid': '162', 'therapy_id': '3563f716-82a6-5e59-b5e5-eaed446b01e4', 'variant_id': 'CA16602592', 'label_display': 'brigatinib', 'label_disease_norm': 'cancer', 'significance': 'RESISTANCE'}
-{'eid': 1345, 'doid': '3908', 'therapy_id': '08557006-b6a9-5db4-95fd-eb7a64d17a75', 'variant_id': 'CA16602592', 'label_display': 'ceritinib', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
-{'eid': 441, 'doid': '3908', 'therapy_id': 'dfdc51ba-63cd-5b9a-a09d-97276ae69538', 'variant_id': 'CA16602592', 'label_display': 'crizotinib', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
-{'eid': 1357, 'doid': '3910', 'therapy_id': 'dfdc51ba-63cd-5b9a-a09d-97276ae69538', 'variant_id': 'CA16602592', 'label_display': 'crizotinib', 'label_disease_norm': 'lung_adenocarcinoma', 'significance': 'RESISTANCE'}
-{'eid': 11114, 'doid': '7474', 'therapy_id': 'def3400c-ada4-522f-9045-568f229d11f0', 'variant_id': 'CA16602592', 'label_display': 'lorlatinib', 'label_disease_norm': 'malignant_pleural_mesothelioma', 'significance': 'RESISTANCE'}
-{'eid': 1352, 'doid': '3908', 'therapy_id': '3e17d968-3e24-5c0a-9369-fecc47533807', 'variant_id': 'CA16602592', 'label_display': 'tanespimycin', 'label_disease_norm': 'lung_non_small_cell_carcinoma', 'significance': 'SENSITIVITY'}
+2025-11-14 12:17:08,738 [INFO] Final query input: g1202r
+2025-11-14 12:17:08,748 [INFO] Connected to database: /app/data/alkfred.sqlite
+{'eid': 1350, 'doid': 'DOID:162', 'ncit_id': 'C101790', 'variant_id': '2033c796-5872-55d0-9926-461cbe6fecc0', 'therapy_name': 'Alectinib', 'disease_name_norm': 'cancer', 'significance': 'RESISTANCE'}
+{'eid': 1351, 'doid': 'DOID:162', 'ncit_id': 'C98831', 'variant_id': 'ec2812b6-323f-573b-a420-c2096e337dbb', 'therapy_name': 'Brigatinib', 'disease_name_norm': 'cancer', 'significance': 'RESISTANCE'}
+{'eid': 1345, 'doid': 'DOID:3908', 'ncit_id': 'C115112', 'variant_id': 'c45d3671-1a30-534a-875d-b90ec7cb320e', 'therapy_name': 'Ceritinib', 'disease_name_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
+{'eid': 441, 'doid': 'DOID:3908', 'ncit_id': 'C74061', 'variant_id': '288f41bc-6962-59a9-b72f-6eb27f8837ab', 'therapy_name': 'Crizotinib', 'disease_name_norm': 'lung_non_small_cell_carcinoma', 'significance': 'RESISTANCE'}
+{'eid': 1357, 'doid': 'DOID:3910', 'ncit_id': 'C74061', 'variant_id': '964dbb9c-22d0-52e5-bafa-bd886f23e5a4', 'therapy_name': 'Crizotinib', 'disease_name_norm': 'lung_adenocarcinoma', 'significance': 'RESISTANCE'}
+{'eid': 11114, 'doid': 'DOID:7474', 'ncit_id': 'C113655', 'variant_id': '67d2d0fa-d2f1-5f1e-af48-0c6e88ea45f4', 'therapy_name': 'Lorlatinib', 'disease_name_norm': 'malignant_pleural_mesothelioma', 'significance': 'RESISTANCE'}
+{'eid': 1352, 'doid': 'DOID:3908', 'ncit_id': 'C37899', 'variant_id': '0063fafd-4845-502c-a83d-1ce31a7d17aa', 'therapy_name': 'Tanespimycin', 'disease_name_norm': 'lung_non_small_cell_carcinoma', 'significance': 'SENSITIVITY'}
 Number of rows: 7
 ```
 
