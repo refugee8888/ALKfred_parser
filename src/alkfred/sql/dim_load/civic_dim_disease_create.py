@@ -1,52 +1,60 @@
-import json
-import sqlite3
 from pathlib import Path
 import logging
-from dotenv.main import logger
-from utils import normalize_label
+from utils import normalize_label, canon_doid
 from alkfred import config
-
+import json
 
 DB_PATH = config.default_db_path()
-JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")  # use forward slashes or raw string
+JSON_PATH = Path(
+    "/app/data/civic_raw_evidence_db.json"
+) 
+
 
 def main():
-    
 
     logger = logging.getLogger(__name__)
-
 
     conn = config.get_conn(DB_PATH)
     cur = conn.cursor()
 
+    logger.info("Table civic_dim_disease created or already exists in %s", DB_PATH)
 
-    logger.info("Table dim_disease created or already exists in %s", DB_PATH)
-
-    data_dict = config.raw_json_list_to_dict(JSON_PATH)
-    
-    # Collect rows
     rows_disease = []
-    
-
-    for rec in data_dict.values():                       # iterate values, not keys
-        doid = rec.get("id")
-        disease = rec.get("disease")
-        label_display = disease.get("name")
-        label_disease_norm = normalize_label(label_display)
+    cur.execute("""SELECT doid, disease_name, synonyms_json 
+                FROM civic_stg_disease
+                """)
+    for r in cur.fetchall():
+        doid = canon_doid(r[0])
+        disease_name_norm = normalize_label(r[1])
         
-        synonyms_json = json.dumps(rec.get("disease_aliases", []))
-        rows_disease.append((doid, label_display, label_disease_norm , synonyms_json, None, None, "[]"))
-        
+        rows_disease.append((doid, r[1], disease_name_norm, r[2], None, None, '[]'))
 
-    # Bulk insert
+
+
+
 
     cur.executemany(
-        "INSERT OR IGNORE INTO dim_disease (doid, label_display, label_disease_norm, synonyms_json, mondo_id, ncit_id, lineage_json) VALUES (?,?,?,?,?,?,?)",
-        rows_disease
+        """INSERT INTO civic_dim_disease (
+        doid, disease_name, disease_name_norm, synonyms_json, mondo_id, ncit_id, lineage_json
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(doid) DO UPDATE SET
+        disease_name      = COALESCE(excluded.disease_name, civic_dim_disease .disease_name),
+        disease_name_norm = COALESCE(excluded.disease_name_norm, civic_dim_disease .disease_name_norm),
+        synonyms_json     = CASE
+                                WHEN excluded.synonyms_json IS NOT NULL
+                                AND excluded.synonyms_json != '[]'
+                                THEN excluded.synonyms_json
+                                ELSE civic_dim_disease .synonyms_json
+                            END,
+        mondo_id          = COALESCE(excluded.mondo_id, civic_dim_disease .mondo_id),
+        ncit_id           = COALESCE(excluded.ncit_id, civic_dim_disease .ncit_id),
+        lineage_json      = COALESCE(excluded.lineage_json, civic_dim_disease .lineage_json);""",
+        rows_disease,
     )
     conn.commit()
 
     conn.close()
+
 
 if __name__ == "__main__":
     main()

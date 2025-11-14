@@ -1,14 +1,12 @@
 # fact_evidence_build_from_dims.py
 from __future__ import annotations
 
-import sqlite3
 import uuid
 from datetime import datetime, timezone
 from alkfred import config
+import logging
 
 DB_PATH = config.default_db_path()
-UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
-RUN_ID = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
 def utc_now_iso() -> str:
@@ -20,42 +18,50 @@ def main():
     conn.execute("PRAGMA foreign_keys = ON")
     cur = conn.cursor()
 
+    logger = logging.getLogger(__name__)
+    
+    logger.info("Table fact_evidence created or already exists in %s", DB_PATH)
+
     # sanity: required tables
-    for t in ("dim_disease", "dim_gene_variant", "dim_therapy", "dim_evidence", "evidence_link", "fact_evidence"):
-        cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (t,))
+    for t in (
+        "civic_dim_disease",
+        "civic_dim_gene_variant",
+        "civic_dim_therapy",
+        "civic_dim_evidence",
+        "civic_dim_molecular_profile",
+        "evidence_link",
+        "fact_evidence",
+    ):
+        cur.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name=?", (t,)
+        )
         if not cur.fetchone():
             raise RuntimeError(f"Missing required table: {t}")
 
-    # Build facts from link + dims, preserving evidence filters
-    cur.execute("""
-        SELECT el.eid, el.doid, el.variant_id, el.therapy_id,
-               UPPER(COALESCE(de.direction,''))   AS direction,
-               UPPER(COALESCE(de.significance,'')) AS significance
+    cur.execute(
+        """
+        INSERT INTO fact_evidence (
+        eid, doid, molecular_profile_id, variant_id, ncit_id,
+        direction, significance, pub_year
+        )
+        SELECT
+        el.eid,
+        el.doid,
+        el.molecular_profile_id,
+        el.variant_id,
+        el.ncit_id,
+        el.direction,
+        el.significance,
+        el.pub_year
         FROM evidence_link el
-        JOIN dim_evidence   de ON de.eid        = el.eid
-        JOIN dim_disease    d  ON d.doid        = el.doid
-        JOIN dim_gene_variant v ON v.variant_id = el.variant_id
-        JOIN dim_therapy    t  ON t.therapy_id  = el.therapy_id
-    """)
-    rows = cur.fetchall()
-    if not rows:
-        print("No eligible rows found (check evidence_link and dim_evidence filters).")
-        conn.close()
-        return
-
-    payload = []
-    now_iso = utc_now_iso()
-    for eid, doid, variant_id, therapy_id, direction, significance in rows:
-        # deterministic PK over the tuple
-        key = f"{eid}|{doid}|{variant_id}|{therapy_id}"
-        fact_id = str(uuid.uuid5(UUID_NAMESPACE, key))
-        payload.append((fact_id, eid, variant_id, doid, therapy_id, direction, significance, now_iso, RUN_ID))
-
-    cur.executemany("""
-        INSERT OR IGNORE INTO fact_evidence
-            (fact_id, eid, variant_id, doid, therapy_id, direction, significance, created_at_utc, run_id)
-        VALUES (?,?,?,?,?,?,?,?,?)
-    """, payload)
+        GROUP BY el.eid, el.doid, el.molecular_profile_id, el.variant_id, el.ncit_id
+        ON CONFLICT(eid, doid, molecular_profile_id, variant_id, ncit_id) DO UPDATE SET
+        direction   = excluded.direction,
+        significance= excluded.significance,
+        pub_year    = excluded.pub_year
+    """
+    )
+    
     conn.commit()
     conn.close()
 

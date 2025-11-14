@@ -3256,6 +3256,47 @@
     }
   },
   {
+    "id": 11856,
+    "status": "ACCEPTED",
+    "significance": "SENSITIVITYRESPONSE",
+    "evidenceType": "PREDICTIVE",
+    "evidenceLevel": "C",
+    "evidenceRating": 3,
+    "evidenceDirection": "SUPPORTS",
+    "description": "In a phase 1/2 trial of entrectinib in pediatric patients, tumors with fusions in NTRK, ROS1, or ALK had an overall response (ORR) of 57.7% (95% CI; 36.9-76.7).  This included a patient with inflammatory myofibroblastic tumor harboring a DCTN1::ALK fusion who had a CR and a duration of response of 34.3 months.",
+    "molecularProfile": {
+      "id": 4476,
+      "name": "DCTN1::ALK Fusion",
+      "variants": [
+        {
+          "name": "Fusion",
+          "feature": {
+            "name": "DCTN1::ALK"
+          }
+        }
+      ]
+    },
+    "therapies": [
+      {
+        "name": "Entrectinib",
+        "ncitId": "C114984"
+      }
+    ],
+    "disease": {
+      "doid": "0050905",
+      "name": "Inflammatory Myofibroblastic Tumor",
+      "diseaseAliases": []
+    },
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "35395680",
+      "pmcId": "PMC9527518",
+      "sourceType": "PUBMED",
+      "title": "Entrectinib in children and young adults with solid or primary CNS tumors harboring NTRK, ROS1, or ALK aberrations (STARTRK-NG).",
+      "publicationYear": 2022
+    }
+  },
+  {
     "id": 767,
     "status": "ACCEPTED",
     "significance": "RESISTANCE",
