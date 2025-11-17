@@ -6,6 +6,7 @@ This is the desired architecture of the ALKfred pipeline.
 
 No foreign keys will be used in staging tables.
 
-Analytics will be handled by pandas until other databases than CivicDB or Bioportal will be ingested. Then we'll move to PySpark.
-The end game: data storage, transformation, analytics and orchestration will be handled by Databricks which seems to be the popular choice for futurre ML/AI learniming integration.
+Analytics will be handled by pandas until other databases than CivicDB or Bioportal will be ingested. Then we'll move to PySpark. We'll also start using PostgreSQL for warehousing and dbt core for transformations. Maybe Airflow for rochestration at first.
+
+The end game: data storage, transformation, analytics and orchestration will be handled by Databricks which seems to be the popular choice for future ML/AI learning integration.
 

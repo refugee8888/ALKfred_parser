@@ -1,9 +1,8 @@
 python-dotenv
 requests
-openai
 pandas
 numpy
 graphql-core   
 pytest
 mypy
-sqlite3
+psycopg2-binary

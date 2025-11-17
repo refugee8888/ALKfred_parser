@@ -8,7 +8,8 @@ import importlib
 from typing import Any
 from datetime import datetime, timezone
 import uuid
-
+import dotenv
+import psycopg2
 
 logging.basicConfig(
     level=logging.INFO,  # or DEBUG to also see debug() messages
@@ -58,7 +59,7 @@ def raw_json_list_to_dict(path: Path) -> dict[Any, Any]:
 
 def env_path() -> Path:
     # Return the absolute environment directory
-    d = repo_root() / ".env"
+    d = repo_root() / "/app/src/.env"
     return d
 
 
@@ -80,14 +81,11 @@ def get_env(key: str, required: bool = True) -> str | None:
 
 
 def bioportal_api_key() -> str:
-    # Get the Bioportal API key
+
     return get_env("BIOPORTAL_API_KEY", required=True)
 
-
-def openai_api_key() -> str:
-    # Get the OpenAI API key
-    return get_env("OPENAI_API_KEY", required=True)
-
+def postgres_key() -> str:
+    return get_env("PG_DSN", required=True)
 
 def get_conn(db_path: str | Path | None) -> sqlite3.Connection:
     # Get a connection to the database
@@ -198,19 +196,6 @@ def apply_dim_evidence():
     )
     _run_module_main("alkfred.sql.dim_load.civic_dim_evidence_create")
 
-
-# def apply_evidence_link(
-#     db_path: Path | str = default_db_path(),
-#     raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json",
-#     oncogene=None,
-# ) -> None:
-#     from .sql.evidence_link_create import create_links
-
-#     db_path = Path(db_path)
-#     raw_path = Path(raw_path)
-#     print(f"Building evidence links → db={db_path} raw={raw_path} oncogene={oncogene}")
-#     create_links(db_path, raw_path, oncogene)
-
 def apply_evidence_link():
     print(
         f"Loading /app/src/alkfred/sql/evidence_link_create.py to {default_db_path()}"
@@ -226,6 +211,11 @@ def apply_fact_evidence(
         f"Loading /app/src/alkfred/sql/sql_evidence_fact_create.py to {default_db_path()}"
     )
     _run_module_main("alkfred.sql.evidence_fact_create")
+
+def postgres_conn():
+    conn = psycopg2.connect(
+        postgres_key())
+    return conn
 
 
 class UniqueKeyGenerator:
@@ -252,3 +242,7 @@ class UniqueKeyGenerator:
 
         return self.seen_keys
 
+
+
+
+   
