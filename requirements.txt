@@ -5,4 +5,4 @@ numpy
 graphql-core   
 pytest
 mypy
-
+psycopg2-binary
