@@ -5,13 +5,13 @@ from alkfred import config
 import logging
 
 
-DB_PATH = config.default_db_path()
-JSON_PATH = Path("data/civic_raw_evidence_db.json")  # use forward slashes or raw string
+
+JSON_PATH = Path("data/civic_raw_evidence_db.json")  
 
 logger = logging.getLogger(__name__)
 def main():
 
-    conn = config.get_conn(DB_PATH)
+    conn = config.postgres_conn()
     cur = conn.cursor()
 
     rows_evidence = []
@@ -78,7 +78,7 @@ def main():
                 staging_table_ingest_lineage,
                 created_at_utc,
                 updated_at_utc
-        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+        ) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         ON CONFLICT(eid) DO UPDATE SET
         direction = COALESCE(excluded.direction, civic_dim_evidence.direction),
         significance = COALESCE(excluded.significance, civic_dim_evidence.significance),

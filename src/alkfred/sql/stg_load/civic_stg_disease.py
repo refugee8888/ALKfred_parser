@@ -7,7 +7,7 @@ from utils import canon_doid
 
 
 
-DB_PATH = config.default_db_path()
+
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
@@ -16,10 +16,8 @@ def main():
 
     logger = logging.getLogger(__name__)
 
-    conn = config.get_conn(DB_PATH)
+    conn = config.postgres_conn()
     cur = conn.cursor()
-
-    logger.info("Table civic_stg_disease created or already exists in %s", DB_PATH)
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
 
@@ -56,7 +54,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_disease (disease_count, eid, doid, disease_name, synonyms_json) VALUES (?,?,?,?,?)""",
+        INSERT INTO civic_stg_disease (disease_count, eid, doid, disease_name, synonyms_json) VALUES (%s,%s,%s,%s,%s)""",
         rows_disease,
     )
     conn.commit()

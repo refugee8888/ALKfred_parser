@@ -25,11 +25,11 @@ RUN_ID = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 def main():
 
     logger = logging.getLogger(__name__)
-    conn = config.get_conn(DB_PATH)
+    conn = config.postgres_conn()
     cur = conn.cursor()
 
 
-    logger.info("Table evidence_link created or already exists in %s", DB_PATH)
+
 
 
 
@@ -59,7 +59,7 @@ def main():
                     SELECT 1 FROM civic_dim_gene_variant     AS dgv WHERE dgv.variant_id = sgv.variant_id))
             AND (st.ncit_id IS NULL OR EXISTS (
                     SELECT 1 FROM civic_dim_therapy          AS dt  WHERE dt.ncit_id = st.ncit_id))
-            ON CONFLICT(eid, doid, molecular_profile_id, variant_id, ncit_id) DO NOTHING;""")
+            ON CONFLICT(eid, doid, molecular_profile_id, variant_id) DO NOTHING;""")
     
     
     conn.commit()

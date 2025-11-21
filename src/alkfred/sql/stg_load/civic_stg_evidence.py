@@ -17,8 +17,6 @@ def main():
     conn = config.postgres_conn()
     cur = conn.cursor()
 
-    # logger.info("Table civic_stg_evidence created or already exists in %s")
-
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
 
     # Collect rows
@@ -42,17 +40,17 @@ def main():
         rows_evidence.append(
             (   evidence_count,
                 eid,
-                status,
-                significance,
-                evidence_type,
-                evidence_level,
-                rating,
                 direction,
-                description,
+                significance,
+                evidence_level,
+                evidence_type,
+                rating,
+                status,
                 pmids_json,
                 pub_year,
+                description,
                 created_at_utc,
-                updated_at_utc,
+                updated_at_utc
             )
         )
 
@@ -60,7 +58,19 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_evidence(evidence_count, eid, status, significance, evidence_type, evidence_level, rating, direction, description, pmids_json, pub_year, created_at_utc, updated_at_utc) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+        INSERT INTO civic_stg_evidence(evidence_count,
+                eid,
+                direction,
+                significance,
+                evidence_level,
+                evidence_type,
+                rating,
+                status,
+                pmids_json,
+                pub_year,
+                description,
+                created_at_utc,
+                updated_at_utc) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
         rows_evidence,
     )
     conn.commit()

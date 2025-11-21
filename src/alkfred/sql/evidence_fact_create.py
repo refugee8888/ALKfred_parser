@@ -14,29 +14,10 @@ def utc_now_iso() -> str:
 
 
 def main():
-    conn = config.get_conn(DB_PATH.as_posix())
-    conn.execute("PRAGMA foreign_keys = ON")
-    cur = conn.cursor()
-
-    logger = logging.getLogger(__name__)
+    conn = config.postgres_conn()
     
-    logger.info("Table fact_evidence created or already exists in %s", DB_PATH)
-
-    # sanity: required tables
-    for t in (
-        "civic_dim_disease",
-        "civic_dim_gene_variant",
-        "civic_dim_therapy",
-        "civic_dim_evidence",
-        "civic_dim_molecular_profile",
-        "evidence_link",
-        "fact_evidence",
-    ):
-        cur.execute(
-            "SELECT name FROM sqlite_master WHERE type='table' AND name=?", (t,)
-        )
-        if not cur.fetchone():
-            raise RuntimeError(f"Missing required table: {t}")
+    cur = conn.cursor()
+    logger = logging.getLogger(__name__)
 
     cur.execute(
         """
@@ -55,7 +36,7 @@ def main():
         el.pub_year
         FROM evidence_link el
         GROUP BY el.eid, el.doid, el.molecular_profile_id, el.variant_id, el.ncit_id
-        ON CONFLICT(eid, doid, molecular_profile_id, variant_id, ncit_id) DO UPDATE SET
+        ON CONFLICT(eid, doid, molecular_profile_id, variant_id) DO UPDATE SET
         direction   = excluded.direction,
         significance= excluded.significance,
         pub_year    = excluded.pub_year

@@ -168,8 +168,9 @@ CREATE TABLE civic_dim_therapy (
 CREATE INDEX idx_dim_th_therapy_name_norm
     ON civic_dim_therapy(therapy_name_norm);
 
-CREATE INDEX idx_dim_th_ncit_id
-    ON civic_dim_therapy(ncit_id);
+CREATE UNIQUE INDEX idx_dim_therapy_ncit_unique
+ON civic_dim_therapy (ncit_id)
+WHERE ncit_id IS NOT NULL;
 
 
 CREATE TABLE civic_dim_evidence (
@@ -198,13 +199,13 @@ CREATE TABLE evidence_link (
     doid                 TEXT    NOT NULL,
     molecular_profile_id INTEGER NOT NULL,
     variant_id           TEXT,
-    ncit_id              TEXT,
+    ncit_id              TEXT DEFAULT NULL,
     direction            TEXT    NOT NULL,
     significance         TEXT    NOT NULL,
     pub_year             INTEGER,
     created_at_utc       TEXT    NOT NULL DEFAULT (now()::text),
 
-    PRIMARY KEY (eid, doid, molecular_profile_id, variant_id, ncit_id),
+    PRIMARY KEY (eid, doid, molecular_profile_id, variant_id),
 
     FOREIGN KEY (eid)
         REFERENCES civic_dim_evidence(eid) ON DELETE CASCADE,
@@ -251,16 +252,16 @@ CREATE TABLE fact_evidence (
     doid                 TEXT    NOT NULL,
     molecular_profile_id INTEGER NOT NULL,
     variant_id           TEXT,
-    ncit_id              TEXT,
+    ncit_id              TEXT DEFAULT NULL,
     direction            TEXT,
     significance         TEXT,
     pub_year             INTEGER,
     created_at_utc       TEXT DEFAULT (now()::text),
 
-    PRIMARY KEY (eid, doid, molecular_profile_id, variant_id, ncit_id),
+    PRIMARY KEY (eid, doid, molecular_profile_id, variant_id),
 
-    FOREIGN KEY (eid, doid, molecular_profile_id, variant_id, ncit_id)
-        REFERENCES evidence_link(eid, doid, molecular_profile_id, variant_id, ncit_id)
+    FOREIGN KEY (eid, doid, molecular_profile_id, variant_id)
+        REFERENCES evidence_link(eid, doid, molecular_profile_id, variant_id)
         ON DELETE CASCADE,
 
     FOREIGN KEY (eid)
