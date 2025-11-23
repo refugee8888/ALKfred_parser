@@ -7,8 +7,6 @@ import sqlite3
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-
-from utils import normalize_label, canon_doid
 from alkfred import config
 
 # ----------------------------
