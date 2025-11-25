@@ -4,7 +4,7 @@ from utils import normalize_label, canon_doid
 from alkfred import config
 import json
 
-DB_PATH = config.default_db_path()
+
 JSON_PATH = Path(
     "/app/data/civic_raw_evidence_db.json"
 ) 
@@ -14,10 +14,10 @@ def main():
 
     logger = logging.getLogger(__name__)
 
-    conn = config.get_conn(DB_PATH)
+    conn = config.postgres_conn()
     cur = conn.cursor()
 
-    logger.info("Table civic_dim_disease created or already exists in %s", DB_PATH)
+  
 
     rows_disease = []
     cur.execute("""SELECT doid, disease_name, synonyms_json 
@@ -36,7 +36,7 @@ def main():
     cur.executemany(
         """INSERT INTO civic_dim_disease (
         doid, disease_name, disease_name_norm, synonyms_json, mondo_id, ncit_id, lineage_json
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (%s,%s,%s,%s,%s,%s,%s)
         ON CONFLICT(doid) DO UPDATE SET
         disease_name      = COALESCE(excluded.disease_name, civic_dim_disease .disease_name),
         disease_name_norm = COALESCE(excluded.disease_name_norm, civic_dim_disease .disease_name_norm),

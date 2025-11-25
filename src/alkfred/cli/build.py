@@ -44,7 +44,7 @@ def main(argv=None) -> int:
             limit=args.limit,
         )
 
-    config.apply_schema(db_path=args.db)
+    # config.apply_schema(db_path=args.db)
     config.apply_stg_evidence()
     config.apply_stg_disease()
     config.apply_stg_molecular_profile()

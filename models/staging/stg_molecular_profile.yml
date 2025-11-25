@@ -1,0 +1,9 @@
+models:
+  - name: stg_molecular_profile
+    columns: 
+      - name: molecular_profile_id
+        tests:
+          - not_null
+      - name: mp_name
+        tests:
+          - not_null

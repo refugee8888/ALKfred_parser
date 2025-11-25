@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: alkfred
+    database: alkfred
+    schema: public
+
+    tables:
+      - name: fact_evidence
+      - name: civic_dim_therapy
+      - name: civic_dim_disease
+      - name: civic_dim_gene_variant
+      - name: civic_dim_molecular_profile
+      - name: civic_dim_evidence

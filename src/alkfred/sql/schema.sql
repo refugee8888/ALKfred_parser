@@ -150,7 +150,7 @@ DROP TABLE IF EXISTS evidence_link;
 CREATE TABLE IF NOT EXISTS evidence_link (
 eid                INTEGER NOT NULL,
 doid               TEXT    NOT NULL,
-molecular_profile_id TEXT,
+molecular_profile_id INTEGER,
 variant_id         TEXT,
 ncit_id            TEXT,
 direction          TEXT    NOT NULL,

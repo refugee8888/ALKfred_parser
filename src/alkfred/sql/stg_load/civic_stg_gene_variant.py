@@ -4,7 +4,7 @@ from alkfred import config
 import uuid
 
 
-DB_PATH = config.default_db_path()
+
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
 
@@ -13,10 +13,10 @@ def main():
 
     logger = logging.getLogger(__name__)
 
-    conn = config.get_conn(DB_PATH)
+    conn = config.postgres_conn()
     cur = conn.cursor()
 
-    logger.info("Table civic_stg_gene_variant created or already exists in %s", DB_PATH)
+
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
 
@@ -53,7 +53,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_gene_variant (variant_id, eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name) VALUES (?,?,?,?,?,?)""",
+        INSERT INTO civic_stg_gene_variant (variant_id, eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name) VALUES (%s,%s,%s,%s,%s,%s)""",
         rows_variant,
     )
     conn.commit()
