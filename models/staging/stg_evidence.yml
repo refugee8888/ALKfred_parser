@@ -1,0 +1,9 @@
+models:
+  - name: stg_evidence
+    columns: 
+      - name: eid
+        tests:
+          - not_null
+      - name: significance
+        tests:
+          - not_null

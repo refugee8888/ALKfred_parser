@@ -1,0 +1,7 @@
+models:
+  - name: stg_therapy
+    columns: 
+      - name: therapy_name_norm
+        tests:
+          - not_null
+    
