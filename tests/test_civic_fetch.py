@@ -1,6 +1,5 @@
 # tests/test_civic_fetch.py
 import json
-from pathlib import Path
 from alkfred.etl import civic_fetch
 
 def test_fetch_returns_cached_when_not_overwrite(tmp_path, monkeypatch):

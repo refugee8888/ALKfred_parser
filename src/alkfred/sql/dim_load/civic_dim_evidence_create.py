@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-from datetime import datetime, timezone
 from alkfred import config
 import logging
 
@@ -32,7 +31,7 @@ def main():
                 """)
     
     for r in cur.fetchall():
-        if r[0] != None:
+        if r[0] is not None:
             significance = r[2].strip().upper().replace("SENSITIVITYRESPONSE", "SENSITIVITY")
             direction  = r[1].strip() or None
             evidence_level = r[3].strip() or None

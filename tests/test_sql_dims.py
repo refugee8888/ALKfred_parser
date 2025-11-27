@@ -1,6 +1,5 @@
 # tests/test_dim_disease_unit.py
 import sqlite3
-import pytest
 
 def test_dim_disease_insert_and_select(tmp_path):
     # Use an isolated DB per test

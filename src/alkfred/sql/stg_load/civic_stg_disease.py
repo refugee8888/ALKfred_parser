@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 import logging
 from alkfred import config
-import uuid
 from utils import canon_doid
 
 
@@ -35,8 +34,9 @@ def main():
 
         try:
             doid = disease.get("doid")
-        except:
+        except Exception as e:
             count += 1
+            logger.debug("No doid found %s", e)
             logger.info("No doid found. Entries skipped: %s", count)
             continue
            

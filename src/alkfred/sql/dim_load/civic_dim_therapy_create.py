@@ -1,8 +1,7 @@
 from pathlib import Path
-import logging
-from utils import normalize_label, canon_doid
+
+from utils import normalize_label
 from alkfred import config
-import json
 
 
 JSON_PATH = Path(
@@ -12,7 +11,7 @@ JSON_PATH = Path(
 
 def main():
 
-    logger = logging.getLogger(__name__)
+    
 
     conn = config.postgres_conn()
     cur = conn.cursor()

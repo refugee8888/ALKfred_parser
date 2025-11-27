@@ -8,7 +8,6 @@ import importlib
 from typing import Any
 from datetime import datetime, timezone
 import uuid
-import dotenv
 import psycopg2
 
 logging.basicConfig(

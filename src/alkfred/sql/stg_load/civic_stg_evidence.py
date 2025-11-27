@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 import logging
 from alkfred import config
-import uuid
 
 
 
@@ -12,7 +11,7 @@ unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.lo
 
 def main():
 
-    logger = logging.getLogger(__name__)
+    
 
     conn = config.postgres_conn()
     cur = conn.cursor()

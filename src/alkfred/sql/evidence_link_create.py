@@ -1,10 +1,5 @@
 # evidence_link_populate.py
 from __future__ import annotations
-import re
-import json
-import logging
-import sqlite3
-import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from alkfred import config
@@ -22,7 +17,7 @@ RUN_ID = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 def main():
 
-    logger = logging.getLogger(__name__)
+   
     conn = config.postgres_conn()
     cur = conn.cursor()
 
