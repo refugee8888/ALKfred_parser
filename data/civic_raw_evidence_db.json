@@ -3810,6 +3810,108 @@
     }
   },
   {
+    "id": 4046,
+    "status": "ACCEPTED",
+    "significance": "RESISTANCE",
+    "evidenceType": "PREDICTIVE",
+    "evidenceLevel": "C",
+    "evidenceRating": 2,
+    "evidenceDirection": "SUPPORTS",
+    "description": "In a lung adenocarcinoma cancer patient with an EML4-ALK gene rearrangement (a known sensitizing alteration to crizotinib) and an ALK C1156Y co-mutation, ALK C1156Y was reported to be refractory to crizotinib treatment. The patient was treated with two courses of cisplatin and pemetrexed and then crizotinib, but then experience disease progression.",
+    "molecularProfile": {
+      "id": 4225,
+      "name": "EML4::ALK Fusion AND ALK C1156Y",
+      "variants": [
+        {
+          "name": "Fusion",
+          "feature": {
+            "name": "EML4::ALK"
+          }
+        },
+        {
+          "name": "C1156Y",
+          "alleleRegistryId": "CA16602783",
+          "feature": {
+            "name": "ALK"
+          }
+        }
+      ]
+    },
+    "therapies": [
+      {
+        "name": "Crizotinib",
+        "ncitId": "C74061"
+      }
+    ],
+    "disease": {
+      "doid": "3910",
+      "name": "Lung Adenocarcinoma",
+      "diseaseAliases": [
+        "Bronchogenic Lung Adenocarcinoma",
+        "Nonsmall Cell Adenocarcinoma"
+      ]
+    },
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "27045755",
+      "pmcId": "PMC4821611",
+      "sourceType": "PUBMED",
+      "title": "Genomic Aberrations in Crizotinib Resistant Lung Adenocarcinoma Samples Identified by Transcriptome Sequencing.",
+      "publicationYear": 2016
+    }
+  },
+  {
+    "id": 4620,
+    "status": "ACCEPTED",
+    "significance": "RESISTANCE",
+    "evidenceType": "PREDICTIVE",
+    "evidenceLevel": "C",
+    "evidenceRating": 2,
+    "evidenceDirection": "SUPPORTS",
+    "description": "In a lung adenocarcinoma cancer patient with an EML4-ALK gene rearrangement (a known sensitizing alteration to crizotinib) and an ALK G1269A co-mutation, ALK G1269A was reported to be refractory to crizotinib treatment. The patient was treated with cisplatin and pemetrexed, pemetrexed monotherapy, and then crizotinib with a near complete response, followed by disease progression. Subsequently, the patient was treated with ceritinib and obtained a complete response.",
+    "molecularProfile": {
+      "id": 4312,
+      "name": "EML4::ALK Fusion AND ALK G1269A",
+      "variants": [
+        {
+          "name": "Fusion",
+          "feature": {
+            "name": "EML4::ALK"
+          }
+        },
+        {
+          "name": "G1269A",
+          "alleleRegistryId": "CA16602590",
+          "feature": {
+            "name": "ALK"
+          }
+        }
+      ]
+    },
+    "therapies": [
+      {
+        "name": "Crizotinib",
+        "ncitId": "C74061"
+      }
+    ],
+    "disease": {
+      "doid": "3910",
+      "name": "Lung Adenocarcinoma",
+      "diseaseAliases": [
+        "Bronchogenic Lung Adenocarcinoma",
+        "Nonsmall Cell Adenocarcinoma"
+      ]
+    },
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "27045755",
+      "pmcId": "PMC4821611",
+      "sourceType": "PUBMED",
+      "title": "Genomic Aberrations in Crizotinib Resistant Lung Adenocarcinoma Samples Identified by Transcriptome Sequencing.",
+      "publicationYear": 2016
+    }
+  },
+  {
     "id": 6042,
     "status": "ACCEPTED",
     "significance": "SENSITIVITYRESPONSE",
@@ -5759,6 +5861,116 @@
       "sourceType": "PUBMED",
       "title": "Activity of second-generation ALK inhibitors against crizotinib-resistant mutants in an NPM-ALK model compared to EML4-ALK.",
       "publicationYear": 2015
+    }
+  },
+  {
+    "id": 7869,
+    "status": "ACCEPTED",
+    "significance": "RESISTANCE",
+    "evidenceType": "PREDICTIVE",
+    "evidenceLevel": "D",
+    "evidenceRating": 3,
+    "evidenceDirection": "SUPPORTS",
+    "description": "EML4-ALK fusion positive lung adenocarcinoma cell lines (H3122 and the newly established JFCR013-2) with high expression of P-gp (ABCB1 gene) were found to be resistant to crizotinib and ceritinib.  P-gp knockdown via shRNA increased the sensitivity of H3122 cells to crizotinib and ceritinib.  A cell line developed to overexpress P-gp had increased resistance to crizotinib and ceritinib.",
+    "molecularProfile": {
+      "id": 5725,
+      "name": "EML4::ALK Fusion AND ABCB1 Overexpression",
+      "variants": [
+        {
+          "name": "Fusion",
+          "feature": {
+            "name": "EML4::ALK"
+          }
+        },
+        {
+          "name": "Overexpression",
+          "alleleRegistryId": null,
+          "feature": {
+            "name": "ABCB1"
+          }
+        }
+      ]
+    },
+    "therapies": [
+      {
+        "name": "Ceritinib",
+        "ncitId": "C115112"
+      },
+      {
+        "name": "Crizotinib",
+        "ncitId": "C74061"
+      }
+    ],
+    "disease": {
+      "doid": "3910",
+      "name": "Lung Adenocarcinoma",
+      "diseaseAliases": [
+        "Bronchogenic Lung Adenocarcinoma",
+        "Nonsmall Cell Adenocarcinoma"
+      ]
+    },
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "26870817",
+      "pmcId": "PMC4739423",
+      "sourceType": "PUBMED",
+      "title": "P-glycoprotein Mediates Ceritinib Resistance in Anaplastic Lymphoma Kinase-rearranged Non-small Cell Lung Cancer.",
+      "publicationYear": 2016
+    }
+  },
+  {
+    "id": 10016,
+    "status": "ACCEPTED",
+    "significance": "RESISTANCE",
+    "evidenceType": "PREDICTIVE",
+    "evidenceLevel": "D",
+    "evidenceRating": 3,
+    "evidenceDirection": "DOES_NOT_SUPPORT",
+    "description": "EML4-ALK fusion positive lung adenocarcinoma cell lines with high expression of P-gp (ABCB1 gene) (H3122 and the newly established JFCR013-2) were found to be resistant to crizotinib and ceritinib. P-gp knockdown via shRNA increased the sensitivity of H3122 cells to crizotinib and ceritinib. A cell line developed to overexpress P-gp had increased resistance to crizotinib and ceritinib. Neither cell line demonstrated increased resistance to alectinib and PF-06463922 (lorlatinib).",
+    "molecularProfile": {
+      "id": 5725,
+      "name": "EML4::ALK Fusion AND ABCB1 Overexpression",
+      "variants": [
+        {
+          "name": "Fusion",
+          "feature": {
+            "name": "EML4::ALK"
+          }
+        },
+        {
+          "name": "Overexpression",
+          "alleleRegistryId": null,
+          "feature": {
+            "name": "ABCB1"
+          }
+        }
+      ]
+    },
+    "therapies": [
+      {
+        "name": "Alectinib",
+        "ncitId": "C101790"
+      },
+      {
+        "name": "Lorlatinib",
+        "ncitId": "C113655"
+      }
+    ],
+    "disease": {
+      "doid": "3910",
+      "name": "Lung Adenocarcinoma",
+      "diseaseAliases": [
+        "Bronchogenic Lung Adenocarcinoma",
+        "Nonsmall Cell Adenocarcinoma"
+      ]
+    },
+    "source": {
+      "ascoAbstractId": null,
+      "citationId": "26870817",
+      "pmcId": "PMC4739423",
+      "sourceType": "PUBMED",
+      "title": "P-glycoprotein Mediates Ceritinib Resistance in Anaplastic Lymphoma Kinase-rearranged Non-small Cell Lung Cancer.",
+      "publicationYear": 2016
     }
   },
   {

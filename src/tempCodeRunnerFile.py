@@ -1,1 +1,0 @@
-logger.info("Table dim_therapy created or already exists in %s", DB_PATH)

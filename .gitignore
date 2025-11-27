@@ -2,7 +2,7 @@
 
 # Python
 __pycache__/
-src/tempCodeRunnerFile.py
+tempCodeRunnerFile.py
 *.pyc
 *.pyo
 *.pyd
