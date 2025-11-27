@@ -27,6 +27,8 @@ jobs:
 
       - name: Run tests with pytest
       # adjust if tests live in a subfolder
+        env:
+          PYTHONPATH: src
         run: |
           pytest -v
       
