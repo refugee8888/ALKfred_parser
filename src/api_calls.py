@@ -70,4 +70,3 @@ def fetch_civic_all_evidence_items():
             raise RuntimeError("Exceeded max pages — likely stuck in a loop")
 
     return all_items
-

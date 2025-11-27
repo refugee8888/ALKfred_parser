@@ -12,21 +12,13 @@ RAW_JSON_PATH = Path("data/civic_raw_evidence_db.json")  # list of CIViC evidenc
 RUN_ID = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
-
-
-
 def main():
 
-   
     conn = config.postgres_conn()
     cur = conn.cursor()
 
-
-
-
-
-
-    cur.execute("""
+    cur.execute(
+        """
     INSERT INTO evidence_link (
             eid, doid, molecular_profile_id, variant_id, ncit_id, direction, significance, pub_year
             )
@@ -52,9 +44,9 @@ def main():
                     SELECT 1 FROM civic_dim_gene_variant     AS dgv WHERE dgv.variant_id = sgv.variant_id))
             AND (st.ncit_id IS NULL OR EXISTS (
                     SELECT 1 FROM civic_dim_therapy          AS dt  WHERE dt.ncit_id = st.ncit_id))
-            ON CONFLICT(eid, doid, molecular_profile_id, variant_id) DO NOTHING;""")
-    
-    
+            ON CONFLICT(eid, doid, molecular_profile_id, variant_id) DO NOTHING;"""
+    )
+
     conn.commit()
 
     conn.close()

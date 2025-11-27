@@ -14,9 +14,8 @@ def utc_now_iso() -> str:
 
 def main():
     conn = config.postgres_conn()
-    
+
     cur = conn.cursor()
-   
 
     cur.execute(
         """
@@ -41,7 +40,7 @@ def main():
         pub_year    = excluded.pub_year
     """
     )
-    
+
     conn.commit()
     conn.close()
 

@@ -7,7 +7,8 @@ import civic_parser
 from dotenv import load_dotenv
 import re
 from civic_parser import gene_in_molecular_profile
-import logging, argparse
+import logging
+import argparse
 from openai import OpenAI
 
 parser = argparse.ArgumentParser()
@@ -95,9 +96,9 @@ Diseases:
 
         try:
             matched = json.loads(reply)
-        except json.JSONDecodeError as e:
+        except json.JSONDecodeError:
             # Try to extract a list using regex as a fallback
-            print(f"⚠️ Failed to parse LLM output as JSON, attempting regex fallback...", file=sys.stderr)
+            print("⚠️ Failed to parse LLM output as JSON, attempting regex fallback...", file=sys.stderr)
             match = re.search(r'\[(.*?)\]', reply, re.DOTALL)
             if match:
                 items = match.group(0)

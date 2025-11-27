@@ -4,28 +4,24 @@ from utils import normalize_label
 from alkfred import config
 
 
-JSON_PATH = Path(
-    "/app/data/civic_raw_evidence_db.json"
-) 
+JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
 def main():
 
-    
-
     conn = config.postgres_conn()
     cur = conn.cursor()
 
-    
-
     rows_therapy = []
-    cur.execute("""SELECT ncit_id, therapy_name
+    cur.execute(
+        """SELECT ncit_id, therapy_name
                 FROM civic_stg_therapy
-                """)
+                """
+    )
     for r in cur.fetchall():
-        
+
         therapy_name_norm = normalize_label(r[1])
-        
+
         rows_therapy.append((therapy_name_norm, r[1], r[0], "[]", None, 0, None, "[]"))
 
     cur.executemany(
