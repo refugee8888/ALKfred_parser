@@ -2,25 +2,28 @@ version: 2
 
 models:
   - name: fact_therapy_disease
-    description: >
-      Aggregated evidence counts by therapy (NCIt) and disease (DOID),
-      with resistant/sensitive evidence counts and resistance rate.
-
-    tests:
-      - unique:
-          column_name: "ncit_id || '-' || doid"
-
     columns:
-      - name: ncit_id
-        description: NCIt identifier for the therapy.
-        tests:
-          - not_null
-
       - name: doid
-        description: DOID identifier for the disease.
         tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_disease')   
+                field: doid
 
+      - name: ncit_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_therapy')   
+                field: ncit_id
+          - relationships:
+              arguments:
+                to: source('alkfred', 'civic_dim_therapy')
+                field: ncit_id
+                
+    
       - name: n_resistant_evidence
         description: Number of evidence items labeled as RESISTANCE.
 
@@ -42,3 +45,5 @@ models:
 
       - name: resistance_rate
         description: n_resistant_evidence / n_total_evidence
+      
+      

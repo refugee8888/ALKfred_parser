@@ -3,5 +3,6 @@ models:
     columns: 
       - name: therapy_name_norm
         tests:
-          - not_null
+          - not_null:
+            tags: [critical]
     

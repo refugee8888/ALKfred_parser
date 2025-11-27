@@ -5,9 +5,12 @@ models:
     columns:
       - name: variant_id
         tests:
-          - not_null
+          - not_null:
+            tags: [critical]
 
       - name: significance
         tests:
-          - not_null
+          - not_null:
+            tags: [critical]
+      
           

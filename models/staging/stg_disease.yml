@@ -1,9 +1,14 @@
 models:
   - name: stg_disease
-    columns: 
+    columns:
       - name: doid
         tests:
           - not_null
       - name: disease_name_norm
         tests:
-          - not_null
+          - not_null:
+              tags: [critical]
+          - unique:
+              tags: [critical]
+    
+

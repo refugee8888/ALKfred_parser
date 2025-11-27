@@ -3,7 +3,10 @@ models:
     columns: 
       - name: eid
         tests:
-          - not_null
+          - not_null:
+            tags: [critical]
       - name: significance
         tests:
-          - not_null
+          - not_null:
+            tags: [critical]
+  
