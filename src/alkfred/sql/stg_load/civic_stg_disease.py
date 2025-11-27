@@ -2,16 +2,17 @@ import json
 from pathlib import Path
 import logging
 from alkfred import config
-import uuid
 from utils import canon_doid
-
-
 
 
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
-unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
+unique_key_generator = config.UniqueKeyGenerator(
+    initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None
+)
+
+
 def main():
 
     logger = logging.getLogger(__name__)
@@ -24,28 +25,25 @@ def main():
     # Collect rows
     rows_disease = []
     count = 0
-    
 
     for rec in data_dict.values():
-        
+
         eid = rec.get("id")
-        
+
         disease_count = unique_key_generator.generate_key()
         disease = rec.get("disease")
 
         try:
             doid = disease.get("doid")
-        except:
+        except Exception as e:
             count += 1
+            logger.debug("No doid found %s", e)
             logger.info("No doid found. Entries skipped: %s", count)
             continue
-           
-
-            
 
         doid = canon_doid(disease.get("doid"))
 
-        disease_name= disease.get("name")
+        disease_name = disease.get("name")
         synonyms_json = json.dumps(disease.get("diseaseAliases"))
 
         rows_disease.append((disease_count, eid, doid, disease_name, synonyms_json))

@@ -1,10 +1,9 @@
 # fact_evidence_build_from_dims.py
 from __future__ import annotations
 
-import uuid
 from datetime import datetime, timezone
 from alkfred import config
-import logging
+
 
 DB_PATH = config.default_db_path()
 
@@ -15,9 +14,8 @@ def utc_now_iso() -> str:
 
 def main():
     conn = config.postgres_conn()
-    
+
     cur = conn.cursor()
-    logger = logging.getLogger(__name__)
 
     cur.execute(
         """
@@ -42,7 +40,7 @@ def main():
         pub_year    = excluded.pub_year
     """
     )
-    
+
     conn.commit()
     conn.close()
 

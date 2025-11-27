@@ -1,22 +1,18 @@
 from pathlib import Path
-import logging
-from alkfred import config
-import uuid
 
+from alkfred import config
 
 
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
+unique_key_generator = config.UniqueKeyGenerator(
+    initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None
+)
 
 
 def main():
 
-    logger = logging.getLogger(__name__)
-
     conn = config.postgres_conn()
     cur = conn.cursor()
-
-  
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
 
@@ -29,14 +25,14 @@ def main():
         eid = rec.get("id")
 
         for r in rec.get("therapies"):
-            
+
             raw_ncit = r.get("ncitId", None)
             if raw_ncit is None or str(raw_ncit).strip().upper() in ("N/A", ""):
                 ncit_id = None
             else:
                 ncit_id = str(raw_ncit).strip()
             therapy_name = r.get("name", None)
-            
+
             therapy_id = unique_key_generator.generate_key()
 
             rows_therapy.append(

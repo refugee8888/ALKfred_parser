@@ -4,13 +4,6 @@ from __future__ import annotations
 import logging
 import re
 
-
-__all__ = [
-    "generate_aliases",
-    "gene_in_molecular_profile",
-    "parse_resistance_entries",
-]
-
 logger = logging.getLogger(__name__)
 
 
@@ -36,4 +29,3 @@ def gene_in_molecular_profile(mp_name: str, gene_symbol: str) -> bool:
         tokens.extend(part.strip() for part in fusion.split("::") if part.strip())
 
     return gene_symbol in tokens
-

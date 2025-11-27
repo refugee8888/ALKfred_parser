@@ -1,18 +1,15 @@
 import json
 from pathlib import Path
-import logging
 from alkfred import config
-import uuid
-
 
 
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-unique_key_generator = config.UniqueKeyGenerator(initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None)
+unique_key_generator = config.UniqueKeyGenerator(
+    initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None
+)
 
 
 def main():
-
-    logger = logging.getLogger(__name__)
 
     conn = config.postgres_conn()
     cur = conn.cursor()
@@ -26,7 +23,12 @@ def main():
         evidence_count = unique_key_generator.generate_key()
         eid = rec.get("id", None)
         status = rec.get("status")
-        significance = rec.get("significance").strip().upper().replace("SENSITIVITYRESPONSE", "SENSITIVITY")
+        significance = (
+            rec.get("significance")
+            .strip()
+            .upper()
+            .replace("SENSITIVITYRESPONSE", "SENSITIVITY")
+        )
         evidence_type = rec.get("evidenceType")
         evidence_level = rec.get("evidenceLevel")
         rating = rec.get("evidenceRating")
@@ -38,7 +40,8 @@ def main():
         updated_at_utc = config.utc_now_iso()
 
         rows_evidence.append(
-            (   evidence_count,
+            (
+                evidence_count,
                 eid,
                 direction,
                 significance,
@@ -50,7 +53,7 @@ def main():
                 pub_year,
                 description,
                 created_at_utc,
-                updated_at_utc
+                updated_at_utc,
             )
         )
 

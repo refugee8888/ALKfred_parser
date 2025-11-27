@@ -8,7 +8,6 @@ import importlib
 from typing import Any
 from datetime import datetime, timezone
 import uuid
-import dotenv
 import psycopg2
 
 logging.basicConfig(
@@ -18,9 +17,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
-    
 
-      
 
 def _run_module_main(dotted: str):
     mod = importlib.import_module(dotted)
@@ -84,8 +81,10 @@ def bioportal_api_key() -> str:
 
     return get_env("BIOPORTAL_API_KEY", required=True)
 
+
 def postgres_key() -> str:
     return get_env("PG_DSN", required=True)
+
 
 def get_conn(db_path: str | Path | None) -> sqlite3.Connection:
     # Get a connection to the database
@@ -168,6 +167,7 @@ def apply_dim_disease():
     )
     _run_module_main("alkfred.sql.dim_load.civic_dim_disease_create")
 
+
 def apply_dim_molecular_profile():
 
     print(
@@ -196,11 +196,13 @@ def apply_dim_evidence():
     )
     _run_module_main("alkfred.sql.dim_load.civic_dim_evidence_create")
 
+
 def apply_evidence_link():
     print(
         f"Loading /app/src/alkfred/sql/evidence_link_create.py to {default_db_path()}"
     )
     _run_module_main("alkfred.sql.evidence_link_create")
+
 
 def apply_fact_evidence(
     db_path: Path | str = default_db_path(),
@@ -212,20 +214,22 @@ def apply_fact_evidence(
     )
     _run_module_main("alkfred.sql.evidence_fact_create")
 
+
 def postgres_conn():
-    conn = psycopg2.connect(
-        postgres_key())
+    conn = psycopg2.connect(postgres_key())
     return conn
 
 
 class UniqueKeyGenerator:
 
     def __init__(self, initial_keys_list: set() = None):
-      
-        self.seen_keys: set[str] = initial_keys_list if initial_keys_list is not None else set()
+
+        self.seen_keys: set[str] = (
+            initial_keys_list if initial_keys_list is not None else set()
+        )
 
     def generate_key(self) -> str:
-        
+
         while True:
             seed = str(uuid.uuid4())
             new_key = str(uuid.uuid5(UUID_NAMESPACE, seed))
@@ -233,16 +237,11 @@ class UniqueKeyGenerator:
                 self.seen_keys.add(new_key)
                 try:
                     with open("data/unique_keys_list.json", "w") as dump:
-                        json.dump(list(self.seen_keys), dump, indent= 2)
+                        json.dump(list(self.seen_keys), dump, indent=2)
                 except Exception as e:
                     logger.info("Could not save to file %s:", e)
             return new_key
 
-    def get_seen_keys(self)->set():
+    def get_seen_keys(self) -> set():
 
         return self.seen_keys
-
-
-
-
-   

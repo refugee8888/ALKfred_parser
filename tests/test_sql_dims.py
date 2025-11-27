@@ -1,6 +1,6 @@
 # tests/test_dim_disease_unit.py
 import sqlite3
-import pytest
+
 
 def test_dim_disease_insert_and_select(tmp_path):
     # Use an isolated DB per test
@@ -8,7 +8,8 @@ def test_dim_disease_insert_and_select(tmp_path):
     conn = sqlite3.connect(db)
     cur = conn.cursor()
 
-    cur.execute("""
+    cur.execute(
+        """
         CREATE TABLE civic_dim_disease (
             doid TEXT PRIMARY KEY,
             disease_name TEXT NOT NULL,
@@ -18,7 +19,8 @@ def test_dim_disease_insert_and_select(tmp_path):
             ncit_id TEXT,
             lineage_json TEXT NOT NULL DEFAULT '[]'
         );
-    """)
+    """
+    )
     # Insert a complete row that satisfies NOT NULL constraints
     cur.execute(
         "INSERT INTO civic_dim_disease (doid, disease_name, disease_name_norm) VALUES (?,?,?)",
@@ -26,18 +28,12 @@ def test_dim_disease_insert_and_select(tmp_path):
     )
     conn.commit()
 
-    cur.execute("SELECT doid, disease_name FROM civic_dim_disease WHERE doid = ?", ("3908",))
+    cur.execute(
+        "SELECT doid, disease_name FROM civic_dim_disease WHERE doid = ?", ("3908",)
+    )
     row = cur.fetchone()
     assert row is not None
     assert row[0] == "3908"
     assert row[1] == "Lung Non-small Cell Carcinoma"
 
     conn.close()
-
-    
-
-    
-
-
-
-

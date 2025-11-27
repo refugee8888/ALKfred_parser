@@ -1,37 +1,30 @@
 from pathlib import Path
-import logging
-from utils import normalize_label, canon_doid
+
+from utils import normalize_label
 from alkfred import config
-import json
 
 
-JSON_PATH = Path(
-    "/app/data/civic_raw_evidence_db.json"
-) 
+JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
 def main():
 
-    logger = logging.getLogger(__name__)
-
     conn = config.postgres_conn()
     cur = conn.cursor()
 
-
-
     rows_gene_variant = []
-    cur.execute("""SELECT variant_id, civic_ca_id, gene_symbol, variant_name
+    cur.execute(
+        """SELECT variant_id, civic_ca_id, gene_symbol, variant_name
                 FROM civic_stg_gene_variant
-                """)
+                """
+    )
     for r in cur.fetchall():
-        
+
         variant_name_norm = normalize_label(r[3])
         gene_symbol = normalize_label(r[2])
-        rows_gene_variant.append((r[0], r[1], None, gene_symbol, r[3], variant_name_norm, None, None))
-
-
-
-
+        rows_gene_variant.append(
+            (r[0], r[1], None, gene_symbol, r[3], variant_name_norm, None, None)
+        )
 
     cur.executemany(
         """INSERT INTO civic_dim_gene_variant (

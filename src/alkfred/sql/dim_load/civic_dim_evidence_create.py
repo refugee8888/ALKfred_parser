@@ -1,21 +1,22 @@
 import json
 from pathlib import Path
-from datetime import datetime, timezone
 from alkfred import config
 import logging
 
 
-
-JSON_PATH = Path("data/civic_raw_evidence_db.json")  
+JSON_PATH = Path("data/civic_raw_evidence_db.json")
 
 logger = logging.getLogger(__name__)
+
+
 def main():
 
     conn = config.postgres_conn()
     cur = conn.cursor()
 
     rows_evidence = []
-    cur.execute("""SELECT      
+    cur.execute(
+        """SELECT      
                 eid,
                 direction,
                 significance,
@@ -29,39 +30,44 @@ def main():
                 created_at_utc,
                 updated_at_utc
                 FROM civic_stg_evidence
-                """)
-    
+                """
+    )
+
     for r in cur.fetchall():
-        if r[0] != None:
-            significance = r[2].strip().upper().replace("SENSITIVITYRESPONSE", "SENSITIVITY")
-            direction  = r[1].strip() or None
+        if r[0] is not None:
+            significance = (
+                r[2].strip().upper().replace("SENSITIVITYRESPONSE", "SENSITIVITY")
+            )
+            direction = r[1].strip() or None
             evidence_level = r[3].strip() or None
             evidence_type = r[4].strip() or None
             status = r[6].strip() or None
             description = r[9].strip() or None
             created_at_utc = config.utc_now_iso()
             updated_at_utc = config.utc_now_iso()
-            staging_table_ingest_lineage = json.dumps({"stg_created": r[10],
-                                    "stg_updated": r[11]})
-            rows_evidence.append((
-            r[0],
-            direction, 
-            significance, 
-            evidence_level, 
-            evidence_type, 
-            r[5], 
-            status, 
-            r[7], 
-            r[8], 
-            description, 
-            staging_table_ingest_lineage, 
-            created_at_utc, 
-            updated_at_utc))
+            staging_table_ingest_lineage = json.dumps(
+                {"stg_created": r[10], "stg_updated": r[11]}
+            )
+            rows_evidence.append(
+                (
+                    r[0],
+                    direction,
+                    significance,
+                    evidence_level,
+                    evidence_type,
+                    r[5],
+                    status,
+                    r[7],
+                    r[8],
+                    description,
+                    staging_table_ingest_lineage,
+                    created_at_utc,
+                    updated_at_utc,
+                )
+            )
         else:
             logger.info("Evidence ID can't be empty")
             raise ValueError()
-
-    
 
     cur.executemany(
         """INSERT INTO civic_dim_evidence (         

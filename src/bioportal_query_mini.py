@@ -56,8 +56,8 @@ def fetch_bioportal_data() -> None:
     nodes = requested_data.json()
     try:
         save_to_json(nodes)
-    except:
-        raise ValueError("Nothing to save")
+    except Exception as e:
+        raise ValueError("Nothing to save", e)
 
 
 if __name__ == "__main__":
