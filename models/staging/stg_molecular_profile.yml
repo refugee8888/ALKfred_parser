@@ -3,7 +3,10 @@ models:
     columns: 
       - name: molecular_profile_id
         tests:
-          - not_null
+          - not_null:
+            tags: [critical]
       - name: mp_name
         tests:
-          - not_null
+          - not_null:
+            tags: [critical]
+      
