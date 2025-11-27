@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: fact_variant_tehrapuy_daily
+    description: >
+      Aggregated daily metrics grouped by variant_id and disease
+
+    tests:
+      - unique:
+          column_name: "ncit_id || '-' || doid || '-' || variant_id || '-' activity_date"
+
+    columns:
+      - name: ncit_id
+        description: NCIt identifier for the therapy.
+        tests:
+          - not_null
+
+      - name: doid
+        description: DOID identifier for the disease.
+        tests:
+          - not_null
+
+      - name: n_resistant
+        description: Number of evidence items labeled as RESISTANCE
+
+      - name: n_sensitive
+        description: Number of evidence items labeled as SENSITIVITY.
+
+      - name: n_total
+        description: Total number of evidence items (resistant + sensitive).
+
+      - name: activity_date
+        description: >
+          Date of activity.
+
+      - name: resistance_rate
+        description: n_resistant / n_total
