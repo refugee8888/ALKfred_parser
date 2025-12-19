@@ -4,5 +4,7 @@ models:
       - name: therapy_name_norm
         tests:
           - not_null:
-            tags: [critical]
+              config:
+                tags: [critical]
+      
     

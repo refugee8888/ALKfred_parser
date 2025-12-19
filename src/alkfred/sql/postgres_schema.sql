@@ -20,6 +20,14 @@ DROP TABLE IF EXISTS civic_stg_molecular_profile CASCADE;
 DROP TABLE IF EXISTS civic_stg_disease           CASCADE;
 DROP TABLE IF EXISTS civic_stg_evidence          CASCADE;
 
+DROP TABLE IF EXISTS civic_raw_therapy           CASCADE;
+DROP TABLE IF EXISTS civic_raw_gene_variant      CASCADE;
+DROP TABLE IF EXISTS civic_raw_molecular_profile CASCADE;
+DROP TABLE IF EXISTS civic_raw_disease           CASCADE;
+DROP TABLE IF EXISTS civic_raw_evidence          CASCADE;
+
+
+
 -- Staging tables BRONZE layer
 
 CREATE TABLE civic_stg_evidence (

@@ -4,8 +4,10 @@ models:
       - name: variant_id
         tests:
           - not_null:
-            tags: [critical]
+              config:
+                tags: ["critical"]
       - name: gene_symbol
         tests:
           - not_null:
-            tags: [critical]
+              config:
+                tags: ["critical"]

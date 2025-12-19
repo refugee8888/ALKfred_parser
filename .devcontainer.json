@@ -5,7 +5,7 @@
   // Mount the whole repo once; everything (src, data, .env) comes with it
   "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
   "mounts": [
-  "source=${localEnv:USERPROFILE}\\.dbt,target=/home/appuser/.dbt,type=bind"
+  "source=${localEnv:HOME}/.dbt,target=/home/appuser/.dbt,type=bind"
   ],
   "remoteUser": "appuser",
 

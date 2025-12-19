@@ -4,9 +4,11 @@ models:
       - name: eid
         tests:
           - not_null:
-            tags: [critical]
+              config:
+                tags: [critical]
       - name: significance
         tests:
           - not_null:
-            tags: [critical]
+              config:
+                tags: [critical]
   

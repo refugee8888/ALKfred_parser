@@ -7,8 +7,10 @@ models:
       - name: disease_name_norm
         tests:
           - not_null:
-              tags: [critical]
+              config:
+                tags: [critical]
           - unique:
-              tags: [critical]
+              config:
+                tags: [critical]
     
 
