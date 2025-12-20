@@ -1,4 +1,3 @@
-
 # generate_mutations_db.py
 from __future__ import annotations
 
@@ -21,15 +20,19 @@ logger = logging.getLogger(__name__)
 DEFAULT_MAP = {
     "first": {
         "names": ["Crizotinib"],
-        "ncit_ids": ["C74061"],           # Crizotinib
+        "ncit_ids": ["C74061"],  # Crizotinib
     },
     "second": {
         "names": ["Alectinib", "Ceritinib", "Brigatinib"],
-        "ncit_ids": ["C101790", "C91133", "C111488"],  # Alectinib, Ceritinib, Brigatinib
+        "ncit_ids": [
+            "C101790",
+            "C91133",
+            "C111488",
+        ],  # Alectinib, Ceritinib, Brigatinib
     },
     "third": {
         "names": ["Lorlatinib"],
-        "ncit_ids": ["C132962"],         # Lorlatinib
+        "ncit_ids": ["C132962"],  # Lorlatinib
     },
 }
 
@@ -95,7 +98,9 @@ def classify_category(
     second_ids = set(mapping["second"]["ncit_ids"])
     third_ids = set(mapping["third"]["ncit_ids"])
 
-    def has_any(pairs: set[tuple[str, str | None]], names: set[str], ids: set[str]) -> bool:
+    def has_any(
+        pairs: set[tuple[str, str | None]], names: set[str], ids: set[str]
+    ) -> bool:
         for n_norm, nid in pairs:
             if n_norm in names:
                 return True
@@ -110,7 +115,9 @@ def classify_category(
     return "unknown"
 
 
-def to_display_therapies(therapy_pairs: set[tuple[str, str | None]]) -> list[dict[str, Any]]:
+def to_display_therapies(
+    therapy_pairs: set[tuple[str, str | None]],
+) -> list[dict[str, Any]]:
     """
     Convert set of (name_norm, ncit_id) → sorted list of {name, ncit_id}.
     We keep the normalized name here for determinism (you can switch to display names later).
@@ -120,7 +127,9 @@ def to_display_therapies(therapy_pairs: set[tuple[str, str | None]]) -> list[dic
     return out
 
 
-def build_mutations(curated_rules: dict[str, dict], mapping: dict[str, dict[str, list[str]]]) -> list[dict[str, Any]]:
+def build_mutations(
+    curated_rules: dict[str, dict], mapping: dict[str, dict[str, list[str]]]
+) -> list[dict[str, Any]]:
     """
     Build a flat mutation-level DB from curated profile-level resistance rules.
 
@@ -178,11 +187,11 @@ def build_mutations(curated_rules: dict[str, dict], mapping: dict[str, dict[str,
                 mutations[mname] = {
                     "name": mname,
                     "canonical_id": ca_id,
-                    "aliases": set(),                          # will convert to list later
-                    "therapies": set(),                        # set[(name_norm, ncit_id)]
-                    "resistant_to": set(),                     # set[name_norm]
-                    "category": "",                            # to be filled
-                    "profiles": set(),                         # set[str]
+                    "aliases": set(),  # will convert to list later
+                    "therapies": set(),  # set[(name_norm, ncit_id)]
+                    "resistant_to": set(),  # set[name_norm]
+                    "category": "",  # to be filled
+                    "profiles": set(),  # set[str]
                 }
 
             m = mutations[mname]
@@ -209,15 +218,19 @@ def build_mutations(curated_rules: dict[str, dict], mapping: dict[str, dict[str,
         therapy_list = to_display_therapies(entry["therapies"])
         category = classify_category(entry["therapies"], mapping)
 
-        out.append({
-            "name": entry["name"],
-            "canonical_id": entry["canonical_id"],
-            "aliases": sorted(entry["aliases"]),
-            "therapies": therapy_list,
-            "resistant_to": sorted(entry["resistant_to"]),   # keep for back-compat / simple search
-            "category": category,
-            "profiles": sorted(entry["profiles"]),
-        })
+        out.append(
+            {
+                "name": entry["name"],
+                "canonical_id": entry["canonical_id"],
+                "aliases": sorted(entry["aliases"]),
+                "therapies": therapy_list,
+                "resistant_to": sorted(
+                    entry["resistant_to"]
+                ),  # keep for back-compat / simple search
+                "category": category,
+                "profiles": sorted(entry["profiles"]),
+            }
+        )
 
     # deterministic output
     out.sort(key=lambda x: (x["name"].lower(), x["canonical_id"] or ""))
@@ -225,10 +238,27 @@ def build_mutations(curated_rules: dict[str, dict], mapping: dict[str, dict[str,
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Build mutation-level resistance DB from curated profile rules.")
-    ap.add_argument("--in", dest="inp", default="data/curated_resistance_db.json", help="Input curated rules JSON path")
-    ap.add_argument("--out", dest="out", default="data/mutation_resistance_db.json", help="Output mutations JSON path")
-    ap.add_argument("--map", dest="map_path", default=None, help="Optional JSON/YAML mapping for inhibitor generations")
+    ap = argparse.ArgumentParser(
+        description="Build mutation-level resistance DB from curated profile rules."
+    )
+    ap.add_argument(
+        "--in",
+        dest="inp",
+        default="data/curated_resistance_db.json",
+        help="Input curated rules JSON path",
+    )
+    ap.add_argument(
+        "--out",
+        dest="out",
+        default="data/mutation_resistance_db.json",
+        help="Output mutations JSON path",
+    )
+    ap.add_argument(
+        "--map",
+        dest="map_path",
+        default=None,
+        help="Optional JSON/YAML mapping for inhibitor generations",
+    )
     ap.add_argument("--verbose", action="store_true", help="Enable DEBUG logging")
     args = ap.parse_args()
 
@@ -254,7 +284,9 @@ def main() -> int:
         return 3
 
     if not isinstance(curated, dict):
-        logger.error("Expected dict at top level of curated rules, got %s", type(curated))
+        logger.error(
+            "Expected dict at top level of curated rules, got %s", type(curated)
+        )
         return 4
 
     mutations = build_mutations(curated, mapping)

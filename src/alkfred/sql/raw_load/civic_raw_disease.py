@@ -4,7 +4,6 @@ import logging
 from alkfred import config
 
 
-
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
