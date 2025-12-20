@@ -1,5 +1,5 @@
 models:
-  - name: stg_therapy
+  - name: dim_therapy
     columns: 
       - name: therapy_name_norm
         tests:

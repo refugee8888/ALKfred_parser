@@ -125,94 +125,39 @@ def apply_schema(db_path: Path):
     conn.close()
 
 
-def apply_stg_evidence():
+def apply_raw_evidence():
     print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_evidence.py to {default_db_path()}"
+        f"Loading /app/src/alkfred/sql/raw_load/civic_raw_evidence.py"
     )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_evidence")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_evidence")
 
 
-def apply_stg_disease():
+def apply_raw_disease():
     print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}"
+        f"Loading /app/src/alkfred/sql/raw_load/civic_raw_disase.py"
     )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_disease")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_disease")
 
 
-def apply_stg_molecular_profile():
+def apply_raw_molecular_profile():
     print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_molecular_profile.py to {default_db_path()}"
+        f"Loading /app/src/alkfred/sql/raw_load/civic_raw_molecular_profile.py"
     )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_molecular_profile")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_molecular_profile")
 
 
-def apply_stg_gene_variant():
+def apply_raw_gene_variant():
     print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_gene_variant.py to {default_db_path()}"
+        f"Loading /app/src/alkfred/sql/raw_load/civic_raw_gene_variant.py"
     )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_gene_variant")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_gene_variant")
 
 
-def apply_stg_therapy():
+def apply_raw_therapy():
     print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_therapy.py to {default_db_path()}"
+        f"Loading /app/src/alkfred/sql/raw_load/civic_raw_therapy.py to {default_db_path()}"
     )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_therapy")
-
-
-def apply_dim_disease():
-
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_disease_create")
-
-
-def apply_dim_molecular_profile():
-
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_molecular_profile.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_molecular_profile")
-
-
-def apply_dim_gene_variant():
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_gene_variant.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_gene_variant")
-
-
-def apply_dim_therapy():
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_therapy_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_therapy_create")
-
-
-def apply_dim_evidence():
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_dim_evidence_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_evidence_create")
-
-
-def apply_evidence_link():
-    print(
-        f"Loading /app/src/alkfred/sql/evidence_link_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.evidence_link_create")
-
-
-def apply_fact_evidence(
-    db_path: Path | str = default_db_path(),
-    raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json",
-    oncogene=None,
-):
-    print(
-        f"Loading /app/src/alkfred/sql/sql_evidence_fact_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.evidence_fact_create")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_therapy")
 
 
 def postgres_conn():

@@ -61,7 +61,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_evidence(evidence_count,
+        INSERT INTO civic_raw_evidence(evidence_count,
                 eid,
                 direction,
                 significance,

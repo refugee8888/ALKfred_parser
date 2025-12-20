@@ -1,14 +1,16 @@
 models:
-  - name: stg_molecular_profile
-    columns: 
-      - name: molecular_profile_id
+  - name: dim_disease
+    columns:
+      - name: doid
+        tests:
+          - not_null
+      - name: disease_name_norm
         tests:
           - not_null:
               config:
                 tags: [critical]
-      - name: mp_name
-        tests:
-          - not_null:
+          - unique:
               config:
                 tags: [critical]
-      
+    
+

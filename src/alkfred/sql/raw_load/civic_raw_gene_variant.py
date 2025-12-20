@@ -46,7 +46,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_gene_variant (variant_id, eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name) VALUES (%s,%s,%s,%s,%s,%s)""",
+        INSERT INTO civic_raw_gene_variant (variant_id, eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name) VALUES (%s,%s,%s,%s,%s,%s)""",
         rows_variant,
     )
     conn.commit()

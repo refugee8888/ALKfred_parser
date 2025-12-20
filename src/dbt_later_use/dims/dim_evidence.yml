@@ -1,5 +1,5 @@
 models:
-  - name: stg_evidence
+  - name: dim_evidence
     columns: 
       - name: eid
         tests:

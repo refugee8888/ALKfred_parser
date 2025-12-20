@@ -17,8 +17,19 @@ RUN pip install --no-cache-dir -r requirements.txt
 # App code
 COPY src ./src
 
+
+
+FROM mcr.microsoft.com/devcontainers/python:3.12
+
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    postgresql-client \
+    git \
+ && rm -rf /var/lib/apt/lists/*
+
 # Prepare non-root user, but DON'T switch users here
-RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
+RUN useradd -m -u 1001 appuser
+USER appuser
 
 # Keep root as final image user so devcontainer "features" can build
 # (Dev Containers will run as appuser because we set remoteUser in devcontainer.json)

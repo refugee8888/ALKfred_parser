@@ -33,7 +33,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_stg_molecular_profile (molecular_profile_count, molecular_profile_id, eid, mp_name) VALUES (%s,%s,%s,%s)""",
+        INSERT INTO civic_raw_molecular_profile (molecular_profile_count, molecular_profile_id, eid, mp_name) VALUES (%s,%s,%s,%s)""",
         rows_molecular_profile,
     )
     conn.commit()
