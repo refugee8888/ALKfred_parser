@@ -126,30 +126,22 @@ def apply_schema(db_path: Path):
 
 
 def apply_raw_evidence():
-    print(
-        "Loading /app/src/alkfred/sql/raw_load/civic_raw_evidence.py"
-    )
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_evidence.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_evidence")
 
 
 def apply_raw_disease():
-    print(
-        "Loading /app/src/alkfred/sql/raw_load/civic_raw_disase.py"
-    )
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_disase.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_disease")
 
 
 def apply_raw_molecular_profile():
-    print(
-        "Loading /app/src/alkfred/sql/raw_load/civic_raw_molecular_profile.py"
-    )
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_molecular_profile.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_molecular_profile")
 
 
 def apply_raw_gene_variant():
-    print(
-        "Loading /app/src/alkfred/sql/raw_load/civic_raw_gene_variant.py"
-    )
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_gene_variant.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_gene_variant")
 
 

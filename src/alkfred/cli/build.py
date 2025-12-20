@@ -51,7 +51,6 @@ def main(argv=None) -> int:
     config.apply_raw_gene_variant()
     config.apply_raw_therapy()
 
-
     logger.info("Database ready: %s", args.db)
 
 
