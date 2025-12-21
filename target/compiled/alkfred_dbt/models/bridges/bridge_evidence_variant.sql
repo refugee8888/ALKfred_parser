@@ -38,3 +38,8 @@ select
 from dedup
 where rn = 1
 
+
+  and ingested_at_utc >= (
+    select coalesce(max(ingested_at_utc), '1900-01-01'::timestamp)
+    from "alkfred"."public"."bridge_evidence_variant"
+  ) - interval '3 days'

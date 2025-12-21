@@ -1,4 +1,5 @@
 
+{{ config(materialized='table') }}
 
 with fe as (
   select
