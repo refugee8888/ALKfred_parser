@@ -1,0 +1,17 @@
+version: 2
+
+model:
+  - name: fact_evidence_assoc
+    tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - eid
+              - doid
+              - molecular_profile_id
+            config:
+              tags: [critical]
+    columns:
+      - name: eid
+        tests:
+          - not_null
+          - unique

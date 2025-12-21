@@ -1,11 +1,11 @@
-
+{{ config(materialized='table') }}
 
 with fe as (
     select
         eid::int as eid,
         doid,
         upper(trim(significance)) as significance
-    from "alkfred"."public"."fact_evidence_assoc"
+    from {{ ref('fact_evidence_assoc') }}
 ),
 
 bt as (
@@ -13,7 +13,7 @@ bt as (
     select distinct
         eid::int as eid,
         trim(ncit_id) as ncit_id
-    from "alkfred"."public"."bridge_evidence_therapy"
+    from {{ ref('bridge_evidence_therapy') }}
     where ncit_id is not null and trim(ncit_id) <> ''
 ),
 
@@ -22,7 +22,7 @@ bv as (
     select distinct
         eid::int as eid,
         variant_sk
-    from "alkfred"."public"."bridge_evidence_variant"
+    from {{ ref('bridge_evidence_variant') }}
 ),
 
 base_eid_therapy as (
