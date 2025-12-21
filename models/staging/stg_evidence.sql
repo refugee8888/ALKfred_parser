@@ -1,4 +1,4 @@
-
+{{ config(materialized='view') }}
 
 with source as (
     select
@@ -15,7 +15,7 @@ with source as (
         description,
         created_at_utc,
         updated_at_utc
-    from "alkfred"."public"."civic_raw_evidence"
+    from {{ source('alkfred', 'civic_raw_evidence') }}
 ),
 
 norm as (

@@ -1,0 +1,9 @@
+models:
+  - name: stg_therapy
+    columns:
+      - name: eid
+        tests:
+          - not_null
+      - name: therapy_name
+        tests:
+          - not_null

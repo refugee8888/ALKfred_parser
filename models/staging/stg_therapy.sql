@@ -1,9 +1,4 @@
-
-  create view "alkfred"."public"."stg_therapy__dbt_tmp"
-    
-    
-  as (
-    
+{{ config(materialized='view') }}
 
 with source as (
     select
@@ -12,7 +7,7 @@ with source as (
         molecular_profile_id, 
         ncit_id, 
         therapy_name
-    from "alkfred"."public"."civic_raw_therapy"
+    from {{ source('alkfred', 'civic_raw_therapy') }}
 ),
 
 norm as (
@@ -32,4 +27,3 @@ select
     trim(ncit_id) as ncit_id, 
     therapy_name   
 from norm
-  );

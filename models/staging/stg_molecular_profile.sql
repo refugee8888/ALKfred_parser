@@ -1,4 +1,4 @@
-
+{{config(materialized = 'view')}}
 
 with source as (
     select
@@ -6,7 +6,7 @@ with source as (
         molecular_profile_id, 
         eid, 
         mp_name
-    from "alkfred"."public"."civic_raw_molecular_profile"
+    from {{source('alkfred', 'civic_raw_molecular_profile')}}
 ),
 
 norm as (

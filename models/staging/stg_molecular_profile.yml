@@ -1,0 +1,16 @@
+models:
+  - name: stg_molecular_profile_id
+    columns:
+      - name: molecular_profile_id
+        tests:
+          - not_null:
+              config:
+                tags: [critical]
+
+      - name: eid
+        tests:
+          - not_null:
+              config:
+                tags: [critical]
+
+          

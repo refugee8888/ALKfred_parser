@@ -34,6 +34,8 @@ select
         else 'DOID:' || doid_raw_norm
     end as doid,
     disease_name,
-    synonyms_json
+    synonyms_json,
+    created_at::timestamp as created_at,
+    updated_at::timestamp as updated_at
 from norm
   );
