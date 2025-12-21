@@ -18,7 +18,7 @@ def main():
     rows_evidence = []
 
     for rec in data_dict.values():
-        
+
         ingestion_run_id = str(uuid4())
         eid = rec.get("id", None)
         status = rec.get("status")
@@ -36,11 +36,9 @@ def main():
         pmids_json = json.dumps(rec.get("source").get("pmcId"))
         pub_year = rec.get("source").get("publicationYear")
         ingested_at_utc = config.utc_now_iso()
-        
 
         rows_evidence.append(
             (
-                
                 eid,
                 direction,
                 significance,

@@ -25,8 +25,7 @@ def main():
         ingested_at_utc = config.utc_now_iso()
 
         rows_molecular_profile.append(
-            (molecular_profile_id,
-             eid, mp_name, ingestion_run_id, ingested_at_utc)
+            (molecular_profile_id, eid, mp_name, ingestion_run_id, ingested_at_utc)
         )
 
     # Bulk insert

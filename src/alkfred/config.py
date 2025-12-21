@@ -146,9 +146,7 @@ def apply_raw_gene_variant():
 
 
 def apply_raw_therapy():
-    print(
-        "Loading /app/src/alkfred/sql/raw_load/civic_raw_therapy.py"
-    )
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_therapy.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_therapy")
 
 

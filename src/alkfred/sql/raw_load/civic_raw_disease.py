@@ -43,7 +43,8 @@ def main():
         ingested_at_utc = config.utc_now_iso()
 
         rows_disease.append(
-            (eid, doid, disease_name, synonyms_json, ingestion_run_id, ingested_at_utc))
+            (eid, doid, disease_name, synonyms_json, ingestion_run_id, ingested_at_utc)
+        )
 
     # Bulk insert
 

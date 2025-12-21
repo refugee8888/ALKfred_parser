@@ -30,12 +30,18 @@ def main():
                 ncit_id = str(raw_ncit).strip()
             therapy_name = r.get("name", None)
 
-            
             ingestion_run_id = str(uuid4())
             ingested_at_utc = config.utc_now_iso()
 
             rows_therapy.append(
-                (eid, molecular_profile_id, ncit_id, therapy_name, ingestion_run_id, ingested_at_utc)
+                (
+                    eid,
+                    molecular_profile_id,
+                    ncit_id,
+                    therapy_name,
+                    ingestion_run_id,
+                    ingested_at_utc,
+                )
             )
 
     # Bulk insert

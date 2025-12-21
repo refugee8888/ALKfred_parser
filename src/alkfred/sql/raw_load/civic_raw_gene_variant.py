@@ -6,7 +6,6 @@ from alkfred import config
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
-
 def main():
 
     conn = config.postgres_conn()
@@ -27,19 +26,18 @@ def main():
             variant_name = r.get("name", None)
             civic_ca_id = r.get("alleleRegistryId", None)
             gene_symbol = r.get("feature").get("name") or None
-    
+
             ingestion_run_id = str(uuid4())
             ingested_at_utc = config.utc_now_iso()
 
             rows_variant.append(
                 (
-                    
                     eid,
                     molecular_profile_id,
                     civic_ca_id,
                     gene_symbol,
                     variant_name,
-                    ingestion_run_id, 
+                    ingestion_run_id,
                     ingested_at_utc,
                 )
             )
