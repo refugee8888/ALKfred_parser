@@ -12,6 +12,8 @@ def main():
     cur = conn.cursor()
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    ingestion_run_id = str(uuid4())
+    ingested_at_utc = config.utc_now_iso()
 
     # Collect rows
     rows_molecular_profile = []

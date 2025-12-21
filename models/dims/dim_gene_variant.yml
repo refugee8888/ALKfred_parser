@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_gene_variant
+    columns:
+      - name: variant_nk
+        tests:
+          - not_null
+          - unique
+      - name: variant_sk
+        tests:
+          - not_null
+          - unique

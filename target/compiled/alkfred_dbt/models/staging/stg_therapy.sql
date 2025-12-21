@@ -14,8 +14,12 @@ with source as (
 
 norm as (
     select
-        therapy_id, 
-        eid::int as eid, 
+        therapy_id,
+        case 
+            when ncit_id is not null and ncit_id != '' then ncit_id
+            else 'NONICT|' || coalesce(therapy_name, '?')
+        end as therapy_nk, 
+        eid::int as eid,        
         molecular_profile_id::int as molecular_profile_id, 
         trim(ncit_id) as ncit_id, 
         therapy_name,
@@ -25,7 +29,8 @@ norm as (
 )
 
 select
-    therapy_id, 
+    therapy_id,
+    therapy_nk, 
     eid::int as eid, 
     molecular_profile_id::int as molecular_profile_id, 
     trim(ncit_id) as ncit_id, 

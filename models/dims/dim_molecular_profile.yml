@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_molecular_profile
+    columns:
+      - name: molecular_profile_id
+        tests:
+          - not_null:
+              config:
+                tags: [critical]
+          - unique

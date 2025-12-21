@@ -12,6 +12,8 @@ def main():
     cur = conn.cursor()
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    ingestion_run_id = str(uuid4())
+    ingested_at_utc = config.utc_now_iso()
 
     # Collect rows
     rows_therapy = []
@@ -29,9 +31,6 @@ def main():
             else:
                 ncit_id = str(raw_ncit).strip()
             therapy_name = r.get("name", None)
-
-            ingestion_run_id = str(uuid4())
-            ingested_at_utc = config.utc_now_iso()
 
             rows_therapy.append(
                 (

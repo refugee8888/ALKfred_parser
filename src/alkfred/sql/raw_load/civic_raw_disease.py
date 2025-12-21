@@ -16,6 +16,8 @@ def main():
     cur = conn.cursor()
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
+    ingestion_run_id = str(uuid4())
+    ingested_at_utc = config.utc_now_iso()
 
     # Collect rows
     rows_disease = []
@@ -39,8 +41,6 @@ def main():
 
         disease_name = disease.get("name")
         synonyms_json = json.dumps(disease.get("diseaseAliases"))
-        ingestion_run_id = str(uuid4())
-        ingested_at_utc = config.utc_now_iso()
 
         rows_disease.append(
             (eid, doid, disease_name, synonyms_json, ingestion_run_id, ingested_at_utc)

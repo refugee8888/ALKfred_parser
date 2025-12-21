@@ -16,6 +16,11 @@ with source as(
 norm as(
     select
         variant_id,
+        
+        case
+            when civic_ca_id is not null and civic_ca_id != '' then civic_ca_id
+            else 'NOCA|' || coalesce(gene_symbol,'?') || '|' || coalesce(variant_name,'?')
+        end as variant_nk,
         eid::int as eid,
         molecular_profile_id::int as molecular_profile_id,
         trim(civic_ca_id) as civic_ca_id,
@@ -28,6 +33,7 @@ norm as(
 
 select
     variant_id,
+    variant_nk,
     eid,
     molecular_profile_id,
     civic_ca_id,

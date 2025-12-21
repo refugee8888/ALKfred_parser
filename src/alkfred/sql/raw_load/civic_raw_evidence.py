@@ -14,6 +14,9 @@ def main():
 
     data_dict = config.raw_json_list_to_dict(JSON_PATH)
 
+    ingested_at_utc = config.utc_now_iso()
+    ingestion_run_id = str(uuid4())
+
     # Collect rows
     rows_evidence = []
 
@@ -35,7 +38,6 @@ def main():
         description = rec.get("description")
         pmids_json = json.dumps(rec.get("source").get("pmcId"))
         pub_year = rec.get("source").get("publicationYear")
-        ingested_at_utc = config.utc_now_iso()
 
         rows_evidence.append(
             (
