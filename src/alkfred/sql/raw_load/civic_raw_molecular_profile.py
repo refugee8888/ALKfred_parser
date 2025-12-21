@@ -1,12 +1,9 @@
 from pathlib import Path
-
+from uuid import uuid4
 from alkfred import config
 
 
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-unique_key_generator = config.UniqueKeyGenerator(
-    initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None
-)
 
 
 def main():
@@ -20,20 +17,23 @@ def main():
     rows_molecular_profile = []
 
     for rec in data_dict.values():
-        molecular_profile_count = unique_key_generator.generate_key()
+
         molecular_profile_id = rec.get("molecularProfile").get("id")
         eid = rec.get("id")
         mp_name = rec.get("molecularProfile").get("name")
+        ingestion_run_id = str(uuid4())
+        ingested_at_utc = config.utc_now_iso()
 
         rows_molecular_profile.append(
-            (molecular_profile_count, molecular_profile_id, eid, mp_name)
+            (molecular_profile_id,
+             eid, mp_name, ingestion_run_id, ingested_at_utc)
         )
 
     # Bulk insert
 
     cur.executemany(
         """
-        INSERT INTO civic_raw_molecular_profile (molecular_profile_count, molecular_profile_id, eid, mp_name) VALUES (%s,%s,%s,%s)""",
+        INSERT INTO civic_raw_molecular_profile (molecular_profile_id, eid, mp_name, ingestion_run_id, ingested_at_utc) VALUES (%s,%s,%s,%s,%s)""",
         rows_molecular_profile,
     )
     conn.commit()

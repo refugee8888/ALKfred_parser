@@ -1,12 +1,10 @@
 from pathlib import Path
-
+from uuid import uuid4
 from alkfred import config
 
 
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-unique_key_generator = config.UniqueKeyGenerator(
-    initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None
-)
+
 
 
 def main():
@@ -29,16 +27,20 @@ def main():
             variant_name = r.get("name", None)
             civic_ca_id = r.get("alleleRegistryId", None)
             gene_symbol = r.get("feature").get("name") or None
-            variant_id = unique_key_generator.generate_key()
+    
+            ingestion_run_id = str(uuid4())
+            ingested_at_utc = config.utc_now_iso()
 
             rows_variant.append(
                 (
-                    variant_id,
+                    
                     eid,
                     molecular_profile_id,
                     civic_ca_id,
                     gene_symbol,
                     variant_name,
+                    ingestion_run_id, 
+                    ingested_at_utc,
                 )
             )
 
@@ -46,7 +48,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_raw_gene_variant (variant_id, eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name) VALUES (%s,%s,%s,%s,%s,%s)""",
+        INSERT INTO civic_raw_gene_variant (eid, molecular_profile_id, civic_ca_id, gene_symbol, variant_name, ingestion_run_id, ingested_at_utc) VALUES (%s,%s,%s,%s,%s,%s,%s)""",
         rows_variant,
     )
     conn.commit()

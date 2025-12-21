@@ -2,18 +2,10 @@
 -- Run with: psql "$PG_DSN" -f /app/src/alkfred/sql/dbt_ready_schema.sql
 BEGIN;
 
-DROP TABLE IF EXISTS civic_raw_therapy           CASCADE;
-DROP TABLE IF EXISTS civic_raw_gene_variant      CASCADE;
-DROP TABLE IF EXISTS civic_raw_molecular_profile CASCADE;
-DROP TABLE IF EXISTS civic_raw_disease           CASCADE;
-DROP TABLE IF EXISTS civic_raw_evidence          CASCADE;
-
-
-
 -- Raw tables BRONZE layer
 
 CREATE TABLE civic_raw_evidence (
-    evidence_count TEXT PRIMARY KEY,
+    evidence_count BIGSERIAL PRIMARY KEY,
     eid            INTEGER NOT NULL,
     direction      TEXT,
     significance   TEXT,
@@ -24,8 +16,9 @@ CREATE TABLE civic_raw_evidence (
     pmids_json     TEXT NOT NULL DEFAULT '[]',
     pub_year       INTEGER,
     description    TEXT,
-    created_at_utc TEXT,
-    updated_at_utc TEXT
+    ingestion_run_id UUID NOT NULL,
+    ingested_at_utc TEXT
+   
 );
 
 CREATE INDEX idx_civic_raw_evidence_eid
@@ -33,11 +26,14 @@ CREATE INDEX idx_civic_raw_evidence_eid
 
 
 CREATE TABLE civic_raw_disease(
-    disease_count TEXT PRIMARY KEY,
+    disease_count BIGSERIAL PRIMARY KEY,
     eid           INTEGER NOT NULL,
     doid          TEXT NOT NULL,
     disease_name  TEXT NOT NULL,
-    synonyms_json TEXT NOT NULL DEFAULT '[]'
+    synonyms_json TEXT NOT NULL DEFAULT '[]',
+    ingestion_run_id UUID NOT NULL,
+    ingested_at_utc TEXT
+
 );
 
 CREATE INDEX idx_civic_raw_disease_count
@@ -51,13 +47,16 @@ CREATE INDEX idx_civic_raw_disease_doid
 
 
 CREATE TABLE civic_raw_molecular_profile (
-    molecular_profile_count TEXT PRIMARY KEY,
+    molecular_profile_count BIGSERIAL PRIMARY KEY,
     molecular_profile_id    INTEGER NOT NULL,
     eid                     INTEGER NOT NULL,
-    mp_name                 TEXT NOT NULL
+    mp_name                 TEXT NOT NULL,
+    ingestion_run_id UUID NOT NULL,
+    ingested_at_utc TEXT
 );
-
-CREATE INDEX idx_civic_raw_mp_molecular_profile_id
+CREATE INDEX idx_civic_raw_mp_molecular_profile_count
+    ON civic_raw_molecular_profile(molecular_profile_count);
+    CREATE INDEX idx_civic_raw_mp_molecular_profile_id
     ON civic_raw_molecular_profile(molecular_profile_id);
 
 CREATE INDEX idx_civic_raw_mp_eid
@@ -65,12 +64,14 @@ CREATE INDEX idx_civic_raw_mp_eid
 
 
 CREATE TABLE civic_raw_gene_variant (
-    variant_id          TEXT PRIMARY KEY,
+    variant_id          BIGSERIAL PRIMARY KEY,
     eid                 INTEGER NOT NULL,
     molecular_profile_id INTEGER NOT NULL,
     civic_ca_id         TEXT,
     gene_symbol         TEXT,
-    variant_name        TEXT
+    variant_name        TEXT,
+    ingestion_run_id UUID NOT NULL,
+    ingested_at_utc TEXT
 );
 
 CREATE INDEX idx_civic_raw_gv_eid
@@ -84,11 +85,13 @@ CREATE INDEX idx_civic_raw_gv_molecular_profile_id
 
 
 CREATE TABLE civic_raw_therapy (
-    therapy_id          TEXT PRIMARY KEY,
+    therapy_id          BIGSERIAL PRIMARY KEY,
     eid                 INTEGER NOT NULL,
     molecular_profile_id INTEGER NOT NULL,
     ncit_id             TEXT,
-    therapy_name        TEXT
+    therapy_name        TEXT,
+    ingestion_run_id UUID NOT NULL,
+    ingested_at_utc TEXT
 );
 
 CREATE INDEX idx_civic_raw_th_therapy_id

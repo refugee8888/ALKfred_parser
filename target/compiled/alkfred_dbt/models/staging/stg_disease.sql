@@ -6,7 +6,9 @@ with source as (
         eid,
         doid,
         disease_name,
-        synonyms_json
+        synonyms_json,
+        ingestion_run_id,
+        ingested_at_utc
     from "alkfred"."public"."civic_raw_disease"
 ),
 
@@ -16,7 +18,9 @@ norm as (
         eid::int as eid,
         upper(trim(doid)) as doid_raw_norm,
         nullif(trim(disease_name), '') as disease_name,
-        synonyms_json
+        synonyms_json,
+        ingestion_run_id,
+        ingested_at_utc
     from source
 )
 
@@ -30,6 +34,6 @@ select
     end as doid,
     disease_name,
     synonyms_json,
-    created_at::timestamp as created_at,
-    updated_at::timestamp as updated_at
+    ingestion_run_id,
+    ingested_at_utc
 from norm

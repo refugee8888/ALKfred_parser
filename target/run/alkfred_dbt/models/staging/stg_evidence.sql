@@ -18,8 +18,8 @@ with source as (
         pmids_json,
         pub_year,
         description,
-        created_at_utc,
-        updated_at_utc
+        ingestion_run_id,
+        ingested_at_utc
     from "alkfred"."public"."civic_raw_evidence"
 ),
 
@@ -27,7 +27,8 @@ norm as (
     select
         evidence_count,
         eid::int as eid,
-        upper(trim(significance)) as significance_norm,
+        direction,
+        upper(trim(significance)) as significance,
         evidence_level,
         evidence_type,
         rating,
@@ -35,15 +36,16 @@ norm as (
         pmids_json,
         pub_year,
         description,
-        created_at_utc::timestamp as created_at_utc,
-        updated_at_utc::timestamp as updated_at_utc
+        ingestion_run_id,
+        ingested_at_utc
     from source
 )
 
 select
     evidence_count,
     eid,
-    significance_norm,
+    direction,
+    significance,
     evidence_level,
     evidence_type,
     rating,
@@ -51,8 +53,8 @@ select
     pmids_json,
     pub_year,
     description,
-    created_at_utc,
-    updated_at_utc
+    ingestion_run_id,
+    ingested_at_utc
     
 from norm
   );

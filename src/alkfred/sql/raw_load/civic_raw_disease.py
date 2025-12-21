@@ -2,14 +2,10 @@ import json
 from pathlib import Path
 import logging
 from alkfred import config
+from uuid import uuid4
 
 
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-
-
-unique_key_generator = config.UniqueKeyGenerator(
-    initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None
-)
 
 
 def main():
@@ -29,7 +25,6 @@ def main():
 
         eid = rec.get("id")
 
-        disease_count = unique_key_generator.generate_key()
         disease = rec.get("disease")
 
         try:
@@ -44,14 +39,17 @@ def main():
 
         disease_name = disease.get("name")
         synonyms_json = json.dumps(disease.get("diseaseAliases"))
+        ingestion_run_id = str(uuid4())
+        ingested_at_utc = config.utc_now_iso()
 
-        rows_disease.append((disease_count, eid, doid, disease_name, synonyms_json))
+        rows_disease.append(
+            (eid, doid, disease_name, synonyms_json, ingestion_run_id, ingested_at_utc))
 
     # Bulk insert
 
     cur.executemany(
         """
-        INSERT INTO civic_raw_disease (disease_count, eid, doid, disease_name, synonyms_json) VALUES (%s,%s,%s,%s,%s)""",
+        INSERT INTO civic_raw_disease (eid, doid, disease_name, synonyms_json, ingestion_run_id, ingested_at_utc) VALUES (%s,%s,%s,%s,%s,%s)""",
         rows_disease,
     )
     conn.commit()

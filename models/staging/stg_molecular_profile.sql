@@ -5,7 +5,9 @@ with source as (
         molecular_profile_count, 
         molecular_profile_id, 
         eid, 
-        mp_name
+        mp_name,
+        ingestion_run_id,
+        ingested_at_utc
     from {{source('alkfred', 'civic_raw_molecular_profile')}}
 ),
 
@@ -14,7 +16,9 @@ norm as (
         molecular_profile_count, 
         molecular_profile_id::int as molecular_profile_id, 
         eid::int as eid, 
-        trim(mp_name) as mp_name
+        trim(mp_name) as mp_name,
+        ingestion_run_id,
+        ingested_at_utc
     from source
 )
 
@@ -22,5 +26,7 @@ select
     molecular_profile_count, 
     molecular_profile_id, 
     eid, 
-    mp_name
+    mp_name,
+    ingestion_run_id,
+    ingested_at_utc
 from norm

@@ -6,7 +6,9 @@ with source as (
         eid, 
         molecular_profile_id, 
         ncit_id, 
-        therapy_name
+        therapy_name,
+        ingestion_run_id,
+        ingested_at_utc
     from {{ source('alkfred', 'civic_raw_therapy') }}
 ),
 
@@ -16,7 +18,9 @@ norm as (
         eid::int as eid, 
         molecular_profile_id::int as molecular_profile_id, 
         trim(ncit_id) as ncit_id, 
-        therapy_name
+        therapy_name,
+        ingestion_run_id,
+        ingested_at_utc
     from source
 )
 
@@ -25,5 +29,7 @@ select
     eid::int as eid, 
     molecular_profile_id::int as molecular_profile_id, 
     trim(ncit_id) as ncit_id, 
-    therapy_name   
+    therapy_name,
+    ingestion_run_id,
+    ingested_at_utc   
 from norm

@@ -1,12 +1,10 @@
 import json
 from pathlib import Path
+from uuid import uuid4
 from alkfred import config
 
 
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
-unique_key_generator = config.UniqueKeyGenerator(
-    initial_keys_list=set(config.load_from_json("data/unique_keys_list.json")) or None
-)
 
 
 def main():
@@ -20,7 +18,8 @@ def main():
     rows_evidence = []
 
     for rec in data_dict.values():
-        evidence_count = unique_key_generator.generate_key()
+        
+        ingestion_run_id = str(uuid4())
         eid = rec.get("id", None)
         status = rec.get("status")
         significance = (
@@ -36,12 +35,12 @@ def main():
         description = rec.get("description")
         pmids_json = json.dumps(rec.get("source").get("pmcId"))
         pub_year = rec.get("source").get("publicationYear")
-        created_at_utc = config.utc_now_iso()
-        updated_at_utc = config.utc_now_iso()
+        ingested_at_utc = config.utc_now_iso()
+        
 
         rows_evidence.append(
             (
-                evidence_count,
+                
                 eid,
                 direction,
                 significance,
@@ -52,8 +51,8 @@ def main():
                 pmids_json,
                 pub_year,
                 description,
-                created_at_utc,
-                updated_at_utc,
+                ingestion_run_id,
+                ingested_at_utc,
             )
         )
 
@@ -61,7 +60,7 @@ def main():
 
     cur.executemany(
         """
-        INSERT INTO civic_raw_evidence(evidence_count,
+        INSERT INTO civic_raw_evidence(
                 eid,
                 direction,
                 significance,
@@ -72,8 +71,8 @@ def main():
                 pmids_json,
                 pub_year,
                 description,
-                created_at_utc,
-                updated_at_utc) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                ingestion_run_id,
+                ingested_at_utc) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
         rows_evidence,
     )
     conn.commit()

@@ -1,0 +1,11 @@
+models:
+  - name: dim_evidence
+    columns:
+      - name: eid
+        tests:
+          - not_null:
+              config:
+                tags: [critical]
+          - unique:
+              config:
+                tags: [critical] 

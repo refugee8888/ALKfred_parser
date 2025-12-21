@@ -147,7 +147,7 @@ def apply_raw_gene_variant():
 
 def apply_raw_therapy():
     print(
-        "Loading /app/src/alkfred/sql/raw_load/civic_raw_therapy.py to {default_db_path()}"
+        "Loading /app/src/alkfred/sql/raw_load/civic_raw_therapy.py"
     )
     _run_module_main("alkfred.sql.raw_load.civic_raw_therapy")
 
@@ -155,30 +155,3 @@ def apply_raw_therapy():
 def postgres_conn():
     conn = psycopg2.connect(postgres_key())
     return conn
-
-
-class UniqueKeyGenerator:
-
-    def __init__(self, initial_keys_list: set() = None):
-
-        self.seen_keys: set[str] = (
-            initial_keys_list if initial_keys_list is not None else set()
-        )
-
-    def generate_key(self) -> str:
-
-        while True:
-            seed = str(uuid.uuid4())
-            new_key = str(uuid.uuid5(UUID_NAMESPACE, seed))
-            if new_key not in self.seen_keys:
-                self.seen_keys.add(new_key)
-                try:
-                    with open("data/unique_keys_list.json", "w") as dump:
-                        json.dump(list(self.seen_keys), dump, indent=2)
-                except Exception as e:
-                    logger.info("Could not save to file %s:", e)
-            return new_key
-
-    def get_seen_keys(self) -> set():
-
-        return self.seen_keys

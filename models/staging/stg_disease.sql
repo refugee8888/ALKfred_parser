@@ -6,7 +6,9 @@ with source as (
         eid,
         doid,
         disease_name,
-        synonyms_json
+        synonyms_json,
+        ingestion_run_id,
+        ingested_at_utc
     from {{ source('alkfred', 'civic_raw_disease') }}
 ),
 
@@ -16,7 +18,9 @@ norm as (
         eid::int as eid,
         upper(trim(doid)) as doid_raw_norm,
         nullif(trim(disease_name), '') as disease_name,
-        synonyms_json
+        synonyms_json,
+        ingestion_run_id,
+        ingested_at_utc
     from source
 )
 
@@ -29,5 +33,7 @@ select
         else 'DOID:' || doid_raw_norm
     end as doid,
     disease_name,
-    synonyms_json
+    synonyms_json,
+    ingestion_run_id,
+    ingested_at_utc
 from norm
