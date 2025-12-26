@@ -12,7 +12,6 @@ with base as (
         upper(trim(se.direction)) as direction,
         
         upper(trim(se.significance)) as significance,
-
         se.pub_year::int as pub_year,
 
         se.ingestion_run_id,

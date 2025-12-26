@@ -1,55 +1,37 @@
 
-      
+      -- back compat for old kwarg name
   
+  
+        
+            
+                
+                
+            
+                
+                
+            
+        
     
 
-  create  table "alkfred"."public"."bridge_evidence_variant__dbt_tmp"
-  
-  
-    as
-  
-  (
     
 
-with gv as (
-  select
-    eid::int as eid,
-    variant_nk,
-    ingestion_run_id,
-    ingested_at_utc
-  from "alkfred"."public"."stg_gene_variant"
-),
+    merge into "alkfred"."public"."bridge_evidence_variant" as DBT_INTERNAL_DEST
+        using "bridge_evidence_variant__dbt_tmp052041628650" as DBT_INTERNAL_SOURCE
+        on (
+                    DBT_INTERNAL_SOURCE.eid = DBT_INTERNAL_DEST.eid
+                ) and (
+                    DBT_INTERNAL_SOURCE.variant_sk = DBT_INTERNAL_DEST.variant_sk
+                )
 
-mapped as (
-  select
-    gv.eid,
-    d.variant_sk,
-    gv.ingestion_run_id,
-    gv.ingested_at_utc
-  from gv
-  join "alkfred"."public"."dim_gene_variant" d
-    on d.variant_nk = gv.variant_nk
-),
+    
+    when matched then update set
+        "eid" = DBT_INTERNAL_SOURCE."eid","variant_sk" = DBT_INTERNAL_SOURCE."variant_sk","ingestion_run_id" = DBT_INTERNAL_SOURCE."ingestion_run_id","ingested_at_utc" = DBT_INTERNAL_SOURCE."ingested_at_utc"
+    
 
-dedup as (
-  select
-    *,
-    row_number() over (
-      partition by eid, variant_sk
-      order by ingested_at_utc desc, ingestion_run_id desc
-    ) as rn
-  from mapped
-)
-
-select
-  eid,
-  variant_sk,
-  ingestion_run_id,
-  ingested_at_utc
-from dedup
-where rn = 1
+    when not matched then insert
+        ("eid", "variant_sk", "ingestion_run_id", "ingested_at_utc")
+    values
+        ("eid", "variant_sk", "ingestion_run_id", "ingested_at_utc")
 
 
-  );
-  
   

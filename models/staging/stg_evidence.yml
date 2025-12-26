@@ -6,12 +6,10 @@ models:
       - name: eid
         tests:
           - not_null
-      - name: significance_norm
+      - name: significance
         tests:
           - not_null:
               config:
                 tags: [critical]
-          - unique:
-              config:
-                tags: [critical]
+         
     

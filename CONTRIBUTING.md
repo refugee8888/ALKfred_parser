@@ -1,154 +1,229 @@
-Contributing to ALKfred
+# Contributing to ALKfred
 
-Thank you for your interest in improving ALKfred, a CIViC-based oncology data engineering project.
-This guide explains how to set up your environment, follow code conventions, and contribute responsibly.
+Thank you for your interest in contributing to **ALKfred** — an open-source oncology data engineering project focused on **CIViC-based evidence**, **Postgres warehousing**, and **dbt analytics**.
 
-Project Setup
+ALKfred is not a demo or tutorial repo. It is intentionally designed to model **real-world clinical data engineering constraints**: explicit grains, bridge tables, auditability, and reproducibility.
+
+Please read this document carefully before contributing.
+
+---
+
+## Project Philosophy
+
+ALKfred follows a few non-negotiable principles:
+
+- **Explicit grains** — every table must have a clearly defined grain
+- **No hidden fan-out** — joins must be intentional and explainable
+- **Bridges over shortcuts** — many-to-many relationships are modeled explicitly
+- **Auditability** — every analytic result must trace back to CIViC evidence
+- **Clarity over cleverness** — SQL should be readable, not impressive
+
+If a model cannot be explained on a whiteboard, it does not belong here.
+
+For major design changes, open a **Discussion** before writing code.
+
+---
+
+## Project Setup
+
 1. Clone the repository
+
 ```bash
 git clone https://github.com/<your-username>/ALKfred.git
 cd ALKfred
-``` 
-
-2. Create a virtual environment
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt 
 ```
 
+⸻
 
-3. Environment variables
+2. Development Environment
+
+ALKfred is designed to be developed using a devcontainer (recommended).
+
+For limited local Python-only work (ETL utilities):
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+dbt models are expected to be run inside the containerized environment.
+
+⸻
+
+3. Environment Variables
 
 Create a .env file in the project root:
 
-OPENAI_API_KEY=your_key
-BIOPORTAL_API_KEY=your_key
-
-4. Run tests to confirm setup
+```bash
+BIOPORTAL_API_KEY=your_key_here
+PG_DSN="dbname=your_dbname user=your_dbpostgres_user password=user_password host=host.docker.internal port=5432"
 ```
+Never commit .env files.
+
+⸻
+
+4. Verify Setup
+
+Before contributing, confirm everything works:
+```bash
 pytest -v
 ```
 
-All tests should pass before submitting a pull request.
+All tests must pass before opening a pull request.
 
-Code Structure
+⸻
+
+Repository Structure
+
 src/alkfred/
-├── etl/                 # Fetch, curate, and normalize CIViC data
-├── sql/dim_load/        # SQLite dimension and fact loaders
-├── cli/                 # Command-line entry points
-├── utils.py             # Helper functions (normalization, I/O)
-├── config.py            # Paths, connections, env management
-└── tests/               # Pytest suite
+├── api_calls.py           # CIViC GraphQL ingestion
+├── civic_parser.py        # Evidence normalization utilities
+├── cli/                   # CLI entry points
+├── utils.py               # Shared helpers
+├── config.py              # Env, paths, connections
+├── tests/                 # pytest suite
 
-Coding Standards
-Rule	Example
-Follow PEP8 style	use 4 spaces, lowercase function names
-Use type hints	def fetch_data(symbol: str) -> list[dict]:
-Prefer f-strings	f"Loading table {table_name}"
-Keep functions short	one clear responsibility
-Use logging over print	logger.info("Task complete")
-Avoid silent failures	raise or log every exception
+models/
+├── staging/               # dbt staging models
+├── dims/                  # dbt dimension tables
+├── bridges/               # dbt bridge tables
+├── marts/facts/           # dbt fact tables
 
-All ETL modules must include a clear docstring:
+⸻
+Coding logic
 
-"""
-Fetch and filter CIViC evidence items for a given gene symbol.
+SQL / dbt
+	•	One grain per model
+	•	No implicit joins
+	•	No denormalized shortcuts
+	•	Bridges are mandatory for M:N relationships
+	•	Facts must be explainable from bridges
+	•	Incremental logic must be deterministic
 
-Args:
-    symbol (str): Target gene symbol, e.g., "ALK".
-    limit (int | None): Max evidence items to retrieve.
-"""
+If you are unsure about a grain, stop and ask.
+
+⸻
 
 Testing Rules
 
-Place tests under tests/ with filenames like test_<module>.py
-
-Use pytest fixtures for setup/cleanup
-
-Mock API calls using monkeypatch (no live CIViC hits during tests)
-
-Avoid touching real data paths; use tmp_path for all file I/O
+Python Testing
+	•	Tests live under tests/
+	•	Use pytest
+	•	Mock all external APIs
+	•	Never hit CIViC in tests
+	•	Use tmp_path for file I/O
 
 Example:
-
 ```python
 def test_normalize_label(monkeypatch):
     monkeypatch.setattr(utils, "normalize_label", lambda x: "alk")
-    assert utilss.normalize_label("ALK") == "alk" 
+    assert utils.normalize_label("ALK") == "alk"
+```
+Run:
+```bash
+pytest -v
 ```
 
 
-Run the full suite:
+⸻
+
+dbt Testing
+	•	Use schema tests (not_null, unique, accepted_values)
+	•	Explicitly test grains
+	•	Validate bridge cardinality
+	•	No silent test skips
+
+Run:
 
 ```bash
-pytest -v 
+dbt test
 ```
+
+
+⸻
 
 Git & Commit Conventions
 
-Branch naming
+Branch Naming
 
+```bash
 feature/<short-description>
 fix/<short-description>
 test/<short-description>
+```
 
 
-Commit style
+⸻
 
-feat: add dim_gene_variant loader
-fix: handle null therapies in evidence_link
-test: add unit test for normalize_label
+Commit Messages
 
+```bash
+feat: add fact_variant_therapy_daily
+fix: correct bridge_evidence_variant grain
+test: add dbt uniqueness test for fact_evidence
+```
 
-Every commit should be atomic — one change, one purpose.
+One commit = one purpose
+No bundled refactors
 
-Pull Requests
+⸻
 
-Fork the repository
+Pull Request Guidelines
 
-Create a feature branch
-
-Add or update tests
-
-Run pytest -v and ensure all pass
-
-Open a pull request with:
-
-A short description of the change
-
-Before/after behavior summary
-
-Any new dependencies introduced
-
-Anti-Patterns
-
-❌ Hardcoding paths (use config.data_dir() or config.default_db_path())
-
-❌ Direct print() calls inside ETL or SQL modules
-
-❌ Committing .env, .sqlite, or large JSON files
-
-❌ Running pytest on live CIViC API endpoints
+Before opening a PR:
+	1.	Fork the repository
+	2.	Create a feature branch
+	3.	Add or update tests
+	4.	Run:
+```bash
+pytest -v
+dbt build
+```
 
 
-Roadmap Contributions
+Your PR description must include:
+	•	What changed
+	•	Why it changed
+	•	What grain is affected
+	•	Any trade-offs or limitations
 
-If you want to help expand ALKfred:
+⸻
 
-Add BioPortal MONDO/NCIT cross-reference ingestion
+Anti-Patterns (Hard No)
 
-Extend to multi-gene CIViC fetch
+NO Hardcoded file paths
+NO Print() inside ETL or dbt models
+NO Silent exception handling
+NO Committing raw JSON, databases, or large files
+NO Live CIViC API calls in tests
+NO Facts that hide dimensional logic
 
-Improve CLI querying with structured subcommands
+⸻
 
-Refactor dim loaders for generic reuse
+Suggested Contribution Areas
 
-Propose ideas in the Discussions tab before starting major rewrites.
+Meaningful ways to help:
+	•	Ontology enrichment (NCIT / MONDO / EFO)
+	•	Additional analytic marts
+	•	dbt documentation & lineage improvements
+	•	Performance tuning (indexes, partitions)
+	•	Validation queries and data quality checks
 
+Open a Discussion before large changes.
+
+⸻
 
 License
 
 ALKfred is released under the GNU General Public License v3.0 (GPL-3.0).
+
 By contributing, you agree that your code will be distributed under the same license.
+
+⸻
+
+Final Note
+
+ALKfred values correctness, traceability, and clarity over speed.
+
+If you are here to learn real-world data engineering — welcome.
+If you are here to cut corners — this repository will push back.
+

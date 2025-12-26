@@ -9,7 +9,7 @@ with gv as (
     eid::int as eid,
     variant_nk,
     ingestion_run_id,
-    ingested_at_utc
+    ingested_at_utc::timestamp as ingested_at_utc
   from {{ ref('stg_gene_variant') }}
 ),
 
@@ -43,7 +43,7 @@ from dedup
 where rn = 1
 
 {% if is_incremental() %}
-  and ingested_at_utc >= (
+  and ingested_at_utc::timestamp >= (
     select coalesce(max(ingested_at_utc), '1900-01-01'::timestamp)
     from {{ this }}
   ) - interval '3 days'
