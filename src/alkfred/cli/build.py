@@ -45,18 +45,11 @@ def main(argv=None) -> int:
         )
 
     # config.apply_schema(db_path=args.db)
-    config.apply_stg_evidence()
-    config.apply_stg_disease()
-    config.apply_stg_molecular_profile()
-    config.apply_stg_gene_variant()
-    config.apply_stg_therapy()
-    config.apply_dim_disease()
-    config.apply_dim_molecular_profile()
-    config.apply_dim_gene_variant()
-    config.apply_dim_therapy()
-    config.apply_dim_evidence()
-    config.apply_evidence_link()
-    config.apply_fact_evidence()
+    config.apply_raw_evidence()
+    config.apply_raw_disease()
+    config.apply_raw_molecular_profile()
+    config.apply_raw_gene_variant()
+    config.apply_raw_therapy()
 
     logger.info("Database ready: %s", args.db)
 

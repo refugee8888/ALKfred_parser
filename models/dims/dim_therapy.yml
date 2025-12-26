@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_therapy
+    columns:
+      - name: therapy_nk
+        tests:
+          - not_null
+          - unique
+      - name: therapy_sk
+        tests:
+          - not_null
+          - unique

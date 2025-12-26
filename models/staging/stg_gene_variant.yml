@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_gene_variant
+    columns:
+      - name: eid
+        tests:
+          - not_null:
+              config:
+                tags: [critical]
+      - name: molecular_profile_id
+        tests:
+          - not_null:
+              config:
+                tags: [critical]

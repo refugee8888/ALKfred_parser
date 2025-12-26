@@ -125,123 +125,31 @@ def apply_schema(db_path: Path):
     conn.close()
 
 
-def apply_stg_evidence():
-    print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_evidence.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_evidence")
+def apply_raw_evidence():
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_evidence.py")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_evidence")
 
 
-def apply_stg_disease():
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_disease")
+def apply_raw_disease():
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_disase.py")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_disease")
 
 
-def apply_stg_molecular_profile():
-    print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_molecular_profile.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_molecular_profile")
+def apply_raw_molecular_profile():
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_molecular_profile.py")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_molecular_profile")
 
 
-def apply_stg_gene_variant():
-    print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_gene_variant.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_gene_variant")
+def apply_raw_gene_variant():
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_gene_variant.py")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_gene_variant")
 
 
-def apply_stg_therapy():
-    print(
-        f"Loading /app/src/alkfred/sql/stg_load/civic_stg_therapy.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.stg_load.civic_stg_therapy")
-
-
-def apply_dim_disease():
-
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_disease_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_disease_create")
-
-
-def apply_dim_molecular_profile():
-
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_molecular_profile.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_molecular_profile")
-
-
-def apply_dim_gene_variant():
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_gene_variant.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_gene_variant")
-
-
-def apply_dim_therapy():
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_civic_dim_therapy_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_therapy_create")
-
-
-def apply_dim_evidence():
-    print(
-        f"Loading /app/src/alkfred/sql/dim_load/sql_dim_evidence_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.dim_load.civic_dim_evidence_create")
-
-
-def apply_evidence_link():
-    print(
-        f"Loading /app/src/alkfred/sql/evidence_link_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.evidence_link_create")
-
-
-def apply_fact_evidence(
-    db_path: Path | str = default_db_path(),
-    raw_path: Path | str = data_dir() / "civic_raw_evidence_db.json",
-    oncogene=None,
-):
-    print(
-        f"Loading /app/src/alkfred/sql/sql_evidence_fact_create.py to {default_db_path()}"
-    )
-    _run_module_main("alkfred.sql.evidence_fact_create")
+def apply_raw_therapy():
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_therapy.py")
+    _run_module_main("alkfred.sql.raw_load.civic_raw_therapy")
 
 
 def postgres_conn():
     conn = psycopg2.connect(postgres_key())
     return conn
-
-
-class UniqueKeyGenerator:
-
-    def __init__(self, initial_keys_list: set() = None):
-
-        self.seen_keys: set[str] = (
-            initial_keys_list if initial_keys_list is not None else set()
-        )
-
-    def generate_key(self) -> str:
-
-        while True:
-            seed = str(uuid.uuid4())
-            new_key = str(uuid.uuid5(UUID_NAMESPACE, seed))
-            if new_key not in self.seen_keys:
-                self.seen_keys.add(new_key)
-                try:
-                    with open("data/unique_keys_list.json", "w") as dump:
-                        json.dump(list(self.seen_keys), dump, indent=2)
-                except Exception as e:
-                    logger.info("Could not save to file %s:", e)
-            return new_key
-
-    def get_seen_keys(self) -> set():
-
-        return self.seen_keys

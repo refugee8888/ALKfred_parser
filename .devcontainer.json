@@ -1,28 +1,27 @@
 {
   "name": "ALKfred Dev",
-  "build": { "context": ".", "dockerfile": "Dockerfile" },
-
+  "build": {
+    "context": ".",
+    "dockerfile": "Dockerfile"
+  },
   // Mount the whole repo once; everything (src, data, .env) comes with it
   "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
   "mounts": [
-  "source=${localEnv:USERPROFILE}\\.dbt,target=/home/appuser/.dbt,type=bind"
+    "source=${localEnv:HOME}/.dbt,target=/home/appuser/.dbt,type=bind"
   ],
   "remoteUser": "appuser",
-
-
   "workspaceFolder": "/app",
-  
-
-
-  "containerEnv": { "PYTHONPATH": "/app/src" },
-  
-
+  "containerEnv": {
+    "PYTHONPATH": "/app/src"
+  },
   "customizations": {
     "vscode": {
       "settings": {
         "python.testing.pytestEnabled": true,
         "python.testing.unittestEnabled": false,
-        "python.analysis.extraPaths": ["/app/src"],
+        "python.analysis.extraPaths": [
+          "/app/src"
+        ],
         "terminal.integrated.defaultProfile.linux": "bash"
       },
       "extensions": [
@@ -31,8 +30,8 @@
       ]
     }
   },
-
-  "postCreateCommand": ["python --version", 
-  "git config --global user.name 'refugee8888' && git config --global user.email 'paulostaci88@gmail.com'"
-]
+  "postCreateCommand": [
+    "python --version",
+    "git config --global user.name 'refugee8888' && git config --global user.email 'paulostaci88@gmail.com'"
+  ]
 }

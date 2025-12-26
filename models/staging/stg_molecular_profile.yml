@@ -1,12 +1,18 @@
+version: 2
+
 models:
-  - name: stg_molecular_profile
-    columns: 
+  - name: stg_molecular_profile_id
+    columns:
       - name: molecular_profile_id
         tests:
           - not_null:
-            tags: [critical]
-      - name: mp_name
+              config:
+                tags: [critical]
+
+      - name: eid
         tests:
           - not_null:
-            tags: [critical]
-      
+              config:
+                tags: [critical]
+
+          

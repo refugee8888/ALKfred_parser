@@ -1,8 +1,11 @@
+version: 2
+
 models:
   - name: stg_therapy
-    columns: 
-      - name: therapy_name_norm
+    columns:
+      - name: eid
         tests:
-          - not_null:
-            tags: [critical]
-    
+          - not_null
+      - name: therapy_name
+        tests:
+          - not_null

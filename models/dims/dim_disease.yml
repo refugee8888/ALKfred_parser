@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_disease
+    columns:
+      - name: doid
+        tests:
+          - not_null:
+              config:
+                tags: [critical]
+          - unique: 
+              config:
+                tags: [critical]
