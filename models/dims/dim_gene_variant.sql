@@ -1,3 +1,5 @@
+{{config(materialized="table")}}
+
 with src as (
   select *
   from {{ ref('stg_gene_variant') }}
