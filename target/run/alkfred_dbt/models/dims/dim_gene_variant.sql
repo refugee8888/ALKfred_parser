@@ -1,9 +1,16 @@
 
-  create view "alkfred"."public"."dim_gene_variant__dbt_tmp"
+  
     
+
+  create  table "alkfred"."public"."dim_gene_variant__dbt_tmp"
+  
+  
+    as
+  
+  (
     
-  as (
-    with src as (
+
+with src as (
   select *
   from "alkfred"."public"."stg_gene_variant"
 ),
@@ -30,3 +37,4 @@ select
 from ranked
 where rn = 1
   );
+  

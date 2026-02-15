@@ -1,37 +1,44 @@
 
-      -- back compat for old kwarg name
+      
+  
+    
+
+  create  table "alkfred"."public"."bridge_evidence_therapy"
   
   
-        
-            
-                
-                
-            
-                
-                
-            
-        
+    as
+  
+  (
     
 
-    
+with base as (
+  select
+    st.eid::int as eid,
+    trim(st.ncit_id) as ncit_id,
+    st.ingestion_run_id,
+    st.ingested_at_utc
+  from "alkfred"."public"."stg_therapy" st
+  where st.ncit_id is not null and trim(st.ncit_id) <> ''
+),
 
-    merge into "alkfred"."public"."bridge_evidence_therapy" as DBT_INTERNAL_DEST
-        using "bridge_evidence_therapy__dbt_tmp052041605273" as DBT_INTERNAL_SOURCE
-        on (
-                    DBT_INTERNAL_SOURCE.eid = DBT_INTERNAL_DEST.eid
-                ) and (
-                    DBT_INTERNAL_SOURCE.ncit_id = DBT_INTERNAL_DEST.ncit_id
-                )
+dedup as (
+  select
+    *,
+    row_number() over (
+      partition by eid, ncit_id
+      order by ingested_at_utc desc, ingestion_run_id desc
+    ) as rn
+  from base
+)
 
-    
-    when matched then update set
-        "eid" = DBT_INTERNAL_SOURCE."eid","ncit_id" = DBT_INTERNAL_SOURCE."ncit_id","ingestion_run_id" = DBT_INTERNAL_SOURCE."ingestion_run_id","ingested_at_utc" = DBT_INTERNAL_SOURCE."ingested_at_utc"
-    
-
-    when not matched then insert
-        ("eid", "ncit_id", "ingestion_run_id", "ingested_at_utc")
-    values
-        ("eid", "ncit_id", "ingestion_run_id", "ingested_at_utc")
+select
+  eid, ncit_id,
+  ingestion_run_id,
+  ingested_at_utc
+from dedup
+where rn = 1
 
 
+  );
+  
   

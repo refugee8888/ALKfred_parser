@@ -20,6 +20,7 @@ with src as (
         evidence_type,
         rating,
         status,
+        pub_year,
         description,
         ingestion_run_id,
         ingested_at_utc
@@ -45,6 +46,7 @@ select
     rating,
     status,
     coalesce(nullif(pmids_json, '[]'), '[]') as pmids_json,
+    pub_year,
     description,
     ingestion_run_id,
     ingested_at_utc

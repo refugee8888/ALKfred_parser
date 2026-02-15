@@ -1,42 +1,93 @@
 
-      -- back compat for old kwarg name
+      
+  
+    
+
+  create  table "alkfred"."public"."fact_evidence_assoc"
   
   
-        
-            
-                
-                
-            
-                
-                
-            
-                
-                
-            
-        
+    as
+  
+  (
     
 
-    
-
-    merge into "alkfred"."public"."fact_evidence_assoc" as DBT_INTERNAL_DEST
-        using "fact_evidence_assoc__dbt_tmp052041520011" as DBT_INTERNAL_SOURCE
-        on (
-                    DBT_INTERNAL_SOURCE.eid = DBT_INTERNAL_DEST.eid
-                ) and (
-                    DBT_INTERNAL_SOURCE.doid = DBT_INTERNAL_DEST.doid
-                ) and (
-                    DBT_INTERNAL_SOURCE.molecular_profile_id = DBT_INTERNAL_DEST.molecular_profile_id
-                )
-
-    
-    when matched then update set
-        "eid" = DBT_INTERNAL_SOURCE."eid","doid" = DBT_INTERNAL_SOURCE."doid","molecular_profile_id" = DBT_INTERNAL_SOURCE."molecular_profile_id","direction" = DBT_INTERNAL_SOURCE."direction","significance" = DBT_INTERNAL_SOURCE."significance","pub_year" = DBT_INTERNAL_SOURCE."pub_year","ingestion_run_id" = DBT_INTERNAL_SOURCE."ingestion_run_id","ingested_at_utc" = DBT_INTERNAL_SOURCE."ingested_at_utc"
-    
-
-    when not matched then insert
-        ("eid", "doid", "molecular_profile_id", "direction", "significance", "pub_year", "ingestion_run_id", "ingested_at_utc")
-    values
-        ("eid", "doid", "molecular_profile_id", "direction", "significance", "pub_year", "ingestion_run_id", "ingested_at_utc")
+with ev as (
+    select
+        se.eid::int as eid,
+        upper(trim(se.direction)) as direction,
+        upper(trim(se.significance)) as significance,
+        se.pub_year::int as pub_year,
+        se.ingestion_run_id,
+        se.ingested_at_utc
+    from "alkfred"."public"."stg_evidence" se
+),
 
 
+dis as (
+    select
+        sd.eid::int as eid,
+        sd.doid,
+        sd.ingestion_run_id,
+        sd.ingested_at_utc
+    from "alkfred"."public"."stg_disease" sd
+),
+
+
+mp as (
+    select
+        smp.eid::int as eid,
+        smp.molecular_profile_id::int as molecular_profile_id,
+        smp.ingestion_run_id,
+        smp.ingested_at_utc
+    from "alkfred"."public"."stg_molecular_profile" smp
+),
+
+base as (
+    select
+        ev.eid,
+        dis.doid,
+        coalesce(mp.molecular_profile_id, -1) as molecular_profile_id,
+
+        ev.direction,
+        ev.significance,
+        ev.pub_year,
+
+        -- lineage
+        greatest(
+            ev.ingested_at_utc,
+            dis.ingested_at_utc,
+            coalesce(mp.ingested_at_utc, ev.ingested_at_utc)
+        ) as ingested_at_utc,
+
+        ev.ingestion_run_id
+    from ev
+    join dis on dis.eid = ev.eid
+    left join mp on mp.eid = ev.eid
+),
+
+dedup as (
+    select
+        *,
+        row_number() over (
+            partition by eid, doid, molecular_profile_id
+            order by ingested_at_utc desc, ingestion_run_id desc
+        ) as rn
+    from base
+)
+
+select
+    eid,
+    doid,
+    molecular_profile_id,
+    direction,
+    significance,
+    pub_year,
+    ingestion_run_id,
+    ingested_at_utc
+from dedup
+where rn = 1
+
+
+  );
+  
   

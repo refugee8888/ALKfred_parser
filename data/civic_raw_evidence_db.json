@@ -3148,6 +3148,13 @@
       "name": "EML4::ALK Fusion AND ALK I1171N AND ALK L1196M",
       "variants": [
         {
+          "name": "L1196M",
+          "alleleRegistryId": "CA16602593",
+          "feature": {
+            "name": "ALK"
+          }
+        },
+        {
           "name": "Fusion",
           "feature": {
             "name": "EML4::ALK"
@@ -3156,13 +3163,6 @@
         {
           "name": "I1171N",
           "alleleRegistryId": "CA16602371",
-          "feature": {
-            "name": "ALK"
-          }
-        },
-        {
-          "name": "L1196M",
-          "alleleRegistryId": "CA16602593",
           "feature": {
             "name": "ALK"
           }
@@ -3205,6 +3205,13 @@
       "name": "EML4::ALK Fusion AND ALK G1202R AND ALK I1171N AND ALK L1196M",
       "variants": [
         {
+          "name": "L1196M",
+          "alleleRegistryId": "CA16602593",
+          "feature": {
+            "name": "ALK"
+          }
+        },
+        {
           "name": "Fusion",
           "feature": {
             "name": "EML4::ALK"
@@ -3220,13 +3227,6 @@
         {
           "name": "I1171N",
           "alleleRegistryId": "CA16602371",
-          "feature": {
-            "name": "ALK"
-          }
-        },
-        {
-          "name": "L1196M",
-          "alleleRegistryId": "CA16602593",
           "feature": {
             "name": "ALK"
           }
