@@ -1,5 +1,10 @@
 
--- Run with: psql "$PG_DSN" -f /app/src/alkfred/sql/dbt_ready_schema.sql
+
+CREATE SCHEMA public;
+--insert correct username before grantic access; 
+GRANT ALL ON SCHEMA public TO alkfred_paul;
+
+
 BEGIN;
 
 -- Raw tables BRONZE layer

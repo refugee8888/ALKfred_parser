@@ -18,7 +18,6 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--limit", type=int)
     p.add_argument("--oncogene", type=str, default=None, help="Target oncogene symbol")
     p.add_argument("--source", choices=["civic", "test"], required=True)
-    p.add_argument("--db", type=Path, default=config.default_db_path())
     p.add_argument(
         "--civic", type=Path, default=config.data_dir() / "civic_raw_evidence_db.json"
     )
@@ -43,8 +42,9 @@ def main(argv=None) -> int:
             overwrite=args.overwrite,
             limit=args.limit,
         )
-
-    # config.apply_schema(db_path=args.db)
+    #before running the build make sure the right usernames and connection
+    #credentials are set
+    config.apply_schema()
     config.apply_raw_evidence()
     config.apply_raw_disease()
     config.apply_raw_molecular_profile()
