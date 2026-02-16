@@ -3,6 +3,7 @@ from alkfred import config
 from alkfred.etl import civic_fetch
 import logging
 from pathlib import Path
+from prefect import flow
 
 
 logger = logging.getLogger(__name__)
@@ -28,6 +29,15 @@ def build_parser() -> argparse.ArgumentParser:
     return p
 
 
+@flow(log_prints=True)
+def run_raw():
+
+    config.apply_raw_evidence()
+    config.apply_raw_disease()
+    config.apply_raw_molecular_profile()
+    config.apply_raw_gene_variant()
+    config.apply_raw_therapy()
+
 def main(argv=None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -45,15 +55,16 @@ def main(argv=None) -> int:
     #before running the build make sure the right usernames and connection
     #credentials are set
     config.apply_schema()
-    config.apply_raw_evidence()
-    config.apply_raw_disease()
-    config.apply_raw_molecular_profile()
-    config.apply_raw_gene_variant()
-    config.apply_raw_therapy()
+    
+    run_raw()
+    # config.apply_raw_evidence()
+    # config.apply_raw_disease()
+    # config.apply_raw_molecular_profile()
+    # config.apply_raw_gene_variant()
+    # config.apply_raw_therapy()
 
     logger.info("Database ready")
 
 
 if __name__ == "__main__":
-
     raise SystemExit(main())
