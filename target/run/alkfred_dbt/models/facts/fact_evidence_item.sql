@@ -3,7 +3,7 @@
   
     
 
-  create  table "alkfred"."public"."fact_evidence_item"
+  create  table "alkfred"."public"."fact_evidence_item__dbt_tmp"
   
   
     as

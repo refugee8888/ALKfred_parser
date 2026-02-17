@@ -3,7 +3,7 @@
   
     
 
-  create  table "alkfred"."public"."fact_evidence_assoc"
+  create  table "alkfred"."public"."fact_evidence_assoc__dbt_tmp"
   
   
     as
@@ -14,6 +14,8 @@
 with ev as (
     select
         se.eid::int as eid,
+        upper(trim(se.status)) as status,
+        upper(trim(se.evidence_type)) as evidence_type,
         upper(trim(se.direction)) as direction,
         upper(trim(se.significance)) as significance,
         se.pub_year::int as pub_year,
@@ -49,6 +51,8 @@ base as (
         coalesce(mp.molecular_profile_id, -1) as molecular_profile_id,
 
         ev.direction,
+        ev.status,
+        ev.evidence_type,
         ev.significance,
         ev.pub_year,
 
@@ -79,6 +83,8 @@ select
     eid,
     doid,
     molecular_profile_id,
+    status,
+    evidence_type,
     direction,
     significance,
     pub_year,

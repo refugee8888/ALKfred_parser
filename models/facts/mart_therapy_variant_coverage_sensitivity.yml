@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: mart_therapy_variant_coverage_sensitivity
+    description: >
+      Gets diversity density of unique sensitive variants spread across unique eids for a given therapy

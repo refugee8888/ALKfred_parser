@@ -3,7 +3,7 @@
   
     
 
-  create  table "alkfred"."public"."bridge_evidence_variant"
+  create  table "alkfred"."public"."bridge_evidence_variant__dbt_tmp"
   
   
     as

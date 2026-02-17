@@ -35,8 +35,8 @@ ranked as (
 select
     md5(therapy_nk) as therapy_sk,
     therapy_nk,
-    eid, 
-    molecular_profile_id, 
+    -- eid, 
+    -- molecular_profile_id, 
     ncit_id, 
     therapy_name,
     ingestion_run_id,

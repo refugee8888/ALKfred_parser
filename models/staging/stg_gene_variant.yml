@@ -13,3 +13,8 @@ models:
           - not_null:
               config:
                 tags: [critical]
+      - name: driver_gene
+        tests:
+          - not_null:
+              config:
+                tags: [critical]

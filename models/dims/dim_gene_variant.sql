@@ -21,6 +21,7 @@ select
   molecular_profile_id,
   civic_ca_id,
   gene_symbol,
+  driver_gene,
   variant_name,
   ingested_at_utc,
   ingestion_run_id
