@@ -40,7 +40,6 @@ def test_fetch_filters_and_limit(tmp_path, monkeypatch):
         {"id": 4, "molecularProfile": {"name": "EGFR L858R"}},
     ]
 
-    
     monkeypatch.setattr(
         civic_fetch.api_calls,
         "fetch_civic_all_evidence_items",
@@ -71,11 +70,12 @@ def test_fetch_overwrite_replaces_file(tmp_path, monkeypatch):
     raw = tmp_path / "civic_raw_evidence_db.json"
     raw.write_text(json.dumps([{"id": "OLD"}]))
 
-    
     monkeypatch.setattr(
         civic_fetch.api_calls,
         "fetch_civic_all_evidence_items",
-        lambda *, logger=None, **kwargs: [{"id": 101, "molecularProfile": {"name": "EML4-ALK"}}],
+        lambda *, logger=None, **kwargs: [
+            {"id": 101, "molecularProfile": {"name": "EML4-ALK"}}
+        ],
     )
 
     monkeypatch.setattr(
