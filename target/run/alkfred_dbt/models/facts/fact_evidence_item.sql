@@ -1,53 +1,30 @@
 
-      
-  
-    
-
-  create  table "alkfred"."public"."fact_evidence_item__dbt_tmp"
+      -- back compat for old kwarg name
   
   
-    as
-  
-  (
-    
-
-with base as (
-
-    select
-        se.eid::int as eid,
-
-        upper(trim(se.direction)) as direction,
         
-        upper(trim(se.significance)) as significance,
-        se.pub_year::int as pub_year,
-
-        se.ingestion_run_id,
-        se.ingested_at_utc
-
-    from "alkfred"."public"."stg_evidence" se
+            
+	    
+	    
+            
+        
+    
 
     
-),
 
-dedup as (
-    select
-        *,
-        row_number() over (
-          partition by eid
-          order by ingested_at_utc desc, ingestion_run_id desc
-        ) as rn
-    from base
-)
+    merge into "alkfred"."public"."fact_evidence_item" as DBT_INTERNAL_DEST
+        using "fact_evidence_item__dbt_tmp100316538388" as DBT_INTERNAL_SOURCE
+        on ((DBT_INTERNAL_SOURCE.eid = DBT_INTERNAL_DEST.eid))
 
-select
-    eid,
-    direction,
-    significance,
-    pub_year,
-    ingestion_run_id,
-    ingested_at_utc
-from dedup
-where rn = 1
-  );
-  
+    
+    when matched then update set
+        "eid" = DBT_INTERNAL_SOURCE."eid","direction" = DBT_INTERNAL_SOURCE."direction","significance" = DBT_INTERNAL_SOURCE."significance","pub_year" = DBT_INTERNAL_SOURCE."pub_year","ingestion_run_id" = DBT_INTERNAL_SOURCE."ingestion_run_id","ingested_at_utc" = DBT_INTERNAL_SOURCE."ingested_at_utc"
+    
+
+    when not matched then insert
+        ("eid", "direction", "significance", "pub_year", "ingestion_run_id", "ingested_at_utc")
+    values
+        ("eid", "direction", "significance", "pub_year", "ingestion_run_id", "ingested_at_utc")
+
+
   

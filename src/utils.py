@@ -4,7 +4,6 @@ from requests.adapters import HTTPAdapter, Retry
 from graphql import GraphQLError
 import logging
 
-
 s = requests.Session()
 
 retries = Retry(

@@ -1,17 +1,13 @@
 import json
-from operator import pos
 import subprocess
-from sys import version
 from dotenv import load_dotenv
 import os
 import logging
 from pathlib import Path
-import sqlite3
 import importlib
 from typing import Any
 from datetime import datetime, timezone
 import uuid
-import dotenv
 import psycopg2
 
 logging.basicConfig(
@@ -22,6 +18,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
 load_dotenv()
+
 
 def _run_module_main(dotted: str):
     mod = importlib.import_module(dotted)
@@ -101,7 +98,6 @@ def load_from_json(path) -> dict:
 
 
 def apply_schema():
-    
 
     schema_path = "/app/src/alkfred/sql/dbt_ready_schema.sql"
 
@@ -111,17 +107,10 @@ def apply_schema():
 
     env = os.environ.copy()
     env["PG_DSN"] = m
-    
-    
-    
-    subprocess.run(
-        ["psql", m, "-f", schema_path],
-        check=True,
-        env=env
-    )
+
+    subprocess.run(["psql", m, "-f", schema_path], check=True, env=env)
 
     print("Schema applied successfully.")
-    
 
 
 def apply_raw_evidence():
@@ -130,7 +119,7 @@ def apply_raw_evidence():
 
 
 def apply_raw_disease():
-    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_disase.py")
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_disease.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_disease")
 
 

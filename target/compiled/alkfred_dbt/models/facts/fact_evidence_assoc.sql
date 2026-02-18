@@ -82,3 +82,5 @@ select
 from dedup
 where rn = 1
 
+
+  and ingested_at_utc > (select coalesce(max(ingested_at_utc), '1900-01-01') from "alkfred"."public"."fact_evidence_assoc")

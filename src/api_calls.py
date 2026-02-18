@@ -6,10 +6,9 @@ GRAPHQL_URL = "https://civicdb.org/api/graphql"
 HEADERS = {"Content-Type": "application/json"}
 API_THROTTLE = 0.2
 
-log = logging.getLogger(__name__)
 
-
-def fetch_civic_all_evidence_items():
+def fetch_civic_all_evidence_items(logger: None):
+    log = logger or logging.getLogger(__name__)
     after_cursor = None
     all_items = []
     seen_ids = set()
@@ -62,8 +61,9 @@ def fetch_civic_all_evidence_items():
             break
 
         after_cursor = evidence_items["pageInfo"]["endCursor"]
+        log.info("Fetched page %s with %s items", page, len(all_items))
         page += 1
-        logging.info("Fetched page %s with %s items", page, len(all_items))
+
         time.sleep(API_THROTTLE)
 
         if page > MAX_PAGES:

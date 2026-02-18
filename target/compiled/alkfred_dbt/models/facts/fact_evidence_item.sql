@@ -16,6 +16,9 @@ with base as (
     from "alkfred"."public"."stg_evidence" se
 
     
+      where se.ingested_at_utc >
+        (select coalesce(max(ingested_at_utc), '1900-01-01') from "alkfred"."public"."fact_evidence_item")
+    
 ),
 
 dedup as (

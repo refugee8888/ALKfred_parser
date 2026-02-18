@@ -2,7 +2,6 @@ from pathlib import Path
 from uuid import uuid4
 from alkfred import config
 
-
 JSON_PATH = Path("/app/data/civic_raw_evidence_db.json")
 
 
