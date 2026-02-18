@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="ALKfred build (Prefect-orchestrated)")
+    p = argparse.ArgumentParser(description="Welcome to ALKfred")
 
     p.add_argument(
         "--overwrite",
