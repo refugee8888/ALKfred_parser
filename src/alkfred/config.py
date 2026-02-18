@@ -1,9 +1,9 @@
 import json
+import subprocess
 from dotenv import load_dotenv
 import os
 import logging
 from pathlib import Path
-import sqlite3
 import importlib
 from typing import Any
 from datetime import datetime, timezone
@@ -17,6 +17,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 UUID_NAMESPACE = uuid.UUID("00000000-0000-0000-0000-000000000000")
+load_dotenv()
 
 
 def _run_module_main(dotted: str):
@@ -43,12 +44,6 @@ def data_dir() -> Path:
     return d
 
 
-def default_db_path() -> Path:
-    # Return the absolute default database path
-    d = data_dir() / "alkfred.sqlite"
-    return d
-
-
 def raw_json_list_to_dict(path: Path) -> dict[Any, Any]:
     raw_dict = {index: value for index, value in enumerate(load_from_json(path))}
     return raw_dict
@@ -56,7 +51,7 @@ def raw_json_list_to_dict(path: Path) -> dict[Any, Any]:
 
 def env_path() -> Path:
     # Return the absolute environment directory
-    d = repo_root() / "/app/src/.env"
+    d = repo_root() / ".env"
     return d
 
 
@@ -86,16 +81,6 @@ def postgres_key() -> str:
     return get_env("PG_DSN", required=True)
 
 
-def get_conn(db_path: str | Path | None) -> sqlite3.Connection:
-    # Get a connection to the database
-    if db_path is None:
-        db_path = default_db_path()
-    conn = sqlite3.connect(str(db_path), detect_types=sqlite3.PARSE_DECLTYPES)
-    conn.row_factory = sqlite3.Row
-
-    return conn
-
-
 def norm(text: str) -> str:
     # Normalize the text for general use
     return text.lower().strip()
@@ -112,17 +97,20 @@ def load_from_json(path) -> dict:
     return data
 
 
-def apply_schema(db_path: Path):
-    import sqlite3
+def apply_schema():
 
-    schema_path = "src/alkfred/sql/schema.sql"
+    schema_path = "/app/src/alkfred/sql/dbt_ready_schema.sql"
 
-    print(f"Applying schema from {schema_path} to {db_path}")
-    conn = sqlite3.connect(db_path)
-    with open(schema_path, "r", encoding="utf-8") as f:
-        conn.executescript(f.read())
-    conn.commit()
-    conn.close()
+    print(f"Applying schema from {schema_path}")
+
+    m = postgres_key()
+
+    env = os.environ.copy()
+    env["PG_DSN"] = m
+
+    subprocess.run(["psql", m, "-f", schema_path], check=True, env=env)
+
+    print("Schema applied successfully.")
 
 
 def apply_raw_evidence():
@@ -131,7 +119,7 @@ def apply_raw_evidence():
 
 
 def apply_raw_disease():
-    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_disase.py")
+    print("Loading /app/src/alkfred/sql/raw_load/civic_raw_disease.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_disease")
 
 
@@ -153,3 +141,7 @@ def apply_raw_therapy():
 def postgres_conn():
     conn = psycopg2.connect(postgres_key())
     return conn
+
+
+if __name__ == "__main__":
+    apply_schema()

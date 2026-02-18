@@ -22,9 +22,14 @@ build/
 .idea/
 
 # Project data
-data/raw/*
-data/private/*
+~/data/raw/*
+~/data/private/*
 *.log
+~/target/*
+./app/data
+./app/target
+data
+target
 
 #DBT
 .dbt

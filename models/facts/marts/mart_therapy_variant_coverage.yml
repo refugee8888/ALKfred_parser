@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: mart_therapy_variant_coverage
+    description: >
+      Gets diversity density of unique resistant variants spread across unique eids for a given therapy

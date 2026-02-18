@@ -8,12 +8,6 @@ with base as (
         upper(trim(se.direction)) as direction,
         
         upper(trim(se.significance)) as significance,
-        evidence_level,
-        evidence_type,
-        rating,
-        status,
-        pmids_json,
-        description,
         se.pub_year::int as pub_year,
 
         se.ingestion_run_id,
@@ -41,12 +35,6 @@ select
     eid,
     direction,
     significance,
-    evidence_level,
-    evidence_type,
-    rating,
-    status,
-    pmids_json,
-    description,
     pub_year,
     ingestion_run_id,
     ingested_at_utc

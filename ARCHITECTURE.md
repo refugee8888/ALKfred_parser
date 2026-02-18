@@ -1,265 +1,259 @@
 # ALKfred – Architecture
 
-## Overview
+## What this is (and what it is not)
 
-ALKfred is a **Postgres-backed analytical warehouse** for oncology evidence data, modeled and transformed using **dbt-core**.
+**ALKfred** is a **Postgres-backed ELT analytics warehouse** for CIViC variant–therapy evidence.
 
-Python is used **only for raw ingestion and initial normalization**.  
-All **business logic, modeling, constraints, and analytics live in dbt**.
+- It is a reproducible *curation-analytics* warehouse: it models **how CIViC evidence is structured and distributed**.
+- It is **not** a clinical decision support system.
+- It is **not** patient-grade, outcome-grade, or predictive modeling infrastructure.
+- It does **not** infer biology; it preserves and summarizes curated assertions.
 
-The system follows a **modern ELT architecture**:
-
-- **Extract + Load**: Python → Postgres (raw/staging-ready tables)
-- **Transform**: dbt → star schema + bridges + analytical marts
-- **Analyze**: SQL-first facts designed for clinical interpretation
+**Python loads raw data; dbt models data; Postgres stores truth.**
 
 ---
 
-## High-Level Data Flow
+## High-level data flow
 
+```
 CIViC GraphQL API
-↓
-Python ingestion (ETL)
-↓
-Postgres (raw / staging tables)
-↓
-dbt-core transformations
-↓
-Dims • Bridges • Facts • Analytics
+        ↓
+Python ingestion (fetch → snapshot → load)
+        ↓
+Postgres raw tables (civic_raw_*)
+        ↓
+dbt models (stg → dim → bridge → fact → mart)
+        ↓
+Analytics-ready facts + marts
+```
+
+**Key principle:** Postgres is the warehouse. dbt is the modeling layer.  
+There is no separate “analytics DB”.
 
 ---
-Key principle:  
-> **Postgres is the warehouse. dbt is the modeling layer.**
 
----
+## Responsibilities by layer
 
-## Responsibilities by Layer
-
-### 1. Python (Ingestion Only)
+### Python: ingestion + replayability (not analytics)
 
 Python is responsible for:
 
-- Fetching CIViC data (GraphQL, paginated)
-- Writing **raw, reproducible records**
-- Minimal normalization (types, trimming, timestamps)
-- Loading data into **staging-compatible tables**
+- GraphQL pagination + fetch of CIViC evidence
+- Writing a **raw JSON snapshot** (replayable input)
+- Loading raw tables into Postgres (append/overwrite behavior is deliberate)
+- Minimal normalization only (type casts, trimming, ingestion metadata)
 
-Python **does NOT**:
-- Join tables
-- Enforce analytics grain
-- Compute metrics
-- Encode domain logic
+Python intentionally does **not**:
 
-Those responsibilities belong to dbt.
+- Join entities into analytics grains
+- Define dimension keys
+- Build bridges/facts/marts
+- Compute curation metrics
 
----
-
-### 2. Postgres (Warehouse)
-
-Postgres is the **single source of truth**.
-
-It stores:
-
-- Staging tables populated by Python
-- All dbt models (views + tables)
-- Constraints validated by dbt tests
-- Incremental analytical facts
-
-There is **no separate analytics DB**.
+If an output looks “analytical”, it should live in dbt.
 
 ---
 
-### 3. dbt-core (Modeling & Analytics)
+### Postgres: single source of truth
 
-dbt handles:
+Postgres stores:
 
-- Staging cleanup
-- Dimensional modeling
-- Bridge tables
-- Fact tables
-- Aggregations
-- Data tests
-- Incremental logic
+- Raw ingested sources (`civic_raw_*`)
+- dbt-produced models (views/tables)
+- Incremental bridge/fact tables (merge strategy)
+- Everything queryable by analysts
 
-Everything analysts and clinicians query is produced by dbt.
+There is no hidden state outside Postgres.
 
 ---
 
-## dbt Project Structure
+### dbt-core: modeling, constraints, analytics
 
+dbt is the **only** place where:
+
+- grains are defined
+- relationships are resolved (bridges)
+- entities are deduplicated (dimensions)
+- facts are constructed
+- marts are computed
+- tests enforce correctness
+
+---
+
+## dbt project structure
+
+This is the intended structure (folder names may vary slightly by repo layout):
+
+```
 models/
-├── sources.yml
-├── staging/
-│   ├── stg_disease.sql
-│   ├── stg_evidence.sql
-│   ├── stg_gene_variant.sql
-│   ├── stg_molecular_profile.sql
-│   └── stg_therapy.sql
-│
-├── dims/
-│   ├── dim_disease.sql
-│   ├── dim_evidence.sql
-│   ├── dim_gene_variant.sql
-│   ├── dim_molecular_profile.sql
-│   └── dim_therapy.sql
-│
-├── bridges/
-│   ├── bridge_evidence_disease.sql
-│   ├── bridge_evidence_variant.sql
-│   ├── bridge_evidence_therapy.sql
-│   └── bridge_evidence_molecular_profile.sql
-│
-├── facts/
-│   ├── fact_evidence_item.sql
-│   ├── fact_evidence_assoc.sql
-│   ├── fact_therapy_disease.sql
-│   └── fact_variant_therapy_daily.sql
-│
-└── marts/
-└── analytics-ready views
+  staging/         -- stg_* views: light cleanup, typing, trimming
+  dims/            -- dim_* tables: stable lookup entities
+  bridges/         -- bridge_* tables: many-to-many resolution from evidence
+  facts/     -- fact_* tables: analytics grains
+  facts/marts/          -- mart_* tables: clinician/analyst-facing summaries
+```
 
 ---
 
-## Modeling Philosophy
+## Modeling philosophy
 
-### Evidence Is the Atomic Grain
+### Evidence is the only true atomic grain
 
-The **only truly atomic entity** in CIViC is:
-evidence_id (eid)
+In CIViC, the only reliably atomic unit is **evidence item id (`eid`)**.
 
-Everything else (diseases, variants, therapies, molecular profiles) is **many-to-many** relative to evidence.
+Everything else is many-to-many relative to evidence:
+
+- one evidence item can reference multiple therapies
+- multiple variants
+- one disease (often), but still handled as an association
+- a molecular profile that can include multiple variants
 
 Therefore:
 
-- `eid` is the **fact root**
-- All associations are handled via **bridge tables**
+- **`eid` is the fact root**
+- all associations are resolved via **bridges**
+- facts are built by joining bridges + dims (not by flattening early)
+
+This prevents premature flattening and preserves CIViC’s combinatorial meaning.
 
 ---
 
-## Staging Models (`stg_*`)
+## Layer details
 
-Purpose:
+### Raw tables (`civic_raw_*`) — loaded by Python
 
-- Light cleanup only
-- Type casting
-- Trimming strings
-- Renaming columns
-- No joins across entities
+Raw tables represent CIViC data as ingested.
 
-Example:
+Typical raw entities:
 
-```sql
-select
-  eid::int,
-  upper(trim(significance)) as significance,
-  ingested_at_utc
-from source('alkfred', 'stg_evidence')
-```
+- `civic_raw_evidence`
+- `civic_raw_disease`
+- `civic_raw_molecular_profile`
+- `civic_raw_gene_variant`
+- `civic_raw_therapy`
 
-Dimension Models (dim_*)
+Raw tables can be “wide” and repetitive by design. Downstream models deduplicate.
 
-Dimensions provide stable lookup entities, not facts.
+---
 
-Examples:
-	•	dim_gene_variant
-	•	Deterministic variant_sk
-	•	Natural key (variant_nk) derived from CIViC CA ID or gene+variant
-	•	dim_therapy
-	•	NCIT identifiers
-	•	dim_disease
-	•	DOID-based disease entities
+### Staging models (`stg_*`) — light cleanup only
 
-Dimensions are deduplicated, slowly changing by replacement, and tested for uniqueness.
+Staging is intentionally boring:
 
-⸻
+- type casts (`eid::int`)
+- trimming/uppercase normalization
+- schema alignment across runs
+- ingestion metadata retained (`ingestion_run_id`, `ingested_at_utc`)
 
-Bridge Tables (bridge_*)
+**No cross-entity joins.**  
+If staging starts looking “smart”, it’s usually a smell.
 
-Bridges resolve many-to-many relationships between evidence and dimensions.
+---
 
-Pattern:
+### Dimensions (`dim_*`) — stable lookup entities
 
-eid ↔ dimension key
-
+Dimensions provide **stable identifiers** and canonical attributes.
 
 Examples:
-	•	bridge_evidence_variant (eid, variant_sk)
-	•	bridge_evidence_therapy (eid, ncit_id)
-	
 
-Rules:
-	•	One row per (eid, dimension_key)
-	•	Deduplicated via window functions
-	•	Incremental with safety overlap
-	•	No aggregation
+- `dim_gene_variant`
+  - deterministic `variant_sk = md5(variant_nk)`
+  - `variant_nk` derived from CIViC allele registry id when available, else fallback
+  - includes `driver_gene` normalization for fusions (rule-based, explicit)
 
-Bridges intentionally duplicate rows when evidence references multiple entities — this is correct and required.
+- `dim_therapy`
+  - deterministic `therapy_sk = md5(therapy_nk)`
+  - `therapy_nk` prefers NCIT id; fallback to name-based key
 
-⸻
+- `dim_disease`
+  - DOID-based disease identity
 
-Fact Tables
+- `dim_evidence`
+  - one row per `eid` with intrinsic attributes (direction, significance, pub_year, etc.)
 
-1. fact_evidence_item
+Dimensions are deduped by windowing and treated as replacement-style “latest row wins”.
 
-Grain: one row per eid
+---
 
-Contains intrinsic evidence attributes:
-	•	direction
-	•	significance
-	•	publication year
-	•	ingestion metadata
+### Bridges (`bridge_*`) — resolve many-to-many associations
 
-No foreign keys to dimensions.
+Bridges represent relationships at the correct grain:
 
-⸻
+- one row per `(eid, dimension_key)`
+- deduped via window functions
+- incremental merge with overlap windows where needed
+- **no aggregation**
 
-2. fact_evidence_assoc
+Examples:
 
-Grain: one row per (eid, doid, therapy, variant, molecular_profile)
+- `bridge_evidence_variant (eid, variant_sk)`
+- `bridge_evidence_therapy (eid, ncit_id)`
 
-This is the exploded fact, produced by joining bridges.
+Bridges *intentionally* multiply rows because CIViC evidence is multi-valued.
 
-Purpose:
-	•	Preserve full combinatorial meaning of CIViC evidence
-	•	Enable downstream aggregation without losing signal
+That is not bloat — that’s correctness.
 
-⸻
+---
 
-3. fact_therapy_disease
+### Fact tables (`fact_*`) — analytics grains
 
-Grain: (therapy, disease)
+Facts are built from **dims + bridges**.
 
-Metrics:
-	•	resistant evidence count
-	•	sensitive evidence count
-	•	resistance rate
+Typical patterns:
 
-Clinician-facing aggregate.
+1) `fact_evidence_item`
+- **Grain:** one row per `eid`
+- intrinsic evidence attributes only
+- no combinatorial explosion
 
-⸻
+2) `fact_evidence_assoc`
+- **Grain:** exploded associations (e.g., `eid × disease × variant × therapy × molecular_profile` depending on model)
+- preserves CIViC’s combinatorial linkage so downstream aggregation doesn’t lose signal
 
-4. fact_variant_therapy_daily
+3) `fact_therapy_disease`
+- **Grain:** `(therapy, disease)`
+- counts resistance vs sensitivity evidence + variants
+- clinician-friendly summary
 
-Grain: (variant, therapy, disease, activity_date)
+4) `fact_variant_therapy_daily`
+- **Grain:** `(variant, therapy, disease, activity_date)`
+- time-aware aggregation for trend-style analysis
+- combinatorial counting is intentional: if one evidence item links multiple variants/therapies, each combination is represented
 
+---
 
-Purpose:
-	•	Time-aware resistance trends
-	•	Multi-variant, multi-therapy evidence propagation
-	•	Clinically meaningful counting:
-	•	If an evidence item links to multiple variants and therapies,
-each combination is counted
+### Marts (`mart_*`) — curation-structure summaries
 
-This is intentional and correct.
+Marts summarize **how CIViC curation behaves structurally**, not biological truth.
 
-⸻
+Examples (if present in the repo):
 
-Incremental Strategy
+- `mart_therapy_maturity`
+  - first/last year, year span, peak-year share
+  - maturity labels (distributed vs burst vs low-signal)
 
-Facts and bridges use incremental merge with:
-	•	Deduplication via window functions
-	•	Time-based guards using ingested_at_utc
-	•	Safety overlap windows where needed
+- `mart_therapy_dispersion`
+  - detects “inflated breadth” where many variants come from few evidence items
+
+- `mart_variant_abstraction_profile`
+  - classifies variant strings into allele-level vs family-level/state-level buckets
+  - exposes abstraction heterogeneity (important for interpreting counts)
+
+These marts are meant as diagnostics so analysts don’t over-interpret raw counts.
+
+---
+
+## Incremental strategy (bridges/facts)
+
+Incremental models typically use:
+
+- `incremental_strategy='merge'`
+- deterministic unique keys (composite where needed)
+- time guards based on `ingested_at_utc`
+- overlap windows (e.g., 3 days) to avoid late-arriving duplicates
+
+Example pattern:
+
 ```sql
 {% if is_incremental() %}
   and ingested_at_utc >= (
@@ -269,32 +263,46 @@ Facts and bridges use incremental merge with:
 {% endif %}
 ```
 
-Testing Strategy
+This is a pragmatic compromise: correctness over minimal writes.
 
-dbt tests enforce:
-	•	Uniqueness of dimension keys
-	•	Not-null constraints on fact grains
-	•	Accepted values for significance
-	•	Grain correctness (composite keys)
+---
 
-Tests reflect real-world analytical expectations, not artificial normalization.
+## Testing strategy (dbt)
 
-⸻
+dbt tests are used to enforce real constraints:
 
-Key Design Decisions (Intentional)
-	•	Evidence is not flattened prematurely
-	•	Multi-therapy / multi-variant evidence is fully propagated
-	•	No snowflaking inside facts
-	•	dbt is the single transformation authority
-	•	Postgres is the only warehouse
+- uniqueness of dimension keys (`*_sk`, natural keys)
+- not-null constraints on grains
+- accepted values (e.g., significance categories)
+- relationship integrity where appropriate
+- composite-grain correctness in bridges/facts
 
-Summary
+Tests reflect the warehouse’s analytical guarantees — not just “nice to have” validation.
+
+---
+
+## Orchestration (Prefect + CLI)
+
+The end-to-end pipeline is designed to be runnable as a single command:
+
+1. Apply idempotent Postgres schema
+2. Fetch CIViC evidence (paginated)
+3. Filter by oncogene(s)
+4. Load raw tables into Postgres
+5. Run `dbt build` (or `dbt run`, with optional `--full-refresh`)
+
+Prefect provides task structure, logging, retries (if configured), and a clean future path to scheduled runs.
+
+---
+
+## Summary
 
 ALKfred is:
-	•	SQL-first
-	•	dbt-native
-	•	Clinically interpretable
-	•	Correctly denormalized where needed
-	•	Built for evolution toward temporal mutation modeling
 
-This architecture intentionally favors truth preservation over convenience, which is essential for oncology analytics.
+- **SQL-first**
+- **dbt-native**
+- **warehouse-correct** for CIViC’s evidence model
+- **truth-preserving** (bridges/facts avoid premature flattening)
+- built for *curation-structure analytics* and future extension
+
+
