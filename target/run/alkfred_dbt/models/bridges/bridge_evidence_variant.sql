@@ -16,7 +16,7 @@
     
 
     merge into "alkfred"."public"."bridge_evidence_variant" as DBT_INTERNAL_DEST
-        using "bridge_evidence_variant__dbt_tmp100316869509" as DBT_INTERNAL_SOURCE
+        using "bridge_evidence_variant__dbt_tmp183054181241" as DBT_INTERNAL_SOURCE
         on (
                     DBT_INTERNAL_SOURCE.eid = DBT_INTERNAL_DEST.eid
                 ) and (
