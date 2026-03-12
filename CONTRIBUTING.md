@@ -224,6 +224,5 @@ Final Note
 
 ALKfred values correctness, traceability, and clarity over speed.
 
-If you are here to learn real-world data engineering — welcome.
-If you are here to cut corners — this repository will push back.
+
 
