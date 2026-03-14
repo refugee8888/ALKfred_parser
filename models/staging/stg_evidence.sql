@@ -15,7 +15,10 @@ with source as (
         description,
         ingestion_run_id,
         ingested_at_utc
+    
     from {{ source('alkfred', 'civic_raw_evidence') }}
+    -- discarding functional evidence
+    where evidence_type != 'FUNCTIONAL'
 ),
 
 norm as (

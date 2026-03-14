@@ -56,3 +56,33 @@ def fetch_civic_evidence(
     )
 
     return filtered
+
+
+def fetch_civic_all_evidence(
+    civic_path=None,
+    overwrite=False,
+    logger=None,
+):
+    log_ = logger or log
+
+    if civic_path is None:
+        civic_path = config.data_dir() / "civic_raw_evidence_db.json"
+    civic_path = Path(civic_path)
+
+    if civic_path.exists() and not overwrite:
+        log_.info("Using cached CIViC payload at %s (overwrite=False)", civic_path)
+        with civic_path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+
+    log_.info("Fetching full CIViC ACCEPTED evidence dataset...")
+    all_items = api_calls.fetch_civic_all_evidence_items(logger=log_)
+
+    civic_path.parent.mkdir(parents=True, exist_ok=True)
+    config.save_to_json(all_items, path=civic_path)
+    log_.info(
+        "Saved full payload | rows=%s | path=%s",
+        len(all_items),
+        civic_path,
+    )
+
+    return all_items

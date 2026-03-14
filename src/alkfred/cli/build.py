@@ -76,8 +76,9 @@ def build_parser() -> argparse.ArgumentParser:
 def _parse_oncogenes(arg: Optional[str]) -> List[str]:
     if not arg:
         return []
+    if arg.strip().upper() == "ALL":
+        return ["ALL"]
     genes = [x.strip().upper() for x in arg.split(",") if x.strip()]
-    # de-dupe preserving order
     out: List[str] = []
     seen = set()
     for g in genes:
@@ -139,7 +140,12 @@ def load_raw_from_current_json() -> None:
 
     log.info("Raw load complete.")
 
-
+@task
+def fetch_all_evidence_payload(civic_path: Path, overwrite: bool) -> None:
+    log = get_run_logger()
+    from alkfred.etl.civic_fetch import fetch_civic_all_evidence
+    fetch_civic_all_evidence(civic_path=civic_path, overwrite=overwrite, logger=log)
+    
 @task
 def build_dbt(
     project_dir: Optional[Path],
@@ -195,15 +201,19 @@ def alkfred_build_flow(
 
     # 2) For each gene: fetch -> load raw
 
-    for gene in oncogenes:
-        fetch_gene_payload(
-            oncogene=gene,
-            source=source,
-            civic_path=civic_path,
-            overwrite=overwrite,
-            limit=limit,
-        )
+    if oncogenes == ["ALL"]:
+        fetch_all_evidence_payload(civic_path=civic_path, overwrite=overwrite)
         load_raw_from_current_json()
+    else:
+        for gene in oncogenes:
+            fetch_gene_payload(
+                oncogene=gene,
+                source=source,
+                civic_path=civic_path,
+                overwrite=overwrite,
+                limit=limit,
+            )
+            load_raw_from_current_json()
 
     # 3) dbt optional
     if build_dbt_flag:
@@ -213,6 +223,8 @@ def alkfred_build_flow(
             select=dbt_select,
             full_refresh=full_refresh,
         )
+    
+        
 
     log.info("ALKfred build done.")
 
