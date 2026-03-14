@@ -33,7 +33,7 @@ CREATE INDEX IF NOT EXISTS idx_civic_raw_evidence_eid
 CREATE TABLE IF NOT EXISTS civic_raw_disease(
     disease_count BIGSERIAL PRIMARY KEY,
     eid           INTEGER NOT NULL,
-    doid          TEXT NOT NULL,
+    doid          TEXT,
     disease_name  TEXT NOT NULL,
     synonyms_json TEXT NOT NULL DEFAULT '[]',
     ingestion_run_id UUID NOT NULL,

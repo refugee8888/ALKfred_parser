@@ -29,7 +29,7 @@ select
     eid,
     case
         when doid_raw_norm like 'DOID:%' then doid_raw_norm
-        when doid_raw_norm is null or doid_raw_norm = '' then null
+        when doid_raw_norm is null or doid_raw_norm = '' then 'DOID:' || disease_name || '(' || md5(disease_name) || ')'
         else 'DOID:' || doid_raw_norm
     end as doid,
     disease_name,

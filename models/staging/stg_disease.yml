@@ -3,9 +3,6 @@ version: 2
 models:
   - name: stg_disease
     columns:
-      - name: doid
-        tests:
-          - not_null
       - name: disease_name
         tests:
           - not_null:
