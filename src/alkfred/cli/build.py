@@ -140,12 +140,15 @@ def load_raw_from_current_json() -> None:
 
     log.info("Raw load complete.")
 
+
 @task
 def fetch_all_evidence_payload(civic_path: Path, overwrite: bool) -> None:
     log = get_run_logger()
     from alkfred.etl.civic_fetch import fetch_civic_all_evidence
+
     fetch_civic_all_evidence(civic_path=civic_path, overwrite=overwrite, logger=log)
-    
+
+
 @task
 def build_dbt(
     project_dir: Optional[Path],
@@ -223,8 +226,6 @@ def alkfred_build_flow(
             select=dbt_select,
             full_refresh=full_refresh,
         )
-    
-        
 
     log.info("ALKfred build done.")
 
