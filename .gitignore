@@ -39,4 +39,4 @@ aws
 
 rds_run.sh
 rds_conn_check.sh
-secrets.sh
+secrets.shecs_task_definition.json
