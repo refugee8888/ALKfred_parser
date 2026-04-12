@@ -1,13 +1,18 @@
-FROM python:3.12-slim
+FROM python:3.12-slim AS production
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app/src
 
 WORKDIR /app
 
 # System deps (git etc.)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
+    libpq-dev \
+    gcc \
+    build-essential \
+    postgresql-client \
  && rm -rf /var/lib/apt/lists/*
 
 # Python deps
@@ -16,6 +21,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # App code
 COPY src ./src
+
+# dbt project
+COPY dbt_project.yml .
+COPY models ./models
+
+# dbt profiles (uses env vars, no hardcoded credentials)
+COPY profiles.yml /root/.dbt/profiles.yml
 
 
 

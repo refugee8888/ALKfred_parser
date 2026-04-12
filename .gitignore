@@ -34,4 +34,9 @@ target
 #DBT
 .dbt
 
+#AWS
+aws
 
+rds_run.sh
+rds_conn_check.sh
+secrets.sh

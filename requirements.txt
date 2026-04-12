@@ -2,7 +2,7 @@ python-dotenv
 requests
 pandas
 numpy
-graphql-core   
+graphql-core
 pytest
 mypy
 psycopg2-binary>=2.9
