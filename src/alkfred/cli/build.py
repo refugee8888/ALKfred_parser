@@ -2,6 +2,7 @@ import argparse
 import logging
 import os
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -150,6 +151,25 @@ def fetch_all_evidence_payload(civic_path: Path, overwrite: bool) -> None:
 
 
 @task
+def upload_to_s3(civic_path: Path) -> None:
+    import boto3
+
+    log = get_run_logger()
+
+    bucket = "alkfred-civic-raw"
+    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    key = f"snapshots/{date_str}/civic_raw_evidence_db.json"
+
+    if not civic_path.exists():
+        log.warning("S3 upload skipped — file not found: %s", civic_path)
+        return
+
+    s3 = boto3.client("s3", region_name="eu-central-1")
+    s3.upload_file(str(civic_path), bucket, key)
+    log.info("Uploaded snapshot to s3://%s/%s", bucket, key)
+
+
+@task
 def build_dbt(
     project_dir: Optional[Path],
     profiles_dir: Optional[Path],
@@ -206,6 +226,7 @@ def alkfred_build_flow(
 
     if oncogenes == ["ALL"]:
         fetch_all_evidence_payload(civic_path=civic_path, overwrite=overwrite)
+        upload_to_s3(civic_path=civic_path)
         load_raw_from_current_json()
     else:
         for gene in oncogenes:
@@ -216,7 +237,8 @@ def alkfred_build_flow(
                 overwrite=overwrite,
                 limit=limit,
             )
-            load_raw_from_current_json()
+        upload_to_s3(civic_path=civic_path)
+        load_raw_from_current_json()
 
     # 3) dbt optional
     if build_dbt_flag:
