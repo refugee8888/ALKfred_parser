@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 import uuid
 import psycopg2
 
+
 logging.basicConfig(
     level=logging.INFO,  # or DEBUG to also see debug() messages
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -136,7 +137,6 @@ def apply_raw_gene_variant():
 def apply_raw_therapy():
     print("Loading /app/src/alkfred/sql/raw_load/civic_raw_therapy.py")
     _run_module_main("alkfred.sql.raw_load.civic_raw_therapy")
-
 
 def postgres_conn():
     conn = psycopg2.connect(postgres_key())
