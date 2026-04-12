@@ -5,6 +5,7 @@ numpy
 graphql-core   
 pytest
 mypy
-psycopg2-binary
-dbt-postgres
+psycopg2-binary>=2.9
+dbt-postgres>=1.8
 prefect
+boto3
